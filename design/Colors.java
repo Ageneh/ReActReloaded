@@ -18,6 +18,7 @@ public enum  Colors {
      */
     BASE_BG(69, 84, 102, ColorMode.RGB),
     BLACK(Color.BLACK),
+    WHITE(Color.WHITE),
     BLACK_TRNS(0, 0, 0, 0.6, ColorMode.RGB),
     LINE_BG(78, 94, 115, ColorMode.RGB),
     LINE_BG_TRNS(78, 94, 115, 0.6, ColorMode.RGB),
