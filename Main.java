@@ -1,11 +1,15 @@
 import design.Colors;
 import design.Labels;
+import functions.ImageCreator;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.effect.BlendMode;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import scenes.ObservableScene;
@@ -17,6 +21,7 @@ import java.util.Observer;
 public class Main extends Application implements Observer {
 
     private StageController stageController;
+    private Scene scene;
     private Stage stage;
 
     public static void main(String[] args) {
@@ -45,8 +50,25 @@ public class Main extends Application implements Observer {
 //        st.getChildren().add(h);
 
         primaryStage.setScene(this.stageController.getCurrentScene());
+        //this.test();
         this.stage = primaryStage;
         this.stage.show();
+    }
+
+    private void test(){
+        AnchorPane root = new AnchorPane();
+        this.scene = new Scene(root);
+
+        ImageView playBtn = new ImageView(ImageCreator.getImage("/Users/HxA/Pictures/Unsplash/nathan-anderson-316188-unsplash.jpg"));
+        root.getChildren().add(playBtn);
+        playBtn.setPreserveRatio(true);
+
+        Circle playBtn_mask = new Circle(50.0, Colors.BTN_BAD.getColor());
+        playBtn_mask.setCenterX(300);
+        playBtn_mask.setCenterY(300);
+
+        playBtn.setClip(playBtn_mask);
+        this.stage.setScene(scene);
     }
 
     /**

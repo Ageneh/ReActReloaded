@@ -33,7 +33,8 @@ public enum  Colors {
     BTN_BAD(208, 70, 87, ColorMode.RGB),
     BTN_BAD_STROKE(124, 78, 96, ColorMode.RGB),
     BTN_BAD_STROKE_TRNS(208, 70, 87, 0.4, ColorMode.RGB),
-    PINK(Color.PINK)
+    PINK(Color.PINK),
+    ACC_RED(Color.RED.brighter());
     ;
 
     private final double ALPHA_MAX = 1.0;
@@ -187,7 +188,7 @@ public enum  Colors {
         return "rgb(" + red + ", " + green + ", " + blue + ")";
     }
 
-    private enum ColorMode {
+    public enum ColorMode {
 
         RGB(0, 255, 255),
         JFX_COL(0, 1, 1.0 / 255.0);
