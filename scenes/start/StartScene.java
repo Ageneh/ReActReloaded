@@ -2,18 +2,11 @@ package scenes.start;
 
 
 import design.Colors;
-import design.IconPath;
 import design.Labels;
-import functions.ImageCreator;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import scenes.ObservableScene;
 
 public class StartScene extends ObservableScene<StackPane> {
@@ -38,7 +31,6 @@ public class StartScene extends ObservableScene<StackPane> {
         base.setBackground(Colors.GAMEPLAY_INTERACTIVE.getBackground());
         this.getRoot().getChildren().add(base);
     }
-
 
 //        System.out.println(String.format("-fx-background-image: url(\"%s\");", IconPath.PLAY.getPath()));
 //        playBtn_mask.setStyle("-fx-background-color: aqua");
