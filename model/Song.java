@@ -9,9 +9,23 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * A class which will contain all the necessary information about a mp3-file
+ * for the gameplay.
+ * <br>Additionally the{@link MetaExtractor} is used to extract the necessary from a
+ * mp3-file.
+ * @see MetaExtractor
+ */
 public class Song {
 
+    /**
+     * The accepted file extension.
+     */
     public static final String EXTENSION = "mp3";
+    /**
+     * The path of the standard cover image
+     * @see Song#coverImg
+     */
     public static final String COVER_IMG = "img/std_cover.jpg";
 
     /**
@@ -20,6 +34,9 @@ public class Song {
     private String[] meta;
     private MetaExtractor metaExtractor;
     private long length;
+    /**
+     * A {@link java.lang.reflect.Array byte array} of the cover image.
+     */
     private byte[] coverImg;
 
     public Song(String path) throws SongInvalidException {
@@ -98,8 +115,15 @@ public class Song {
 
     }
 
+    /**
+     * A class used to extract necessary information/meta-data from a given mp3-file.
+     */
     private class MetaExtractor {
 
+        /**
+         * A {@link File} object used as a "backup" for missing information such as the
+         * {@link Song#meta title} of a {@link Song}.
+         */
         private File file;
         private ID3v2 id;
 

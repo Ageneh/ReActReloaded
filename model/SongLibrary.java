@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * A class used to manage all folders, which are to be used as source folders.
+ */
 public class SongLibrary {
 
     private ArrayList<String> folderPaths;
