@@ -3,6 +3,9 @@ package model;
 import java.nio.file.InvalidPathException;
 
 /**
+ * @author Henock Arega
+ * @project ReActReloaded
+ *
  * An exception which will be thrown whenever a {@link Song songpath} is given
  * which is invalid.
  */

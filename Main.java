@@ -1,17 +1,16 @@
 import design.Colors;
-import design.Labels;
 import functions.ImageCreator;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.effect.BlendMode;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import model.SongLibrary;
+import model.models.NormalGame;
 import scenes.ObservableScene;
 import scenes.start.StageController;
 
@@ -23,6 +22,10 @@ public class Main extends Application implements Observer {
     private StageController stageController;
     private Scene scene;
     private Stage stage;
+    private NormalGame model;
+
+    // FOR TESTING PURPOSES
+    private SongLibrary songLibrary;
 
     public static void main(String[] args) {
         launch(args);
@@ -30,6 +33,10 @@ public class Main extends Application implements Observer {
 
     public Main(){
         this.stageController = new StageController(this);
+
+        // FOR TESTING PURPOSES
+        this.songLibrary = new SongLibrary("/Users/HxA/Desktop/A COLORS SHOW");
+        this.model = new NormalGame(this.songLibrary.getPlaylist());
     }
 
     @Override
@@ -49,16 +56,32 @@ public class Main extends Application implements Observer {
 //        h.setBlendMode(BlendMode.SOFT_LIGHT);
 //        st.getChildren().add(h);
 
-        primaryStage.setScene(this.stageController.getCurrentScene());
-        //this.test();
+        //primaryStage.setScene(this.stageController.getCurrentScene());
         this.stage = primaryStage;
+        this.test();
         this.stage.show();
     }
 
     private void test(){
-        AnchorPane root = new AnchorPane();
+        StackPane root = new StackPane();
         this.scene = new Scene(root);
+        this.stage = new Stage();
 
+        Button bStart = new Button("Start");
+        Button bEnd = new Button("End");
+        bStart.setOnMouseClicked(event -> {
+            this.model.start();
+        });
+        bEnd.setOnMouseClicked(event -> {
+            this.model.end();
+        });
+        HBox box = new HBox();
+        box.getChildren().addAll(bStart, bEnd);
+        root.getChildren().add(box);
+
+        this.stage.setScene(this.scene);
+    }
+    private void testImg(AnchorPane root){
         ImageView playBtn = new ImageView(ImageCreator.getImage("/Users/HxA/Pictures/Unsplash/nathan-anderson-316188-unsplash.jpg"));
         root.getChildren().add(playBtn);
         playBtn.setPreserveRatio(true);
@@ -66,9 +89,7 @@ public class Main extends Application implements Observer {
         Circle playBtn_mask = new Circle(50.0, Colors.BTN_BAD.getColor());
         playBtn_mask.setCenterX(300);
         playBtn_mask.setCenterY(300);
-
         playBtn.setClip(playBtn_mask);
-        this.stage.setScene(scene);
     }
 
     /**

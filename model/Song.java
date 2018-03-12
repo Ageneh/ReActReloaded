@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 /**
+ * @author Henock Arega
+ * @project ReActReloaded
+ *
  * A class which will contain all the necessary information about a mp3-file
  * for the gameplay.
  * <br>Additionally the{@link MetaExtractor} is used to extract the necessary from a
@@ -18,30 +21,32 @@ import java.nio.file.Files;
  */
 public class Song {
 
-    /**
+   /** * @author Henock Arega
      * The accepted file extension.
      */
     public static final String EXTENSION = "mp3";
-    /**
+   /** * @author Henock Arega
      * The path of the standard cover image
      * @see Song#coverImg
      */
     public static final String COVER_IMG = "img/std_cover.jpg";
 
-    /**
+   /** * @author Henock Arega
      * An array containing the title, album and artist of the {@link Song}.
      */
     private String[] meta;
     private MetaExtractor metaExtractor;
     private long length;
-    /**
+   /** * @author Henock Arega
      * A {@link java.lang.reflect.Array byte array} of the cover image.
      */
     private byte[] coverImg;
+    private String path;
 
-    public Song(String path) throws SongInvalidException {
+    Song(String path) throws SongInvalidException {
         try {
             File temp = checkSong(path);
+            this.path = temp.getAbsolutePath();
             try {
                 this.metaExtractor = new MetaExtractor(temp);
                 this.meta = new String[MetaPos.values().length];
@@ -63,7 +68,7 @@ public class Song {
         }
     }
 
-    /**
+   /** * @author Henock Arega
      * Checks the given path and if the given path directs to anything but a valid mp3-song a
      * {@link SongInvalidException} will be thrown.
      * @param path The path which is to be checked.
@@ -71,28 +76,28 @@ public class Song {
     private File checkSong(String path){
         final File temp = new File(path);
 
-        if(!temp.exists() || temp.isFile() || !temp.getName().endsWith(EXTENSION)
+        if(!temp.exists() || temp.isDirectory() || !temp.getName().endsWith(EXTENSION)
                 || temp.length() <= 750){
             throw new SongInvalidException(path);
         }
         return temp;
     }
 
-    /**
+   /** * @author Henock Arega
      * @return Returns the title of the {@link Song}.
      */
     public String getTitle(){
         return this.meta[MetaPos.TITLE.val];
     }
 
-    /**
+   /** * @author Henock Arega
      * @return Returns the album title of the {@link Song}.
      */
     public String getAlbum(){
         return this.meta[MetaPos.ALBUM.val];
     }
 
-    /**
+   /** * @author Henock Arega
      * @return Returns the artist name of the {@link Song}.
      */
     public String getArtist(){
@@ -101,6 +106,10 @@ public class Song {
 
     public long lengthMillis(){
         return this.length;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     private enum MetaPos {
@@ -115,12 +124,12 @@ public class Song {
 
     }
 
-    /**
+   /** * @author Henock Arega
      * A class used to extract necessary information/meta-data from a given mp3-file.
      */
     private class MetaExtractor {
 
-        /**
+       /** * @author Henock Arega
          * A {@link File} object used as a "backup" for missing information such as the
          * {@link Song#meta title} of a {@link Song}.
          */
