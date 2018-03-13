@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="ReeActReloaded">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../_libraries_/eibo_simpleminim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../_libraries_/minim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../_libraries_/mp3agic.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../_libraries_/eibo_simpleminim.jar!/" />
+    </SOURCES>
+  </library>
+</component>

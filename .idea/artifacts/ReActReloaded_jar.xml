@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ReActReloaded:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ReActReloaded_jar</output-path>
+    <root id="archive" name="ReActReloaded.jar">
+      <element id="module-output" name="ReActReloaded" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_libraries_/eibo_simpleminim.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_libraries_/minim.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_libraries_/mp3agic.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
