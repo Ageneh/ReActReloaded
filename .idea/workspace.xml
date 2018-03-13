@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="">
+    <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="Some changes and additions.&#10;-&gt; new class Settings&#10;-&gt; INI-reading and writing in Songlibrary.java&#10;-&gt; ObservableModel realtions edited&#10;-&gt; more JavaDoc comments&#10;-&gt; added Manifest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -21,7 +22,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1357">
+            <state relative-caret-position="0">
               <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
               <folding>
                 <element signature="e#1062#1063#0" expanded="true" />
@@ -35,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SongLibrary.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SongLibrary.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/SongLibrary.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
@@ -64,16 +65,6 @@
                 <element signature="docComment;method#writeINI#0;class#SongLibrary#0" expanded="false" />
                 <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -358,11 +349,6 @@
             <path>
               <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -509,7 +495,7 @@
       <workItem from="1520931786212" duration="327000" />
       <workItem from="1520952051180" duration="3676000" />
       <workItem from="1520957387621" duration="10771000" />
-      <workItem from="1520968901396" duration="660000" />
+      <workItem from="1520968901396" duration="728000" />
     </task>
     <task id="LOCAL-00001" summary="Small additions:&#10;-&gt; E: ImageCreator&#10;-&gt; E: Iconpath&#10;-&gt; res Folder (with ./icons)&#10;-&gt; C: ElementBackgroundCreator">
       <created>1520517347619</created>
@@ -553,15 +539,21 @@
       <option name="project" value="LOCAL" />
       <updated>1520969371309</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Some changes and additions.&#10;-&gt; new class Settings&#10;-&gt; INI-reading and writing in Songlibrary.java&#10;-&gt; ObservableModel realtions edited&#10;-&gt; more JavaDoc comments&#10;-&gt; added Manifest">
+      <created>1520969755477</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1520969755477</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42894000" />
+    <option name="totallyTimeSpent" value="42962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="352" y="182" width="1312" height="929" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19759926" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -572,7 +564,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1863354" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15433072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15433072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1136,7 +1128,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1357">
+        <state relative-caret-position="0">
           <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
             <element signature="e#1062#1063#0" expanded="true" />
@@ -1169,6 +1161,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/SongLibrary.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -1197,14 +1197,6 @@
             <element signature="docComment;method#writeINI#0;class#SongLibrary#0" expanded="false" />
             <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
