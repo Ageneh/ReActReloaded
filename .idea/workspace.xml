@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -193,7 +193,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="352" />
-    <option name="y" value="183" />
+    <option name="y" value="182" />
     <option name="width" value="1312" />
     <option name="height" value="929" />
   </component>
@@ -363,11 +363,6 @@
             <path>
               <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -514,7 +509,7 @@
       <workItem from="1520931786212" duration="327000" />
       <workItem from="1520952051180" duration="3676000" />
       <workItem from="1520957387621" duration="10771000" />
-      <workItem from="1520968901396" duration="549000" />
+      <workItem from="1520968901396" duration="660000" />
     </task>
     <task id="LOCAL-00001" summary="Small additions:&#10;-&gt; E: ImageCreator&#10;-&gt; E: Iconpath&#10;-&gt; res Folder (with ./icons)&#10;-&gt; C: ElementBackgroundCreator">
       <created>1520517347619</created>
@@ -562,10 +557,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42783000" />
+    <option name="totallyTimeSpent" value="42894000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="352" y="183" width="1312" height="929" extended-state="0" />
+    <frame x="352" y="182" width="1312" height="929" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
