@@ -11,10 +11,8 @@ import java.util.Observer;
  */
 abstract class ObservableModel extends Observable implements Close {
 
-    private SongLibrary songLibrary;
-
     ObservableModel(){
-        this.songLibrary = new SongLibrary();
+
     }
 
     @Override
@@ -50,7 +48,4 @@ abstract class ObservableModel extends Observable implements Close {
         catch (NullPointerException ignored){}
     }
 
-    public SongLibrary getSongLibrary() {
-        return songLibrary;
-    }
 }

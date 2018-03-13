@@ -1,7 +1,6 @@
 package model.models;
 
 import model.Game;
-import model.Playlist;
 
 import java.util.Observable;
 
@@ -14,8 +13,8 @@ import java.util.Observable;
  */
 public class ContinuousGame extends Game {
 
-    public ContinuousGame(Playlist playlist) {
-        super(GameMode.CONTINUOUS, playlist);
+    public ContinuousGame() {
+        super(GameMode.CONTINUOUS);
     }
 
     @Override

@@ -1,18 +1,28 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Henock Arega
  * @project ReActReloaded
  */
-public class Playlist {
+class Playlist {
 
     private ArrayList<String> songs;
     private int pos;
 
     Playlist(ArrayList<String> songpaths){
+        this(songpaths, false);
+    }
+
+    Playlist(ArrayList<String> songpaths, boolean randomized){
         this.pos = 0;
+        if(randomized){
+            Collections.shuffle(songpaths);
+            Collections.shuffle(songpaths);
+            Collections.shuffle(songpaths);
+        }
         this.songs = songpaths;
     }
 

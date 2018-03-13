@@ -10,7 +10,7 @@ import java.util.Observer;
  * @project ReActReloaded
  *
  * The player, used for the gameplay.
- * Provides all necessary methods to control, play etc. a {@link Song} given by the {@link SongLibrary}.
+ * Provides all necessary methods to control, play etc. a {@link Song} given by the {@link Library}.
  */
 public class MusicPlayer extends ObservableModel {
 

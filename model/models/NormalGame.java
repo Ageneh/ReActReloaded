@@ -1,7 +1,6 @@
 package model.models;
 
 import model.Game;
-import model.Playlist;
 
 import java.util.Observable;
 
@@ -15,8 +14,8 @@ import java.util.Observable;
  */
 public class NormalGame extends Game {
 
-    public NormalGame(Playlist playlist) {
-        super(GameMode.NORMAL, playlist);
+    public NormalGame() {
+        super(GameMode.NORMAL);
     }
 
     @Override

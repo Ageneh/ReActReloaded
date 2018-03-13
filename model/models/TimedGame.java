@@ -1,7 +1,6 @@
 package model.models;
 
 import model.Game;
-import model.Playlist;
 
 import java.util.Observable;
 
@@ -14,8 +13,8 @@ import java.util.Observable;
  */
 public class TimedGame extends Game {
 
-    protected TimedGame(Playlist playlist) {
-        super(GameMode.TIMED, playlist);
+    protected TimedGame() {
+        super(GameMode.TIMED);
     }
 
     @Override

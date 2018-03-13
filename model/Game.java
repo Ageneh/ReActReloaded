@@ -13,28 +13,38 @@ public abstract class Game extends ObservableModel implements Observer {
     private final static int SEC_PER_MIN = 60;
     private final static int MIN_PER_H = 60;
 
-    private MusicPlayer musicPlayer;
-    private long startTime;
-    private int replayCount;
-    private GameMode mode;
-    private Playlist gamePlaylist;
-    private boolean hasStarted;
-    private boolean nextCalled;
+    private SongLibrary songLibrary;
 
+    /** The {@link MusicPlayer} used to play each {@link Song random song}. */
+    private MusicPlayer musicPlayer;
+    /** Logs the time when a game has started, as a reference for the duration of a game. */
+    private long startTime;
+    /** A counter which will count the amount of times a song has been replayed. */
+    private int replayCount;
+    /** The game mode of each game. */
+    private GameMode mode;
+    /** The playlist for each game round. Will be recreated with every game. */
+    private Playlist gamePlaylist;
+    /** A flag which will be set when {@link #start()} has been called. */
+    private boolean hasStarted;
+    /**
+     * A flag which will be set when {@link #next()} has been called.
+     * Will make it possible to call {@link #start()} through {@link #next()}.
+     */
+    private boolean nextCalled;
+    /** A counter for the points of each game */
     private int points;
     // TODO: create and add class >User<
 
-    protected Game(GameMode mode, Playlist playlist) {
+    protected Game(GameMode mode) {
         this.mode = mode;
         this.musicPlayer = new MusicPlayer(this);
         this.startTime = 0;
         this.replayCount = 0;
-        this.gamePlaylist = playlist;
+        this.songLibrary = new SongLibrary();
+        this.gamePlaylist = new Playlist(this.songLibrary.getFolderPaths());
         this.hasStarted = this.nextCalled = false;
-    }
-
-    protected GameMode getMode(){
-        return this.mode;
+        this.songLibrary.close(Code.CLOSE);
     }
 
     /**
@@ -91,6 +101,14 @@ public abstract class Game extends ObservableModel implements Observer {
      */
     public void answer(Song answer){
         // TODO: evaluation of answer and notify others
+    }
+
+    protected GameMode getMode(){
+        return this.mode;
+    }
+
+    public SongLibrary getSongLibrary() {
+        return songLibrary;
     }
 
     /**

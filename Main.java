@@ -7,25 +7,31 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import model.SongLibrary;
+import model.Settings;
 import model.models.NormalGame;
 import scenes.ObservableScene;
 import scenes.start.StageController;
 
+import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 
+/*******************************************
+ * TESTING TESTING TESTING TESTING TESTING *
+ *******************************************/
 public class Main extends Application implements Observer {
 
     private StageController stageController;
     private Scene scene;
     private Stage stage;
     private NormalGame model;
+    private Settings settings;
 
     // FOR TESTING PURPOSES
-    private SongLibrary songLibrary;
 
     public static void main(String[] args) {
         launch(args);
@@ -33,10 +39,7 @@ public class Main extends Application implements Observer {
 
     public Main(){
         this.stageController = new StageController(this);
-
-        // FOR TESTING PURPOSES
-        this.songLibrary = new SongLibrary("/Users/HxA/Desktop/A COLORS SHOW");
-        this.model = new NormalGame(this.songLibrary.getPlaylist());
+        this.settings = new Settings();
     }
 
     @Override
@@ -77,7 +80,23 @@ public class Main extends Application implements Observer {
         });
         HBox box = new HBox();
         box.getChildren().addAll(bStart, bEnd);
-        root.getChildren().add(box);
+
+        VBox v = new VBox();
+        v.getChildren().add(box);
+        Button bSelectF = new Button("Select a Music-File");
+        bSelectF.setOnAction(event -> {
+            DirectoryChooser dc = new DirectoryChooser();
+            dc.setInitialDirectory(new File("/Users/"));
+//            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Music", "*.mp3");
+//            dc.getExtensionFilters().addAll(filter);
+            File f = dc.showDialog(this.stage);
+            if(f != null) {
+                System.out.println(f.getName());
+                this.settings.addToLib(f.getAbsolutePath());
+            }
+        });
+        v.getChildren().add(bSelectF);
+        root.getChildren().add(v);
 
         this.stage.setScene(this.scene);
     }
