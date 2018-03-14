@@ -31,8 +31,6 @@ public class PlayerTest implements Observer {
             while (true) {
                 s = scan.nextLine();
                 if (s.contains("s")) {
-                    musicPlayer.stop();
-                } else if (s.contains("p")) {
                     musicPlayer.play(playlist.getNext(), 10000);
                 } else if (s.contains("q")) {
                     System.exit(0);

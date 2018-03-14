@@ -63,7 +63,7 @@ public class MusicPlayer extends ObservableModel {
         this.setVolume(20);
     }
 
-    synchronized void play(Song song, int timeMillis){
+    void play(Song song, int timeMillis){
         this.stop();
         this.playtime = timeMillis;
         System.out.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
@@ -83,9 +83,9 @@ public class MusicPlayer extends ObservableModel {
         this.audioPlayer.setLoopPoints(this.posA, this.posB);
     }
     
-    synchronized void stop(){
+    void stop(){
 //        synchronized (control) {
-            if (this.audioPlayer != null && this.audioPlayer.isPlaying()) {
+            if (this.audioPlayer != null) {
                 this.stopByAnswer = true;
                 this.pause();
                 this.MINIM.stop();
@@ -94,7 +94,7 @@ public class MusicPlayer extends ObservableModel {
 //        }
     }
     
-    synchronized void pause(){
+    void pause(){
         try {
             this.audioPlayer.pause();
         }
@@ -103,7 +103,7 @@ public class MusicPlayer extends ObservableModel {
         }
     }
     
-    synchronized void setVolume(float val){
+    void setVolume(float val){
         this.volume = val;
         try {
             this.audioPlayer.setGain(this.linearToDB(this.volume));
@@ -163,7 +163,9 @@ public class MusicPlayer extends ObservableModel {
                 stopByAnswer = false;
                 MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
                 this.t_wait(MusicPlayer.this.playtime - 100); // wait for given amount of time
-                while(audioPlayer.isPlaying()) t_wait(10);
+                
+                while(audioPlayer.isPlaying() && !stopByAnswer) t_wait(10);
+                
                 MusicPlayer.this.setChanged();
                 MusicPlayer.this.notifyObservers(new PlayerResult(
                         MusicPlayer.this.posB - MusicPlayer.this.posA,
