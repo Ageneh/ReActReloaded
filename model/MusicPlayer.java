@@ -69,6 +69,10 @@ public class MusicPlayer extends ObservableModel {
         System.out.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
         this.currentSong = song;
         this.setLoop();
+        this.play();
+    }
+    
+    private void play(){
         this.setVolume(this.volume);
         this.control.resume();
     }
@@ -119,8 +123,16 @@ public class MusicPlayer extends ObservableModel {
      */
     synchronized void replay(long additionalTime){
         // TODO: play longer with loop
+        this.playtime += additionalTime;
+        this.posB = this.posA + this.playtime;
+        this.audioPlayer.setLoopPoints(this.posA, this.posB);
+        this.play();
     }
-
+    
+    public Song currentSong() {
+        return currentSong;
+    }
+    
     /** * @author Henock Arega
      * Will convert any given dB-Value to its linear value.
      * @param x

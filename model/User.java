@@ -26,15 +26,12 @@ public class User {
     private long maxReaction;
     
     public User(String name) {
-        
         if (name == null || (name != null && name.isEmpty())) this.name = getRandomName();
         else this.name = name;
         this.points = -1;
         this.datePlayed = LocalDateTime.now();
         this.correctAnswered = new ArrayList<>();
         this.minReaction = this.maxReaction = this.points;
-        
-        System.out.println(String.format("%s, %s, %s", name, points, datePlayed.toString()));
     }
     
     public String getName() {

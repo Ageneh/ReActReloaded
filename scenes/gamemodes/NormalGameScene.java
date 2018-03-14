@@ -15,7 +15,7 @@ public class NormalGameScene extends GameScene {
 
     public NormalGameScene(String name, Observer o, Observer ... observers) {
         super(o, observers);
-        this.game = new NormalGame(name);
+        this.game = new NormalGame(name, o, observers);
     }
 
     @Override

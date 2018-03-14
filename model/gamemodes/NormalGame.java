@@ -1,8 +1,10 @@
 package model.gamemodes;
 
 import model.Game;
+import model.Song;
 
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author Henock Arega
@@ -14,24 +16,18 @@ import java.util.Observable;
  */
 public class NormalGame extends Game {
 
-    public NormalGame() {
-        super(GameMode.NORMAL);
+    public NormalGame(Observer o, Observer ... observers) {
+        super(GameMode.NORMAL, o, observers);
     }
 
-    public NormalGame(String name) {
-        super(GameMode.NORMAL, name);
+    public NormalGame(String name, Observer o, Observer ... observers) {
+        super(GameMode.NORMAL, name, o, observers);
     }
-
+    
     @Override
-    public void start() {
-        super.start();
+    public void answer(Song answer) {
     }
-
-    @Override
-    public void end() {
-        super.end();
-    }
-
+    
     @Override
     public void close(Code code) {
 

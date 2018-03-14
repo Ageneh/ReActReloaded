@@ -112,6 +112,7 @@ public class Main extends Application implements Observer {
         root.getChildren().add(v);
         this.stage.setScene(this.scene);
     }
+    
     private void testImg(AnchorPane root){
         ImageView playBtn = new ImageView(ImageCreator.getImage("/Users/HxA/Pictures/Unsplash/nathan-anderson-316188-unsplash.jpg"));
         root.getChildren().add(playBtn);
@@ -142,4 +143,5 @@ public class Main extends Application implements Observer {
             }
         }
     }
+    
 }

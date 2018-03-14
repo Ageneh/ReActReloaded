@@ -1,5 +1,6 @@
 package model;
 
+import functions.ANSI;
 import functions.INIReader;
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
@@ -220,12 +221,29 @@ class SongLibrary implements Close {
             temp = new File(INI_PATH);
             ini.load(temp);
             ini.clear();
+            
+//            ini.putComment("", "; SYNTAX; # := eine nummer");
+//            ini.putComment("", "; MDIR# = /irgendein/pfad/mit/musik/oder/eine/musikdatei");
+            
+            final String COMMENT_STR = "; SYNTAX; # := eine nummer; MDIR# = /irgendein/pfad/mit/musik/oder/eine/musikdatei";
+            ini.put(SECTION, "SYNTAX", COMMENT_STR);
+            
+            String s = KEY_PRE+0;
             for(int i = 0; i < this.folderPaths.size(); i++) {
-                ini.put(SECTION,
-                        KEY_PRE+i,
-                        this.folderPaths.get(i));
+                if(i > 0){
+                    ini.put(SECTION,
+                            KEY_PRE+i,
+                            this.folderPaths.get(i));
+                }
+                else{
+                    ini.put(SECTION,
+                            KEY_PRE+i,
+                            this.folderPaths.get(i));
+                }
             }
+            ANSI.CYAN.println(ini.getComment(s));
             br = new BufferedWriter(new FileWriter(temp));
+            
             ini.store(br);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

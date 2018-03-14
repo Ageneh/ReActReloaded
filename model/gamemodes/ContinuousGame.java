@@ -3,6 +3,7 @@ package model.gamemodes;
 import model.Game;
 
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author Henock Arega
@@ -13,12 +14,12 @@ import java.util.Observable;
  */
 public class ContinuousGame extends Game {
 
-    public ContinuousGame() {
-        super(GameMode.CONTINUOUS);
+    public ContinuousGame(Observer o, Observer ... observers) {
+        super(GameMode.CONTINUOUS, o, observers);
     }
 
-    public ContinuousGame(String name) {
-        super(GameMode.CONTINUOUS, name);
+    public ContinuousGame(String name, Observer o, Observer ... observers) {
+        super(GameMode.CONTINUOUS, name, o, observers);
     }
 
     @Override

@@ -3,6 +3,7 @@ package model.gamemodes;
 import model.Game;
 
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author Henock Arega
@@ -13,12 +14,12 @@ import java.util.Observable;
  */
 public class TimedGame extends Game {
 
-    protected TimedGame() {
-        super(GameMode.TIMED);
+    protected TimedGame(Observer o, Observer ... observers) {
+        super(GameMode.TIMED, o, observers);
     }
 
-    protected TimedGame(String name) {
-        super(GameMode.TIMED, name);
+    protected TimedGame(String name, Observer o, Observer ... observers) {
+        super(GameMode.TIMED, name, o, observers);
     }
 
     @Override
