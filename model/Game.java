@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,7 @@ public abstract class Game extends ObservableModel implements Observer {
     private final static int SEC_PER_MIN = 60;
     private final static int MIN_PER_H = 60;
 
+    /** The song library used for each game. */
     private SongLibrary songLibrary;
 
     /** The {@link MusicPlayer} used to play each {@link Song random song}. */
@@ -34,10 +36,16 @@ public abstract class Game extends ObservableModel implements Observer {
     private boolean nextCalled;
     /** A counter for the points of each game */
     private int points;
-    // TODO: create and add class >User<
+    /** A user object in which all the specific game data will be saved in for each {@link User player}. */
+    private User user;
 
     protected Game(GameMode mode) {
+        this(mode, null);
+    }
+
+    protected Game(GameMode mode, String username) {
         this.mode = mode;
+        this.user = new User(username);
         this.musicPlayer = new MusicPlayer(this);
         this.startTime = 0;
         this.replayCount = 0;
@@ -110,7 +118,15 @@ public abstract class Game extends ObservableModel implements Observer {
     public SongLibrary getSongLibrary() {
         return songLibrary;
     }
-
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        if(o instanceof MusicPlayer){
+            /* when the musicplayer has changed (e.g. song is done) */
+            
+        }
+    }
+    
     /**
      * @author Henock Arega
      * @project ReActReloaded
@@ -118,15 +134,15 @@ public abstract class Game extends ObservableModel implements Observer {
     protected enum  GameMode{
 
         /**
-         * @see model.models.NormalGame
+         * @see model.gamemodes.NormalGame
          */
         NORMAL(1000, 1000, 8),
         /**
-         * @see model.models.TimedGame
+         * @see model.gamemodes.TimedGame
          */
         TIMED(TimeUnit.SECONDS.toMillis(10) * SEC_PER_MIN),
         /**
-         * @see model.models.ContinuousGame
+         * @see model.gamemodes.ContinuousGame
          */
         CONTINUOUS(1, 0, 3);
         ;

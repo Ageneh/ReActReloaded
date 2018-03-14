@@ -2,7 +2,6 @@ package scenes;
 
 import design.Colors;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 
@@ -13,7 +12,7 @@ import java.util.Observer;
  * All scenes have to extend this class so that they have all necessary methods and values
  * and can be treated/used correctly.
  */
-public abstract class ObservableScene<T extends Region> extends Observable implements Observer {
+public abstract class ObservableScene<T extends Region> extends model.Observable implements Observer {
 
     protected static SimpleIntegerProperty gen_width;
     protected static SimpleIntegerProperty gen_height;

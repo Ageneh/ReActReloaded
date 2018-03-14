@@ -3,7 +3,10 @@ import functions.ImageCreator;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -12,8 +15,9 @@ import javafx.scene.shape.Circle;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import model.Settings;
-import model.models.NormalGame;
+import model.gamemodes.NormalGame;
 import scenes.ObservableScene;
+import scenes.gamemodes.NormalGameScene;
 import scenes.start.StageController;
 
 import java.io.File;
@@ -32,6 +36,7 @@ public class Main extends Application implements Observer {
     private Settings settings;
 
     // FOR TESTING PURPOSES
+    private NormalGame normalGame;
 
     public static void main(String[] args) {
         launch(args);
@@ -95,9 +100,16 @@ public class Main extends Application implements Observer {
                 this.settings.addToLib(f.getAbsolutePath());
             }
         });
+        TextField textIn = new TextField();
+        textIn.setOnKeyTyped((KeyEvent event) -> {
+            if(event.getCode() == (KeyCode.ENTER) || event.getCharacter().getBytes()[0] == '\n' || event.getCharacter().getBytes()[0] == '\r'){
+                NormalGameScene normalGameScene = new NormalGameScene(textIn.getText(), this);
+                this.stage.setScene(normalGameScene.getScene());
+            }
+        });
         v.getChildren().add(bSelectF);
+        v.getChildren().addAll(textIn);
         root.getChildren().add(v);
-
         this.stage.setScene(this.scene);
     }
     private void testImg(AnchorPane root){

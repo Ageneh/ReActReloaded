@@ -9,6 +9,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import scenes.ObservableScene;
 
+import java.util.Observable;
+
 public class StartScene extends ObservableScene<StackPane> {
 
     private HBox secondaryMenu;
@@ -42,5 +44,10 @@ public class StartScene extends ObservableScene<StackPane> {
     @Override
     public StackPane getRoot() {
         return super.getRoot();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }

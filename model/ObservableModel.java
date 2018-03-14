@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Observable;
 import java.util.Observer;
 
 /**
@@ -12,7 +11,6 @@ import java.util.Observer;
 abstract class ObservableModel extends Observable implements Close {
 
     ObservableModel(){
-
     }
 
     @Override
@@ -33,19 +31,8 @@ abstract class ObservableModel extends Observable implements Close {
         catch (NullPointerException ignored){}
     }
 
-    /**
-     * @author Henock Arega
-     * Allows to add multiple {@link Observer Observers} at once.
-     * @param observers An array of multiple observers.
-     */
-    synchronized void addAllObserver(Observer observer, Observer ... observers) {
-        try {
-            this.addObserver(observer);
-            for(Observer o : observers){
-                this.addObserver(o);
-            }
-        }
-        catch (NullPointerException ignored){}
+    @Override
+    synchronized void addAllObserver(Observer observer, Observer... observers) {
+        super.addAllObserver(observer, observers);
     }
-
 }

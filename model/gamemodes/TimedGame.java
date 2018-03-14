@@ -1,4 +1,4 @@
-package model.models;
+package model.gamemodes;
 
 import model.Game;
 
@@ -8,14 +8,17 @@ import java.util.Observable;
  * @author Henock Arega
  * @project ReActReloaded
  *
- * In the {@link GameMode#NORMAL} game mode the song will first play for the given amount
- * of seconds and its value will be increased every time the player clicks on replay. With each
- * click on replay the amount of possible points reachable decreases.
+ * In {@link GameMode#TIMED} game mode the player will have a total of the given amount of play
+ * time (in minutes; {@link Game.GameMode#TIMED}) to get as many songs as possible.
  */
-public class NormalGame extends Game {
+public class TimedGame extends Game {
 
-    public NormalGame() {
-        super(GameMode.NORMAL);
+    protected TimedGame() {
+        super(GameMode.TIMED);
+    }
+
+    protected TimedGame(String name) {
+        super(GameMode.TIMED, name);
     }
 
     @Override

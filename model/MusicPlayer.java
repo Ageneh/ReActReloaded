@@ -25,7 +25,7 @@ public class MusicPlayer extends ObservableModel {
         this.MINIM = new SimpleMinim(true);
     }
 
-    public MusicPlayer(Observer o, Observer ... observers) {
+    MusicPlayer(Observer o, Observer ... observers) {
         this();
         super.addAllObserver(o, observers);
         this.audioPlayer = audioPlayer;
@@ -107,6 +107,7 @@ public class MusicPlayer extends ObservableModel {
         public void run() {
             while(programIsRunning){
                 // TODO
+                
             }
         }
 

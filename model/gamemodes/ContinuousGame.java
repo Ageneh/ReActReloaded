@@ -1,4 +1,4 @@
-package model.models;
+package model.gamemodes;
 
 import model.Game;
 
@@ -15,6 +15,10 @@ public class ContinuousGame extends Game {
 
     public ContinuousGame() {
         super(GameMode.CONTINUOUS);
+    }
+
+    public ContinuousGame(String name) {
+        super(GameMode.CONTINUOUS, name);
     }
 
     @Override
