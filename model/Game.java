@@ -64,7 +64,7 @@ public abstract class Game extends ObservableModel implements Observer {
         if(!this.hasStarted || (this.hasStarted && this.nextCalled)) {
             if(!this.hasStarted) this.hasStarted = true;
             this.startTime = System.currentTimeMillis();
-            this.musicPlayer.play(this.gamePlaylist.getNext());
+            this.musicPlayer.play(this.gamePlaylist.getNext(), Math.toIntExact(this.mode.lengthInMillis));
             this.nextCalled = false;
         }
     }
@@ -131,7 +131,7 @@ public abstract class Game extends ObservableModel implements Observer {
      * @author Henock Arega
      * @project ReActReloaded
      */
-    protected enum  GameMode{
+    protected enum GameMode{
 
         /**
          * @see model.gamemodes.NormalGame
@@ -144,7 +144,9 @@ public abstract class Game extends ObservableModel implements Observer {
         /**
          * @see model.gamemodes.ContinuousGame
          */
-        CONTINUOUS(1, 0, 3);
+        CONTINUOUS(1000, 0, 3),
+        /** Song plays for up to {@link #lengthInMillis} seconds */
+        REACTION(TimeUnit.SECONDS.toMillis(10), 0, 0)
         ;
 
         private long lengthInMillis;

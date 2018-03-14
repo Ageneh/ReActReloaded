@@ -19,7 +19,7 @@ abstract class ObservableModel extends Observable implements Close {
     }
 
     @Override
-    public void notifyObservers(Object arg) {
+    public synchronized void notifyObservers(Object arg) {
         super.notifyObservers(arg);
     }
 

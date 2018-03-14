@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="Some changes and additions.&#10;-&gt; new class Settings&#10;-&gt; INI-reading and writing in Songlibrary.java&#10;-&gt; ObservableModel realtions edited&#10;-&gt; more JavaDoc comments&#10;-&gt; added Manifest">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/functions and notes.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/model/Observable.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/model/User.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/model/PlayerResult.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/.idea/inspectionProfiles/Project_Default.xml" />
       <change beforePath="" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/.idea/libraries/ReeActReloaded.xml" />
       <change beforePath="" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/.idea/misc.xml" />
@@ -64,23 +61,16 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/scenes/start/StageController$SceneContainer.class" />
       <change beforePath="" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/scenes/start/StageController.class" />
       <change beforePath="" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/scenes/start/StartScene.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/scenes/gamemodes/ContinuousGameScene.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/scenes/gamemodes/GameScene.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/scenes/gamemodes/NormalGameScene.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/scenes/gamemodes/TimedGameScene.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Main.java" afterPath="$PROJECT_DIR$/Main.java" />
-      <change beforePath="$PROJECT_DIR$/functions and notes.txt" afterPath="$PROJECT_DIR$/out/production/ReActReloaded/functions and notes.txt" />
+      <change beforePath="$PROJECT_DIR$/functions and notes.md" afterPath="$PROJECT_DIR$/functions and notes.md" />
+      <change beforePath="$PROJECT_DIR$/functions/ANSI.java" afterPath="$PROJECT_DIR$/functions/ANSI.java" />
       <change beforePath="$PROJECT_DIR$/model/Game.java" afterPath="$PROJECT_DIR$/model/Game.java" />
-      <change beforePath="$PROJECT_DIR$/model/Model.java" afterPath="$PROJECT_DIR$/model/Model.java" />
       <change beforePath="$PROJECT_DIR$/model/MusicPlayer.java" afterPath="$PROJECT_DIR$/model/MusicPlayer.java" />
       <change beforePath="$PROJECT_DIR$/model/ObservableModel.java" afterPath="$PROJECT_DIR$/model/ObservableModel.java" />
-      <change beforePath="$PROJECT_DIR$/model/models/ContinuousGame.java" afterPath="$PROJECT_DIR$/model/gamemodes/ContinuousGame.java" />
-      <change beforePath="$PROJECT_DIR$/model/models/NormalGame.java" afterPath="$PROJECT_DIR$/model/gamemodes/NormalGame.java" />
-      <change beforePath="$PROJECT_DIR$/model/models/TimedGame.java" afterPath="$PROJECT_DIR$/model/gamemodes/TimedGame.java" />
+      <change beforePath="$PROJECT_DIR$/model/Song.java" afterPath="$PROJECT_DIR$/model/Song.java" />
+      <change beforePath="$PROJECT_DIR$/model/SongLibrary.java" afterPath="$PROJECT_DIR$/model/SongLibrary.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReActReloaded/functions and notes.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/res/init/music.ini" afterPath="$PROJECT_DIR$/res/init/music.ini" />
-      <change beforePath="$PROJECT_DIR$/scenes/ObservableScene.java" afterPath="$PROJECT_DIR$/scenes/ObservableScene.java" />
-      <change beforePath="$PROJECT_DIR$/scenes/start/StartScene.java" afterPath="$PROJECT_DIR$/scenes/start/StartScene.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -95,111 +85,189 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/Game.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="186">
-                  <caret line="62" column="23" lean-forward="true" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
-                  <folding>
-                    <element signature="docComment;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#songLibrary#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#musicPlayer#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#startTime#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#replayCount#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#mode#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#gamePlaylist#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#hasStarted#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#nextCalled#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#points#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#user#0;class#Game#0" expanded="false" />
-                    <element signature="method#Game#1;class#Game#0" expanded="false" />
-                    <element signature="docComment;method#start#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;method#next#0;class#Game#0" expanded="false" />
-                    <element signature="method#next#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;method#replay#0;class#Game#0" expanded="false" />
-                    <element signature="method#replay#0;class#Game#0" expanded="false" />
-                    <element signature="method#end#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;method#answer#0;class#Game#0" expanded="false" />
-                    <element signature="method#answer#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;class#GameMode#0;class#Game#0" expanded="false" />
-                    <element signature="class#GameMode#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#NORMAL#0;class#GameMode#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#TIMED#0;class#GameMode#0;class#Game#0" expanded="false" />
-                    <element signature="docComment;field#CONTINUOUS#0;class#GameMode#0;class#Game#0" expanded="false" />
-                    <element signature="method#GameMode#1;class#GameMode#0;class#Game#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="functions and notes.md" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/functions and notes.md">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MusicPlayer.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/model/MusicPlayer.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
-                  <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-                  <folding>
-                    <element signature="docComment;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#MusicPlayer#1;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#play#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#stop#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#pause#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#setVolume#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="docComment;method#replay#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#replay#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="docComment;method#dBToLinear#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="docComment;method#linearToDB#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#run#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#runProgram#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#t_wait#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="MusicPlayer.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/model/MusicPlayer.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="748">
-                  <caret line="93" column="24" lean-forward="false" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
-                  <folding>
-                    <element signature="docComment;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#MusicPlayer#1;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#play#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#stop#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#pause#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#setVolume#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="docComment;method#replay#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#replay#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="docComment;method#dBToLinear#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="docComment;method#linearToDB#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#runProgram#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-                    <element signature="method#t_wait#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MusicPlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/MusicPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="162" column="37" lean-forward="false" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
+              <folding>
+                <element signature="docComment;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#thread#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#control#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#volume#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#currentSong#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#stopByAnswer#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#posA#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#posB#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;field#playtime#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#MusicPlayer#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#MusicPlayer#1;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#MusicPlayer#2;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#setLoop#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#stop#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#pause#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#setVolume#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;method#replay#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#replay#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;method#dBToLinear#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="docComment;method#linearToDB#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="e#4841#4842#0" expanded="true" />
+                <element signature="e#4893#4894#0" expanded="true" />
+                <element signature="method#runProgram#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#t_wait#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+                <element signature="method#t_wait#1;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObservableModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/ObservableModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <element signature="e#469#470#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/Playlist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding>
+                <element signature="e#251#252#0" expanded="true" />
+                <element signature="e#289#290#0" expanded="true" />
+                <element signature="method#replaceAllWith#0;class#Playlist#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SongLibrary.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/SongLibrary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="202" column="10" lean-forward="false" selection-start-line="202" selection-start-column="10" selection-end-line="202" selection-end-column="10" />
+              <folding>
+                <element signature="docComment;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;field#KEY_PRE#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;field#folderPaths#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;field#playlist#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#SongLibrary#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#checkPaths#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#checkPaths#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#checkPaths#1;class#SongLibrary#0" expanded="false" />
+                <element signature="method#checkPaths#1;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#addToLib#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#addToLib#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#isDir#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#isDir#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
+                <element signature="docComment;method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#getPlaylist#0;class#SongLibrary#0" expanded="false" />
+                <element signature="e#6837#6838#0" expanded="true" />
+                <element signature="e#6865#6866#0" expanded="true" />
+                <element signature="docComment;method#writeINI#0;class#SongLibrary#0" expanded="false" />
+                <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/Song.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1488">
+              <caret line="145" column="42" lean-forward="true" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+              <folding>
+                <element signature="docComment;field#EXTENSION#0;class#Song#0" expanded="false" />
+                <element signature="docComment;field#COVER_IMG#0;class#Song#0" expanded="false" />
+                <element signature="docComment;field#meta#0;class#Song#0" expanded="false" />
+                <element signature="docComment;field#coverImg#0;class#Song#0" expanded="false" />
+                <element signature="docComment;method#checkSong#0;class#Song#0" expanded="false" />
+                <element signature="docComment;method#getTitle#0;class#Song#0" expanded="false" />
+                <element signature="docComment;method#getAlbum#0;class#Song#0" expanded="false" />
+                <element signature="docComment;method#getArtist#0;class#Song#0" expanded="false" />
+                <element signature="e#3394#3395#0" expanded="true" />
+                <element signature="e#3428#3429#0" expanded="true" />
+                <element signature="class#MetaPos#0;class#Song#0" expanded="false" />
+                <element signature="docComment;class#MetaExtractor#0;class#Song#0" expanded="false" />
+                <element signature="docComment;field#file#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+                <element signature="method#extractAlbum#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+                <element signature="method#extractLength#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+                <element signature="method#extractCoverImg#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="music.ini" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/init/music.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="53" lean-forward="false" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="66" column="104" lean-forward="false" selection-start-line="66" selection-start-column="104" selection-end-line="66" selection-end-column="104" />
+              <folding>
+                <element signature="docComment;class#Game#0" expanded="false" />
+                <element signature="docComment;field#songLibrary#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#musicPlayer#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#startTime#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#replayCount#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#mode#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#gamePlaylist#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#hasStarted#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#nextCalled#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#points#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#user#0;class#Game#0" expanded="false" />
+                <element signature="method#Game#1;class#Game#0" expanded="false" />
+                <element signature="docComment;method#start#0;class#Game#0" expanded="false" />
+                <element signature="docComment;method#next#0;class#Game#0" expanded="false" />
+                <element signature="method#next#0;class#Game#0" expanded="false" />
+                <element signature="docComment;method#replay#0;class#Game#0" expanded="false" />
+                <element signature="method#replay#0;class#Game#0" expanded="false" />
+                <element signature="method#end#0;class#Game#0" expanded="false" />
+                <element signature="docComment;method#answer#0;class#Game#0" expanded="false" />
+                <element signature="method#answer#0;class#Game#0" expanded="false" />
+                <element signature="docComment;class#GameMode#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#NORMAL#0;class#GameMode#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#TIMED#0;class#GameMode#0;class#Game#0" expanded="false" />
+                <element signature="docComment;field#CONTINUOUS#0;class#GameMode#0;class#Game#0" expanded="false" />
+                <element signature="e#5044#5045#0" expanded="true" />
+                <element signature="e#5086#5087#0" expanded="true" />
+                <element signature="e#5334#5335#0" expanded="true" />
+                <element signature="e#5416#5417#0" expanded="true" />
+                <element signature="e#5449#5450#0" expanded="true" />
+                <element signature="e#5532#5533#0" expanded="true" />
+                <element signature="e#5565#5566#0" expanded="true" />
+                <element signature="e#5648#5649#0" expanded="true" />
+                <element signature="e#5679#5680#0" expanded="true" />
+                <element signature="e#5760#5761#0" expanded="true" />
+                <element signature="e#5802#5803#0" expanded="true" />
+                <element signature="e#5852#5853#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -243,8 +311,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/scenes/enums/RColor.java" />
-        <option value="$PROJECT_DIR$/functions/ElementBackgroundCreator.java" />
         <option value="$PROJECT_DIR$/design/Colors.java" />
         <option value="$PROJECT_DIR$/functions/CreateImage.java" />
         <option value="$PROJECT_DIR$/functions/ImageCreator.java" />
@@ -254,11 +320,9 @@
         <option value="$PROJECT_DIR$/model/Gmae.java" />
         <option value="$PROJECT_DIR$/model/SongInvalidException.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt" />
-        <option value="$PROJECT_DIR$/model/Song.java" />
         <option value="$PROJECT_DIR$/model/models/ContinuousGame.java" />
         <option value="$PROJECT_DIR$/model/models/TimedGame.java" />
         <option value="$PROJECT_DIR$/model/Library.java" />
-        <option value="$PROJECT_DIR$/model/Playlist.java" />
         <option value="$PROJECT_DIR$/res/init/music_libs" />
         <option value="$PROJECT_DIR$/res/init/sad.ini" />
         <option value="$PROJECT_DIR$/res/init/asd.ini" />
@@ -267,8 +331,6 @@
         <option value="$PROJECT_DIR$/model/Close.java" />
         <option value="$PROJECT_DIR$/model/models/NormalGame.java" />
         <option value="$PROJECT_DIR$/model/Settings.java" />
-        <option value="$PROJECT_DIR$/model/SongLibrary.java" />
-        <option value="$PROJECT_DIR$/res/init/music.ini" />
         <option value="$PROJECT_DIR$/res/init/names.txt" />
         <option value="$PROJECT_DIR$/model/gamemodes/ContinuousGame.java" />
         <option value="$PROJECT_DIR$/model/gamemodes/NormalGame.java" />
@@ -276,7 +338,6 @@
         <option value="$PROJECT_DIR$/model/Model.java" />
         <option value="$PROJECT_DIR$/scenes/gamemodes/GameModeScene.java" />
         <option value="$PROJECT_DIR$/model/Observable.java" />
-        <option value="$PROJECT_DIR$/model/ObservableModel.java" />
         <option value="$PROJECT_DIR$/scenes/start/StartScene.java" />
         <option value="$PROJECT_DIR$/scenes/ObservableScene.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -286,10 +347,21 @@
         <option value="$PROJECT_DIR$/model/User.java" />
         <option value="$PROJECT_DIR$/scenes/gamemodes/GameScene.java" />
         <option value="$PROJECT_DIR$/scenes/gamemodes/NormalGameScene.java" />
-        <option value="$PROJECT_DIR$/model/Game.java" />
-        <option value="$PROJECT_DIR$/model/MusicPlayer.java" />
         <option value="$PROJECT_DIR$/functions and notes.txt" />
         <option value="$PROJECT_DIR$/functions and notes.md" />
+        <option value="$PROJECT_DIR$/model/Game.java" />
+        <option value="$PROJECT_DIR$/testings/MusicPlayer.java" />
+        <option value="$PROJECT_DIR$/testings/Player.java" />
+        <option value="$PROJECT_DIR$/testings/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/model/Playlist.java" />
+        <option value="$PROJECT_DIR$/functions/ANSI.java" />
+        <option value="$PROJECT_DIR$/model/ObservableModel.java" />
+        <option value="$PROJECT_DIR$/model/PlayerResult.java" />
+        <option value="$PROJECT_DIR$/model/SongLibrary.java" />
+        <option value="$PROJECT_DIR$/model/Song.java" />
+        <option value="$PROJECT_DIR$/model/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/model/MusicPlayer.java" />
+        <option value="$PROJECT_DIR$/res/init/music.ini" />
       </list>
     </option>
   </component>
@@ -300,8 +372,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1367" />
-    <option name="width" value="553" />
+    <option name="x" value="1829" />
+    <option name="width" value="91" />
     <option name="height" value="1200" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -447,8 +519,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -499,7 +570,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,7 +611,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.PlayerTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -586,6 +658,32 @@
       <module name="ReActReloaded" />
       <envs />
     </configuration>
+    <configuration name="MusicPlayer" type="Application" factoryName="Application" singleton="true" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.MusicPlayer" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ReActReloaded" />
+      <envs />
+    </configuration>
+    <configuration name="PlayerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ReActReloaded" />
+      <envs />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
@@ -624,16 +722,20 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
     </configuration>
-    <list size="3">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.GameScene" />
       <item index="2" class="java.lang.String" itemvalue="Application.ContinuousGameScene" />
+      <item index="3" class="java.lang.String" itemvalue="Application.MusicPlayer" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PlayerTest" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ContinuousGameScene" />
-        <item index="2" class="java.lang.String" itemvalue="Application.GameScene" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.PlayerTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.MusicPlayer" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="3" class="java.lang.String" itemvalue="Application.ContinuousGameScene" />
+        <item index="4" class="java.lang.String" itemvalue="Application.GameScene" />
       </list>
     </recent_temporary>
   </component>
@@ -661,7 +763,8 @@
       <workItem from="1520957387621" duration="10771000" />
       <workItem from="1520968901396" duration="728000" />
       <workItem from="1520975001983" duration="5607000" />
-      <workItem from="1521041682227" duration="2543000" />
+      <workItem from="1521041682227" duration="9925000" />
+      <workItem from="1521057290393" duration="2563000" />
     </task>
     <task id="LOCAL-00001" summary="Small additions:&#10;-&gt; E: ImageCreator&#10;-&gt; E: Iconpath&#10;-&gt; res Folder (with ./icons)&#10;-&gt; C: ElementBackgroundCreator">
       <created>1520517347619</created>
@@ -712,32 +815,39 @@
       <option name="project" value="LOCAL" />
       <updated>1520969755477</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Some changes and additions.&#10;-&gt; look at notes.md">
+      <created>1521044487238</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1521044487246</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51149000" />
+    <option name="totallyTimeSpent" value="61094000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="701" y="0" width="1219" height="1200" extended-state="6" />
+    <frame x="404" y="0" width="1516" height="1200" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19698314" sideWeight="0.4933665" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19698314" sideWeight="0.5066335" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32955974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1863354" sideWeight="0.49668324" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1863354" sideWeight="0.49668324" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25723472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13839892" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20851819" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36823425" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19698314" sideWeight="0.4933665" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -780,121 +890,48 @@
     <MESSAGE value="Some functionalities and some minor expansion of classes ans relations" />
     <MESSAGE value="Some changes and additions.&#10;-&gt; new class Settings&#10;-&gt; INI-reading and writing in Songlibrary.java&#10;-&gt; ObservableModel realtions edited&#10;-&gt; more JavaDoc comments" />
     <MESSAGE value="Some changes and additions.&#10;-&gt; new class Settings&#10;-&gt; INI-reading and writing in Songlibrary.java&#10;-&gt; ObservableModel realtions edited&#10;-&gt; more JavaDoc comments&#10;-&gt; added Manifest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes and additions.&#10;-&gt; new class Settings&#10;-&gt; INI-reading and writing in Songlibrary.java&#10;-&gt; ObservableModel realtions edited&#10;-&gt; more JavaDoc comments&#10;-&gt; added Manifest" />
+    <MESSAGE value="Some changes and additions.&#10;-&gt; look at notes.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes and additions.&#10;-&gt; look at notes.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/model/Song.java</url>
-          <line>47</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/model/SongLibrary.java</url>
-          <line>208</line>
-          <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/model/SongLibrary.java</url>
-          <line>114</line>
-          <properties />
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Main.java</url>
           <line>99</line>
           <properties />
           <option name="timeStamp" value="33" />
         </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/model/MusicPlayer.java</url>
+          <line>167</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/model/PlayerTest.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/model/MusicPlayer.java</url>
+          <line>66</line>
+          <properties />
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="36" />
+      <option name="time" value="52" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="file.getAbsolutePath()" />
-        <watch expression="ini.get(&quot;MUSIC_LIB&quot;, &quot;LIB&quot;)" />
-        <watch expression="isDir(file)" />
-        <watch expression="this.folderPaths.get(i)" />
-        <watch expression="br.lines().count()" />
+        <watch expression="lib.getPlaylist().getNext()" />
+        <watch expression="lib.getPlaylist()" />
+        <watch expression=" musicPlayer.play(lib.getPlaylist().getNext(), 10000);" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/stage/FileChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="169" column="28" lean-forward="false" selection-start-line="169" selection-start-column="28" selection-end-line="169" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1334">
-          <caret line="78" column="47" lean-forward="false" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
-          <folding>
-            <element signature="docComment;field#EXTENSION#0;class#Song#0" expanded="false" />
-            <element signature="docComment;field#COVER_IMG#0;class#Song#0" expanded="false" />
-            <element signature="docComment;field#meta#0;class#Song#0" expanded="false" />
-            <element signature="docComment;field#coverImg#0;class#Song#0" expanded="false" />
-            <element signature="docComment;method#checkSong#0;class#Song#0" expanded="false" />
-            <element signature="docComment;method#getTitle#0;class#Song#0" expanded="false" />
-            <element signature="docComment;method#getAlbum#0;class#Song#0" expanded="false" />
-            <element signature="docComment;method#getArtist#0;class#Song#0" expanded="false" />
-            <element signature="class#MetaPos#0;class#Song#0" expanded="false" />
-            <element signature="docComment;class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="docComment;field#file#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="method#MetaExtractor#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="method#extractTitle#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="method#extractArtist#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="method#extractAlbum#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
-            <element signature="method#extractCoverImg#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Library.java" />
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4-jdk14.jar!/org/ini4j/Ini.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="33" column="11" lean-forward="false" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4-jdk14.jar!/org/ini4j/BasicProfile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-301">
-          <caret line="85" column="18" lean-forward="false" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4-jdk14.jar!/org/ini4j/MultiMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/init/sad.ini" />
-    <entry file="file://$PROJECT_DIR$/res/music_libs.ini" />
-    <entry file="file://$PROJECT_DIR$/res/music_libs.ini" />
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4-jdk14.jar!/org/ini4j/BasicRegistry.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4-jdk14.jar!/org/ini4j/Profile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4-jdk14.jar!/org/ini4j/BasicMultiMap.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -913,6 +950,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="579" column="19" lean-forward="false" selection-start-line="579" selection-start-column="19" selection-end-line="579" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -958,17 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="method#getNext#0;class#Playlist#0" expanded="false" />
-            <element signature="method#replaceAllWith#0;class#Playlist#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/util/Collections.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="667">
@@ -992,29 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/init/music.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SongLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/init/musicbCKUP.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1080,14 +1084,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scenes/gamemodes/GameModeScene.java" />
-    <entry file="file://$PROJECT_DIR$/model/ObservableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/Observable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -1184,10 +1180,10 @@
         <state relative-caret-position="530">
           <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="false" />
+            <element signature="e#432#433#0" expanded="false" />
+            <element signature="e#481#482#0" expanded="false" />
+            <element signature="e#525#526#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1239,10 +1235,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/functions and notes.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="529">
+            <caret line="23" column="38" lean-forward="false" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../_libraries_/eibo_simpleminim.jar!/de/hsrm/mi/eibo/simpleplayer/SimpleAudioPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/rt.jar!/com/sun/org/glassfish/gmbal/Description.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="62" column="23" lean-forward="true" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
+        <state relative-caret-position="0">
+          <caret line="66" column="104" lean-forward="false" selection-start-line="66" selection-start-column="104" selection-end-line="66" selection-end-column="104" />
           <folding>
             <element signature="docComment;class#Game#0" expanded="false" />
             <element signature="docComment;field#songLibrary#0;class#Game#0" expanded="false" />
@@ -1265,23 +1290,206 @@
             <element signature="docComment;method#answer#0;class#Game#0" expanded="false" />
             <element signature="method#answer#0;class#Game#0" expanded="false" />
             <element signature="docComment;class#GameMode#0;class#Game#0" expanded="false" />
-            <element signature="class#GameMode#0;class#Game#0" expanded="false" />
             <element signature="docComment;field#NORMAL#0;class#GameMode#0;class#Game#0" expanded="false" />
             <element signature="docComment;field#TIMED#0;class#GameMode#0;class#Game#0" expanded="false" />
             <element signature="docComment;field#CONTINUOUS#0;class#GameMode#0;class#Game#0" expanded="false" />
-            <element signature="method#GameMode#1;class#GameMode#0;class#Game#0" expanded="false" />
+            <element signature="e#5044#5045#0" expanded="true" />
+            <element signature="e#5086#5087#0" expanded="true" />
+            <element signature="e#5334#5335#0" expanded="true" />
+            <element signature="e#5416#5417#0" expanded="true" />
+            <element signature="e#5449#5450#0" expanded="true" />
+            <element signature="e#5532#5533#0" expanded="true" />
+            <element signature="e#5565#5566#0" expanded="true" />
+            <element signature="e#5648#5649#0" expanded="true" />
+            <element signature="e#5679#5680#0" expanded="true" />
+            <element signature="e#5760#5761#0" expanded="true" />
+            <element signature="e#5802#5803#0" expanded="true" />
+            <element signature="e#5852#5853#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../_libraries_/mp3agic.jar!/com/mpatric/mp3agic/AbstractID3v2Tag.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="375" column="15" lean-forward="false" selection-start-line="375" selection-start-column="15" selection-end-line="375" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../_libraries_/mp3agic.jar!/com/mpatric/mp3agic/ID3v2.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../_libraries_/mp3agic.jar!/com/mpatric/mp3agic/Mp3File.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="72" column="11" lean-forward="false" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/init/musicbCKUP.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PlayerResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding>
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SongLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="202" column="10" lean-forward="false" selection-start-line="202" selection-start-column="10" selection-end-line="202" selection-end-column="10" />
+          <folding>
+            <element signature="docComment;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;field#KEY_PRE#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;field#folderPaths#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;field#playlist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#SongLibrary#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#checkPaths#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#checkPaths#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#checkPaths#1;class#SongLibrary#0" expanded="false" />
+            <element signature="method#checkPaths#1;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#addToLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#addToLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#isDir#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#isDir#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#getPlaylist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="e#6837#6838#0" expanded="true" />
+            <element signature="e#6865#6866#0" expanded="true" />
+            <element signature="docComment;method#writeINI#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Playlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="true" />
+            <element signature="method#replaceAllWith#0;class#Playlist#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1488">
+          <caret line="145" column="42" lean-forward="true" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+          <folding>
+            <element signature="docComment;field#EXTENSION#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#COVER_IMG#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#meta#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#coverImg#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#checkSong#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getArtist#0;class#Song#0" expanded="false" />
+            <element signature="e#3394#3395#0" expanded="true" />
+            <element signature="e#3428#3429#0" expanded="true" />
+            <element signature="class#MetaPos#0;class#Song#0" expanded="false" />
+            <element signature="docComment;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#file#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractAlbum#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractLength#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractCoverImg#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#275#276#0" expanded="true" />
+            <element signature="e#307#308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/ANSI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#925#926#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ObservableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#469#470#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/MusicPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+        <state relative-caret-position="459">
+          <caret line="162" column="37" lean-forward="false" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
           <folding>
             <element signature="docComment;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#thread#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#control#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#volume#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#currentSong#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#stopByAnswer#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#posA#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#posB#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#playtime#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#MusicPlayer#0;class#MusicPlayer#0" expanded="false" />
             <element signature="method#MusicPlayer#1;class#MusicPlayer#0" expanded="false" />
-            <element signature="method#play#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#MusicPlayer#2;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#setLoop#0;class#MusicPlayer#0" expanded="false" />
             <element signature="method#stop#0;class#MusicPlayer#0" expanded="false" />
             <element signature="method#pause#0;class#MusicPlayer#0" expanded="false" />
             <element signature="method#setVolume#0;class#MusicPlayer#0" expanded="false" />
@@ -1289,18 +1497,19 @@
             <element signature="method#replay#0;class#MusicPlayer#0" expanded="false" />
             <element signature="docComment;method#dBToLinear#0;class#MusicPlayer#0" expanded="false" />
             <element signature="docComment;method#linearToDB#0;class#MusicPlayer#0" expanded="false" />
-            <element signature="class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
-            <element signature="method#run#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="e#4841#4842#0" expanded="true" />
+            <element signature="e#4893#4894#0" expanded="true" />
             <element signature="method#runProgram#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
             <element signature="method#t_wait#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#t_wait#1;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions and notes.md">
+    <entry file="file://$PROJECT_DIR$/res/init/music.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="54">
+          <caret line="3" column="53" lean-forward="false" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
           <folding />
         </state>
       </provider>

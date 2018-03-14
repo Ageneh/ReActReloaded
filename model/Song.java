@@ -142,28 +142,55 @@ public class Song {
         }
 
         private String extractTitle(){
-            if(this.id.getTitle().equals(null) || this.id.getTitle() == null || this.id.getTitle().equals("")){
-                return file.getName().replace(Song.EXTENSION, "");
+            try {
+                return this.id.getTitle();
             }
-            return this.id.getTitle();
+            catch (NullPointerException e){
+                return this.file.getName().replace("."+Song.EXTENSION, "");
+            }
+            
+//            if(this.id.getTitle().equals(null) || this.id.getTitle() == null || this.id.getTitle().equals("")){
+//                return file.getName().replace(Song.EXTENSION, "");
+//            }
+//            return this.id.getTitle();
         }
 
         private String extractArtist(){
-            if(this.id.getArtist().equals(null) || this.id.getArtist() == null || this.id.getArtist().equals("")){
+            try {
+                return this.id.getArtist();
+            }
+            catch (NullPointerException e){
                 return "Artist Unknown";
             }
-            return this.id.getArtist();
+            
+//            if(this.id.getArtist().equals(null) || this.id.getArtist() == null || this.id.getArtist().equals("")){
+//                return "Artist Unknown";
+//            }
+//            return this.id.getArtist();
         }
 
         private String extractAlbum(){
-            if(this.id.getAlbum().equals(null) || this.id.getAlbum() == null || this.id.getAlbum().equals("")){
+            try {
+                return this.id.getAlbum();
+            }
+            catch (NullPointerException e){
                 return "Album Unknown";
             }
-            return this.id.getAlbum();
+            
+//            if(this.id.getAlbum().equals(null) || this.id.getAlbum() == null || this.id.getAlbum().equals("")){
+//                return "Album Unknown";
+//            }
+//            return this.id.getAlbum();
         }
 
         private long extractLength(){
-            return this.id.getLength();
+            try {
+                Mp3File mp3File = new Mp3File(this.file);
+                return mp3File.getLengthInMilliseconds();
+            } catch (IOException | InvalidDataException | UnsupportedTagException e) {
+                e.printStackTrace();
+            }
+            return id.getLength();
         }
 
         private byte[] extractCoverImg(){

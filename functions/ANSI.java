@@ -36,4 +36,8 @@ public enum ANSI {
     public void println(String str) {
         this.print(str + System.lineSeparator());
     }
+
+    public void println(Object obj) {
+        this.print(obj.toString() + System.lineSeparator());
+    }
 }

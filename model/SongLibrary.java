@@ -28,6 +28,7 @@ class SongLibrary implements Close {
 
     /** Has all paths containing mp3-files. */
     private static ArrayList<String> folderPaths;
+    private static ArrayList<String> songs;
     /**
      * A playlist of all given songs.
      */
@@ -35,6 +36,7 @@ class SongLibrary implements Close {
 
     SongLibrary(){
         this.folderPaths = new ArrayList<>();
+        this.songs = new ArrayList<>();
         Ini ini = null;
         try {
             ini = INIReader.iniReader(INI_PATH);
@@ -45,7 +47,8 @@ class SongLibrary implements Close {
                 if(!s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
                 temp = new File(ini.get(SECTION, s));
                 if(temp.exists()){
-                    tempSet.add(ini.get(SECTION, s));
+                    this.addToLib(ini.get(SECTION, s));
+//                    tempSet.add(ini.get(SECTION, s));
                 }
             }
             this.folderPaths.addAll(tempSet);
@@ -109,6 +112,9 @@ class SongLibrary implements Close {
         for(String s : paths){
             file = new File(s);
             if(isDir(file) || isMusicFile(file)){
+                if(isDir(file)){
+                    this.songs.addAll(checkPaths(file.getAbsolutePath()));
+                }
                 tempSet.add(file.getAbsolutePath());
             }
         }
@@ -185,15 +191,19 @@ class SongLibrary implements Close {
 
     public Playlist getPlaylist() {
         // TODO: random order of songs for every playlist
-        if(this.folderPaths == null || this.folderPaths.size() == 0){
+        if(this.songs == null || this.songs.size() == 0){
             return null;
         }
         if(this.playlist == null){
-            this.playlist = new model.Playlist(this.folderPaths);
+            this.playlist = new model.Playlist(this.songs);
         }
         return playlist;
     }
-
+    
+    public ArrayList<String> getSongs() {
+        return songs;
+    }
+    
     public static ArrayList<String> getFolderPaths() {
         return folderPaths;
     }
