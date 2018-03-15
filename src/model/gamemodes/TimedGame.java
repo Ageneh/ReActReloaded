@@ -23,21 +23,6 @@ public class TimedGame extends Game {
     }
 
     @Override
-    public void start() {
-        super.start();
-    }
-
-    @Override
-    public void end() {
-        super.end();
-    }
-
-    @Override
-    public void close(Code code) {
-
-    }
-
-    @Override
     public void update(Observable o, Object arg) {
 
     }

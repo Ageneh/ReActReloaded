@@ -42,5 +42,9 @@ class Playlist {
         this.songs.clear();
         this.songs.addAll(newPaths);
     }
+    
+    Song currentSong(){
+        return new Song(this.songs.get(pos - 1));
+    }
 
 }

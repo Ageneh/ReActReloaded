@@ -11,13 +11,12 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class Game extends ObservableModel implements Observer {
     
-    private final GameStatus gameStatus;
-    private final int STD_REPLAY = 1;
-    
     private final static int MILLIS_PER_SEC = 1000;
     private final static int SEC_PER_MIN = 60;
     private final static int MIN_PER_H = 60;
-    
+    private final GameStatus gameStatus;
+    private final int STD_REPLAY = 1;
+    private final int POINTS = 20;
     /** The song library used for each game. */
     private SongLibrary songLibrary;
     /** The {@link MusicPlayer} used to play each {@link Song random song}. */
@@ -41,29 +40,12 @@ public abstract class Game extends ObservableModel implements Observer {
     private int points;
     /** A user object in which all the specific game data will be saved in for each {@link User player}. */
     private User user;
-    
     private ArrayList<Long> reactionTimes;
-    
     private boolean isAnswered;
     private boolean correctAnswer;
     
-    
     protected Game(GameMode mode, Observer o, Observer ... observers) {
         this(mode, "ReActor", o, observers);
-    }
-    
-    public Song song(){
-        /********************************/
-        /********************************/
-        /******* ONLY FOR TESTING *******/
-        /********************************/
-        /********************************/
-        return this.musicPlayer.currentSong();
-        /********************************/
-        /********************************/
-        /******* ONLY FOR TESTING *******/
-        /********************************/
-        /********************************/
     }
     
     protected Game(GameMode mode, String username, Observer o, Observer ... observers) {
@@ -82,6 +64,20 @@ public abstract class Game extends ObservableModel implements Observer {
         this.gameStatus = new GameStatus();
     }
     
+    public Song song(){
+        /********************************/
+        /********************************/
+        /******* ONLY FOR TESTING *******/
+        /********************************/
+        /********************************/
+        return this.musicPlayer.currentSong();
+        /********************************/
+        /********************************/
+        /******* ONLY FOR TESTING *******/
+        /********************************/
+        /********************************/
+    }
+    
     /**
      * Called to start and play the next song.
      * Can only be called once (from outside of this class); only when starting.
@@ -91,10 +87,10 @@ public abstract class Game extends ObservableModel implements Observer {
         if (!this.hasStarted || (this.hasStarted && this.nextCalled)) {
             if (!this.hasStarted) this.hasStarted = true;
             this.startTime = System.currentTimeMillis();
-            this.musicPlayer.play(this.gamePlaylist.getNext(), Math.toIntExact(this.mode.lengthInMillis));
             this.nextCalled = false;
             this.isAnswered = false;
             this.replayCount = STD_REPLAY;
+            this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
             setChanged();
             notifyObservers(this.gameStatus);
         }
@@ -106,6 +102,10 @@ public abstract class Game extends ObservableModel implements Observer {
     public void next() {
         this.nextCalled = true;
         this.start();
+    }
+    
+    public void pause(){
+        this.musicPlayer.pause();
     }
     
     /**
@@ -121,7 +121,7 @@ public abstract class Game extends ObservableModel implements Observer {
             return;
         }
         this.replayCount++;
-        this.points -= 25;
+        this.points -= POINTS / 2;
         
         this.musicPlayer.replay(this.mode.additionalTime);
         notifyObservers(this.gameStatus);
@@ -134,6 +134,7 @@ public abstract class Game extends ObservableModel implements Observer {
         long sec = (end / MILLIS_PER_SEC) % SEC_PER_MIN;
         long min = (end / (MILLIS_PER_SEC * SEC_PER_MIN)) % SEC_PER_MIN;
         System.out.println(String.format("%02d:%02d:%02d", min, millis, sec));
+        this.musicPlayer.close(Code.CLOSE);
     }
     
     public void gameEnd(){
@@ -153,8 +154,9 @@ public abstract class Game extends ObservableModel implements Observer {
      *
      * @param answer
      */
-    public void answer(Song answer) {
+    public boolean answer(Song answer) {
         long time = System.currentTimeMillis();
+//        musicPlayer.pause();
         this.isAnswered = true;
         if (answer.equals(this.musicPlayer.currentSong())) {
             this.correctAnswer = true;
@@ -162,16 +164,52 @@ public abstract class Game extends ObservableModel implements Observer {
             this.correctAnswer = false;
         }
         this.reactionTimes.add(time - this.startTime);
-        setChanged();
-        notifyObservers(this.gameStatus);
+//        setChanged();
+//        notifyObservers(this.gameStatus);
+        return this.correctAnswer;
+    }
+    
+    public SongLibrary getSongLibrary() {
+        return songLibrary;
+    }
+    
+    public boolean isAnswered() {
+        return isAnswered;
     }
     
     protected GameMode getMode() {
         return this.mode;
     }
     
-    public SongLibrary getSongLibrary() {
-        return songLibrary;
+    protected void notifyOfGameStatus(){
+        setChanged();
+        notifyObservers(this.gameStatus);
+    }
+    
+    /**
+     * A standardized method to add {@link #POINTS} to the {@link #points}. <br>
+     * Calls {@link #addPoints(int)} with a value of {@literal 1}.
+     */
+    public void addPoints(){
+        this.addPoints(1);
+    }
+    
+    /**
+     * A standardized method to subtract {@link #POINTS} from the {@link #points}. <br>
+     * Calls {@link #addPoints(int)} with a value of {@literal -1}.
+     */
+    public void subtractPoints(){
+        this.addPoints(-1);
+    }
+    
+    /**
+     * Adds to the points. Uses a multiplier (either positive or negative) to make it possible for combo points
+     * to be added and directly calculated.
+     * @param multiplier A multiplier which multiplies the {@link #POINTS}. The product will then be added to {@link
+     * #points}.
+     */
+    void addPoints(int multiplier){
+        this.points += (this.POINTS * multiplier);
     }
     
     @Override
@@ -180,6 +218,16 @@ public abstract class Game extends ObservableModel implements Observer {
             /* when the musicplayer has changed (e.g. song is done) */
             
         }
+    }
+    
+    @Override
+    public void close(Code code) {
+        if(code == Code.GAME_OVER){
+            /* If the game is done, change the game mode to game_over (in gameStatus). */
+            this.gameStatus.mode = GameMode.GAME_OVER;
+        }
+        this.musicPlayer.close(code);
+        this.songLibrary.close(code);
     }
     
     /**
@@ -201,11 +249,17 @@ public abstract class Game extends ObservableModel implements Observer {
          */
         CONTINUOUS(1000, 0, 3),
         /** Song plays for up to {@link #lengthInMillis} seconds */
-        REACTION(TimeUnit.SECONDS.toMillis(10), 0, 0);
+        REACTION(TimeUnit.SECONDS.toMillis(10), 0, 0),
+        GAME_OVER
+        ;
         
         private long lengthInMillis;
         private long additionalTime;
         private int maxReplay;
+        
+        GameMode(){
+            this(0, 0, 0);
+        }
         
         GameMode(long length) {
             this(length, 0, 0);
@@ -245,6 +299,12 @@ public abstract class Game extends ObservableModel implements Observer {
      */
     public class GameStatus {
         
+        private GameMode mode;
+        
+        private GameStatus(){
+            this.mode = Game.this.mode;
+        }
+        
         public boolean isAnswered() {
             return isAnswered;
         }
@@ -269,6 +329,27 @@ public abstract class Game extends ObservableModel implements Observer {
             return user;
         }
         
+        public GameMode mode(){
+            return this.mode;
+        }
+    
+        @Override
+        public String toString() {
+            String str = "";
+            
+            str += "User:\t\t\t" + user.getName();
+            str += System.lineSeparator();
+            str += "Points:\t\t\t" + points;
+//            if(isAnswered)
+                str += System.lineSeparator();
+                str += "Song:\t\t\t" + gamePlaylist.currentSong().getTitle() + ", " + gamePlaylist.currentSong().getArtist();
+            
+            if(reactionTimes.size() >= 1) {
+                str += System.lineSeparator();
+                str += "Reaction:\t\t" + reactionTimes.get(reactionTimes.size() - 1);
+            }
+            return str;
+        }
     }
     
 }

@@ -14,8 +14,17 @@ public interface Close {
 
     enum Code{
 
-        CLOSE, CONTINUE, START
-
+        CLOSE(0), CONTINUE(2), START(1), GAME_OVER(0);
+        
+        private int val;
+        
+        private Code(int val){
+            this.val = val;
+        }
+    
+        public int code() {
+            return val;
+        }
     }
 
 }

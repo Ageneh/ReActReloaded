@@ -1,6 +1,8 @@
 package model.gamemodes;
 
+import functions.ANSI;
 import model.Game;
+import model.MusicPlayer;
 import model.Song;
 
 import java.util.Observable;
@@ -8,6 +10,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author ${USER
  * @project ReActReloaded
  *
  * In the {@link GameMode#NORMAL} game mode the song will first play for the given amount
@@ -24,18 +27,33 @@ public class NormalGame extends Game {
         super(GameMode.NORMAL, name, o, observers);
     }
     
-    @Override
-    public void answer(Song answer) {
+    private void evalAnswer(Object arg){
+    
     }
     
     @Override
-    public void close(Code code) {
-
+    public boolean answer(Song answer) {
+        boolean res = super.answer(answer);
+        if(res){
+            super.pause();
+            super.addPoints();
+            super.notifyOfGameStatus();
+            super.next();
+        } else{
+            // TODO show screen overlay where name can be entered and one choses to go to home, play again etc.
+            super.subtractPoints();
+            super.close(Code.GAME_OVER);
+            ANSI.RED.println("Wrong answer.");
+            super.notifyOfGameStatus();
+        }
+        return res;
     }
 
     @Override
     public void update(Observable o, Object arg) {
-
+        if(o instanceof MusicPlayer){
+            this.evalAnswer(arg);
+        }
     }
 
 }

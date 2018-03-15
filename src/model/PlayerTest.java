@@ -1,5 +1,6 @@
 package model;
 
+import functions.ANSI;
 import model.gamemodes.NormalGame;
 
 import java.util.Observable;
@@ -20,27 +21,33 @@ public class PlayerTest implements Observer {
         NormalGame ng;
     public PlayerTest(){
         synchronized (Thread.currentThread()) {
-            ng = new NormalGame("Henock", this);
+            ng = new NormalGame("TestUser", this);
             boolean running = true;
             Scanner scan = new Scanner(System.in);
             String str;
-            while(running){
+            do{
                 str = scan.nextLine();
                 switch (str){
                     case "s":
                         ng.start();
                         break;
                     case "a":
+                        // BUGFIX needed
                         ng.answer(ng.song());
+                        break;
+                    case "w":
+                    case "wrong":
+                        ng.answer(new Song("/Users/HxA/Music/iTunes/iTunes Media/Music/Various Artists/Winter In Jakarta/01 Like - Glory 1.mp3"));
                         break;
                     case "r":
                         ng.replay();
                         break;
                     case "q":
-                        ng.end();
+                        ng.close(Close.Code.GAME_OVER);
+                        running = false;
                         break;
                 }
-            }
+            } while(running);
         }
     }
     
@@ -88,12 +95,14 @@ public class PlayerTest implements Observer {
         if(o.getClass().equals(ng.getClass())){
             Game.GameStatus gs = (Game.GameStatus) arg;
     
-            System.out.println(gs.points());
-            System.out.println(gs.time());
-            System.out.println(gs.user().getName());
+            ANSI.BLUE.println(gs.toString());
             
-            if(gs.isAnswered() && gs.correctAnswer()){
-                ng.next();
+            if(gs.mode() == Game.GameMode.GAME_OVER){
+                ANSI.MAGENTA.println("GAME ENDED");
+                ANSI.MAGENTA.println("GAME ENDED");
+                ANSI.MAGENTA.println("GAME ENDED");
+                ANSI.MAGENTA.println("GAME ENDED");
+                System.exit(Close.Code.CLOSE.code());
             }
         }
         

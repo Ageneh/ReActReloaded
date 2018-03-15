@@ -28,7 +28,7 @@ public class User {
     public User(String name) {
         if (name == null || (name != null && name.isEmpty())) this.name = getRandomName();
         else this.name = name;
-        this.points = -1;
+        this.points = 0;
         this.datePlayed = LocalDateTime.now();
         this.correctAnswered = new ArrayList<>();
         this.minReaction = this.maxReaction = this.points;

@@ -20,9 +20,8 @@ import java.util.HashSet;
  *
  * Every time a playlist is needed one will be created by randomising the order of songs which are to be played.
  */
-class SongLibrary implements Close {
+class SongLibrary implements Close, WritesINI {
 
-    private static final String INI_PATH = "/Users/HxA/IdeaProjects/ReActReloaded/res/init/music.ini";
     private static final String SECTION = "MUSIC";
     /** The prefix of key which points to a directory which contains mp3-files. */
     private static final String KEY_PRE = "MDIR";
@@ -38,25 +37,68 @@ class SongLibrary implements Close {
     SongLibrary(){
         this.folderPaths = new ArrayList<>();
         this.songs = new ArrayList<>();
-        Ini ini = null;
-        try {
-            ini = INIReader.iniReader(INI_PATH);
-            Section section = ini.get(SECTION);
-            File temp;
-            HashSet<String> tempSet = new HashSet<>();
-            for(String s : section.keySet()){
-                if(!s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
-                temp = new File(ini.get(SECTION, s));
-                if(temp.exists()){
-                    this.addToLib(ini.get(SECTION, s));
-//                    tempSet.add(ini.get(SECTION, s));
-                }
-            }
-            this.folderPaths.addAll(tempSet);
+        this.readINI();
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static ArrayList<String> getFolderPaths() {
+        return folderPaths;
+    }
+
+    /**
+     * Adds all the parts of the argument to the list.
+     * @param paths The paths which are to be added to the list.
+     * @see SongLibrary#folderPaths
+     */
+    public void addToLib(String ... paths){
+        HashSet<String> tempSet = new HashSet<>();
+        File file;
+        for(String s : paths){
+            file = new File(s);
+            if(isDir(file) || isMusicFile(file)){
+                if(isDir(file)){
+                    this.songs.addAll(checkPaths(file.getAbsolutePath()));
+                }
+                tempSet.add(file.getAbsolutePath());
+            }
         }
+        this.folderPaths.addAll(tempSet);
+        tempSet.clear();
+        tempSet.addAll(this.folderPaths);
+        this.folderPaths.clear();
+        this.folderPaths.addAll(tempSet);
+        Collections.sort(folderPaths);
+
+        this.writeINI();
+    }
+
+    /**
+     * Removes paths from {@link SongLibrary#folderPaths} if the given path are contained in the list.
+     * @param paths The paths which are to be removed from the list.
+     * @see SongLibrary#folderPaths
+     */
+    public void removeFromLib(String ... paths){
+        ArrayList<String> temp = new ArrayList<>();
+        temp.addAll(Arrays.asList(paths));
+        this.folderPaths.removeAll(temp);
+    }
+
+    public ArrayList<String> getLibrary(){
+        return this.folderPaths;
+    }
+
+    public Playlist getPlaylist() {
+        // TODO: random order of songs for every playlist
+        if(this.songs == null || this.songs.size() == 0){
+            return null;
+        }
+        if(this.playlist == null){
+            this.playlist = new model.Playlist(this.songs);
+        }
+        return playlist;
+    }
+
+    public ArrayList<String> getSongs() {
+        return songs;
     }
 
     /**
@@ -103,33 +145,6 @@ class SongLibrary implements Close {
     }
 
     /**
-     * Adds all the parts of the argument to the list.
-     * @param paths The paths which are to be added to the list.
-     * @see SongLibrary#folderPaths
-     */
-    public void addToLib(String ... paths){
-        HashSet<String> tempSet = new HashSet<>();
-        File file;
-        for(String s : paths){
-            file = new File(s);
-            if(isDir(file) || isMusicFile(file)){
-                if(isDir(file)){
-                    this.songs.addAll(checkPaths(file.getAbsolutePath()));
-                }
-                tempSet.add(file.getAbsolutePath());
-            }
-        }
-        this.folderPaths.addAll(tempSet);
-        tempSet.clear();
-        tempSet.addAll(this.folderPaths);
-        this.folderPaths.clear();
-        this.folderPaths.addAll(tempSet);
-        Collections.sort(folderPaths);
-
-        this.writeINI();
-    }
-
-    /**
      * Checks whether the given file is a directory containing mp3 files.
      * @param file If the file is a directory and contains mp3 files true will be returne otherwise the return
      *             value is false.
@@ -141,7 +156,7 @@ class SongLibrary implements Close {
         }
         return false;
     }
-
+    
     /**
      * Checks whether the given file is a mp3 file.
      * @param file If the file is a mp3 file true will be returned otherwise the return
@@ -154,22 +169,7 @@ class SongLibrary implements Close {
         }
         return false;
     }
-
-    /**
-     * Removes paths from {@link SongLibrary#folderPaths} if the given path are contained in the list.
-     * @param paths The paths which are to be removed from the list.
-     * @see SongLibrary#folderPaths
-     */
-    public void removeFromLib(String ... paths){
-        ArrayList<String> temp = new ArrayList<>();
-        temp.addAll(Arrays.asList(paths));
-        this.folderPaths.removeAll(temp);
-    }
-
-    public ArrayList<String> getLibrary(){
-        return this.folderPaths;
-    }
-
+    
     /**
      * Create a {@link Playlist} object which contains all a certain amount of songpaths and in a randomized order.
      */
@@ -190,55 +190,28 @@ class SongLibrary implements Close {
         }
     }
 
-    public Playlist getPlaylist() {
-        // TODO: random order of songs for every playlist
-        if(this.songs == null || this.songs.size() == 0){
-            return null;
-        }
-        if(this.playlist == null){
-            this.playlist = new model.Playlist(this.songs);
-        }
-        return playlist;
-    }
-    
-    public ArrayList<String> getSongs() {
-        return songs;
-    }
-    
-    public static ArrayList<String> getFolderPaths() {
-        return folderPaths;
-    }
-
-    /** Writes all directories containing the music to a file. */
-    private void writeINI(){
+    @Override
+    public void writeINI(){
+        final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
+        final String COMMENT_STR = "; SYNTAX; # := eine nummer; "+ KEY_PRE + "# = /irgendein/pfad/mit/musik/oder/eine/musikdatei";
+        
         Ini ini;
         File temp;
-        Section section;
-        HashSet<String> tempSet;
         BufferedWriter br;
         try {
-            ini = INIReader.iniReader(INI_PATH);
+            ini = INIReader.getIni(INI_PATH);
             temp = new File(INI_PATH);
             ini.load(temp);
             ini.clear();
             
-//            ini.putComment("", "; SYNTAX; # := eine nummer");
-//            ini.putComment("", "; MDIR# = /irgendein/pfad/mit/musik/oder/eine/musikdatei");
-            
-            final String COMMENT_STR = "; SYNTAX; # := eine nummer; MDIR# = /irgendein/pfad/mit/musik/oder/eine/musikdatei";
             ini.put(SECTION, "SYNTAX", COMMENT_STR);
             
             String s = KEY_PRE+0;
             for(int i = 0; i < this.folderPaths.size(); i++) {
                 if(i > 0){
-                    ini.put(SECTION,
-                            KEY_PRE+i,
-                            this.folderPaths.get(i));
-                }
-                else{
-                    ini.put(SECTION,
-                            KEY_PRE+i,
-                            this.folderPaths.get(i));
+                    ini.put(SECTION, KEY_PRE+i, this.folderPaths.get(i));
+                } else{
+                    ini.put(SECTION, KEY_PRE+i, this.folderPaths.get(i));
                 }
             }
             ANSI.CYAN.println(ini.getComment(s));
@@ -253,7 +226,30 @@ class SongLibrary implements Close {
             e.printStackTrace();
         }
     }
-
+    
+    @Override
+    public void readINI() {
+        final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
+        
+        try {
+            Ini ini = INIReader.getIni(INI_PATH);
+            Section section = ini.get(SECTION);
+            File temp;
+            HashSet<String> tempSet = new HashSet<>();
+            for(String s : section.keySet()){
+                if(!s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
+                temp = new File(ini.get(SECTION, s));
+                if(temp.exists()){
+                    this.addToLib(ini.get(SECTION, s));
+//                    tempSet.add(ini.get(SECTION, s));
+                }
+            }
+            this.folderPaths.addAll(tempSet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     @Override
     public void close(Code code) {
         this.writeINI();

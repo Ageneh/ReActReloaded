@@ -1,1 +1,0 @@
--> add: mit 1, 2, 3 tasten soll es möglich sein, die musik felder auszuwählen bzw mit ← und →

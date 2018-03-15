@@ -23,22 +23,7 @@ public class ContinuousGame extends Game {
     }
 
     @Override
-    public void start() {
-        super.start();
-    }
-
-    @Override
-    public void end() {
-        super.start();
-    }
-
-    @Override
     public void update(Observable o, Object arg) {
-
-    }
-
-    @Override
-    public void close(Code code) {
 
     }
 }
