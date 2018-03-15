@@ -222,6 +222,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.control.runProgram(code);
 //        this.thread.interrupt();
         Thread.currentThread().interrupt();
+        this.MINIM.dispose();
         this.writeINI();
     }
     

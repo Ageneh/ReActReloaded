@@ -1,6 +1,9 @@
 package model;
 
+import functions.ANSI;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.TimeUnit;
@@ -8,13 +11,20 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Henock Arega
  * @project ReActReloaded
+ *
+ *
+ * TODO: block giving answer (GUI/JavaFX) while song is playing
+ *
  */
 public abstract class Game extends ObservableModel implements Observer {
+    
+    private Song[] answers;
     
     private final static int MILLIS_PER_SEC = 1000;
     private final static int SEC_PER_MIN = 60;
     private final static int MIN_PER_H = 60;
     private final GameStatus gameStatus;
+    private final int STD_ANSWERCOUNT = 2;
     private final int STD_REPLAY = 1;
     private final int POINTS = 20;
     /** The song library used for each game. */
@@ -91,6 +101,9 @@ public abstract class Game extends ObservableModel implements Observer {
             this.isAnswered = false;
             this.replayCount = STD_REPLAY;
             this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
+            
+            this.createAnswers(3); //// TESTING TESTING
+            
             setChanged();
             notifyObservers(this.gameStatus);
         }
@@ -146,6 +159,41 @@ public abstract class Game extends ObservableModel implements Observer {
     }
     
     /**
+     * @see #createAnswers(int)
+     */
+    public Song[] createAnswers() {
+        return this.createAnswers(STD_ANSWERCOUNT);
+    }
+    
+    /**
+     * Creates a selection for answers. The actual answer will be positioned at a random index.
+     * @param answerCount The amount of answers which are requested.
+     * @return Returns a list of {@link Song} objects with one correct answer.
+     */
+    public Song[] createAnswers(int answerCount) {
+        Song[] answers = new Song[answerCount];
+        ArrayList<Song> answersList = new ArrayList<>();
+        
+        answers[0] = this.musicPlayer.currentSong();
+        answersList.add(answers[0]);
+        
+        for(int i = 1; i < answerCount; i++){
+            answers[i] = this.gamePlaylist.getRandomSong(answersList);
+            answersList.add(answers[i]);
+            Collections.shuffle(answersList);
+        }
+        Collections.shuffle(answersList);
+        this.answers = answersList.toArray(answers);
+    
+        ANSI.CYAN.println("======================");
+        for(int i = 0; i < answerCount; i++){
+            ANSI.CYAN.println((i) + ":\t" + this.answers[i].getTitle() + " - " + this.answers[i].getTitle());
+        }
+        ANSI.CYAN.println("======================");
+        return this.answers;
+    }
+    
+    /**
      * Evaluates the given answer and depending on the result and the player's game stat either the points will be
      * increased, if the answer is correct or the game will be ended.
      * Exceptions are:
@@ -160,13 +208,27 @@ public abstract class Game extends ObservableModel implements Observer {
         this.isAnswered = true;
         if (answer.equals(this.musicPlayer.currentSong())) {
             this.correctAnswer = true;
+            ANSI.GREEN.println("======================");
+            ANSI.GREEN.println("====  CORRECT ANSWER");
+            ANSI.GREEN.println("======================");
         } else {
             this.correctAnswer = false;
+            ANSI.RED.println("======================");
+            ANSI.RED.println("====  WRONG ANSWER");
+            ANSI.RED.println("======================");
         }
         this.reactionTimes.add(time - this.startTime);
 //        setChanged();
 //        notifyObservers(this.gameStatus);
         return this.correctAnswer;
+    }
+    
+    public boolean answer(int idx){
+        return this.answer(this.answers[idx % this.answers.length]);
+    }
+    
+    public GameStatus getGameStatus() {
+        return gameStatus;
     }
     
     public SongLibrary getSongLibrary() {
@@ -175,15 +237,6 @@ public abstract class Game extends ObservableModel implements Observer {
     
     public boolean isAnswered() {
         return isAnswered;
-    }
-    
-    protected GameMode getMode() {
-        return this.mode;
-    }
-    
-    protected void notifyOfGameStatus(){
-        setChanged();
-        notifyObservers(this.gameStatus);
     }
     
     /**
@@ -200,6 +253,15 @@ public abstract class Game extends ObservableModel implements Observer {
      */
     public void subtractPoints(){
         this.addPoints(-1);
+    }
+    
+    protected GameMode getMode() {
+        return this.mode;
+    }
+    
+    protected void notifyOfGameStatus(){
+        setChanged();
+        notifyObservers(this.gameStatus);
     }
     
     /**
@@ -233,8 +295,12 @@ public abstract class Game extends ObservableModel implements Observer {
     /**
      * @author Henock Arega
      * @project ReActReloaded
+     *
+     * TODO: make protected; is public for testing
+     * TODO: make protected; is public for testing
+     * TODO: make protected; is public for testing
      */
-    protected enum GameMode {
+    public enum GameMode {
         
         /**
          * @see model.gamemodes.NormalGame
@@ -346,7 +412,9 @@ public abstract class Game extends ObservableModel implements Observer {
             
             if(reactionTimes.size() >= 1) {
                 str += System.lineSeparator();
-                str += "Reaction:\t\t" + reactionTimes.get(reactionTimes.size() - 1);
+                long sec = TimeUnit.MILLISECONDS.toSeconds(reactionTimes.get(reactionTimes.size() - 1));
+                long millisec = reactionTimes.get(reactionTimes.size() - 1) - TimeUnit.SECONDS.toMillis(sec);
+                str += "Reaction:\t\t" + String.format("%d:%d sec", sec, millisec);
             }
             return str;
         }

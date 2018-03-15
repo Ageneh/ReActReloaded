@@ -7,6 +7,7 @@ import model.Song;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Scanner;
 
 /**
  * @author Henock Arega
@@ -29,6 +30,43 @@ public class NormalGame extends Game {
     
     private void evalAnswer(Object arg){
     
+    }
+    
+    public void test(){
+        Scanner scan = new Scanner(System.in);
+        String input;
+        Song[] answers;
+        boolean wrongAnswer;
+        while(super.getGameStatus().mode() != GameMode.GAME_OVER){
+            wrongAnswer = true;
+            while (wrongAnswer) {
+                input = scan.nextLine();
+                switch (input) {
+                    case "s":
+                        super.start();
+                        wrongAnswer = false;
+                        break;
+                    case "r":
+                        super.replay();
+                        wrongAnswer = false;
+                        break;
+                    case "q":
+                        this.close(Code.GAME_OVER);
+                        wrongAnswer = false;
+                        break;
+                    default:
+                        try {
+                            // if number
+                            int input_num = Integer.parseInt(input);
+                            answer(input_num);
+                            wrongAnswer = false;
+                        } catch (NumberFormatException e) {
+                            wrongAnswer = true;
+                        }
+                }
+            }
+        }
+        ANSI.RED.println("GAME OVER!");
     }
     
     @Override

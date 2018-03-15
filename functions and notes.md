@@ -1,6 +1,6 @@
 > **add:** mit 1, 2, 3 tasten soll es möglich sein, die musik felder auszuwählen bzw mit ← und →
 
-##Spielmodi:
+## Spielmodi:
 
 **normal**
 * man gibt an wie viele songs man spielen möchte

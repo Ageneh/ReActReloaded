@@ -42,11 +42,13 @@ public class Song {
      */
     private byte[] coverImg;
     private String path;
+    private String absPath;
 
     Song(String path) throws SongInvalidException {
         try {
+            this.path = path;
             File temp = checkSong(path);
-            this.path = temp.getAbsolutePath();
+            this.absPath = temp.getAbsolutePath();
             try {
                 this.metaExtractor = new MetaExtractor(temp);
                 this.meta = new String[MetaPos.values().length];
@@ -110,6 +112,10 @@ public class Song {
 
     public String getPath() {
         return path;
+    }
+
+    public String getAbsPath() {
+        return absPath;
     }
 
     private enum MetaPos {

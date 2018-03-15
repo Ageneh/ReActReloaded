@@ -17,7 +17,6 @@ public class PlayerTest implements Observer {
          new PlayerTest();
     }
     
-        SongLibrary lib;
         NormalGame ng;
     public PlayerTest(){
         synchronized (Thread.currentThread()) {
@@ -52,6 +51,7 @@ public class PlayerTest implements Observer {
     }
     
     private void test1(){
+        SongLibrary lib = new SongLibrary();
         MusicPlayer musicPlayer = new MusicPlayer(this);
         lib = new SongLibrary();
         Playlist playlist = new Playlist(lib.getSongs());

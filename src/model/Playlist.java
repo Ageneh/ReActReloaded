@@ -46,5 +46,22 @@ class Playlist {
     Song currentSong(){
         return new Song(this.songs.get(pos - 1));
     }
+    
+    /**
+     *
+     * @param except These songs should be excluded.
+     * @return
+     */
+    Song getRandomSong(ArrayList<Song> except) {
+        ArrayList<String> temp = new ArrayList<>(songs.size());
+        temp.addAll(this.songs);
+    
+        for (Song song : except) temp.remove(song.getPath());
+    
+        int rdm = ((int) (Math.random() * 4)) + 2;
+        for(int i = 0; i < rdm; i++) Collections.shuffle(temp);
+        
+        return new Song(temp.get((int)(Math.random() * temp.size())));
+    }
 
 }

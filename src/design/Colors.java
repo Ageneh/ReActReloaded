@@ -45,16 +45,12 @@ public enum  Colors {
 
     //// CONSTRUCTORS
 
-    /**
-     * {@see Colors#Colors(Number, Number, Number, Number, ColorMode)}
-     */
+    /** @see Colors#Colors(Number, Number, Number, double, ColorMode) */
     Colors(Color color){
         this.color = color;
     }
 
-    /**
-     * {@see Colors#Colors(Number, Number, Number, Number, ColorMode)}
-     */
+    /** @see Colors#Colors(Number, double, ColorMode)  */
     Colors(Number gray, ColorMode colorMode){
         this(gray, 1, colorMode);
     }
@@ -88,9 +84,7 @@ public enum  Colors {
         );
     }
 
-    /**
-     * {@see Colors#Colors(Number, Number, Number, Number, ColorMode)}
-     */
+    /** @see Colors#Colors(Number, Number, Number, double, ColorMode) */
     Colors(Number red, Number green, Number blue, ColorMode colorMode){
         this(red, green, blue, 1, colorMode);
     }
