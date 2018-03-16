@@ -11,14 +11,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Henock Arega
  * @project ReActReloaded
- *
- *
+ * <p>
+ * <p>
  * TODO: block giving answer (GUI/JavaFX) while song is playing
- *
  */
 public abstract class Game extends ObservableModel implements Observer {
-    
-    private Song[] answers;
     
     private final static int MILLIS_PER_SEC = 1000;
     private final static int SEC_PER_MIN = 60;
@@ -27,6 +24,8 @@ public abstract class Game extends ObservableModel implements Observer {
     private final int STD_ANSWERCOUNT = 2;
     private final int STD_REPLAY = 1;
     private final int POINTS = 20;
+    /** The answers the {@link User} can choose from - including the correct answer. */
+    private Song[] answers;
     /** The song library used for each game. */
     private SongLibrary songLibrary;
     /** The {@link MusicPlayer} used to play each {@link Song random song}. */
@@ -54,11 +53,11 @@ public abstract class Game extends ObservableModel implements Observer {
     private boolean isAnswered;
     private boolean correctAnswer;
     
-    protected Game(GameMode mode, Observer o, Observer ... observers) {
+    protected Game(GameMode mode, Observer o, Observer... observers) {
         this(mode, "ReActor", o, observers);
     }
     
-    protected Game(GameMode mode, String username, Observer o, Observer ... observers) {
+    protected Game(GameMode mode, String username, Observer o, Observer... observers) {
         this.addAllObserver(o, observers);
         this.mode = mode;
         this.user = new User(username);
@@ -74,7 +73,7 @@ public abstract class Game extends ObservableModel implements Observer {
         this.gameStatus = new GameStatus();
     }
     
-    public Song song(){
+    public Song song() {
         /********************************/
         /********************************/
         /******* ONLY FOR TESTING *******/
@@ -86,6 +85,14 @@ public abstract class Game extends ObservableModel implements Observer {
         /******* ONLY FOR TESTING *******/
         /********************************/
         /********************************/
+    }
+    
+    /**
+     * Loads the next song and then calls {@link Game#start()}.
+     */
+    public void next() {
+        this.nextCalled = true;
+        this.start();
     }
     
     /**
@@ -109,15 +116,7 @@ public abstract class Game extends ObservableModel implements Observer {
         }
     }
     
-    /**
-     * Loads the next song and then calls {@link Game#start()}.
-     */
-    public void next() {
-        this.nextCalled = true;
-        this.start();
-    }
-    
-    public void pause(){
+    public void pause() {
         this.musicPlayer.pause();
     }
     
@@ -150,7 +149,7 @@ public abstract class Game extends ObservableModel implements Observer {
         this.musicPlayer.close(Code.CLOSE);
     }
     
-    public void gameEnd(){
+    public void gameEnd() {
         this.user.setPlayedPlaylist(this.gamePlaylist);
         this.user.setPoints(this.points);
         this.user.setReactionTimes(this.reactionTimes);
@@ -158,39 +157,8 @@ public abstract class Game extends ObservableModel implements Observer {
         notifyObservers(this.gameStatus);
     }
     
-    /**
-     * @see #createAnswers(int)
-     */
-    public Song[] createAnswers() {
-        return this.createAnswers(STD_ANSWERCOUNT);
-    }
-    
-    /**
-     * Creates a selection for answers. The actual answer will be positioned at a random index.
-     * @param answerCount The amount of answers which are requested.
-     * @return Returns a list of {@link Song} objects with one correct answer.
-     */
-    public Song[] createAnswers(int answerCount) {
-        Song[] answers = new Song[answerCount];
-        ArrayList<Song> answersList = new ArrayList<>();
-        
-        answers[0] = this.musicPlayer.currentSong();
-        answersList.add(answers[0]);
-        
-        for(int i = 1; i < answerCount; i++){
-            answers[i] = this.gamePlaylist.getRandomSong(answersList);
-            answersList.add(answers[i]);
-            Collections.shuffle(answersList);
-        }
-        Collections.shuffle(answersList);
-        this.answers = answersList.toArray(answers);
-    
-        ANSI.CYAN.println("======================");
-        for(int i = 0; i < answerCount; i++){
-            ANSI.CYAN.println((i) + ":\t" + this.answers[i].getTitle() + " - " + this.answers[i].getTitle());
-        }
-        ANSI.CYAN.println("======================");
-        return this.answers;
+    public boolean answer(int idx) {
+        return this.answer(this.answers[idx % this.answers.length]);
     }
     
     /**
@@ -223,10 +191,6 @@ public abstract class Game extends ObservableModel implements Observer {
         return this.correctAnswer;
     }
     
-    public boolean answer(int idx){
-        return this.answer(this.answers[idx % this.answers.length]);
-    }
-    
     public GameStatus getGameStatus() {
         return gameStatus;
     }
@@ -243,7 +207,7 @@ public abstract class Game extends ObservableModel implements Observer {
      * A standardized method to add {@link #POINTS} to the {@link #points}. <br>
      * Calls {@link #addPoints(int)} with a value of {@literal 1}.
      */
-    public void addPoints(){
+    public void addPoints() {
         this.addPoints(1);
     }
     
@@ -251,27 +215,64 @@ public abstract class Game extends ObservableModel implements Observer {
      * A standardized method to subtract {@link #POINTS} from the {@link #points}. <br>
      * Calls {@link #addPoints(int)} with a value of {@literal -1}.
      */
-    public void subtractPoints(){
+    public void subtractPoints() {
         this.addPoints(-1);
+    }
+    
+    /**
+     * Adds to the points. Uses a multiplier (either positive or negative) to make it possible for combo points
+     * to be added and directly calculated.
+     *
+     * @param multiplier A multiplier which multiplies the {@link #POINTS}. The product will then be added to {@link
+     *                   #points}.
+     */
+    void addPoints(int multiplier) {
+        this.points += (this.POINTS * multiplier);
     }
     
     protected GameMode getMode() {
         return this.mode;
     }
     
-    protected void notifyOfGameStatus(){
+    protected void notifyOfGameStatus() {
         setChanged();
         notifyObservers(this.gameStatus);
     }
     
     /**
-     * Adds to the points. Uses a multiplier (either positive or negative) to make it possible for combo points
-     * to be added and directly calculated.
-     * @param multiplier A multiplier which multiplies the {@link #POINTS}. The product will then be added to {@link
-     * #points}.
+     * Creates a selection for answers. The actual answer will be positioned at a random index.
+     *
+     * @param answerCount The amount of answers which are requested.
+     * @return Returns a list of {@link Song} objects with one correct answer.
      */
-    void addPoints(int multiplier){
-        this.points += (this.POINTS * multiplier);
+    private Song[] createAnswers(int answerCount) {
+        Song[] answers = new Song[answerCount];
+        ArrayList<Song> answersList = new ArrayList<>();
+        
+        answers[0] = this.musicPlayer.currentSong();
+        answersList.add(answers[0]);
+        
+        for (int i = 1; i < answerCount; i++) {
+            answers[i] = this.gamePlaylist.getRandomSong(answersList);
+            answersList.add(answers[i]);
+            Collections.shuffle(answersList);
+        }
+        Collections.shuffle(answersList);
+        this.answers = answersList.toArray(answers);
+        
+        ANSI.CYAN.println("======================");
+        for (int i = 0; i < answerCount; i++) {
+            ANSI.CYAN.println((i) + ":\t" + this.answers[i].getTitle() + " - " + this.answers[i].getTitle());
+        }
+        ANSI.CYAN.println("======================");
+        return this.answers;
+    }
+    
+    /**
+     * @see #createAnswers(int)
+     */
+    private Song[] createAnswers() {
+        return this.createAnswers(STD_ANSWERCOUNT);
     }
     
     @Override
@@ -284,7 +285,7 @@ public abstract class Game extends ObservableModel implements Observer {
     
     @Override
     public void close(Code code) {
-        if(code == Code.GAME_OVER){
+        if (code == Code.GAME_OVER) {
             /* If the game is done, change the game mode to game_over (in gameStatus). */
             this.gameStatus.mode = GameMode.GAME_OVER;
         }
@@ -295,7 +296,7 @@ public abstract class Game extends ObservableModel implements Observer {
     /**
      * @author Henock Arega
      * @project ReActReloaded
-     *
+     * <p>
      * TODO: make protected; is public for testing
      * TODO: make protected; is public for testing
      * TODO: make protected; is public for testing
@@ -316,25 +317,24 @@ public abstract class Game extends ObservableModel implements Observer {
         CONTINUOUS(1000, 0, 3),
         /** Song plays for up to {@link #lengthInMillis} seconds */
         REACTION(TimeUnit.SECONDS.toMillis(10), 0, 0),
-        GAME_OVER
-        ;
+        GAME_OVER;
         
         private long lengthInMillis;
         private long additionalTime;
         private int maxReplay;
         
-        GameMode(){
+        GameMode() {
             this(0, 0, 0);
-        }
-        
-        GameMode(long length) {
-            this(length, 0, 0);
         }
         
         GameMode(long length, long additionalTimeVal, int maxReplay) {
             this.lengthInMillis = length;
             this.additionalTime = additionalTimeVal;
             this.maxReplay = maxReplay;
+        }
+        
+        GameMode(long length) {
+            this(length, 0, 0);
         }
         
         public long millis() {
@@ -367,7 +367,7 @@ public abstract class Game extends ObservableModel implements Observer {
         
         private GameMode mode;
         
-        private GameStatus(){
+        private GameStatus() {
             this.mode = Game.this.mode;
         }
         
@@ -391,14 +391,18 @@ public abstract class Game extends ObservableModel implements Observer {
             return System.currentTimeMillis();
         }
         
-        public User user(){
+        public User user() {
             return user;
         }
         
-        public GameMode mode(){
+        public GameMode mode() {
             return this.mode;
         }
-    
+        
+        public Song[] answers() {
+            return answers;
+        }
+        
         @Override
         public String toString() {
             String str = "";
@@ -407,10 +411,10 @@ public abstract class Game extends ObservableModel implements Observer {
             str += System.lineSeparator();
             str += "Points:\t\t\t" + points;
 //            if(isAnswered)
-                str += System.lineSeparator();
-                str += "Song:\t\t\t" + gamePlaylist.currentSong().getTitle() + ", " + gamePlaylist.currentSong().getArtist();
+            str += System.lineSeparator();
+            str += "Song:\t\t\t" + gamePlaylist.currentSong().getTitle() + ", " + gamePlaylist.currentSong().getArtist();
             
-            if(reactionTimes.size() >= 1) {
+            if (reactionTimes.size() >= 1) {
                 str += System.lineSeparator();
                 long sec = TimeUnit.MILLISECONDS.toSeconds(reactionTimes.get(reactionTimes.size() - 1));
                 long millisec = reactionTimes.get(reactionTimes.size() - 1) - TimeUnit.SECONDS.toMillis(sec);

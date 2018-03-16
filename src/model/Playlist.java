@@ -8,60 +8,59 @@ import java.util.Collections;
  * @project ReActReloaded
  */
 class Playlist {
-
+    
     private ArrayList<String> songs;
     private int pos;
-
-    Playlist(ArrayList<String> songpaths){
+    
+    Playlist(ArrayList<String> songpaths) {
         this(songpaths, false);
     }
-
-    Playlist(ArrayList<String> songpaths, boolean randomized){
+    
+    Playlist(ArrayList<String> songpaths, boolean randomized) {
         this.pos = 0;
-        if(randomized){
+        if (randomized) {
             Collections.shuffle(songpaths);
             Collections.shuffle(songpaths);
             Collections.shuffle(songpaths);
         }
         this.songs = songpaths;
     }
-
-    public Song getNext(){
+    
+    public Song getNext() {
         // TODO: fix return of songs; add Exception when last song was already played
-        if(pos < songs.size() - 1) {
+        if (pos < songs.size() - 1) {
             return new Song(this.songs.get(pos++));
         }
-        return new Song(this.songs.get((int)(Math.random()) * songs.size()));
+        return new Song(this.songs.get((int) (Math.random()) * songs.size()));
     }
-
+    
     public ArrayList<String> getSongs() {
         return songs;
     }
-
-    void replaceAllWith(ArrayList<String> newPaths){
+    
+    void replaceAllWith(ArrayList<String> newPaths) {
         this.songs.clear();
         this.songs.addAll(newPaths);
     }
     
-    Song currentSong(){
+    Song currentSong() {
         return new Song(this.songs.get(pos - 1));
     }
     
     /**
-     *
-     * @param except These songs should be excluded.
+     * @param exlcude These songs should be excluded.
      * @return
      */
-    Song getRandomSong(ArrayList<Song> except) {
+    Song getRandomSong(ArrayList<Song> exlcude) {
         ArrayList<String> temp = new ArrayList<>(songs.size());
         temp.addAll(this.songs);
-    
-        for (Song song : except) temp.remove(song.getPath());
-    
-        int rdm = ((int) (Math.random() * 4)) + 2;
-        for(int i = 0; i < rdm; i++) Collections.shuffle(temp);
         
-        return new Song(temp.get((int)(Math.random() * temp.size())));
+        for (Song song : exlcude) temp.remove(song.getPath());
+        
+        int rdm = ((int) (Math.random() * 4)) + 2;
+        for (int i = 0; i < rdm; i++) Collections.shuffle(temp);
+        
+        return new Song(temp.get((int) (Math.random() * temp.size())));
     }
-
+    
 }

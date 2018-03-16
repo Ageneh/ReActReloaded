@@ -74,6 +74,12 @@ public class User {
         this.playedPlaylist = playedPlaylist;
     }
     
+    void setReactionTimes(ArrayList<Long> milliseconds) {
+        
+        this.minReaction = Collections.min(milliseconds);
+        this.maxReaction = Collections.max(milliseconds);
+    }
+    
     private String getRandomName() {
         
         final String namePath = "/Users/HxA/IdeaProjects/ReActReloaded/res/init/names.txt";
@@ -94,12 +100,6 @@ public class User {
             e.printStackTrace();
         }
         return str;
-    }
-    
-    void setReactionTimes(ArrayList<Long> milliseconds) {
-        
-        this.minReaction = Collections.min(milliseconds);
-        this.maxReaction = Collections.max(milliseconds);
     }
     
 }

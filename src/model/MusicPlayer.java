@@ -16,12 +16,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Henock Arega
  * @project ReActReloaded
- *
+ * <p>
  * The player, used for the gameplay.
  * Provides all necessary methods to control, play etc. a {@link Song} given by the {@link SongLibrary}.
  */
 public class MusicPlayer extends ObservableModel implements WritesINI {
-
+    
     private volatile SimpleAudioPlayer audioPlayer;
     /**
      * A flag used to determine whether the player was stopped by answering or because the {@link #posB end of the
@@ -44,6 +44,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     private Thread thread;
     /**
      * The control of the music player.
+     *
      * @see PlayerControl
      */
     private PlayerControl control;
@@ -51,8 +52,8 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     private float volume;
     /** The current, loaded {@link Song}. */
     private Song currentSong;
-
-    private MusicPlayer(){
+    
+    private MusicPlayer() {
         this.MINIM = new SimpleMinim(true);
         this.control = new PlayerControl();
         this.thread = new Thread(this.control);
@@ -61,13 +62,13 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.thread.start();
         this.readINI();
     }
-
-    MusicPlayer(Observer o, Observer ... observers) {
+    
+    MusicPlayer(Observer o, Observer... observers) {
         this();
         super.addAllObserver(o, observers);
         this.audioPlayer = audioPlayer;
     }
-
+    
     /** FOR TESTING **/
     MusicPlayer(String s) {
         /********************************/
@@ -85,12 +86,12 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         /********************************/
         /********************************/
     }
-
+    
     public Song currentSong() {
         return currentSong;
     }
-
-    void play(Song song, int timeMillis){
+    
+    void play(Song song, int timeMillis) {
         this.stop();
         this.playtime = timeMillis;
         System.out.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
@@ -99,12 +100,12 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.stopByAnswer = false;
         this.play();
     }
-
-    void play(Song song, Number timeMillis){
+    
+    void play(Song song, Number timeMillis) {
         this.play(song, timeMillis.intValue());
     }
     
-    void stop(){
+    void stop() {
         if (this.audioPlayer != null && this.audioPlayer.isPlaying()) {
             this.stopByAnswer = true;
             this.control.resume();
@@ -113,68 +114,72 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         }
     }
     
-    void pause(){
+    void pause() {
         if (this.audioPlayer != null) {
             this.audioPlayer.pause();
         }
     }
     
-    void setVolume(float val){
+    void setVolume(float val) {
         final float MIN_VOL = 20;
         
-        if(val < MIN_VOL) this.volume = MIN_VOL;
+        if (val < MIN_VOL) this.volume = MIN_VOL;
         else this.volume = val;
         try {
             this.audioPlayer.setGain(this.linearToDB(this.volume));
-        } catch (NullPointerException ignored){ }
+        } catch (NullPointerException ignored) {
+        }
     }
     
-    /** * @author Henock Arega
-     * Replays the current song but a for a greater amount of time.
+    /**
      * @param additionalTime The amount of time which is to be added to the normal
      *                       playback time.
+     * @author Henock Arega
+     * Replays the current song but a for a greater amount of time.
      */
-    synchronized void replay(long additionalTime){
+    synchronized void replay(long additionalTime) {
         this.playtime += additionalTime;
         this.posB = this.posA + this.playtime;
         this.audioPlayer.setLoopPoints(this.posA, this.posB);
         this.play();
     }
     
-    private void play(){
+    private void play() {
         this.setVolume(this.volume);
         this.control.resume();
     }
     
-    private void setLoop(){
+    private void setLoop() {
         final int INSET = 60;
         long length = Math.toIntExact(this.currentSong.lengthMillis());
         System.out.println(TimeUnit.MILLISECONDS.toSeconds(length) + " >> length");
-        this.posA = (int) (Math.random() * (length - TimeUnit.SECONDS.toMillis(INSET))) + (INSET/2);
+        this.posA = (int) (Math.random() * (length - TimeUnit.SECONDS.toMillis(INSET))) + (INSET / 2);
         this.posB = posA + this.playtime;
         this.audioPlayer = this.MINIM.loadMP3File(this.currentSong.getPath());
         this.audioPlayer.setLoopPoints(this.posA, this.posB);
     }
-
-    /** * @author Henock Arega
-     * Will convert any given dB-Value to its linear value.
+    
+    /**
      * @param x
      * @return
+     * @author Henock Arega
+     * Will convert any given dB-Value to its linear value.
      */
-    private float dBToLinear(float x){
+    private float dBToLinear(float x) {
         return (float) Math.pow(10, (x / 20));
     }
     
-    /** * @author Henock Arega
-     * Will convert any given linear value to its corresponding dB-Value value.
+    /**
      * @param x The value in the {@code interval [0, 100]} which is to be converted into its corresponding dB value.
      * @return Returns a float value, which represents the converted dB value.
+     * @author Henock Arega
+     * Will convert any given linear value to its corresponding dB-Value value.
      */
-    private float linearToDB(float x){
+    private float linearToDB(float x) {
         return (float) (Math.log10(x / 50) * 20);
     }
     
-    private void notifyObservers(PlayerResult result){
+    private void notifyObservers(PlayerResult result) {
         super.notifyObservers(result);
     }
     
@@ -205,53 +210,49 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
             String ini_vol_val = ini.get(SECTION, KEY_VOL);
             try {
                 this.setVolume(Float.parseFloat(ini_vol_val));
-            }
-            catch (NumberFormatException ignored){
+            } catch (NumberFormatException ignored) {
                 this.setVolume(this.STD_VOL);
-            }
-            catch (NullPointerException ignored){
+            } catch (NullPointerException ignored) {
                 this.setVolume(this.STD_VOL);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public synchronized void close(Close.Code code) {
         this.control.runProgram(code);
-//        this.thread.interrupt();
         Thread.currentThread().interrupt();
         this.MINIM.dispose();
         this.writeINI();
     }
     
-    private class PlayerControl implements Runnable{
-
+    private class PlayerControl implements Runnable {
+        
         private boolean programIsRunning;
-
-        private PlayerControl(){
+        
+        private PlayerControl() {
             this.programIsRunning = true;
         }
-
-        private synchronized void runProgram(Close.Code code){
-            if(code != Code.START || code != Code.CONTINUE){
+        
+        private synchronized void runProgram(Close.Code code) {
+            if (code != Code.START || code != Code.CONTINUE) {
                 this.programIsRunning = false;
-            }
-            else{
+            } else {
                 this.programIsRunning = true;
             }
         }
         
-        private synchronized void t_wait(){
+        private synchronized void t_wait() {
             try {
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        private synchronized void t_wait(long time){
+        
+        private synchronized void t_wait(long time) {
             try {
                 this.wait(time);
             } catch (InterruptedException e) {
@@ -259,19 +260,19 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
             }
         }
         
-        private synchronized void resume(){
+        private synchronized void resume() {
             this.notify();
         }
-
+        
         @Override
         public void run() {
-            while(programIsRunning){
+            while (programIsRunning) {
                 this.t_wait();
                 stopByAnswer = false;
                 MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
                 this.t_wait(MusicPlayer.this.playtime - 100); // wait for given amount of time
                 
-                while(audioPlayer.isPlaying() && !stopByAnswer) t_wait(10);
+                while (audioPlayer.isPlaying() && !stopByAnswer) t_wait(10);
                 
                 MusicPlayer.this.setChanged();
                 MusicPlayer.this.notifyObservers(new PlayerResult(
@@ -281,7 +282,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
             }
             MusicPlayer.this.stop();
         }
-
+        
     }
     
 }

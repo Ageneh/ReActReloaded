@@ -16,12 +16,11 @@ public enum Filepaths {
     ICO_PLAY("res/icons/icon_play.png"),
     ICO_REPEAT("res/icons/icon_repeat.png"),
     ICO_REWIND("res/icons/icon_rewind.png"),
-    ICO_SETTINGS("res/icons/icon_settings.png")
-    ;
+    ICO_SETTINGS("res/icons/icon_settings.png");
     
     private File file;
     
-    private Filepaths(String path){
+    private Filepaths(String path) {
         this.file = new File(path);
     }
     

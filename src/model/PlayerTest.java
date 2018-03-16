@@ -13,20 +13,17 @@ import java.util.Scanner;
  */
 public class PlayerTest implements Observer {
     
-    public static void main(String[] args) {
-         new PlayerTest();
-    }
+    NormalGame ng;
     
-        NormalGame ng;
-    public PlayerTest(){
+    public PlayerTest() {
         synchronized (Thread.currentThread()) {
             ng = new NormalGame("TestUser", this);
             boolean running = true;
             Scanner scan = new Scanner(System.in);
             String str;
-            do{
+            do {
                 str = scan.nextLine();
-                switch (str){
+                switch (str) {
                     case "s":
                         ng.start();
                         break;
@@ -46,17 +43,17 @@ public class PlayerTest implements Observer {
                         running = false;
                         break;
                 }
-            } while(running);
+            } while (running);
         }
     }
     
-    private void test1(){
+    private void test1() {
         SongLibrary lib = new SongLibrary();
         MusicPlayer musicPlayer = new MusicPlayer(this);
         lib = new SongLibrary();
         Playlist playlist = new Playlist(lib.getSongs());
         musicPlayer.play(playlist.getNext(), 10000);
-    
+        
         Scanner scan = new Scanner(System.in);
         String s;
         try {
@@ -68,14 +65,17 @@ public class PlayerTest implements Observer {
                     break;
                 }
             }
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-    
+        
         System.out.println("END");
         lib.close(Close.Code.CLOSE);
         musicPlayer.close(Close.Code.CLOSE);
+    }
+    
+    public static void main(String[] args) {
+        new PlayerTest();
     }
     
     @Override
@@ -92,12 +92,12 @@ public class PlayerTest implements Observer {
 //
 //        lib.close(Close.Code.CLOSE);
         
-        if(o.getClass().equals(ng.getClass())){
+        if (o.getClass().equals(ng.getClass())) {
             Game.GameStatus gs = (Game.GameStatus) arg;
-    
+            
             ANSI.BLUE.println(gs.toString());
             
-            if(gs.mode() == Game.GameMode.GAME_OVER){
+            if (gs.mode() == Game.GameMode.GAME_OVER) {
                 ANSI.MAGENTA.println("GAME ENDED");
                 ANSI.MAGENTA.println("GAME ENDED");
                 ANSI.MAGENTA.println("GAME ENDED");
