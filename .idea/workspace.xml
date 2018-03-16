@@ -6,26 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/Close.java" afterPath="$PROJECT_DIR$/src/model/Close.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Filepaths.java" afterPath="$PROJECT_DIR$/src/model/Filepaths.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Game.java" afterPath="$PROJECT_DIR$/src/model/Game.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Model.java" afterPath="$PROJECT_DIR$/src/model/Model.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/MusicPlayer.java" afterPath="$PROJECT_DIR$/src/model/MusicPlayer.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Observable.java" afterPath="$PROJECT_DIR$/src/model/Observable.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/ObservableModel.java" afterPath="$PROJECT_DIR$/src/model/ObservableModel.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlayerResult.java" afterPath="$PROJECT_DIR$/src/model/PlayerResult.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlayerTest.java" afterPath="$PROJECT_DIR$/src/model/PlayerTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Playlist.java" afterPath="$PROJECT_DIR$/src/model/Playlist.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Settings.java" afterPath="$PROJECT_DIR$/src/model/Settings.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Song.java" afterPath="$PROJECT_DIR$/src/model/Song.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/SongInvalidException.java" afterPath="$PROJECT_DIR$/src/model/SongInvalidException.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/SongLibrary.java" afterPath="$PROJECT_DIR$/src/model/SongLibrary.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/User.java" afterPath="$PROJECT_DIR$/src/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/WritesINI.java" afterPath="$PROJECT_DIR$/src/model/WritesINI.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java" afterPath="$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" afterPath="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/gamemodes/TimedGame.java" afterPath="$PROJECT_DIR$/src/model/gamemodes/TimedGame.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/ObservableScene.java" afterPath="$PROJECT_DIR$/src/scenes/ObservableScene.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -532,7 +512,7 @@
       <workItem from="1521070831136" duration="32000" />
       <workItem from="1521118593640" duration="21497000" />
       <workItem from="1521150788232" duration="4801000" />
-      <workItem from="1521158725819" duration="3000" />
+      <workItem from="1521158725819" duration="71000" />
     </task>
     <task id="LOCAL-00001" summary="Small additions:&#10;-&gt; E: ImageCreator&#10;-&gt; E: Iconpath&#10;-&gt; res Folder (with ./icons)&#10;-&gt; C: ElementBackgroundCreator">
       <created>1520517347619</created>
@@ -625,11 +605,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521149847307</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Made some changes..!">
+      <created>1521158787846</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1521158787846</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95618000" />
+    <option name="totallyTimeSpent" value="95686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="822" y="22" width="1105" height="1178" extended-state="0" />
@@ -697,7 +684,8 @@
     <MESSAGE value="-&gt; Game: play, replay, next are implemented and tested in PlayerTest.java&#10;-&gt; added another custom notification class (Game.GameStatus)&#10;-&gt; Game classes now each receive Observers in construcutors" />
     <MESSAGE value="BIG CHANGE: moved everything to new 'src' folder&#10;&#10;-&gt; added Enum: Filepaths&#10;-&gt; fixed a small playback bug&#10;--&gt; now another small bug left&#10;-&gt; close() does now completely stop musicplayer (as wanted)&#10;-&gt; added Interface: WritesINI&#10;--&gt; maker for every class which needs a ini or just depends on ini file&#10;-&gt; added field: int val to Close.Code&#10;--&gt; not necessary but can be useful&#10;-&gt; MusicPlayer&#10;--&gt; set volume is now safe to use even for wrong inputs&#10;--&gt; read from ini (implements WritesINI) &amp; write to&#10;-&gt; SongLibrary&#10;--&gt; read from ini (implements WritesINI) &amp; write to" />
     <MESSAGE value="BIG CHANGE: moved everything to new 'src' folder&#10;&#10;-&gt; added Enum: Filepaths&#10;-&gt; fixed a small playback bug&#10;--&gt; now another small bug left&#10;-&gt; close() does now completely stop musicplayer (as wanted)&#10;-&gt; added Interface: WritesINI&#10;--&gt; maker for every class which needs a ini or just depends on ini file&#10;-&gt; added field: int val to Close.Code&#10;--&gt; not necessary but can be useful&#10;-&gt; MusicPlayer&#10;--&gt; set volume is now safe to use even for wrong inputs&#10;--&gt; read from ini (implements WritesINI) &amp; write to&#10;-&gt; SongLibrary&#10;--&gt; read from ini (implements WritesINI) &amp; write to&#10;-&gt; Song&#10;--&gt; added absPath: &#10;---&gt; path contains original path, which was given as argument (basically: from SongLibrary); is needed for comparison when evaluating or creating answers (in Game.createAnswers())&#10;---&gt; absPath contains the absolute path&#10;&#10;&#10;AlphaTest&#10;-&gt; testing via console input&#10;-&gt; Game.GameMode is public for now (could stay public, doesn't make any big differences)" />
-    <option name="LAST_COMMIT_MESSAGE" value="BIG CHANGE: moved everything to new 'src' folder&#10;&#10;-&gt; added Enum: Filepaths&#10;-&gt; fixed a small playback bug&#10;--&gt; now another small bug left&#10;-&gt; close() does now completely stop musicplayer (as wanted)&#10;-&gt; added Interface: WritesINI&#10;--&gt; maker for every class which needs a ini or just depends on ini file&#10;-&gt; added field: int val to Close.Code&#10;--&gt; not necessary but can be useful&#10;-&gt; MusicPlayer&#10;--&gt; set volume is now safe to use even for wrong inputs&#10;--&gt; read from ini (implements WritesINI) &amp; write to&#10;-&gt; SongLibrary&#10;--&gt; read from ini (implements WritesINI) &amp; write to&#10;-&gt; Song&#10;--&gt; added absPath: &#10;---&gt; path contains original path, which was given as argument (basically: from SongLibrary); is needed for comparison when evaluating or creating answers (in Game.createAnswers())&#10;---&gt; absPath contains the absolute path&#10;&#10;&#10;AlphaTest&#10;-&gt; testing via console input&#10;-&gt; Game.GameMode is public for now (could stay public, doesn't make any big differences)" />
+    <MESSAGE value="Made some changes..!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some changes..!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,6 +876,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -916,6 +905,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#925#926#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -953,6 +945,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -960,6 +953,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -967,6 +961,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -974,6 +969,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="16" column="52" lean-forward="false" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+          <folding>
+            <element signature="docComment;class#Close#0" expanded="false" />
+            <element signature="docComment;method#close#0;class#Close#0" expanded="false" />
+            <element signature="e#475#476#0" expanded="false" />
+            <element signature="e#513#514#0" expanded="false" />
+            <element signature="e#550#551#0" expanded="false" />
+            <element signature="e#584#585#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -996,6 +999,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="13" column="20" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,6 +1007,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding>
+            <element signature="docComment;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;field#KEY_PRE#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;field#folderPaths#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;field#playlist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#SongLibrary#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#addToLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#addToLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#getPlaylist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#checkPaths#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#checkPaths#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#checkPaths#1;class#SongLibrary#0" expanded="false" />
+            <element signature="method#checkPaths#1;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#isDir#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#isDir#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
+            <element signature="docComment;method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
+            <element signature="method#readINI#0;class#SongLibrary#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1010,6 +1038,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1084,6 +1113,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="86" column="8" lean-forward="false" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="8" />
+          <folding>
+            <element signature="docComment;class#Colors#0" expanded="false" />
+            <element signature="docComment;field#BASE_BG#0;class#Colors#0" expanded="false" />
+            <element signature="docComment;method#Colors#2;class#Colors#0" expanded="false" />
+            <element signature="method#Colors#2;class#Colors#0" expanded="false" />
+            <element signature="docComment;method#Colors#4;class#Colors#0" expanded="false" />
+            <element signature="method#Colors#4;class#Colors#0" expanded="false" />
+            <element signature="docComment;method#getColor#0;class#Colors#0" expanded="false" />
+            <element signature="docComment;method#getColor#1;class#Colors#0" expanded="false" />
+            <element signature="method#getColor#1;class#Colors#0" expanded="false" />
+            <element signature="class#ColorMode#0;class#Colors#0" expanded="false" />
+            <element signature="method#ColorMode#0;class#ColorMode#0;class#Colors#0" expanded="false" />
+            <element signature="docComment;class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+            <element signature="class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+            <element signature="method#getBackground#1;class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+            <element signature="method#createBackgroundImg#0;class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+            <element signature="method#createBackgroundImg#1;class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+            <element signature="method#createBackgroundImg#3;class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+            <element signature="method#createBackgroundImg#4;class#ElementBackgroundCreator#0;class#Colors#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1091,6 +1140,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding>
+            <element signature="e#174#175#0" expanded="false" />
+            <element signature="e#221#222#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1098,6 +1151,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1007">
           <caret line="227" column="51" lean-forward="false" selection-start-line="227" selection-start-column="51" selection-end-line="227" selection-end-column="51" />
+          <folding>
+            <element signature="docComment;field#stopByAnswer#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#posA#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#posB#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#playtime#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#LOOPCOUNT#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#thread#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#control#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#volume#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;field#currentSong#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#MusicPlayer#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#MusicPlayer#1;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;method#MusicPlayer#2;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#MusicPlayer#2;class#MusicPlayer#0" expanded="false" />
+            <element signature="e#3415#3416#0" expanded="false" />
+            <element signature="e#3469#3470#0" expanded="false" />
+            <element signature="method#stop#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#pause#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#setVolume#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;method#replay#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#replay#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#play#2;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#setLoop#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;method#dBToLinear#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="docComment;method#linearToDB#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#writeINI#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#readINI#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#close#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#runProgram#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#t_wait#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#t_wait#1;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+            <element signature="method#run#0;class#PlayerControl#0;class#MusicPlayer#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1105,6 +1192,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <element signature="docComment;class#Playlist#0" expanded="false" />
+            <element signature="method#Playlist#1;class#Playlist#0" expanded="false" />
+            <element signature="method#getNext#0;class#Playlist#0" expanded="false" />
+            <element signature="method#replaceAllWith#0;class#Playlist#0" expanded="false" />
+            <element signature="docComment;method#getRandomSong#0;class#Playlist#0" expanded="false" />
+            <element signature="method#getRandomSong#0;class#Playlist#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,6 +1207,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-192">
           <caret line="46" column="28" lean-forward="true" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+          <folding>
+            <element signature="docComment;class#Song#0" expanded="false" />
+            <element signature="docComment;field#EXTENSION#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#COVER_IMG#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#meta#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#coverImg#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getArtist#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#checkSong#0;class#Song#0" expanded="false" />
+            <element signature="method#checkSong#0;class#Song#0" expanded="false" />
+            <element signature="class#MetaPos#0;class#Song#0" expanded="false" />
+            <element signature="docComment;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#file#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#MetaExtractor#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractTitle#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="e#4826#4939#0" expanded="false" />
+            <element signature="method#extractArtist#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="e#5291#5407#0" expanded="false" />
+            <element signature="method#extractAlbum#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="e#5731#5844#0" expanded="false" />
+            <element signature="method#extractLength#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractCoverImg#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1119,6 +1239,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,6 +1247,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
