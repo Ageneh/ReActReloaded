@@ -1,6 +1,6 @@
 import functions.ANSI;
-import model.Game;
-import model.gamemodes.NormalGame;
+import model.GameMode;
+import model.gamemodes.NormalGameController;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -11,22 +11,23 @@ import java.util.Observer;
  */
 public class AlphaTest implements Observer {
     
-    private NormalGame ng;
+    private NormalGameController ng;
     
     public static void main(String[] args) {
         new AlphaTest();
     }
     
     public AlphaTest() {
-        ng = new NormalGame(this);
+        ng = new NormalGameController(this);
         ng.test();
     }
     
+    //////////// OVERRIDES
     @Override
     public void update(Observable o, Object arg) {
-    
+        
         if(o.getClass().equals(ng.getClass())){
-            Game.GameStatus gs = (Game.GameStatus) arg;
+            GameMode.GameStatus gs = (GameMode.GameStatus) arg;
             ANSI.BLUE.println(gs.toString());
         }
     }

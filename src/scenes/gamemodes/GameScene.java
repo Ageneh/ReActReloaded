@@ -24,7 +24,6 @@ public abstract class GameScene extends ObservableScene implements Observer {
     }
     
     private class GameBackground {
-    
         private StackPane root;
         private Scene scene;
         

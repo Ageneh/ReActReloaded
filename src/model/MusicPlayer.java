@@ -153,7 +153,8 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         final int INSET = 60;
         long length = Math.toIntExact(this.currentSong.lengthMillis());
         System.out.println(TimeUnit.MILLISECONDS.toSeconds(length) + " >> length");
-        this.posA = (int) (Math.random() * (length - TimeUnit.SECONDS.toMillis(INSET))) + (INSET / 2);
+        long a = length - TimeUnit.SECONDS.toMillis(INSET);
+        this.posA = (int) (Math.random() * Math.abs(a)) + (int) TimeUnit.SECONDS.toMillis(INSET / 2);
         this.posB = posA + this.playtime;
         this.audioPlayer = this.MINIM.loadMP3File(this.currentSong.getPath());
         this.audioPlayer.setLoopPoints(this.posA, this.posB);
@@ -239,6 +240,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         private synchronized void runProgram(Close.Code code) {
             if (code != Code.START || code != Code.CONTINUE) {
                 this.programIsRunning = false;
+                this.resume();
             } else {
                 this.programIsRunning = true;
             }
@@ -263,17 +265,18 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         private synchronized void resume() {
             this.notify();
         }
-        
+    
+        //////////// OVERRIDES
         @Override
         public void run() {
             while (programIsRunning) {
                 this.t_wait();
-                stopByAnswer = false;
+                if (programIsRunning)
+                    stopByAnswer = false;
                 MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
                 this.t_wait(MusicPlayer.this.playtime - 100); // wait for given amount of time
-                
-                while (audioPlayer.isPlaying() && !stopByAnswer) t_wait(10);
-                
+                while (audioPlayer.isPlaying() && !stopByAnswer && programIsRunning) t_wait(10);
+            
                 MusicPlayer.this.setChanged();
                 MusicPlayer.this.notifyObservers(new PlayerResult(
                         MusicPlayer.this.posB - MusicPlayer.this.posA,

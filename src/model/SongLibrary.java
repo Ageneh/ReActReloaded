@@ -1,6 +1,5 @@
 package model;
 
-import functions.ANSI;
 import functions.INIReader;
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
@@ -21,11 +20,14 @@ import java.util.HashSet;
  * Every time a playlist is needed one will be created by randomising the order of songs which are to be played.
  */
 class SongLibrary implements Close, WritesINI {
+
+//////////// VARIABLES
+    /** The minimum amount of {@link Song songs} needed to start a game. */
+    public final static int MIN_SONG_COUNT = 9;
     
     private static final String SECTION = "MUSIC";
     /** The prefix of key which points to a directory which contains mp3-files. */
     private static final String KEY_PRE = "MDIR";
-    
     /** Has all paths containing mp3-files. */
     private static ArrayList<String> folderPaths;
     private static ArrayList<String> songs;
@@ -33,10 +35,12 @@ class SongLibrary implements Close, WritesINI {
      * A playlist of all given songs.
      */
     private Playlist playlist;
+    private boolean hasEnoughSongs;
     
     SongLibrary() {
         this.folderPaths = new ArrayList<>();
         this.songs = new ArrayList<>();
+        this.hasEnoughSongs = false;
         this.readINI();
     }
     
@@ -193,6 +197,7 @@ class SongLibrary implements Close, WritesINI {
         return folderPaths;
     }
     
+    //////////// OVERRIDES
     @Override
     public void writeINI() {
         final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
@@ -217,7 +222,7 @@ class SongLibrary implements Close, WritesINI {
                     ini.put(SECTION, KEY_PRE + i, this.folderPaths.get(i));
                 }
             }
-            ANSI.CYAN.println(ini.getComment(s));
+//            ANSI.CYAN.println(ini.getComment(s));
             br = new BufferedWriter(new FileWriter(temp));
             
             ini.store(br);
@@ -233,7 +238,6 @@ class SongLibrary implements Close, WritesINI {
     @Override
     public void readINI() {
         final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
-        
         try {
             Ini ini = INIReader.getIni(INI_PATH);
             Section section = ini.get(SECTION);
@@ -248,6 +252,11 @@ class SongLibrary implements Close, WritesINI {
                 }
             }
             this.folderPaths.addAll(tempSet);
+    
+            if (this.songs.size() <= MIN_SONG_COUNT) {
+                throw new NotEnoughSongsException(this.songs.size(), MIN_SONG_COUNT);
+            }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

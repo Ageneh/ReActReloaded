@@ -8,9 +8,9 @@ import java.util.Observer;
  * <p>
  * An abstract class as a template for observable classes which are part of the {@link model} package.
  */
-abstract class ObservableModel extends Observable implements Close {
+public abstract class ObservableModel extends Observable implements Close {
     
-    ObservableModel() {
+    public ObservableModel() {
     }
     
     @Override
@@ -31,8 +31,9 @@ abstract class ObservableModel extends Observable implements Close {
         super.notifyObservers(arg);
     }
     
+    //////////// OVERRIDES
     @Override
-    synchronized void addAllObserver(Observer observer, Observer... observers) {
+    public synchronized void addAllObserver(Observer observer, Observer... observers) {
         super.addAllObserver(observer, observers);
     }
 }

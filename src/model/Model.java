@@ -15,16 +15,16 @@ package model;
  * @project ReActReloaded
  * <p>
  * The main model. <br>
- * To create, start, control a game an instance of {@link Model} must be used.
+ * To create, start, control a gameMode an instance of {@link Model} must be used.
  */
 public class Model {
     
-    /** The current {@link Game} of an user. */
-    private Game game;
+    /** The current {@link GameMode} of an user. */
+    private GameMode gameMode;
     
-    /** The user who plays this {@link model.Model#game}. */
+    /** The user who plays this {@link model.Model#gameMode}. */
     
-    public Model(Game.GameMode mode, String username) {
+    public Model(GameMode.GameModeProp mode, String username) {
         switch (mode) {
             case TIMED:
                 break;
