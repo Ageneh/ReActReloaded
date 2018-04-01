@@ -23,36 +23,37 @@ import java.util.concurrent.TimeUnit;
 public class MusicPlayer extends ObservableModel implements WritesINI {
     
     private volatile SimpleAudioPlayer audioPlayer;
+    /** The duration for the total length of the loop. */
+    private volatile int playtime;
+    /** The starting point of the loop. */
+    private volatile int posA;
+    /** The end point of the loop. */
+    private volatile int posB;
     /**
      * A flag used to determine whether the player was stopped by answering or because the {@link #posB end of the
      * loop} was reached.
      */
     private volatile boolean stopByAnswer;
-    /** The starting point of the loop. */
-    private volatile int posA;
-    /** The end point of the loop. */
-    private volatile int posB;
-    /** The duration for the total length of the loop. */
-    private volatile int playtime;
+    private final String KEY_VOL = "VOL";
     /** A constant for the amount of times the player will loop the snippet. */
     private final int LOOPCOUNT = 0;
-    private final String SECTION = "MUSIC_PLAYER";
-    private final String KEY_VOL = "VOL";
-    private final float STD_VOL = 50.0f;
     private final SimpleMinim MINIM;
-    /** A thread which will handle {@link #control the controller}. */
-    private Thread thread;
+    private final String SECTION = "MUSIC_PLAYER";
+    private final float STD_VOL = 50.0f;
     /**
      * The control of the music player.
      *
      * @see PlayerControl
      */
     private PlayerControl control;
-    /** The gain of the {@link #audioPlayer} in {@code [0, 100]}. */
-    private float volume;
     /** The current, loaded {@link Song}. */
     private Song currentSong;
+    /** A thread which will handle {@link #control the controller}. */
+    private Thread thread;
+    /** The gain of the {@link #audioPlayer} in {@code [0, 100]}. */
+    private float volume;
     
+    //////////// CONSTRUCTORS
     private MusicPlayer() {
         this.MINIM = new SimpleMinim(true);
         this.control = new PlayerControl();
@@ -87,8 +88,27 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         /********************************/
     }
     
+    //////////// METHODS
+    
+    /**
+     * @param additionalTime The amount of time which is to be added to the normal
+     *                       playback time.
+     * @author Henock Arega
+     * Replays the current song but a for a greater amount of time.
+     */
+    synchronized void replay(long additionalTime) {
+        this.playtime += additionalTime;
+        this.posB = this.posA + this.playtime;
+        this.audioPlayer.setLoopPoints(this.posA, this.posB);
+        this.play();
+    }
+    
     public Song currentSong() {
         return currentSong;
+    }
+    
+    public int getPlaytime() {
+        return playtime;
     }
     
     void play(Song song, int timeMillis) {
@@ -131,19 +151,6 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         }
     }
     
-    /**
-     * @param additionalTime The amount of time which is to be added to the normal
-     *                       playback time.
-     * @author Henock Arega
-     * Replays the current song but a for a greater amount of time.
-     */
-    synchronized void replay(long additionalTime) {
-        this.playtime += additionalTime;
-        this.posB = this.posA + this.playtime;
-        this.audioPlayer.setLoopPoints(this.posA, this.posB);
-        this.play();
-    }
-    
     private void play() {
         this.setVolume(this.volume);
         this.control.resume();
@@ -184,6 +191,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         super.notifyObservers(result);
     }
     
+    //////////// OVERRIDES
     @Override
     public void writeINI() {
         final String INI_PATH = Filepaths.INI_MUSICPLAYER.getFile().getAbsolutePath();
@@ -232,11 +240,13 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     private class PlayerControl implements Runnable {
         
         private boolean programIsRunning;
-        
+    
+        //////////// CONSTRUCTORS
         private PlayerControl() {
             this.programIsRunning = true;
         }
-        
+    
+        //////////// METHODS
         private synchronized void runProgram(Close.Code code) {
             if (code != Code.START || code != Code.CONTINUE) {
                 this.programIsRunning = false;
@@ -274,9 +284,9 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
                 if (programIsRunning)
                     stopByAnswer = false;
                 MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
-                this.t_wait(MusicPlayer.this.playtime - 100); // wait for given amount of time
-                while (audioPlayer.isPlaying() && !stopByAnswer && programIsRunning) t_wait(10);
-            
+                this.t_wait(MusicPlayer.this.playtime /*- 10*/); // wait for given amount of time
+//                while (audioPlayer.isPlaying() && !stopByAnswer && programIsRunning) t_wait(10);
+                
                 MusicPlayer.this.setChanged();
                 MusicPlayer.this.notifyObservers(new PlayerResult(
                         MusicPlayer.this.posB - MusicPlayer.this.posA,

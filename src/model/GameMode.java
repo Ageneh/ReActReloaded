@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * TODO: block giving answer (GUI/JavaFX) while song is playing
  */
-public abstract class GameMode extends ObservableModel implements Observer {
+public abstract class GameMode extends ObservableModel implements Observer, isGame {
     
     //////////// VARIABLES
     private final static int MILLIS_PER_SEC = 1000;
@@ -24,7 +24,7 @@ public abstract class GameMode extends ObservableModel implements Observer {
     private final int STD_REPLAY = 1;
     private final int POINTS = 10;
     /** The game mode of each game. */
-    protected GameModeProp mode;
+    protected Mode mode;
     /** The amount of answers which are defined by the actual game round */
     private int answerCount;
     /** The answers the {@link User} can choose from - including the correct answer. */
@@ -54,11 +54,11 @@ public abstract class GameMode extends ObservableModel implements Observer {
     private boolean isAnswered;
     private boolean correctAnswer;
     
-    protected GameMode(GameModeProp mode, Observer o, Observer... observers) {
+    protected GameMode(Mode mode, Observer o, Observer... observers) {
         this(mode, "ReActor", o, observers);
     }
     
-    protected GameMode(GameModeProp mode, String username, Observer o, Observer... observers) {
+    protected GameMode(Mode mode, String username, Observer o, Observer... observers) {
         this.addAllObserver(o, observers);
         this.mode = mode;
         this.user = new User(username);
@@ -105,15 +105,17 @@ public abstract class GameMode extends ObservableModel implements Observer {
     public void start() {
         if (!this.hasStarted || (this.hasStarted && this.nextCalled)) {
             if (!this.hasStarted) this.hasStarted = true;
-            this.startTime = System.currentTimeMillis();
             this.nextCalled = false;
             this.isAnswered = false;
             this.replayCount = STD_REPLAY;
+            this.startTime = System.currentTimeMillis();
             this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
-    
+        
             this.createAnswers(this.answerCount); //// TESTING TESTING
-    
+        
             notifyOfGameStatus();
+        } else {
+            throw new AlreadyStartedException();
         }
     }
     
@@ -136,6 +138,10 @@ public abstract class GameMode extends ObservableModel implements Observer {
 //        this.points -= POINTS / 2;
         this.musicPlayer.replay(this.mode.additionalTime);
         this.notifyOfGameStatus();
+    }
+    
+    public long getCurrentPlaytime() {
+        return this.musicPlayer.getPlaytime();
     }
     
     public void gameEnd() {
@@ -165,7 +171,7 @@ public abstract class GameMode extends ObservableModel implements Observer {
      * increased, if the answer is correct or the game will be ended.
      * Exceptions are:
      * -> when one has a combo: the combe will drop down to 1x and points will be decreased
-     * -> depending on {@link GameModeProp#CONTINUOUS} the game can just continue to the next one
+     * -> depending on {@link Mode#CONTINUOUS} the game can just continue to the next one
      *
      * @param answer
      */
@@ -237,7 +243,7 @@ public abstract class GameMode extends ObservableModel implements Observer {
         return answers;
     }
     
-    protected GameModeProp getMode() {
+    protected Mode getMode() {
         return this.mode;
     }
     
@@ -286,15 +292,26 @@ public abstract class GameMode extends ObservableModel implements Observer {
     public void update(Observable o, Object arg) {
         if (o instanceof MusicPlayer) {
             /* when the musicplayer has changed (e.g. song is done) */
-            
+    
         }
+        if (arg != null) {
+            if (arg instanceof PlayerResult) {
+                setChanged();
+                notifyObservers(arg);
+            }
+        }
+    }
+    
+    @Override
+    public long getCurrentPlayTime() {
+        return this.musicPlayer.getPlaytime();
     }
     
     @Override
     public void close(Code code) {
         if (code == Code.GAME_OVER) {
             /* If the game is done, change the game mode to game_over (in gameStatus). */
-            this.gameStatus.mode = GameModeProp.GAME_OVER;
+            this.gameStatus.mode = Mode.GAME_OVER;
         }
         this.musicPlayer.close(code);
         this.songLibrary.close(code);
@@ -308,7 +325,7 @@ public abstract class GameMode extends ObservableModel implements Observer {
      * TODO: make protected; is public for testing
      * TODO: make protected; is public for testing
      */
-    public enum GameModeProp {
+    public enum Mode {
         
         /**
          * @see model.gamemodes.NormalGame
@@ -331,23 +348,21 @@ public abstract class GameMode extends ObservableModel implements Observer {
         private int maxReplay;
     
         //////////// CONSTRUCTORS
-// CONSTRUCTORS
-        GameModeProp() {
+        Mode() {
             this(0, 0, 0);
         }
     
-        GameModeProp(long length, long additionalTimeVal, int maxReplay) {
+        Mode(long length, long additionalTimeVal, int maxReplay) {
             this.lengthInMillis = length;
             this.additionalTime = additionalTimeVal;
             this.maxReplay = maxReplay;
         }
     
-        GameModeProp(long length) {
+        Mode(long length) {
             this(length, 0, 0);
         }
     
         //////////// METHODS
-// METHODS
         public long millis() {
             return TimeUnit.MILLISECONDS.toMillis(this.lengthInMillis);
         }
@@ -371,6 +386,10 @@ public abstract class GameMode extends ObservableModel implements Observer {
         public int getMaxReplay() {
             return maxReplay;
         }
+    
+        public long getMaxReplayTimeMillis() {
+            return maxReplay * additionalTime;
+        }
     }
     
     /**
@@ -379,7 +398,7 @@ public abstract class GameMode extends ObservableModel implements Observer {
      */
     public class GameStatus {
     
-        private GameModeProp mode;
+        private Mode mode;
     
         //////////// CONSTRUCTORS
 // CONSTRUCTORS
@@ -413,7 +432,7 @@ public abstract class GameMode extends ObservableModel implements Observer {
             return user;
         }
     
-        public GameModeProp mode() {
+        public Mode mode() {
             return this.mode;
         }
         
@@ -442,6 +461,18 @@ public abstract class GameMode extends ObservableModel implements Observer {
             }
             return str;
         }
+    }
+    
+    public class AlreadyStartedException extends IllegalStateException {
+        
+        public AlreadyStartedException() {
+            super("The game has already been started once.");
+        }
+        
+        public AlreadyStartedException(String s) {
+            super(s);
+        }
+        
     }
     
 }

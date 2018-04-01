@@ -35,8 +35,8 @@ public class NormalGameController extends GameController {
         ANSI.BLUE.println("=============");
         ANSI.BLUE.println("========  G O");
         ANSI.BLUE.println("=============");
-        
-        if (ng.getGameStatus().mode() != GameMode.GameModeProp.GAME_OVER) {
+    
+        if (ng.getGameStatus().mode() != GameMode.Mode.GAME_OVER) {
             ng.answer(answer);
         }
         ANSI.RED.println("GAME OVER!");
@@ -62,8 +62,8 @@ public class NormalGameController extends GameController {
         ANSI.BLUE.println("=============");
         ANSI.BLUE.println("========  G O");
         ANSI.BLUE.println("=============");
-        
-        while (ng.getGameStatus().mode() != GameMode.GameModeProp.GAME_OVER) {
+    
+        while (ng.getGameStatus().mode() != GameMode.Mode.GAME_OVER) {
             wrongAnswer = true;
             while (wrongAnswer) {
                 ANSI.BLUE.print(">> ");
@@ -100,6 +100,11 @@ public class NormalGameController extends GameController {
     @Override
     public void replay() {
         ng.replay();
+    }
+    
+    @Override
+    public long getCurrentPlayTime() {
+        return ng.getCurrentPlayTime();
     }
     
     @Override

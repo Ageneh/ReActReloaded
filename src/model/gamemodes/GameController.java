@@ -1,6 +1,7 @@
 package model.gamemodes;
 
 import model.ObservableModel;
+import model.isGame;
 
 import java.util.Observer;
 
@@ -8,9 +9,9 @@ import java.util.Observer;
  * @author Henock Arega
  * @project ReActReloaded
  */
-public abstract class GameController extends ObservableModel implements Observer {
+abstract class GameController extends ObservableModel implements Observer, isGame {
     
-    public GameController(Observer o, Observer... observers) {
+    GameController(Observer o, Observer... observers) {
         super();
         super.addAllObserver(o, observers);
     }
@@ -19,4 +20,5 @@ public abstract class GameController extends ObservableModel implements Observer
     public abstract void test();
     
     public abstract void replay();
+    
 }

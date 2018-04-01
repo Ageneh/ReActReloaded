@@ -23,8 +23,8 @@ public class Model {
     private GameMode gameMode;
     
     /** The user who plays this {@link model.Model#gameMode}. */
-    
-    public Model(GameMode.GameModeProp mode, String username) {
+
+    public Model(GameMode.Mode mode, String username) {
         switch (mode) {
             case TIMED:
                 break;

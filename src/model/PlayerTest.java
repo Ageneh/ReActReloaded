@@ -97,8 +97,8 @@ public class PlayerTest implements Observer {
             GameMode.GameStatus gs = (GameMode.GameStatus) arg;
             
             ANSI.BLUE.println(gs.toString());
-            
-            if (gs.mode() == GameMode.GameModeProp.GAME_OVER) {
+    
+            if (gs.mode() == GameMode.Mode.GAME_OVER) {
                 ANSI.MAGENTA.println("GAME ENDED");
                 ANSI.MAGENTA.println("GAME ENDED");
                 ANSI.MAGENTA.println("GAME ENDED");

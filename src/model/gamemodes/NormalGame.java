@@ -2,7 +2,6 @@ package model.gamemodes;
 
 import functions.ANSI;
 import model.GameMode;
-import model.MusicPlayer;
 import model.Song;
 
 import java.util.Observable;
@@ -13,23 +12,18 @@ import java.util.Observer;
  * @author ${USER
  * @project ReActReloaded
  * <p>
- * In the {@link GameModeProp#NORMAL} game mode the song will first play for the given amount
+ * In the {@link Mode#NORMAL} game mode the song will first play for the given amount
  * of seconds and its value will be increased every time the player clicks on replay. With each
  * click on replay the amount of possible points reachable decreases.
  */
 class NormalGame extends GameMode {
     
     public NormalGame(Observer o, Observer... observers) {
-        super(GameModeProp.NORMAL, o, observers);
+        super(Mode.NORMAL, o, observers);
     }
     
     public NormalGame(String name, Observer o, Observer... observers) {
-        super(GameModeProp.NORMAL, name, o, observers);
-    }
-    
-    @Deprecated
-    private void evalAnswer(Object arg) {
-    
+        super(Mode.NORMAL, name, o, observers);
     }
     
     //////////// OVERRIDES
@@ -45,8 +39,8 @@ class NormalGame extends GameMode {
     @Override
     public boolean answer(Song answer) {
         boolean res = super.answer(answer);
+        super.pause();
         if (res) {
-            super.pause();
             super.addPoints();
             super.notifyOfGameStatus();
             super.next();
@@ -62,9 +56,7 @@ class NormalGame extends GameMode {
     
     @Override
     public void update(Observable o, Object arg) {
-        if (o instanceof MusicPlayer) {
-            this.evalAnswer(arg);
-        }
+        super.update(o, arg);
     }
     
 }
