@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Observer;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,27 +42,14 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     private final SimpleMinim MINIM;
     private final String SECTION = "MUSIC_PLAYER";
     private final float STD_VOL = 50.0f;
-    /**
-     * The control of the music player.
-     *
-     * @see PlayerControl
-     */
-    private PlayerControl control;
     /** The current, loaded {@link Song}. */
     private Song currentSong;
-    /** A thread which will handle {@link #control the controller}. */
-    private Thread thread;
     /** The gain of the {@link #audioPlayer} in {@code [0, 100]}. */
     private float volume;
     
-    //////////// CONSTRUCTORS
+    private boolean isTasked;
     private MusicPlayer() {
         this.MINIM = new SimpleMinim(true);
-        this.control = new PlayerControl();
-        this.thread = new Thread(this.control);
-        this.thread.setDaemon(true);
-        this.thread.setName("Music_Control");
-        this.thread.start();
         this.readINI();
     }
     
@@ -69,21 +58,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         super.addAllObserver(o, observers);
         this.audioPlayer = audioPlayer;
     }
-    
-    //////////// METHODS
-    
-    /**
-     * @param additionalTime The amount of time which is to be added to the normal
-     *                       playback time.
-     * @author Henock Arega
-     * Replays the current song but a for a greater amount of time.
-     */
-    synchronized void replay(long additionalTime) {
-        this.playtime += additionalTime;
-        this.posB = this.posA + this.playtime;
-        this.audioPlayer.setLoopPoints(this.posA, this.posB);
-        this.play();
-    }
+    private Timer timer;
     
     public Song currentSong() {
         return currentSong;
@@ -104,15 +79,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.stopByAnswer = false;
         this.play();
     }
-    
-    void stop() {
-        if (this.audioPlayer != null && this.audioPlayer.isPlaying()) {
-            this.stopByAnswer = true;
-            this.control.resume();
-            this.pause();
-            this.MINIM.stop();
-        }
-    }
+    private TimerTask timerTask;
     
     void pause() {
         if (this.audioPlayer != null) {
@@ -131,9 +98,70 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         }
     }
     
-    private void play() {
+    //////////// CONSTRUCTORS
+    //////////// METHODS
+    /**
+     * @param additionalTime The amount of time which is to be added to the normal playback time.
+     * @author Henock Arega Replays the current song but a for a greater amount of time.
+     */
+    synchronized void replay(long additionalTime) {
+        this.playtime += additionalTime;
+        this.posB = this.posA + this.playtime;
+        this.audioPlayer.setLoopPoints(this.posA, this.posB);
+        this.play();
+    }
+    private synchronized void play() {
         this.setVolume(this.volume);
-        this.control.resume();
+        
+        if(!isTasked) reschedule();
+        else {
+            synchronized (timerTask) {
+                timerTask.notify();
+            }
+        }
+
+//        this.control.resume();
+    }
+    private synchronized void reschedule() {
+        this.timerTask = new TimerTask() {
+            //////////// OVERRIDES
+            @Override
+            public void run() {
+                if (!isTasked) {
+                    MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
+                    isTasked = true;
+                }
+                if (!MusicPlayer.this.audioPlayer.isPlaying() ||
+                        MusicPlayer.this.audioPlayer.position() >= MusicPlayer.this.posB) {
+                    MusicPlayer.this.setChanged();
+                    MusicPlayer.this.notifyObservers(new PlayerResult(
+                            MusicPlayer.this.posB - MusicPlayer.this.posA,
+                            MusicPlayer.this.stopByAnswer
+                    ));
+                    
+                    synchronized (timerTask) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    isTasked = false;
+                }
+            }
+        };
+        this.timer = new Timer("PlaybackTask");
+        this.isTasked = false;
+        
+        this.timer.scheduleAtFixedRate(timerTask, 0, 200);
+    }
+    void stop() {
+        if (this.audioPlayer != null && this.audioPlayer.isPlaying()) {
+            this.stopByAnswer = true;
+//            this.control.resume();
+            this.pause();
+            this.MINIM.stop();
+        }
     }
     
     private void setLoop() {
@@ -211,85 +239,9 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     
     @Override
     public synchronized void close(Close.Code code) {
-        this.control.runProgram(code);
         Thread.currentThread().interrupt();
         this.MINIM.dispose();
         this.writeINI();
-    }
-    
-    private class PlayerControl implements Runnable {
-        
-        private boolean programIsRunning;
-    
-        //////////// CONSTRUCTORS
-        private PlayerControl() {
-            this.programIsRunning = true;
-        }
-    
-        //////////// METHODS
-        private synchronized void runProgram(Close.Code code) {
-            if (code != Code.START || code != Code.CONTINUE) {
-                this.programIsRunning = false;
-                this.resume();
-            } else {
-                this.programIsRunning = true;
-            }
-        }
-        
-        private synchronized void t_wait() {
-            this.t_wait(-1);
-        }
-        
-        private synchronized void t_wait(long time) {
-            try {
-                if (time > 0) this.wait(time);
-                else this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        
-        private synchronized void resume() {
-            this.notify();
-        }
-    
-        //////////// OVERRIDES
-        @Override
-        public void run() {
-            while (programIsRunning) {
-                this.t_wait();
-                if (programIsRunning) stopByAnswer = false;
-                else break;
-                try {
-                    MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
-                    this.t_wait(MusicPlayer.this.playtime /*- 10*/); // wait for given amount of time
-//                    while (audioPlayer.isPlaying() && !stopByAnswer && programIsRunning) t_wait(10);
-        
-                    MusicPlayer.this.setChanged();
-                    MusicPlayer.this.notifyObservers(new PlayerResult(
-                            MusicPlayer.this.posB - MusicPlayer.this.posA,
-                            MusicPlayer.this.stopByAnswer
-                    ));
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    throw e;
-//                    Timer timer = new Timer();
-//                    TimerTask task = new TimerTask() {
-//                        @Override
-//                        public void run() {
-//                            if(audioPlayer.position() >= posB){
-//                                audioPlayer.pause();
-//                            }
-//                            timer.cancel();
-//                        }
-//                    };
-//                    timer.scheduleAtFixedRate(task, 0, 1000);
-//                    audioPlayer.play();
-                }
-            }
-            MusicPlayer.this.stop();
-            ANSI.BLUE.println("MusicPlayer stopped.\n");
-        }
-        
     }
     
 }
