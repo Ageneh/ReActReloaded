@@ -70,24 +70,6 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.audioPlayer = audioPlayer;
     }
     
-    /** FOR TESTING **/
-    MusicPlayer(String s) {
-        /********************************/
-        /********************************/
-        /******* ONLY FOR TESTING *******/
-        /********************************/
-        /********************************/
-        this();
-        ANSI.RED.println("This.constructor is only made for testing purposes!".toUpperCase());
-        this.audioPlayer = audioPlayer;
-        this.setVolume(20);
-        /********************************/
-        /********************************/
-        /******* ONLY FOR TESTING *******/
-        /********************************/
-        /********************************/
-    }
-    
     //////////// METHODS
     
     /**
@@ -110,19 +92,17 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     public int getPlaytime() {
         return playtime;
     }
-    
+    synchronized void play(Song song, Number timeMillis) {
+        this.play(song, timeMillis.intValue());
+    }
     void play(Song song, int timeMillis) {
         this.stop();
         this.playtime = timeMillis;
-        System.out.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
+        ANSI.YELLOW.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
         this.currentSong = song;
         this.setLoop();
         this.stopByAnswer = false;
         this.play();
-    }
-    
-    void play(Song song, Number timeMillis) {
-        this.play(song, timeMillis.intValue());
     }
     
     void stop() {
@@ -257,16 +237,13 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         }
         
         private synchronized void t_wait() {
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            this.t_wait(-1);
         }
         
         private synchronized void t_wait(long time) {
             try {
-                this.wait(time);
+                if (time > 0) this.wait(time);
+                else this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -281,19 +258,36 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         public void run() {
             while (programIsRunning) {
                 this.t_wait();
-                if (programIsRunning)
-                    stopByAnswer = false;
-                MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
-                this.t_wait(MusicPlayer.this.playtime /*- 10*/); // wait for given amount of time
-//                while (audioPlayer.isPlaying() && !stopByAnswer && programIsRunning) t_wait(10);
-                
-                MusicPlayer.this.setChanged();
-                MusicPlayer.this.notifyObservers(new PlayerResult(
-                        MusicPlayer.this.posB - MusicPlayer.this.posA,
-                        MusicPlayer.this.stopByAnswer
-                ));
+                if (programIsRunning) stopByAnswer = false;
+                else break;
+                try {
+                    MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
+                    this.t_wait(MusicPlayer.this.playtime /*- 10*/); // wait for given amount of time
+//                    while (audioPlayer.isPlaying() && !stopByAnswer && programIsRunning) t_wait(10);
+        
+                    MusicPlayer.this.setChanged();
+                    MusicPlayer.this.notifyObservers(new PlayerResult(
+                            MusicPlayer.this.posB - MusicPlayer.this.posA,
+                            MusicPlayer.this.stopByAnswer
+                    ));
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw e;
+//                    Timer timer = new Timer();
+//                    TimerTask task = new TimerTask() {
+//                        @Override
+//                        public void run() {
+//                            if(audioPlayer.position() >= posB){
+//                                audioPlayer.pause();
+//                            }
+//                            timer.cancel();
+//                        }
+//                    };
+//                    timer.scheduleAtFixedRate(task, 0, 1000);
+//                    audioPlayer.play();
+                }
             }
             MusicPlayer.this.stop();
+            ANSI.BLUE.println("MusicPlayer stopped.\n");
         }
         
     }

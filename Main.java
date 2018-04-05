@@ -1,5 +1,7 @@
 import design.Colors;
 import design.Labels;
+import functions.ANSI;
+import functions.ElementBackgroundCreator;
 import functions.ImageCreator;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -7,20 +9,19 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import model.Close;
-import model.PlayerResult;
-import model.Song;
-import model.gamemodes.ContinuousGame;
+import model.*;
+import model.gamemodes.NormalGame;
 import model.gamemodes.NormalGameController;
-import model.isGame;
 import scenes.ObservableScene;
 import scenes.start.StageController;
 
@@ -39,15 +40,11 @@ public class Main extends Application implements Observer {
     private Button answer1, answer2, answer3;
     private HBox answerButtons;
     private ArrayList<Song> answers;
-    private ContinuousGame cg;
+    private NormalGame cg;
     private NormalGameController ngc;
     private SimpleBooleanProperty isPlaying;
-    
-    public Main(){
-        this.stageController = new StageController(this);
-        ngc = new NormalGameController("Mee", this);
-        cg = new ContinuousGame("HELLO", this);
-    }
+    private Label currentTitle;
+    private StackPane root;
     
     private void test() {
 //        StackPane root = new StackPane();
@@ -92,7 +89,11 @@ public class Main extends Application implements Observer {
 //        this.stage.setScene(this.scene);
     }
     
-    //////////// METHODS
+    public Main() {
+        this.stageController = new StageController(this);
+        ngc = new NormalGameController("Mee", this);
+        cg = new NormalGame("HELLO", this);
+    }
     public static void main(String[] args) {
         launch(args);
     }
@@ -170,7 +171,27 @@ public class Main extends Application implements Observer {
         playBtn_mask.setCenterY(300);
         playBtn.setClip(playBtn_mask);
     }
-    
+    //////////// METHODS
+    private void evalGameStatus(GameMode.GameStatus arg) {
+        if (arg.mode() == GameMode.Mode.GAME_OVER) {
+            // TODO show game over screen
+            StackPane root = new StackPane();
+            AnchorPane ap = new AnchorPane();
+            VBox elems = new VBox();
+            ap.getChildren().add(elems);
+            root.setBackground(ElementBackgroundCreator.getBackground(Color.RED));
+            
+            elems.getChildren().add(Labels.H1.getLabel(
+                    "GAME OVER!", Colors.WHITE
+            ));
+            root.getChildren().add(ap);
+            elems.setMaxWidth(200);
+            
+            this.scene.setRoot(root);
+            
+            ANSI.BLUE.println(arg.toString());
+        }
+    }
     //////////// OVERRIDES
     @Override
     public void start(Stage primaryStage) {
@@ -190,13 +211,15 @@ public class Main extends Application implements Observer {
             h.setBlendMode(BlendMode.SOFT_LIGHT);
             st.getChildren().add(h);
         }
+    
+        this.currentTitle = new Label("CurrentSong for testing.");
         
         answer1 = new Button("answer1");
         answer2 = new Button("answer2");
         answer3 = new Button("answer3");
-        
-        StackPane stackPane = new StackPane();
-        stackPane.setPrefSize(675, 400);
+    
+        root = new StackPane();
+        root.setPrefSize(675, 400);
         
         answerButtons = new HBox();
         answerButtons.getChildren().addAll(answer1, answer2, answer3);
@@ -207,7 +230,7 @@ public class Main extends Application implements Observer {
             start.setDisable(true);
             isPlaying.set(true);
         });
-        vBox.getChildren().addAll(start, answerButtons);
+        vBox.getChildren().addAll(currentTitle, start, answerButtons);
         
         Button replay = new Button("Replay");
         vBox.getChildren().add(replay);
@@ -226,16 +249,15 @@ public class Main extends Application implements Observer {
         stopGame.setOnMouseClicked(event -> {
             cg.close(Close.Code.CLOSE);
         });
-        
-        stackPane.getChildren().addAll(vBox);
+    
+        root.getChildren().addAll(vBox);
         
         //primaryStage.setScene(this.stageController.getCurrentScene());
         this.stage = primaryStage;
-        scene = new Scene(stackPane);
+        scene = new Scene(root);
         this.stage.setScene(scene);
         this.stage.show();
     }
-
     /**
      * This method is called whenever the observed object is changed. An
      * application calls an <tt>Observable</tt> object's
@@ -249,6 +271,12 @@ public class Main extends Application implements Observer {
     public void update(Observable o, Object arg) {
         Platform.runLater(() -> {
             if (o != null && arg != null) {
+                if (o instanceof GameMode && arg instanceof String) {
+                    this.currentTitle.setText((String) arg);
+                }
+                if (arg instanceof GameMode.GameStatus) {
+                    this.evalGameStatus((GameMode.GameStatus) arg);
+                }
                 if (o instanceof StageController) {
                     if (arg instanceof ObservableScene) {
                         stage.setScene(((ObservableScene) arg).getScene());

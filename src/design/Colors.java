@@ -45,7 +45,11 @@ public enum  Colors {
 
     //// CONSTRUCTORS
 
-    /** @see Colors#Colors(Number, Number, Number, double, ColorMode) */
+//////////// CONSTRUCTORS
+    /**
+     * @param color The {@link Color} value for the {@link #color}.
+     * @see Colors#Colors(Number, Number, Number, double, ColorMode)
+     */
     Colors(Color color){
         this.color = color;
     }
@@ -64,7 +68,7 @@ public enum  Colors {
      *                  color for instance, nothing will be readjusted and {@link Color#color(double, double, double,
      *                  double)} will be called. But if is to be fitted into the {@link Color JavaFX color range}
      *                  {@code [0, 1]}, its {@link ColorMode#multiplier} will be used to fit the rgb values into the
-     *                  given range (if those are out of bounds) or just set to the {@link ColorMode#maxVal}.</br>
+     *                  given range (if those are out of bounds) or just set to the {@link ColorMode#maxVal}.
      */
     Colors(Number gray, double alpha, ColorMode colorMode){
         final double min = colorMode.getMinVal().doubleValue();
@@ -83,8 +87,10 @@ public enum  Colors {
                 alpha
         );
     }
-
-    /** @see Colors#Colors(Number, Number, Number, double, ColorMode) */
+    
+    /**
+     * @see Colors#Colors(Number, Number, Number, double, ColorMode)
+     */
     Colors(Number red, Number green, Number blue, ColorMode colorMode){
         this(red, green, blue, 1, colorMode);
     }
@@ -100,7 +106,7 @@ public enum  Colors {
      *                  color for instance, nothing will be readjusted and {@link Color#color(double, double, double,
      *                  double)} will be called. But if is to be fitted into the {@link Color JavaFX color range}
      *                  {@code [0, 1]}, its {@link ColorMode#multiplier} will be used to fit the rgb values into the
-     *                  given range (if those are out of bounds) or just set to the {@link ColorMode#maxVal}.</br>
+     *                  given range (if those are out of bounds) or just set to the {@link ColorMode#maxVal}.
      */
     Colors(Number red, Number green, Number blue, double alpha, ColorMode colorMode){
         final double min = colorMode.getMinVal().doubleValue();

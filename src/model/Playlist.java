@@ -9,8 +9,10 @@ import java.util.Collections;
  */
 class Playlist {
     
-    private ArrayList<String> songs;
+    /** A marker for the showing the current song. */
     private int pos;
+    /** A collection of song paths. */
+    private ArrayList<String> songs;
     
     Playlist(ArrayList<String> songpaths) {
         this(songpaths, false);
@@ -46,10 +48,10 @@ class Playlist {
     Song currentSong() {
         return new Song(this.songs.get(pos - 1));
     }
-    
+//////////// METHODS
     /**
      * @param exlcude These songs should be excluded.
-     * @return
+     * @return Returns a random {@link Song} from {@link #songs}
      */
     Song getRandomSong(ArrayList<Song> exlcude) {
         ArrayList<String> temp = new ArrayList<>(songs.size());

@@ -28,10 +28,13 @@ public class User {
     private Playlist playedPlaylist;
     /** The amount of points reached. */
     private int points;
+    /** A collection of all reaction times in a game. Used e.g. to get the fastest an slowest reaction times. */
+    private ArrayList<Long> reactionTimes;
     
     public User(String name) {
         if (name == null || (name != null && name.isEmpty())) this.name = getRandomName();
         else this.name = name;
+        this.reactionTimes = new ArrayList<>();
         this.points = 0;
         this.datePlayed = LocalDateTime.now();
         this.correctAnswered = new ArrayList<>();
@@ -70,12 +73,14 @@ public class User {
     void setPlayedPlaylist(Playlist playedPlaylist) {
         this.playedPlaylist = playedPlaylist;
     }
-    
-    void setReactionTimes(ArrayList<Long> milliseconds) {
-        this.minReaction = Collections.min(milliseconds);
-        this.maxReaction = Collections.max(milliseconds);
+    public ArrayList<Long> getReactionTimes() {
+        return reactionTimes;
     }
-    
+    void addReactionTime(long milliseconds) {
+        this.reactionTimes.add(milliseconds);
+        this.minReaction = Collections.min(this.reactionTimes);
+        this.maxReaction = Collections.max(this.reactionTimes);
+    }
     private String getRandomName() {
         final String namePath = "/Users/HxA/IdeaProjects/ReActReloaded/res/init/names.txt";
         String str = "Player";

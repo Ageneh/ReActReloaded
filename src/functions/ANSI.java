@@ -32,6 +32,11 @@ public enum ANSI {
     public void print(String str) {
         System.out.print(esc + str + end);
     }
+    
+    //////////// METHODS
+    public void print(Object str) {
+        System.out.print(esc + str.toString() + end);
+    }
 
     public void println(String str) {
         this.print(str + System.lineSeparator());

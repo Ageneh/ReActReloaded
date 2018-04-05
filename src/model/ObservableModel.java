@@ -3,16 +3,17 @@ package model;
 import java.util.Observer;
 
 /**
+ * An abstract class as a template for observable classes which are part of the {@link model} package.
+ *
  * @author Henock Arega
  * @project ReActReloaded
- * <p>
- * An abstract class as a template for observable classes which are part of the {@link model} package.
  */
 public abstract class ObservableModel extends Observable implements Close {
     
     public ObservableModel() {
     }
     
+    //////////// OVERRIDES
     @Override
     public synchronized void addObserver(Observer o) {
         try {
@@ -26,7 +27,6 @@ public abstract class ObservableModel extends Observable implements Close {
         super.notifyObservers();
     }
     
-    //////////// OVERRIDES
     @Override
     public synchronized void notifyObservers(Object arg) {
         setChanged();

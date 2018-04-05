@@ -1,6 +1,7 @@
 package design;
 
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -28,14 +29,19 @@ public enum Labels {
         this.weight = weight;
         this.fontFamily = fontFamily;
     }
-
+    
+    //////////// METHODS
     public Label getLabel(String text, Colors color){
+        return this.getLabel(text, color.getColor());
+    }
+    
+    public Label getLabel(String text, Color color) {
         Label label = new Label(text);
         label.setFont(Font.font(
                 this.fontFamily.getFontfamily(),
                 FontWeight.findByWeight(this.weight),
                 this.size));
-        label.setTextFill(color.getColor());
+        label.setTextFill(color);
         return label;
     }
 

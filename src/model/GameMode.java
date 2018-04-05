@@ -1,6 +1,7 @@
 package model;
 
 import functions.ANSI;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.*;
 import java.util.Observable;
@@ -16,31 +17,52 @@ import java.util.concurrent.TimeUnit;
 public abstract class GameMode extends ObservableModel implements Observer, isGame {
     
     //////////// VARIABLES
-    private final static int MILLIS_PER_SEC = 1000;
+    
+    /*
+        TODO: make implement multiplier change in gamemode
+    */
+    /** Max threshold to step get a higher multiplier score. */
+    public static final int MAXSTEP = 7;
+    /** The max val for the multiplier. */
+    public static final int MAX_MULT = 6;
+    /** Min threshold to step get a higher multiplier score. */
+    public static final int MINSTEP = 3;
+    /** The min val for the multiplier. */
+    public static final int MIN_MULT = 1;
     private final static int SEC_PER_MIN = 60;
-    private final static int MIN_PER_H = 60;
+    /** The standard amount of answers at the beginning of a game. */
+    private final int STD_ANSWERCOUNT;
     private final GameStatus gameStatus;
-    private final int STD_ANSWERCOUNT = 2;
-    private final int STD_REPLAY = 1;
+    private boolean correctAnswer;
+    private final static int MILLIS_PER_SEC = 1000;
+    private final static int MIN_PER_H = 60;
     private final int POINTS = 10;
+    /**
+     * A flag used for {@link #answer(Song)}.
+     *
+     * @see #answer(Song)
+     */
+    private boolean isAnswered;
+    /** A multiplier used to multiply the given points depending on the {@link #streak}. */
+    private int multiplier;
+    /** The {@link MusicPlayer} used to play each {@link Song random song}. */
+    private MusicPlayer musicPlayer;
     /** The game mode of each game. */
     protected Mode mode;
     /** The amount of answers which are defined by the actual game round */
     private int answerCount;
     /** The answers the {@link User} can choose from - including the correct answer. */
     private Song[] answers;
-    /** The song library used for each game. */
-    private SongLibrary songLibrary;
-    /** The {@link MusicPlayer} used to play each {@link Song random song}. */
-    private MusicPlayer musicPlayer;
-    /** Logs the time when a game has started, as a reference for the duration of a game. */
-    private long startTime;
     /** A counter which will count the amount of times a song has been replayed. */
     private int replayCount;
     /** The playlist for each game round. Will be recreated with every game. */
     private Playlist gamePlaylist;
     /** A flag which will be set when {@link #start()} has been called. */
     private boolean hasStarted;
+    /** The song library used for each game. */
+    private SongLibrary songLibrary;
+    /** Logs the time when a game has started, as a reference for the duration of a game. */
+    private long startTime;
     /**
      * A flag which will be set when {@link #next()} has been called.
      * Will make it possible to call {@link #start()} through {@link #next()}.
@@ -48,17 +70,20 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     private boolean nextCalled;
     /** A counter for the points of each game */
     private int points;
+    private int step;
+    private int streak;
+    protected GameMode(Mode mode, String username, Observer o, Observer... observers) {
+        this(mode, 2, username, o, observers);
+    }
     /** A user object in which all the specific game data will be saved in for each {@link User player}. */
     private User user;
-    private ArrayList<Long> reactionTimes;
-    private boolean isAnswered;
-    private boolean correctAnswer;
     
     protected GameMode(Mode mode, Observer o, Observer... observers) {
         this(mode, "ReActor", o, observers);
     }
     
-    protected GameMode(Mode mode, String username, Observer o, Observer... observers) {
+    protected GameMode(Mode mode, final int answerCount, String username, Observer o, Observer... observers) {
+        this.STD_ANSWERCOUNT = answerCount;
         this.addAllObserver(o, observers);
         this.mode = mode;
         this.user = new User(username);
@@ -69,12 +94,36 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         this.gamePlaylist = new Playlist(this.songLibrary.getSongs());
         this.hasStarted = this.nextCalled = this.correctAnswer = this.isAnswered = false;
         this.songLibrary.close(Code.CLOSE);
-        this.reactionTimes = new ArrayList<>();
+        this.step = MINSTEP;
+        this.multiplier = this.MIN_MULT;
         
         this.gameStatus = new GameStatus();
     }
-    
     //////////// METHODS
+    /**
+     * Called to start and play the next song. Can only be called once (from outside of this class); only when starting.
+     * After initial call will only be called by {@link GameMode#next()} to play next.
+     */
+    public synchronized void start() {
+        if (!this.hasStarted || (this.hasStarted && this.nextCalled)) {
+            if (!this.hasStarted) this.hasStarted = true;
+            this.nextCalled = false;
+            this.isAnswered = false;
+            this.replayCount = 0;
+            this.startTime = System.currentTimeMillis();
+            try {
+                this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
+            }
+            
+            this.createAnswers(this.answerCount); //// TESTING TESTING
+            
+            notifyOfGameStatus();
+        } else {
+            throw new AlreadyStartedException();
+        }
+    }
     public Song song() {
         /********************************/
         /********************************/
@@ -96,29 +145,11 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         this.nextCalled = true;
         this.start();
     }
-    
-    /**
-     * Called to start and play the next song.
-     * Can only be called once (from outside of this class); only when starting.
-     * After initial call will only be called by {@link GameMode#next()} to play next.
-     */
-    public void start() {
-        if (!this.hasStarted || (this.hasStarted && this.nextCalled)) {
-            if (!this.hasStarted) this.hasStarted = true;
-            this.nextCalled = false;
-            this.isAnswered = false;
-            this.replayCount = STD_REPLAY;
-            this.startTime = System.currentTimeMillis();
-            this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
-        
-            this.createAnswers(this.answerCount); //// TESTING TESTING
-        
-            notifyOfGameStatus();
-        } else {
-            throw new AlreadyStartedException();
-        }
+    public String getSong() {
+        return this.gamePlaylist.currentSong().getTitle();
     }
-    
+    @Deprecated
+    @Ignore
     public void setAnswerCount(int answerCount) {
         this.answerCount = answerCount;
     }
@@ -134,9 +165,11 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
      * Used to replay the current song.
      */
     public void replay() {
-        this.replayCount++;
-//        this.points -= POINTS / 2;
-        this.musicPlayer.replay(this.mode.additionalTime);
+        if (this.replayCount <= this.mode.maxReplay) {
+            this.replayCount++;
+            //        this.points -= POINTS / 2;
+            this.musicPlayer.replay(this.mode.additionalTime);
+        }
         this.notifyOfGameStatus();
     }
     
@@ -144,14 +177,18 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         return this.musicPlayer.getPlaytime();
     }
     
+    @Deprecated
+    @Ignore
     public void gameEnd() {
         this.user.setPlayedPlaylist(this.gamePlaylist);
         this.user.setPoints(this.points);
-        this.user.setReactionTimes(this.reactionTimes);
+//        this.user.setReactionTimes(this.reactionTimes);
         setChanged();
         notifyObservers(this.gameStatus);
     }
     
+    @Deprecated
+    @Ignore
     public void end() {
         // TODO: end ACTIONS
         long end = System.currentTimeMillis();
@@ -162,6 +199,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         this.musicPlayer.close(Code.CLOSE);
     }
     
+    @Deprecated
     public boolean answer(int idx) {
         return this.answer(this.answers[idx % this.answers.length]);
     }
@@ -181,19 +219,37 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         this.isAnswered = true;
         if (answer.equals(this.musicPlayer.currentSong())) {
             this.correctAnswer = true;
-            ANSI.GREEN.println("======================");
-            ANSI.GREEN.println("====  CORRECT ANSWER");
-            ANSI.GREEN.println("======================");
+            ANSI.GREEN.println("======================\n====  CORRECT ANSWER\n======================");
         } else {
             this.correctAnswer = false;
-            ANSI.RED.println("======================");
-            ANSI.RED.println("====  WRONG ANSWER");
-            ANSI.RED.println("======================");
+            ANSI.RED.println("======================\n====  WRONG ANSWER\n======================");
         }
-        this.reactionTimes.add(time - this.startTime);
-//        setChanged();
-//        notifyObservers(this.gameStatus);
+        this.calcMultiplier();
+//        this.reactionTimes.add(time - this.startTime);
+        this.user.addReactionTime(time - this.startTime);
         return this.correctAnswer;
+    }
+    
+    /** Calculates/defines the value of the multiplier. */
+    private void calcMultiplier() {
+        if (this.correctAnswer) {
+            this.streak++;
+            if (this.multiplier >= 1 && this.multiplier < MAX_MULT - 1 && streak > 0 && this.streak % this.step == 0) {
+                this.multiplier++;
+                this.step++;
+                if (this.step >= this.MAXSTEP) this.step = this.MAXSTEP;
+            }
+            System.out.println("SRTEAK:\t" + streak);
+            System.out.println("MULTI:\t " + multiplier);
+        } else {
+            this.streak = 0;
+            this.step = this.MINSTEP;
+            this.multiplier = this.MIN_MULT;
+        }
+    }
+    
+    private void stepUp(){
+    
     }
     
     public int getReplayCount() {
@@ -334,7 +390,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         /**
          * @see model.gamemodes.TimedGame
          */
-        TIMED(TimeUnit.SECONDS.toMillis(10) * SEC_PER_MIN),
+        TIMED(1000, 1000, 3),
         /**
          * @see model.gamemodes.ContinuousGame
          */
@@ -342,9 +398,12 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         /** Song plays for up to {@link #lengthInMillis} seconds */
         REACTION(TimeUnit.SECONDS.toMillis(10), 0, 0),
         GAME_OVER;
-        
-        private long lengthInMillis;
+    
+        /** The time added to playback when replaying {@link Song}. */
         private long additionalTime;
+        /** The beginning length of playback. */
+        private long lengthInMillis;
+        /** The mac count of replays allowed. */
         private int maxReplay;
     
         //////////// CONSTRUCTORS
@@ -361,7 +420,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         Mode(long length) {
             this(length, 0, 0);
         }
-    
+        
         //////////// METHODS
         public long millis() {
             return TimeUnit.MILLISECONDS.toMillis(this.lengthInMillis);
@@ -401,13 +460,11 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         private Mode mode;
     
         //////////// CONSTRUCTORS
-// CONSTRUCTORS
         private GameStatus() {
             this.mode = GameMode.this.mode;
         }
     
         //////////// METHODS
-// METHODS
         public boolean isAnswered() {
             return isAnswered;
         }
@@ -441,7 +498,6 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         }
     
         //////////// OVERRIDES
-// OVERRIDES
         @Override
         public String toString() {
             String str = "";
@@ -452,12 +508,15 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
 //            if(isAnswered)
             str += System.lineSeparator();
             str += "Song:\t\t\t" + gamePlaylist.currentSong().getTitle() + ", " + gamePlaylist.currentSong().getArtist();
-        
-            if (reactionTimes.size() >= 1) {
+    
+            ArrayList<Long> times = GameMode.this.user.getReactionTimes();
+            if (times.size() >= 1) {
                 str += System.lineSeparator();
-                long sec = TimeUnit.MILLISECONDS.toSeconds(reactionTimes.get(reactionTimes.size() - 1));
-                long millisec = reactionTimes.get(reactionTimes.size() - 1) - TimeUnit.SECONDS.toMillis(sec);
-                str += "Reaction:\t\t" + String.format("%d:%d sec", sec, millisec);
+                long minSec = TimeUnit.MILLISECONDS.toSeconds(GameMode.this.user.getMinReaction());
+                long minMillis = GameMode.this.user.getMinReaction() - TimeUnit.SECONDS.toMillis(minSec);
+                long maxSec = TimeUnit.MILLISECONDS.toSeconds(GameMode.this.user.getMaxReaction());
+                long maxMillis = GameMode.this.user.getMaxReaction() - TimeUnit.SECONDS.toMillis(minSec);
+                str += "Reaction (min/max):\t\t" + String.format("%d:%d sec / %d:%d sec", minSec, minMillis, maxSec, maxMillis);
             }
             return str;
         }

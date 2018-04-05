@@ -10,38 +10,34 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 /**
- * @author Henock Arega
- * @project ReActReloaded
- * <p>
  * A class which will contain all the necessary information about a mp3-file
  * for the gameplay.
  * <br>Additionally the{@link MetaExtractor} is used to extract the necessary from a
  * mp3-file.
  * @see MetaExtractor
+ *
+ * @author Henock Arega
+ * @project ReActReloaded
  */
 public class Song {
     
     /**
-     * @author Henock Arega
      * The accepted file extension.
      */
     public static final String EXTENSION = "mp3";
     /**
-     * @author Henock Arega
      * The path of the standard cover image
      * @see Song#coverImg
      */
     public static final String COVER_IMG = "img/std_cover.jpg";
     
     /**
-     * @author Henock Arega
      * An array containing the title, album and artist of the {@link Song}.
      */
     private String[] meta;
     private MetaExtractor metaExtractor;
     private long length;
     /**
-     * @author Henock Arega
      * A {@link java.lang.reflect.Array byte array} of the cover image.
      */
     private byte[] coverImg;
@@ -54,6 +50,9 @@ public class Song {
             File temp = checkSong(path);
             this.absPath = temp.getAbsolutePath();
             try {
+                if (absPath.contains("12 Stainless (feat. Dria)")) {
+                    System.out.println("STOP");
+                }
                 this.metaExtractor = new MetaExtractor(temp);
                 this.meta = new String[MetaPos.values().length];
                 this.meta[MetaPos.TITLE.val] = this.metaExtractor.extractTitle();
@@ -108,12 +107,16 @@ public class Song {
     public String getAbsPath() {
         return absPath;
     }
-    
+
+//////////// METHODS
     /**
      * @param path The path which is to be checked.
-     * @author Henock Arega
      * Checks the given path and if the given path directs to anything but a valid mp3-song a
      * {@link SongInvalidException} will be thrown.
+     * @return Returns a File if the argument links to a mp3 song but throws a {@link SongInvalidException} if the given
+     * argument links to anything else.
+     *
+     * @author Henock Arega
      */
     private File checkSong(String path) {
         final File temp = new File(path);
@@ -138,8 +141,9 @@ public class Song {
     }
     
     /**
-     * @author Henock Arega
      * A class used to extract necessary information/meta-data from a given mp3-file.
+     *
+     * @author Henock Arega
      */
     private class MetaExtractor {
         

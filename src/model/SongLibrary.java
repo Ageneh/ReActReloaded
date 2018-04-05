@@ -6,36 +6,33 @@ import org.ini4j.InvalidFileFormatException;
 import org.ini4j.Profile.Section;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 /**
- * @author Henock Arega
- * @project ReActReloaded
  * <p>
  * A class used to manage all folders, which are to be used as source folders.
  * <p>
  * Every time a playlist is needed one will be created by randomising the order of songs which are to be played.
+ *
+ * @author Henock Arega
+ * @project ReActReloaded
  */
 class SongLibrary implements Close, WritesINI {
 
 //////////// VARIABLES
     /** The minimum amount of {@link Song songs} needed to start a game. */
     public final static int MIN_SONG_COUNT = 9;
-    
-    private static final String SECTION = "MUSIC";
     /** The prefix of key which points to a directory which contains mp3-files. */
     private static final String KEY_PRE = "MDIR";
+    private static final String SECTION = "MUSIC";
     /** Has all paths containing mp3-files. */
     private static ArrayList<String> folderPaths;
-    private static ArrayList<String> songs;
+    private boolean hasEnoughSongs;
     /**
      * A playlist of all given songs.
      */
     private Playlist playlist;
-    private boolean hasEnoughSongs;
+    private static ArrayList<String> songs;
     
     SongLibrary() {
         this.folderPaths = new ArrayList<>();
@@ -44,6 +41,7 @@ class SongLibrary implements Close, WritesINI {
         this.readINI();
     }
     
+    //////////// METHODS
     /**
      * Adds all the parts of the argument to the list.
      *
@@ -94,13 +92,35 @@ class SongLibrary implements Close, WritesINI {
             return null;
         }
         if (this.playlist == null) {
-            this.playlist = new model.Playlist(this.songs);
+            this.playlist = new Playlist(songs);
         }
-        return playlist;
+        return this.playlist;
     }
     
+    public Playlist getPlaylistShuffled() {
+        if (this.songs == null || this.songs.size() == 0) {
+            // TODO throw exception so that the minimum of songs is given
+            return null;
+        }
+        return new Playlist(this.getSongs());
+    }
+    
+    /**
+     * @return returns a shuffled list of {@link #songs all songs}. Will be different for each call without affecting
+     * the original {@link #songs song list}.
+     */
     public ArrayList<String> getSongs() {
-        return songs;
+        ArrayList<String> songsShuffled = new ArrayList<>();
+        songsShuffled.addAll(this.songs);
+        Collections.shuffle(songsShuffled, new Random((int) (Math.random() * 2345432)));
+        Collections.shuffle(songsShuffled, new Random((int) (Math.random() * 2345432)));
+        Collections.shuffle(songsShuffled, new Random((int) (Math.random() * 2345432)));
+        
+        return songsShuffled;
+    }
+    
+    public static ArrayList<String> getFolderPaths() {
+        return folderPaths;
     }
     
     /**
@@ -165,6 +185,7 @@ class SongLibrary implements Close, WritesINI {
      *
      * @param file If the file is a mp3 file true will be returned otherwise the return
      *             value is false.
+     * @return Returns true if the argument is a mp3 song. False if not.
      */
     private boolean isMusicFile(File file) {
         if (this.isDir(file)) return false;
@@ -192,11 +213,7 @@ class SongLibrary implements Close, WritesINI {
             }
         }
     }
-    
-    public static ArrayList<String> getFolderPaths() {
-        return folderPaths;
-    }
-    
+
     //////////// OVERRIDES
     @Override
     public void writeINI() {
