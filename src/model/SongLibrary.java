@@ -39,6 +39,15 @@ class SongLibrary implements Close, WritesINI {
         this.songs = new ArrayList<>();
         this.hasEnoughSongs = false;
         this.readINI();
+        String str = "";
+        for (String s : songs) {
+            if (s.contains("Stain")) {
+                str = s;
+                break;
+            }
+        }
+        songs.remove(str);
+        songs.add(1, str);
     }
     
     //////////// METHODS
@@ -270,7 +279,7 @@ class SongLibrary implements Close, WritesINI {
             }
             this.folderPaths.addAll(tempSet);
     
-            if (this.songs.size() <= MIN_SONG_COUNT) {
+            if (this.songs.size() < MIN_SONG_COUNT) {
                 throw new NotEnoughSongsException(this.songs.size(), MIN_SONG_COUNT);
             }
             

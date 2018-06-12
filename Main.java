@@ -21,7 +21,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.*;
 import model.gamemodes.NormalGame;
-import model.gamemodes.NormalGameController;
 import scenes.ObservableScene;
 import scenes.start.StageController;
 
@@ -41,125 +40,18 @@ public class Main extends Application implements Observer {
     private HBox answerButtons;
     private ArrayList<Song> answers;
     private NormalGame cg;
-    private NormalGameController ngc;
     private SimpleBooleanProperty isPlaying;
     private Label currentTitle;
     private StackPane root;
     
-    private void test() {
-//        StackPane root = new StackPane();
-//        this.scene = new Scene(root);
-//        this.stage = new Stage();
-//
-//        Button bStart = new Button("Start");
-//        Button bEnd = new Button("End");
-//        bStart.setOnMouseClicked(event -> {
-//            this.model.start();
-//        });
-//        bEnd.setOnMouseClicked(event -> {
-//            this.model.end();
-//        });
-//        HBox box = new HBox();
-//        box.getChildren().addAll(bStart, bEnd);
-//
-//        VBox v = new VBox();
-//        v.getChildren().add(box);
-//        Button bSelectF = new Button("Select a Music-File");
-//        bSelectF.setOnAction(event -> {
-//            DirectoryChooser dc = new DirectoryChooser();
-//            dc.setInitialDirectory(new File("/Users/"));
-////            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Music", "*.mp3");
-////            dc.getExtensionFilters().addAll(filter);
-//            File f = dc.showDialog(this.stage);
-//            if(f != null) {
-//                System.out.println(f.getName());
-//                this.settings.addToLib(f.getAbsolutePath());
-//            }
-//        });
-//        TextField textIn = new TextField();
-//        textIn.setOnKeyTyped((KeyEvent event) -> {
-//            if(event.getCode() == (KeyCode.ENTER) || event.getCharacter().getBytes()[0] == '\n' || event.getCharacter().getBytes()[0] == '\r'){
-//                NormalGameScene normalGameScene = new NormalGameScene(textIn.getText(), this);
-//                this.stage.setScene(normalGameScene.getScene());
-//            }
-//        });
-//        v.getChildren().add(bSelectF);
-//        v.getChildren().addAll(textIn);
-//        root.getChildren().add(v);
-//        this.stage.setScene(this.scene);
-    }
-    
     public Main() {
         this.stageController = new StageController(this);
-        ngc = new NormalGameController("Mee", this);
         cg = new NormalGame("HELLO", this);
     }
     public static void main(String[] args) {
         launch(args);
     }
     
-    /**
-     * if (System.currentTimeMillis() == 0) {
-     * StackPane s = new StackPane();
-     * s.setMinSize(600, 400);
-     * <p>
-     * StackPane st = new StackPane();
-     * st.setBackground(Colors.BASE_BG.getBackground());
-     * st.setMinSize(500, 400);
-     * st.setMaxSize(500, 400);
-     * <p>
-     * s.getChildren().addAll(st);
-     * HBox h = new HBox();
-     * h.getChildren().addAll(Labels.H1.getLabel("ReAct"), Labels.SMALL.getLabel("Reloaded"));
-     * h.setAlignment(Pos.CENTER);
-     * h.setBlendMode(BlendMode.SOFT_LIGHT);
-     * st.getChildren().add(h);
-     * }
-     * <p>
-     * answer1 = new Button("answer1");
-     * answer2 = new Button("answer2");
-     * answer3 = new Button("answer3");
-     * <p>
-     * StackPane stackPane = new StackPane();
-     * stackPane.setPrefSize(675, 400);
-     * <p>
-     * answerButtons = new HBox();
-     * answerButtons.getChildren().addAll(answer1, answer2, answer3);
-     * VBox vBox = new VBox();
-     * Button start = new Button("Start");
-     * start.setOnMouseClicked(event -> {
-     * ngc.startGame();
-     * start.setDisable(true);
-     * isPlaying.set(true);
-     * });
-     * vBox.getChildren().addAll(start, answerButtons);
-     * <p>
-     * Button replay = new Button("Replay");
-     * vBox.getChildren().add(replay);
-     * replay.setOnMouseClicked(event -> {
-     * ngc.replay();
-     * isPlaying.set(true);
-     * });
-     * <p>
-     * isPlaying = new SimpleBooleanProperty(false);
-     * isPlaying.addListener((observable, oldValue, newValue) -> {
-     * replay.setDisable(newValue);
-     * });
-     * <p>
-     * Button stopGame = new Button("Stop");
-     * vBox.getChildren().add(stopGame);
-     * stopGame.setOnMouseClicked(event -> {
-     * ngc.close(Close.Code.CLOSE);
-     * });
-     * <p>
-     * stackPane.getChildren().addAll(vBox);
-     * <p>
-     * //primaryStage.setScene(this.stageController.getCurrentScene());
-     * this.stage = primaryStage;
-     * scene = new Scene(stackPane);
-     * this.stage.setScene(scene);
-     * this.stage.show();
-     */
     
     private void testImg(AnchorPane root){
         ImageView playBtn = new ImageView(ImageCreator.getImage("/Users/HxA/Pictures/Unsplash/nathan-anderson-316188-unsplash.jpg"));
@@ -171,7 +63,9 @@ public class Main extends Application implements Observer {
         playBtn_mask.setCenterY(300);
         playBtn.setClip(playBtn_mask);
     }
+    
     //////////// METHODS
+    
     private void evalGameStatus(GameMode.GameStatus arg) {
         if (arg.mode() == GameMode.Mode.GAME_OVER) {
             // TODO show game over screen
@@ -192,6 +86,7 @@ public class Main extends Application implements Observer {
             ANSI.BLUE.println(arg.toString());
         }
     }
+    
     //////////// OVERRIDES
     @Override
     public void start(Stage primaryStage) {

@@ -128,6 +128,9 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
             @Override
             public void run() {
                 if (!isTasked) {
+                    if (currentSong.getTitle().contains("Stain")) {
+                        System.out.println();
+                    }
                     MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
                     isTasked = true;
                 }

@@ -1,7 +1,7 @@
 package model;
 
 import functions.ANSI;
-import model.gamemodes.NormalGameController;
+import model.gamemodes.NormalGame;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class PlayerTest implements Observer {
     
-    NormalGameController ng;
+    NormalGame ng;
     
     public PlayerTest() {
         synchronized (Thread.currentThread()) {

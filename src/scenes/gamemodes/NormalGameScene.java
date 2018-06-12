@@ -1,6 +1,6 @@
 package scenes.gamemodes;
 
-import model.gamemodes.NormalGameController;
+import model.gamemodes.NormalGame;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -11,11 +11,11 @@ import java.util.Observer;
  */
 public class NormalGameScene extends GameScene {
     
-    private NormalGameController game;
+    private NormalGame game;
 
     public NormalGameScene(String name, Observer o, Observer ... observers) {
         super(o, observers);
-        this.game = new NormalGameController(name, o, observers);
+        this.game = new NormalGame(name, o, observers);
     }
     
     //////////// OVERRIDES

@@ -50,9 +50,6 @@ public class Song {
             File temp = checkSong(path);
             this.absPath = temp.getAbsolutePath();
             try {
-                if (absPath.contains("12 Stainless (feat. Dria)")) {
-                    System.out.println("STOP");
-                }
                 this.metaExtractor = new MetaExtractor(temp);
                 this.meta = new String[MetaPos.values().length];
                 this.meta[MetaPos.TITLE.val] = this.metaExtractor.extractTitle();
