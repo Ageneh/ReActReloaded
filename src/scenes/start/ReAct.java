@@ -18,7 +18,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.GameMode;
 import scenes.ObservableScene;
-import scenes.StartScene;
 import scenes.gamemodes.GameScene;
 
 import java.util.Observable;
@@ -32,14 +31,14 @@ public class ReAct extends Application implements Observer {
     private Scene scene;
     private Stage stage;
     private SimpleBooleanProperty ready;
-    private StartScene startScene;
+    //    private StartScene startScene;
     private StageController stageController;
-    
-    public ReAct() {
-//        gameScene = new NormalGameScene("", this);
-        this.startScene = new StartScene();
-        this.stageController = new StageController(startScene, this);
-    }
+
+//    public ReAct() {
+////        gameScene = new NormalGameScene("", this);
+//        this.startScene = new StartScene();
+//        this.stageController = new StageController(startScene, this);
+//    }
     
     public static void main(String[] args) {
         launch(args);
