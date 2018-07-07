@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da8d00e5-e263-477b-9d60-9eb81f814a59" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/model/Ranking.java" afterPath="$PROJECT_DIR$/src/model/Ranking.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/NameSceneController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/NormalGameSceneController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/ReAct.fxml" afterPath="$PROJECT_DIR$/src/scenes/fxml/ReAct.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/ReAct.java" afterPath="$PROJECT_DIR$/src/scenes/fxml/ReAct.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/ReActController.java" afterPath="$PROJECT_DIR$/src/scenes/fxml/ReActController.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/StartScene.java" afterPath="$PROJECT_DIR$/src/scenes/fxml/StartScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/exception/NoUserCreatedException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/mainstyle.css" afterPath="$PROJECT_DIR$/src/scenes/fxml/mainstyle.css" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/nameScene.fxml" afterPath="$PROJECT_DIR$/src/scenes/fxml/nameScene.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/normalgame_scene.fxml" afterPath="$PROJECT_DIR$/src/scenes/fxml/normalgame_scene.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/start/scene1.fxml" afterPath="" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/del/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,171 +18,56 @@
     <SUITE FILE_PATH="coverage/ReActReloaded$ReActTest.coverage" NAME="ReActTest Coverage Results" MODIFIED="1530971502622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.26730564">
+    <splitter split-orientation="horizontal" split-proportion="0.59817946">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ReActTest.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/ReActTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="146">
-                  <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ContinuousGameScene.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="28" column="92" lean-forward="false" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
-                  <folding>
-                    <element signature="e#671#672#0" expanded="true" />
-                    <element signature="e#708#709#0" expanded="true" />
-                    <element signature="e#935#936#0" expanded="true" />
-                    <element signature="e#967#968#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ContinuousGame.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-                  <folding>
-                    <element signature="e#493#494#0" expanded="true" />
-                    <element signature="e#545#546#0" expanded="true" />
-                    <element signature="e#591#592#0" expanded="true" />
-                    <element signature="e#641#642#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SongLibrary.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/model/SongLibrary.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-60">
-                  <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-                  <folding>
-                    <element signature="docComment;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;field#MIN_SONG_COUNT#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;field#KEY_PRE#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;field#folderPaths#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;field#playlist#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#SongLibrary#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#addToLib#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#addToLib#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#getPlaylist#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#getPlaylistShuffled#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#getSongs#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#getSongs#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#checkPaths#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#checkPaths#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#checkPaths#1;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#checkPaths#1;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#isDir#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#isDir#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="docComment;method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
-                    <element signature="method#readINI#0;class#SongLibrary#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/model/Playlist.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
-                  <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
-                  <folding>
-                    <element signature="docComment;class#Playlist#0" expanded="false" />
-                    <element signature="docComment;field#pos#0;class#Playlist#0" expanded="false" />
-                    <element signature="docComment;field#allSongs#0;class#Playlist#0" expanded="false" />
-                    <element signature="e#522#523#0" expanded="true" />
-                    <element signature="e#562#563#0" expanded="true" />
-                    <element signature="e#618#619#0" expanded="true" />
-                    <element signature="e#663#664#0" expanded="true" />
-                    <element signature="method#currentSong#0;class#Playlist#0" expanded="false" />
-                    <element signature="method#getNext#0;class#Playlist#0" expanded="false" />
-                    <element signature="docComment;method#getRandomSong#0;class#Playlist#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
           <file leaf-file-name="NormalGame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="42">
-                  <caret line="35" column="37" lean-forward="false" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-                  <folding>
-                    <element signature="e#2714#2715#0" expanded="true" />
-                    <element signature="e#2750#2751#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="NormalGameScene.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
-                  <caret line="41" column="63" lean-forward="true" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
-                  <folding>
-                    <element signature="docComment;class#NormalGameScene#0" expanded="false" />
-                    <element signature="e#1425#1594#0" expanded="false" />
-                    <element signature="e#1699#2003#0" expanded="false" />
-                    <element signature="method#setAnswers#0;class#NormalGameScene#0" expanded="false" />
-                    <element signature="e#2541#3046#0" expanded="false" />
-                    <element signature="method#setAnswers#1;class#NormalGameScene#0" expanded="false" />
-                    <element signature="method#setFadeOut#0;class#NormalGameScene#0" expanded="false" />
-                    <element signature="e#3560#3920#0" expanded="false" />
-                    <element signature="method#update#0;class#NormalGameScene#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TimedGameScene.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="14" column="57" lean-forward="false" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+                <state relative-caret-position="510">
+                  <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GameScene.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="CoOpGame.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#406#407#0" expanded="true" />
+                    <element signature="e#447#448#0" expanded="true" />
+                    <element signature="e#688#689#0" expanded="true" />
+                    <element signature="e#724#725#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GameScene.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="577">
-                  <caret line="104" column="23" lean-forward="false" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
+                <state relative-caret-position="1003">
+                  <caret line="106" column="28" lean-forward="false" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
                   <folding>
                     <element signature="docComment;class#GameScene#0" expanded="false" />
-                    <element signature="method#GameScene#0;class#GameScene#0" expanded="false" />
-                    <element signature="e#2211#2380#0" expanded="false" />
-                    <element signature="e#2481#2785#0" expanded="false" />
-                    <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
-                    <element signature="method#init#0;class#GameScene#0" expanded="false" />
-                    <element signature="e#3749#3830#0" expanded="false" />
-                    <element signature="e#4303#4684#0" expanded="false" />
+                    <element signature="e#2319#2488#0" expanded="false" />
+                    <element signature="e#2593#2897#0" expanded="false" />
                     <element signature="method#start#0;class#GameScene#0" expanded="false" />
                     <element signature="method#addLayers#0;class#GameScene#0" expanded="false" />
-                    <element signature="method#setUser#0;class#GameScene#0" expanded="false" />
+                    <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
+                    <element signature="e#4569#5015#0" expanded="false" />
+                    <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
+                    <element signature="method#init#0;class#GameScene#0" expanded="false" />
+                    <element signature="e#5756#5837#0" expanded="false" />
+                    <element signature="e#6314#6695#0" expanded="false" />
+                    <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
+                    <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
+                    <element signature="e#7389#7749#0" expanded="false" />
+                    <element signature="method#setUser#1;class#GameScene#0" expanded="false" />
                     <element signature="method#update#0;class#GameScene#0" expanded="false" />
                     <element signature="class#GameBackground#0;class#GameScene#0" expanded="false" />
                     <element signature="method#GameBackground#0;class#GameBackground#0;class#GameScene#0" expanded="false" />
@@ -203,19 +77,76 @@
             </entry>
           </file>
         </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="isGame.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/model/isGame.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-second>
     </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>streak</find>
+      <find>Alert</find>
+      <find>GAME_DONE</find>
+      <find>GAME_OVER</find>
+      <find>gamePl</find>
+      <find>(Action.</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/StartScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
+        <option value="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" />
+        <option value="$PROJECT_DIR$/src/model/GameMode.java" />
+        <option value="$PROJECT_DIR$/src/model/isGame.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
+        <option value="$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java" />
+        <option value="$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java" />
+      </list>
+    </option>
+  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1854" />
+    <option name="height" value="1178" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -232,7 +163,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,13 +171,58 @@
               <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="init" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="gamemodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="scenes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="scenes" type="462c0819:PsiDirectoryNode" />
+              <item name="gamemodes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -345,39 +321,73 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="icons">
+      <created>1530976769858</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1530976769858</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixed buttons on game.start()">
+      <created>1530977618009</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1530977618009</updated>
+    </task>
+    <task id="LOCAL-00003" summary="created Continuous gameplay with Scene">
+      <created>1530982288119</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1530982288119</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da8d00e5-e263-477b-9d60-9eb81f814a59" name="Default" comment="" />
+      <created>1530982378065</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1530982378065</updated>
+      <workItem from="1530982379854" duration="78000" />
+      <workItem from="1530985006102" duration="9000" />
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157000" />
+    <option name="totallyTimeSpent" value="3689000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
+    <frame x="0" y="22" width="1854" height="1178" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20498616" sideWeight="0.5042598" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20498616" sideWeight="0.5042598" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20498616" sideWeight="0.49574015" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20498616" sideWeight="0.49574015" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25239617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18432671" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24099723" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -405,19 +415,149 @@
       </map>
     </option>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="icons" />
+    <MESSAGE value="fixed buttons on game.start()" />
+    <MESSAGE value="created Continuous gameplay with Scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="created Continuous gameplay with Scene" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="11" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="106" column="28" lean-forward="false" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+          <folding>
+            <element signature="docComment;class#GameScene#0" expanded="false" />
+            <element signature="e#2319#2488#0" expanded="false" />
+            <element signature="e#2593#2897#0" expanded="false" />
+            <element signature="method#start#0;class#GameScene#0" expanded="false" />
+            <element signature="method#addLayers#0;class#GameScene#0" expanded="false" />
+            <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
+            <element signature="e#4569#5015#0" expanded="false" />
+            <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
+            <element signature="method#init#0;class#GameScene#0" expanded="false" />
+            <element signature="e#5756#5837#0" expanded="false" />
+            <element signature="e#6314#6695#0" expanded="false" />
+            <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
+            <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
+            <element signature="e#7389#7749#0" expanded="false" />
+            <element signature="method#setUser#1;class#GameScene#0" expanded="false" />
+            <element signature="method#update#0;class#GameScene#0" expanded="false" />
+            <element signature="class#GameBackground#0;class#GameScene#0" expanded="false" />
+            <element signature="method#GameBackground#0;class#GameBackground#0;class#GameScene#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/isGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="106" column="28" lean-forward="false" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+          <folding>
+            <element signature="docComment;class#GameScene#0" expanded="false" />
+            <element signature="e#2319#2488#0" expanded="false" />
+            <element signature="e#2593#2897#0" expanded="false" />
+            <element signature="method#start#0;class#GameScene#0" expanded="false" />
+            <element signature="method#addLayers#0;class#GameScene#0" expanded="false" />
+            <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
+            <element signature="e#4569#5015#0" expanded="false" />
+            <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
+            <element signature="method#init#0;class#GameScene#0" expanded="false" />
+            <element signature="e#5756#5837#0" expanded="false" />
+            <element signature="e#6314#6695#0" expanded="false" />
+            <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
+            <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
+            <element signature="e#7389#7749#0" expanded="false" />
+            <element signature="method#setUser#1;class#GameScene#0" expanded="false" />
+            <element signature="method#update#0;class#GameScene#0" expanded="false" />
+            <element signature="class#GameBackground#0;class#GameScene#0" expanded="false" />
+            <element signature="method#GameBackground#0;class#GameBackground#0;class#GameScene#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/isGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
           <caret line="72" column="20" lean-forward="false" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
-          <folding>
-            <element signature="e#2714#2715#0" expanded="true" />
-            <element signature="e#2750#2751#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -449,28 +589,27 @@
             <element signature="docComment;method#start#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#addPoints#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#addPoints#1;class#GameMode#0" expanded="false" />
-            <element signature="method#addPoints#1;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#answer#1;class#GameMode#0" expanded="false" />
             <element signature="method#answer#1;class#GameMode#0" expanded="false" />
-            <element signature="e#7217#7228#0" expanded="false" />
+            <element signature="e#7262#7273#0" expanded="false" />
             <element signature="method#end#0;class#GameMode#0" expanded="false" />
-            <element signature="e#7783#7794#0" expanded="false" />
+            <element signature="e#7828#7839#0" expanded="false" />
             <element signature="method#gameEnd#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#next#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#replay#0;class#GameMode#0" expanded="false" />
             <element signature="method#replay#0;class#GameMode#0" expanded="false" />
-            <element signature="e#9784#9795#0" expanded="false" />
+            <element signature="e#9829#9840#0" expanded="false" />
             <element signature="method#setAnswerCount#0;class#GameMode#0" expanded="false" />
             <element signature="method#song#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#subtractPoints#0;class#GameMode#0" expanded="false" />
+            <element signature="e#10833#10834#0" expanded="true" />
+            <element signature="e#10868#10869#0" expanded="true" />
             <element signature="docComment;method#calcMultiplier#0;class#GameMode#0" expanded="false" />
             <element signature="method#calcMultiplier#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#createAnswers#0;class#GameMode#0" expanded="false" />
             <element signature="method#stepUp#0;class#GameMode#0" expanded="false" />
-            <element signature="method#update#0;class#GameMode#0" expanded="false" />
-            <element signature="e#13694#13750#0" expanded="false" />
-            <element signature="e#13985#13986#0" expanded="true" />
-            <element signature="e#14038#14039#0" expanded="true" />
+            <element signature="e#13772#13773#0" expanded="true" />
+            <element signature="e#13825#13826#0" expanded="true" />
             <element signature="method#close#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;class#Mode#0;class#GameMode#0" expanded="false" />
             <element signature="class#Mode#0;class#GameMode#0" expanded="false" />
@@ -494,16 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="29" />
-          <folding>
-            <element signature="docComment;class#ReAct#0" expanded="false" />
-            <element signature="method#initialize#0;class#ReAct#0" expanded="false" />
-            <element signature="method#evalGameStatus#0;class#ReAct#0" expanded="false" />
-            <element signature="method#start#0;class#ReAct#0" expanded="false" />
-            <element signature="e#3852#3953#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#ReAct#0" expanded="false" />
-            <element signature="method#update#0;class#ReAct#0" expanded="false" />
-            <element signature="e#4949#5001#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -518,7 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="249" column="32" lean-forward="false" selection-start-line="249" selection-start-column="32" selection-end-line="249" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -533,18 +661,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="388" column="0" lean-forward="false" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/nameScene.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/awt/event/ActionEvent.java">
@@ -556,33 +683,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/startScene.fxml" />
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/ReAct.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/ReActController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="79" column="4" lean-forward="true" selection-start-line="79" selection-start-column="4" selection-end-line="108" selection-end-column="5" />
-          <folding>
-            <element signature="method#setGameMode#0;class#ReActController#0" expanded="false" />
-            <element signature="method#start#0;class#ReActController#0" expanded="false" />
-            <element signature="e#2616#2617#0" expanded="false" />
-            <element signature="e#2668#2669#0" expanded="false" />
-            <element signature="e#2725#2726#0" expanded="false" />
-            <element signature="e#2770#2771#0" expanded="false" />
-            <element signature="e#2828#2829#0" expanded="false" />
-            <element signature="e#2874#2875#0" expanded="false" />
-            <element signature="e#2935#2936#0" expanded="false" />
-            <element signature="e#2984#2985#0" expanded="false" />
-            <element signature="method#close#0;class#ReActController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -605,19 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="15" column="41" lean-forward="false" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-          <folding>
-            <element signature="docComment;class#User#0" expanded="false" />
-            <element signature="docComment;field#correctAnswered#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#datePlayed#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#maxReaction#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#minReaction#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#name#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#playedPlaylist#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#points#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#reactionTimes#0;class#User#0" expanded="false" />
-            <element signature="method#User#0;class#User#0" expanded="false" />
-            <element signature="method#addReactionTime#0;class#User#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -625,12 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding>
-            <element signature="docComment;class#Ranking#0" expanded="false" />
-            <element signature="method#Ranking#0;class#Ranking#0" expanded="false" />
-            <element signature="e#2082#2083#0" expanded="false" />
-            <element signature="e#2120#2121#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -638,7 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1591">
           <caret line="133" column="11" lean-forward="false" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -649,39 +742,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
-          <folding>
-            <element signature="docComment;class#Playlist#0" expanded="false" />
-            <element signature="docComment;field#pos#0;class#Playlist#0" expanded="false" />
-            <element signature="docComment;field#allSongs#0;class#Playlist#0" expanded="false" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="method#currentSong#0;class#Playlist#0" expanded="false" />
-            <element signature="method#getNext#0;class#Playlist#0" expanded="false" />
-            <element signature="docComment;method#getRandomSong#0;class#Playlist#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/ReAct.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="29" />
-          <folding>
-            <element signature="docComment;class#ReAct#0" expanded="false" />
-            <element signature="method#initialize#0;class#ReAct#0" expanded="false" />
-            <element signature="method#evalGameStatus#0;class#ReAct#0" expanded="false" />
-            <element signature="method#start#0;class#ReAct#0" expanded="false" />
-            <element signature="e#3852#3953#0" expanded="false" />
-            <element signature="docComment;method#update#0;class#ReAct#0" expanded="false" />
-            <element signature="method#update#0;class#ReAct#0" expanded="false" />
-            <element signature="e#4949#5001#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -689,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="265" column="16" lean-forward="false" selection-start-line="265" selection-start-column="16" selection-end-line="265" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -697,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="182" column="94" lean-forward="false" selection-start-line="182" selection-start-column="94" selection-end-line="182" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,76 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/GameMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="79" column="14" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
-          <folding>
-            <element signature="docComment;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MAXSTEP#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MAX_MULT#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MINSTEP#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MIN_MULT#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#STD_ANSWERCOUNT#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#isAnswered#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#multiplier#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#musicPlayer#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#answerCount#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#answers#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#replayCount#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#gamePlaylist#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#hasStarted#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#songLibrary#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#startTime#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#nextCalled#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#points#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#user#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#start#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#addPoints#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#addPoints#1;class#GameMode#0" expanded="false" />
-            <element signature="method#addPoints#1;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#answer#1;class#GameMode#0" expanded="false" />
-            <element signature="method#answer#1;class#GameMode#0" expanded="false" />
-            <element signature="e#7217#7228#0" expanded="false" />
-            <element signature="method#end#0;class#GameMode#0" expanded="false" />
-            <element signature="e#7783#7794#0" expanded="false" />
-            <element signature="method#gameEnd#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#next#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#replay#0;class#GameMode#0" expanded="false" />
-            <element signature="method#replay#0;class#GameMode#0" expanded="false" />
-            <element signature="e#9784#9795#0" expanded="false" />
-            <element signature="method#setAnswerCount#0;class#GameMode#0" expanded="false" />
-            <element signature="method#song#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#subtractPoints#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#calcMultiplier#0;class#GameMode#0" expanded="false" />
-            <element signature="method#calcMultiplier#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#createAnswers#0;class#GameMode#0" expanded="false" />
-            <element signature="method#stepUp#0;class#GameMode#0" expanded="false" />
-            <element signature="method#update#0;class#GameMode#0" expanded="false" />
-            <element signature="e#13694#13750#0" expanded="false" />
-            <element signature="e#13985#13986#0" expanded="true" />
-            <element signature="e#14038#14039#0" expanded="true" />
-            <element signature="method#close#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#NORMAL#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#TIMED#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#CONTINUOUS#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#REACTION#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#additionalTime#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#lengthInMillis#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#maxReplay#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="method#Mode#1;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="method#toString#0;class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="class#AlreadyStartedException#0;class#GameMode#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -782,71 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-60">
           <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-          <folding>
-            <element signature="docComment;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#MIN_SONG_COUNT#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#KEY_PRE#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#folderPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#playlist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#SongLibrary#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#addToLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#addToLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getPlaylist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getPlaylistShuffled#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#getSongs#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getSongs#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#checkPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#checkPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#checkPaths#1;class#SongLibrary#0" expanded="false" />
-            <element signature="method#checkPaths#1;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#isDir#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#isDir#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#readINI#0;class#SongLibrary#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="35" column="37" lean-forward="false" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-          <folding>
-            <element signature="e#2714#2715#0" expanded="true" />
-            <element signature="e#2750#2751#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding>
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#641#642#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="28" column="92" lean-forward="false" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
-          <folding>
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,18 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="41" column="10" lean-forward="false" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-          <folding>
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="57" lean-forward="false" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,14 +884,14 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.5651756003779687" x="695.4518582476945" y="3672.0527215443985" />
+          <settings layout="Hierarchic Group" zoom="0.5651756003779687" x="695.0" y="3672.0" />
           <SelectedNodes />
           <Categories>
-            <Category>Inner Classes</Category>
             <Category>Fields</Category>
+            <Category>Inner Classes</Category>
             <Category>Constructors</Category>
-            <Category>Methods</Category>
             <Category>Properties</Category>
+            <Category>Methods</Category>
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
@@ -988,64 +903,201 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/init/music.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/icons/icon_play.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
+    <entry file="file://$PROJECT_DIR$/ReActTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="41" column="63" lean-forward="true" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
-          <folding>
-            <element signature="docComment;class#NormalGameScene#0" expanded="false" />
-            <element signature="e#1425#1594#0" expanded="false" />
-            <element signature="e#1699#2003#0" expanded="false" />
-            <element signature="method#setAnswers#0;class#NormalGameScene#0" expanded="false" />
-            <element signature="e#2541#3046#0" expanded="false" />
-            <element signature="method#setAnswers#1;class#NormalGameScene#0" expanded="false" />
-            <element signature="method#setFadeOut#0;class#NormalGameScene#0" expanded="false" />
-            <element signature="e#3560#3920#0" expanded="false" />
-            <element signature="method#update#0;class#NormalGameScene#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="677">
+          <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ReActTest.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
+        <state relative-caret-position="124">
+          <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Close.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/init/music.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/StartScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="38" column="52" lean-forward="false" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/isGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="104" column="23" lean-forward="false" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
+        <state relative-caret-position="1003">
+          <caret line="106" column="28" lean-forward="false" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
           <folding>
             <element signature="docComment;class#GameScene#0" expanded="false" />
-            <element signature="method#GameScene#0;class#GameScene#0" expanded="false" />
-            <element signature="e#2211#2380#0" expanded="false" />
-            <element signature="e#2481#2785#0" expanded="false" />
-            <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
-            <element signature="method#init#0;class#GameScene#0" expanded="false" />
-            <element signature="e#3749#3830#0" expanded="false" />
-            <element signature="e#4303#4684#0" expanded="false" />
+            <element signature="e#2319#2488#0" expanded="false" />
+            <element signature="e#2593#2897#0" expanded="false" />
             <element signature="method#start#0;class#GameScene#0" expanded="false" />
             <element signature="method#addLayers#0;class#GameScene#0" expanded="false" />
-            <element signature="method#setUser#0;class#GameScene#0" expanded="false" />
+            <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
+            <element signature="e#4569#5015#0" expanded="false" />
+            <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
+            <element signature="method#init#0;class#GameScene#0" expanded="false" />
+            <element signature="e#5756#5837#0" expanded="false" />
+            <element signature="e#6314#6695#0" expanded="false" />
+            <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
+            <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
+            <element signature="e#7389#7749#0" expanded="false" />
+            <element signature="method#setUser#1;class#GameScene#0" expanded="false" />
             <element signature="method#update#0;class#GameScene#0" expanded="false" />
             <element signature="class#GameBackground#0;class#GameScene#0" expanded="false" />
             <element signature="method#GameBackground#0;class#GameBackground#0;class#GameScene#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="32" column="71" lean-forward="false" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+          <folding>
+            <element signature="e#878#879#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#1261#1262#0" expanded="true" />
+            <element signature="e#1293#1294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="68" column="13" lean-forward="false" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/GameMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="389" column="31" lean-forward="false" selection-start-line="389" selection-start-column="23" selection-end-line="389" selection-end-column="31" />
+          <folding>
+            <element signature="docComment;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MAXSTEP#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MAX_MULT#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MINSTEP#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MIN_MULT#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#STD_ANSWERCOUNT#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#isAnswered#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#multiplier#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#musicPlayer#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#answerCount#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#answers#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#replayCount#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#gamePlaylist#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#hasStarted#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#songLibrary#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#startTime#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#nextCalled#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#points#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#user#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#start#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#addPoints#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#addPoints#1;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#answer#1;class#GameMode#0" expanded="false" />
+            <element signature="method#answer#1;class#GameMode#0" expanded="false" />
+            <element signature="e#7262#7273#0" expanded="false" />
+            <element signature="method#end#0;class#GameMode#0" expanded="false" />
+            <element signature="e#7828#7839#0" expanded="false" />
+            <element signature="method#gameEnd#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#replay#0;class#GameMode#0" expanded="false" />
+            <element signature="method#replay#0;class#GameMode#0" expanded="false" />
+            <element signature="e#9829#9840#0" expanded="false" />
+            <element signature="method#setAnswerCount#0;class#GameMode#0" expanded="false" />
+            <element signature="method#song#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#subtractPoints#0;class#GameMode#0" expanded="false" />
+            <element signature="e#10833#10834#0" expanded="true" />
+            <element signature="e#10868#10869#0" expanded="true" />
+            <element signature="docComment;method#calcMultiplier#0;class#GameMode#0" expanded="false" />
+            <element signature="method#calcMultiplier#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#createAnswers#0;class#GameMode#0" expanded="false" />
+            <element signature="method#stepUp#0;class#GameMode#0" expanded="false" />
+            <element signature="e#13772#13773#0" expanded="true" />
+            <element signature="e#13825#13826#0" expanded="true" />
+            <element signature="method#close#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#NORMAL#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#TIMED#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#CONTINUOUS#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#REACTION#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#additionalTime#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#lengthInMillis#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#maxReplay#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="method#Mode#1;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;class#GameStatus#0;class#GameMode#0" expanded="false" />
+            <element signature="class#GameStatus#0;class#GameMode#0" expanded="false" />
+            <element signature="method#toString#0;class#GameStatus#0;class#GameMode#0" expanded="false" />
+            <element signature="class#AlreadyStartedException#0;class#GameMode#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="27" lean-forward="false" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
           </folding>
         </state>
       </provider>

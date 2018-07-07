@@ -2,6 +2,7 @@ package model;
 
 import functions.ANSI;
 import jdk.nashorn.internal.ir.annotations.Ignore;
+import scenes.gamemodes.NormalGameScene;
 
 import java.util.*;
 import java.util.Observable;
@@ -70,9 +71,9 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
      */
     private boolean nextCalled;
     /** A counter for the points of each game */
-    private int points;
+    protected int points;
     private int step;
-    private int streak;
+    protected int streak;
     /** A user object in which all the specific game data will be saved in for each {@link User player}. */
     protected User user;
     protected int gameRound;
@@ -398,14 +399,8 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     //////////// OVERRIDES
     @Override
     public void update(Observable o, Object arg) {
-        if (o instanceof MusicPlayer) {
-            /* when the musicplayer has changed (e.g. song is done) */
-        }
         if (arg != null) {
             if (arg instanceof PlayerResult) {
-//                if(((PlayerResult) arg).isAnswered()){
-//                    this.createAnswers(this.answerCount);
-//                }
                 setChanged();
                 notifyObservers(arg);
             }

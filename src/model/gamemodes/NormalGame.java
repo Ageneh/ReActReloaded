@@ -4,7 +4,6 @@ import model.GameMode;
 import model.Playlist;
 import model.Song;
 
-import java.util.Observable;
 import java.util.Observer;
 
 /**
@@ -61,7 +60,7 @@ public class NormalGame extends GameMode {
             setChanged();
             notifyObservers(Action.ANSWER_CORRECT);
             setChanged();
-    
+            
             super.next();
         } else {
             super.subtractPoints();
@@ -71,7 +70,7 @@ public class NormalGame extends GameMode {
         }
         this.answerType = res;
         
-        if(super.gameRound >= this.maxGameRound){
+        if (super.gameRound >= this.maxGameRound) {
             super.endGame();
         }
         
@@ -85,11 +84,6 @@ public class NormalGame extends GameMode {
             super.replay();
             super.addPoints(- (0.1));
         }
-    }
-    
-    @Override
-    public void update(Observable o, Object arg) {
-        super.update(o, arg);
     }
     
 }

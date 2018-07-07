@@ -36,7 +36,7 @@ public class StartScene extends ObservableScene {
         Button b = new Button("Hello");
         b.setOnAction(event -> {
             setChanged();
-            notifyObservers(new NormalGameScene());
+            notifyObservers(new NormalGameScene(this));
         });
         this.grid.addRow(1, b);
         

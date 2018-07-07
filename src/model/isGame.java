@@ -18,6 +18,7 @@ public interface isGame {
         ANSWER_CORRECT,
         ANSWER_INCORRECT,
         ANSWER,
+        LIFECOUNT,
         
         POINTS;
         
