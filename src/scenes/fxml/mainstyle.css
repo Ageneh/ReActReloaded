@@ -9,13 +9,10 @@
 }
 
 .menu-btn-text {
+    -fx-alignment: center;
     -fx-padding: 20 0 0 20;
 }
 
 .act-btn {
     -fx-background-color: #FFB312;
-}
-
-.return-btn {
-    -fx-background-color: #ffffff;
 }

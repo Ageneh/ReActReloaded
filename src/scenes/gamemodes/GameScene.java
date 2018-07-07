@@ -96,9 +96,9 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
     
     protected void setStartBG() {
         if (! this.started.get() && ! this.answered.get()) {
-            start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/play-button-1.png"));
+            start.setBackground(ElementBackgroundCreator.createBackgroundImg("res/icons/icon_play.png"));
         } else {
-            start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/restart.png"));
+            start.setBackground(ElementBackgroundCreator.createBackgroundImg("res/icons/icon_repeat.png"));
         }
     }
     
@@ -117,7 +117,7 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
         BorderPane root = new BorderPane();
     
         this.start = new ReButton("");
-        this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/play-button.png"));
+        this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("res/icons/icon_play.png"));
         root.setCenter(start);
         start.setPrefSize(40, 40);
         start.setCursor(Cursor.HAND);

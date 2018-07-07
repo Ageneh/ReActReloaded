@@ -34,7 +34,6 @@ public class StartScene extends Application {
         stage.show();
     }
 
-
     @FXML
     void setNewScene(ActionEvent event) throws IOException {
         System.out.println("test");

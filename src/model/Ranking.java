@@ -37,11 +37,11 @@ public class Ranking implements Serializable, Close {
         u.setPoints(3546576);
         r.add(u);
         r.close(Code.CLOSE);
-
+        
         r = new Ranking();
         System.out.println(r.getRanking());
     }
-
+    
     public ArrayList<User> getRanking() {
         this.ranking.sort(Comparator.comparing(User::getPoints));
         return new ArrayList<>(this.ranking);
@@ -76,7 +76,7 @@ public class Ranking implements Serializable, Close {
     public void add(User user){
         this.ranking.add(user);
     }
-
+    
     @Override
     public void close(Code code) {
         this.write();

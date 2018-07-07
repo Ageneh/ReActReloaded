@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -36,7 +35,6 @@ public class ReAct extends Application implements Observer {
     private Stage stage;
     private StartScene startScene;
     private ReActController controller;
-    private NameSceneController nsc;
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -59,7 +57,7 @@ public class ReAct extends Application implements Observer {
     public static void main(String[] args) {
         launch(args);
     }
-
+    
     @FXML
     void initialize() {
         assert root != null : "fx:id=\"root\" was not injected: check your FXML file 'ReAct.fxml'.";
@@ -67,30 +65,27 @@ public class ReAct extends Application implements Observer {
         assert settingsBtn != null : "fx:id=\"settingsBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
         assert quickGameBtn != null : "fx:id=\"quickGameBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
         assert rankingBtn != null : "fx:id=\"rankingBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
-
+        
     }
-
+    
     @FXML
     void showGameModeSelection(ActionEvent event) {
         System.out.println("Mode selection");
     }
-
+    
     @FXML
     void showRanking(ActionEvent event) {
         System.out.println("Ranking");
     }
-
+    
     @FXML
-    void showSettings(MouseEvent event) {
+    void showSettings(ActionEvent event) {
         System.out.println("Settigns");
     }
-
+    
     @FXML
-    void startNormalGame(MouseEvent event) throws IOException {
+    void startNormalGame(ActionEvent event) {
         System.out.println("Quick Maths");
-        nsc = new NameSceneController(quickGameBtn.getScene());
-//        Parent newScene = FXMLLoader.load(getClass().getResource("nameScene.fxml"));
-//        quickGameBtn.getScene().setRoot(newScene);
     }
     
     private void evalGameStatus(GameMode.GameStatus arg) {
@@ -113,13 +108,12 @@ public class ReAct extends Application implements Observer {
             ANSI.BLUE.println(arg.toString());
         }
     }
-
     
     //////////// OVERRIDES
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.stage = new Stage();
-
+        
         this.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ReAct.fxml"))));
         
         this.stage.setMinHeight(ObservableScene.Sizes.HEIGHT.getInt());

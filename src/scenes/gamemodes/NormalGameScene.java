@@ -35,8 +35,6 @@ import java.util.Observer;
  */
 public class NormalGameScene extends GameScene {
     
-    private NormalGame game;
-    
     public NormalGameScene(Observer... observers) {
         this(null, observers);
     }
@@ -125,7 +123,7 @@ public class NormalGameScene extends GameScene {
     
     @Override
     public void start() {
-        this.game.start();
+        super.game.start();
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(300), this.buttons);
         fadeTransition.setByValue(0.1);
         fadeTransition.setFromValue(this.buttons.getOpacity());

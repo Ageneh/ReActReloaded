@@ -3,6 +3,7 @@ package scenes.fxml;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -31,22 +32,22 @@ public class ReActController extends Controller implements Close {
     private StartScene startScene;
     @FXML
     private ResourceBundle resources;
-
+    
     @FXML
     private URL location;
-
+    
     @FXML
     private BorderPane root;
-
+    
     @FXML
     private HBox gameModeBtn;
-
+    
     @FXML
     private HBox settingsBtn;
-
+    
     @FXML
     private HBox quickGameBtn;
-
+    
     @FXML
     private Pane rankingBtn;
     
@@ -76,7 +77,7 @@ public class ReActController extends Controller implements Close {
     public void start() throws IOException {
         this.root = FXMLLoader.load(getClass().getResource(this.gameScene.getFxmlPath()));
     }
-
+    
     @FXML
     void initialize() {
         assert root != null : "fx:id=\"root\" was not injected: check your FXML file 'ReAct.fxml'.";
@@ -84,24 +85,24 @@ public class ReActController extends Controller implements Close {
         assert settingsBtn != null : "fx:id=\"settingsBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
         assert quickGameBtn != null : "fx:id=\"quickGameBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
         assert rankingBtn != null : "fx:id=\"rankingBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
-
+        
     }
-
+    
     @FXML
     void showGameModeSelection(ActionEvent event) {
         System.out.println("Mode selection");
     }
-
+    
     @FXML
     void showRanking(ActionEvent event) {
         System.out.println("Ranking");
     }
-
+    
     @FXML
     void showSettings(ActionEvent event) {
         System.out.println("Settigns");
     }
-
+    
     @FXML
     void startNormalGame(ActionEvent event) {
         System.out.println("Quick Maths");
@@ -112,8 +113,8 @@ public class ReActController extends Controller implements Close {
         this.gameScene.close(code);
         this.ranking.close(code);
     }
-
-
+    
+    
 }
 
 
