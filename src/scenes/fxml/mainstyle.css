@@ -16,7 +16,6 @@
     -fx-background-color: #FFB312;
 }
 
-.act-btn-text {
-    -fx-color: white;
-    -fx-padding: 20 0 0 20;
+.return-btn {
+    -fx-background-color: #ffffff;
 }

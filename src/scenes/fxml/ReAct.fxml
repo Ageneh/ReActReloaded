@@ -7,7 +7,7 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1275.0"
             styleClass="window-borderpane" stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8"
-            fx:controller="scenes.fxml.startScene">
+            fx:controller="scenes.fxml.ReAct">
     <top>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #15292F;"
                     BorderPane.alignment="CENTER">
@@ -37,7 +37,8 @@
             <children>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <children>
-                        <HBox prefHeight="80.0" prefWidth="400.0" styleClass="menu-btn" AnchorPane.leftAnchor="0.0">
+                        <HBox fx:id="quickGameBtn" onMouseClicked="#startNormalGame" prefHeight="80.0" prefWidth="400.0"
+                              styleClass="menu-btn" AnchorPane.leftAnchor="0.0">
                             <children>
                                 <Pane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFB312;"/>
                                 <Label alignment="TOP_LEFT" contentDisplay="CENTER" styleClass="menu-btn-text"
@@ -55,7 +56,8 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <HBox prefHeight="80.0" prefWidth="400.0" styleClass="menu-btn" AnchorPane.leftAnchor="0.0">
+                        <HBox fx:id="settingsBtn" onMouseClicked="#showSettings" prefHeight="80.0" prefWidth="400.0"
+                              styleClass="menu-btn" AnchorPane.leftAnchor="0.0">
                             <children>
                                 <Pane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFB312;"/>
                                 <Label alignment="TOP_LEFT" contentDisplay="CENTER" styleClass="menu-btn-text"
@@ -73,7 +75,8 @@
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                     <children>
-                        <HBox prefHeight="80.0" prefWidth="400.0" styleClass="menu-btn">
+                        <HBox fx:id="gameModeBtn" onMouseClicked="#showGameModeSelection" prefHeight="80.0"
+                              prefWidth="400.0" styleClass="menu-btn">
                             <children>
                                 <Pane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFB312;"/>
                                 <Label alignment="TOP_LEFT" contentDisplay="CENTER" styleClass="menu-btn-text"
@@ -89,9 +92,11 @@
                         </HBox>
                     </children>
                 </AnchorPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <AnchorPane onMouseClicked="#showRanking" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1"
+                            GridPane.rowIndex="3">
                     <children>
-                        <HBox prefHeight="80.0" prefWidth="400.0" styleClass="menu-btn">
+                        <HBox fx:id="rankingBtn" onMouseClicked="#showRanking" prefHeight="80.0" prefWidth="400.0"
+                              styleClass="menu-btn">
                             <children>
                                 <Pane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFB312;"/>
                                 <Label alignment="TOP_LEFT" contentDisplay="CENTER" styleClass="menu-btn-text"

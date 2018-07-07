@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="850.0" prefWidth="1275.0" styleClass="window-borderpane"
-            stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8">
+            stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8"
+            fx:controller="scenes.fxml.NameSceneController">
     <center>
         <GridPane BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -22,26 +22,41 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <TextField alignment="CENTER" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0"
-                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: yellow;"
-                      GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      prefHeight="50.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <Label text="Start">
-                            <font>
-                                <Font name="DIN Alternate Bold" size="58.0"/>
-                            </font>
-                        </Label>
+                        <HBox fx:id="startBtn" onMouseClicked="#startNormalGame" alignment="CENTER" maxHeight="50.0"
+                              maxWidth="250.0" prefHeight="50.0" prefWidth="250.0" styleClass="act-btn">
+                            <children>
+                                <Label text="Start">
+                                    <font>
+                                        <Font name="DIN Alternate Bold" size="58.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
                     </children>
                 </HBox>
-                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: yellow;"
-                      GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      prefHeight="50.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <children>
-                        <Label text="Zurück">
-                            <font>
-                                <Font name="DIN Alternate Bold" size="49.0"/>
-                            </font>
-                        </Label>
+                        <HBox fx:id="backBtn" onMouseClicked="#getStartScene" alignment="CENTER" maxHeight="50.0"
+                              maxWidth="250.0" prefHeight="50.0" prefWidth="250.0" styleClass="return-btn">
+                            <children>
+                                <Label text="Zurück">
+                                    <font>
+                                        <Font name="DIN Alternate Bold" size="49.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                      GridPane.rowIndex="1">
+                    <children>
+                        <TextField fx:id="nameInput" alignment="CENTER" maxWidth="200.0" prefHeight="50.0"
+                                   prefWidth="200.0" promptText="Namen eingeben"/>
                     </children>
                 </HBox>
             </children>

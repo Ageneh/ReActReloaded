@@ -37,12 +37,14 @@ public class Ranking implements Serializable, Close {
         try {
             FileInputStream fis = new FileInputStream(this.file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            
+
             Object o = ois.readObject();
-            
+
             this.ranking = (HashMap<Integer, String>) o;
+        } catch (EOFException eof) {
+            this.ranking = new HashMap<>();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
     

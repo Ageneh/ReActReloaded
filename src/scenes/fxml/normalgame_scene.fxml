@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="800.0" maxWidth="1275.0" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="800.0" prefWidth="1275.0" styleClass="window-borderpane"
-            stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8">
+            stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8"
+            fx:controller="scenes.fxml.NormalGameSceneController">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
     </top>
@@ -34,7 +36,7 @@
                                 vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <GridPane prefHeight="282.0" prefWidth="538.0">
+                <GridPane alignment="CENTER" prefHeight="282.0" prefWidth="538.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                     </columnConstraints>
@@ -44,22 +46,48 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <HBox fx:id="actBtn1" prefHeight="100.0" prefWidth="200.0"
-                              style="-fx-background-color: #FFB312;" styleClass="act-btn">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <Label fx:id="actBtnValue1" text="Button 1"/>
+                                <HBox fx:id="actBtn1" alignment="CENTER" maxHeight="50.0" maxWidth="250.0"
+                                      prefHeight="100.0" prefWidth="250.0" styleClass="act-btn">
+                                    <children>
+                                        <Label fx:id="actBtnValue1" text="Button 1" textFill="WHITE">
+                                            <font>
+                                                <Font name="DIN Alternate Bold" size="20.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
                             </children>
                         </HBox>
-                        <HBox fx:id="actBtn2" prefHeight="100.0" prefWidth="200.0"
-                              style="-fx-background-color: #FFB312;" styleClass="act-btn" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                              GridPane.rowIndex="1">
                             <children>
-                                <Label fx:id="actBtnValue2" text="Button 2"/>
+                                <HBox fx:id="actBtn2" alignment="CENTER" maxHeight="50.0" maxWidth="250.0"
+                                      prefHeight="50.0" prefWidth="250.0" styleClass="act-btn">
+                                    <children>
+                                        <Label fx:id="actBtnValue2" text="Button 2" textFill="WHITE">
+                                            <font>
+                                                <Font name="DIN Alternate Bold" size="20.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
                             </children>
                         </HBox>
-                        <HBox fx:id="actBtn3" prefHeight="100.0" prefWidth="200.0"
-                              style="-fx-background-color: #FFB312;" styleClass="act-btn" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                              prefHeight="0.0" prefWidth="0.0" GridPane.rowIndex="2">
                             <children>
-                                <Label fx:id="actBtnValue3" text="Button 3"/>
+                                <HBox fx:id="actBtn3" alignment="CENTER" maxHeight="50.0" maxWidth="250.0"
+                                      prefHeight="50.0" prefWidth="250.0" styleClass="act-btn">
+                                    <children>
+                                        <Label fx:id="actBtnValue3" text="Button 3" textFill="WHITE">
+                                            <font>
+                                                <Font name="DIN Alternate Bold" size="20.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
                             </children>
                         </HBox>
                     </children>
@@ -81,17 +109,64 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <Label text="Score"/>
-                        <Label text="Multiplizierer" GridPane.rowIndex="2"/>
-                        <Label fx:id="scorevalue" text="scorevalue" GridPane.columnIndex="1"/>
-                        <Label fx:id="multvalue" text="multvalue" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                        <Label text="Folge" GridPane.rowIndex="1"/>
-                        <Label fx:id="streakvalue" text="streakvalue" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Score">
+                                    <font>
+                                        <Font name="DIN Alternate Bold" size="20.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                            <children>
+                                <Label fx:id="scorevalue" text="scorevalue"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                            <children>
+                                <Label text="Folge">
+                                    <font>
+                                        <Font name="DIN Alternate Bold" size="20.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                              GridPane.rowIndex="1">
+                            <children>
+                                <Label fx:id="streakvalue" text="streakvalue"/>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                            <children>
+                                <Label text="Multiplizierer">
+                                    <font>
+                                        <Font name="DIN Alternate Bold" size="20.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                              GridPane.rowIndex="2">
+                            <children>
+                                <Label fx:id="multvalue" text="multvalue"/>
+                            </children>
+                        </HBox>
                     </children>
                 </GridPane>
-                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                      GridPane.rowIndex="2">
                     <children>
-                        <Label text="Beenden"/>
+                        <HBox fx:id="cnclBtn" alignment="CENTER" maxHeight="50.0" onMouseClicked="#getStartScene"
+                              prefHeight="50.0" prefWidth="200.0" styleClass="return-btn">
+                            <children>
+                                <Label text="Beenden"/>
+                            </children>
+                        </HBox>
                     </children>
                 </HBox>
             </children>

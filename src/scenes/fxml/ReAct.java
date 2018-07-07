@@ -4,28 +4,28 @@ import design.Colors;
 import design.Labels;
 import functions.ANSI;
 import functions.ElementBackgroundCreator;
-import functions.ImageCreator;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Close;
 import model.GameMode;
-import model.Ranking;
 import scenes.ObservableScene;
 import scenes.StartScene;
 import scenes.gamemodes.GameScene;
 import scenes.start.StageController;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
 /*******************************************
  * TESTING TESTING TESTING TESTING TESTING *
@@ -36,14 +36,61 @@ public class ReAct extends Application implements Observer {
     private Stage stage;
     private StartScene startScene;
     private ReActController controller;
+    private NameSceneController nsc;
+    @FXML
+    private ResourceBundle resources;
+    @FXML
+    private URL location;
+    @FXML
+    private BorderPane root;
+    @FXML
+    private HBox gameModeBtn;
+    @FXML
+    private HBox settingsBtn;
+    @FXML
+    private HBox quickGameBtn;
+    @FXML
+    private Pane rankingBtn;
     
     public ReAct() {
-        this.startScene = new StartScene();
-        new Ranking();
+        this.controller = new ReActController(this);
     }
     
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @FXML
+    void initialize() {
+        assert root != null : "fx:id=\"root\" was not injected: check your FXML file 'ReAct.fxml'.";
+        assert gameModeBtn != null : "fx:id=\"gameModeBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
+        assert settingsBtn != null : "fx:id=\"settingsBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
+        assert quickGameBtn != null : "fx:id=\"quickGameBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
+        assert rankingBtn != null : "fx:id=\"rankingBtn\" was not injected: check your FXML file 'ReAct.fxml'.";
+
+    }
+
+    @FXML
+    void showGameModeSelection(ActionEvent event) {
+        System.out.println("Mode selection");
+    }
+
+    @FXML
+    void showRanking(ActionEvent event) {
+        System.out.println("Ranking");
+    }
+
+    @FXML
+    void showSettings(MouseEvent event) {
+        System.out.println("Settigns");
+    }
+
+    @FXML
+    void startNormalGame(MouseEvent event) throws IOException {
+        System.out.println("Quick Maths");
+        nsc = new NameSceneController(quickGameBtn.getScene());
+//        Parent newScene = FXMLLoader.load(getClass().getResource("nameScene.fxml"));
+//        quickGameBtn.getScene().setRoot(newScene);
     }
     
     private void evalGameStatus(GameMode.GameStatus arg) {
@@ -66,24 +113,15 @@ public class ReAct extends Application implements Observer {
             ANSI.BLUE.println(arg.toString());
         }
     }
-    
-    //////////// METHODS
-    
-    private void testImg(AnchorPane root) {
-        ImageView playBtn = new ImageView(ImageCreator.getImage("/Users/HxA/Pictures/Unsplash/nathan-anderson-316188-unsplash.jpg"));
-        root.getChildren().add(playBtn);
-        playBtn.setPreserveRatio(true);
-        
-        Circle playBtn_mask = new Circle(50.0, Colors.BTN_BAD.getColor());
-        playBtn_mask.setCenterX(300);
-        playBtn_mask.setCenterY(300);
-        playBtn.setClip(playBtn_mask);
-    }
+
     
     //////////// OVERRIDES
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.stage = new Stage();
+
+        this.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("ReAct.fxml"))));
+        
         this.stage.setMinHeight(ObservableScene.Sizes.HEIGHT.getInt());
         this.stage.setMinWidth(ObservableScene.Sizes.WIDTH.getInt());
         this.stage.setResizable(false);
@@ -93,22 +131,6 @@ public class ReAct extends Application implements Observer {
             this.controller.close(Close.Code.CLOSE);
             System.exit(0);
         });
-        
-        //primaryStage.setScene(this.stageController.getCurrentScene());
-//        this.stage = new Stage();
-//        this.scene = stageController.getCurrentScene();
-//        this.stage.setScene(this.scene);
-//        this.stage.setMinHeight(ObservableScene.Sizes.HEIGHT.getInt());
-//        this.stage.setMinWidth(ObservableScene.Sizes.WIDTH.getInt());
-//        this.stage.setResizable(false);
-//        this.stage.initModality(Modality.APPLICATION_MODAL);
-//        this.stage.show();
-
-//        this.stage.setOnCloseRequest(event -> {
-//            this.gameScene.close(Close.Code.CLOSE);
-//            System.exit(0);
-//        });
-//        this.ready.set(true);
     }
     
     /**
