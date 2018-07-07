@@ -1,6 +1,11 @@
 package model;
 
+import javax.swing.text.DateFormatter;
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -8,7 +13,9 @@ import java.util.Collections;
  * @author Henock Arega
  * @project ReActReloaded
  */
-public class User {
+public class User implements Serializable {
+    
+    private final String FORMAT = "dd-MM-yyyy";
     
     /** A list which shows which {@link Song} has been answered correctly. */
     private ArrayList<Boolean> correctAnswered;
@@ -80,4 +87,8 @@ public class User {
         this.maxReaction = Collections.max(this.reactionTimes);
     }
     
+    @Override
+    public String toString() {
+        return String.format("%s,%s,%d", this.name, this.datePlayed.format(DateTimeFormatter.ofPattern(FORMAT)), this.points);
+    }
 }
