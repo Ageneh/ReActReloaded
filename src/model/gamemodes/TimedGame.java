@@ -24,22 +24,22 @@ public class TimedGame extends GameMode {
     private Timer timer;
     private TimerTask timerTask;
     
-    protected TimedGame(Observer o, Observer... observers) {
+    public TimedGame(Observer o, Observer... observers) {
         this(Length.SHORT, o, observers);
     }
     
-    protected TimedGame(Length length, Observer o, Observer... observers) {
+    public TimedGame(Length length, Observer o, Observer... observers) {
         super(Mode.TIMED, o, observers);
         this.length = length;
         this.isInit = false;
         this.init();
     }
     
-    protected TimedGame(String name, Observer o, Observer... observers) {
+    public TimedGame(String name, Observer o, Observer... observers) {
         this(name, Length.SHORT, o, observers);
     }
     
-    protected TimedGame(String name, Length length, Observer o, Observer... observers) {
+    public TimedGame(String name, Length length, Observer o, Observer... observers) {
         super(Mode.TIMED, name, o, observers);
         this.init();
         this.isInit = false;

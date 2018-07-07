@@ -175,7 +175,7 @@ class SongLibrary implements Close, WritesINI {
     }
     
     /**
-     * Create a {@link Playlist} object which contains all a certain amount of songpaths and in a randomized order.
+     * Create a {@link Playlist} object which contains a certain amount of songpaths and in a randomized order.
      */
     private void createPlaylist() {
         if (playlist == null) {

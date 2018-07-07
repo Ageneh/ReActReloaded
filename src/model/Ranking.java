@@ -1,6 +1,8 @@
 package model;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -12,10 +14,10 @@ public class Ranking implements Serializable, Close {
     private final int MAX_RANK_NUM = 17;
     
     private File file;
-    private HashMap<Integer, String> ranking;
+    private ArrayList<User> ranking;
     
     public Ranking() {
-        this.ranking = new HashMap<>();
+        this.ranking = new ArrayList<>();
         this.file = new File("res/serialized/" + FILENAME);
         if (! file.exists()) {
             try {
@@ -26,23 +28,35 @@ public class Ranking implements Serializable, Close {
             }
         }
         this.read();
-        if (this.ranking == null) this.ranking = new HashMap<>();
+        if (this.ranking == null) this.ranking = new ArrayList<>();
     }
     
-    public HashMap<Integer, String> getRanking() {
-        return ranking;
+    public static void main(String[] args) {
+        Ranking r = new Ranking();
+        User u = new User("HelloPlayer");
+        u.setPoints(3546576);
+        r.add(u);
+        r.close(Code.CLOSE);
+
+        r = new Ranking();
+        System.out.println(r.getRanking());
+    }
+
+    public ArrayList<User> getRanking() {
+        this.ranking.sort(Comparator.comparing(User::getPoints));
+        return new ArrayList<>(this.ranking);
     }
     
     private void read() {
         try {
             FileInputStream fis = new FileInputStream(this.file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-
+    
             Object o = ois.readObject();
-
-            this.ranking = (HashMap<Integer, String>) o;
-        } catch (EOFException eof) {
-            this.ranking = new HashMap<>();
+    
+            this.ranking = (ArrayList<User>) o;
+        }catch (EOFException eof){
+            this.ranking = new ArrayList<>();
         } catch (IOException | ClassNotFoundException e) {
 //            e.printStackTrace();
         }
@@ -59,6 +73,10 @@ public class Ranking implements Serializable, Close {
         }
     }
     
+    public void add(User user){
+        this.ranking.add(user);
+    }
+
     @Override
     public void close(Code code) {
         this.write();

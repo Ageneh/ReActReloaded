@@ -19,6 +19,10 @@ public class ContinuousGame extends GameMode {
         super(Mode.CONTINUOUS, o, observers);
     }
     
+    public ContinuousGame(String name) {
+        super(Mode.CONTINUOUS, name, null);
+    }
+    
     public ContinuousGame(String name, Observer o, Observer... observers) {
         super(Mode.CONTINUOUS, name, o, observers);
     }
