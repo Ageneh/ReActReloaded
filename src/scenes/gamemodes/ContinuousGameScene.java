@@ -13,8 +13,8 @@ public class ContinuousGameScene extends GameScene {
     
     private ContinuousGame game;
     
-    ContinuousGameScene(Observer... observers) {
-        super(observers);
+    public ContinuousGameScene(Observer... observers) {
+        super("scenes/fxml/continuousgame_scene.fxml", observers);
     }
     
     @Override

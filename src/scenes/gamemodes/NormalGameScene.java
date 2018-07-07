@@ -47,11 +47,11 @@ public class NormalGameScene extends GameScene {
     
     
     public NormalGameScene(Observer... observers) {
-        this("Normalgame", observers);
+        this(null, observers);
     }
     
     public NormalGameScene(String name, Observer... observers) {
-        super(observers);
+        super("scenes/fxml/continuousgame_scene.fxml", observers);
         this.game = new NormalGame(name, this);
         this.started = new SimpleBooleanProperty(false);
         this.started.addListener(((observable, oldValue, newValue) -> {

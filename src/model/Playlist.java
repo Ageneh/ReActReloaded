@@ -51,14 +51,13 @@ public class Playlist {
     }
     
     /**
-     * @param exlcude These songs should be excluded.
      * @return Returns a random {@link Song} from {@link #songs}
      */
-    Song getRandomSong(ArrayList<Song> exlcude) {
+    Song getRandomSong() {
         ArrayList<String> temp = new ArrayList<>(songs.size());
         temp.addAll(this.songs);
-        
-        for (Song song : exlcude) temp.remove(song.getPath());
+    
+        for (String song : this.playedSongs) temp.remove(song);
         
         int rdm = ((int) (Math.random() * 4)) + 2;
         for (int i = 0; i < rdm; i++) Collections.shuffle(temp);

@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Close;
 import model.GameMode;
 import model.Ranking;
 import scenes.ObservableScene;
@@ -88,14 +89,10 @@ public class ReAct extends Application implements Observer {
         this.stage.setResizable(false);
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.show();
-//        this.stage.setOnCloseRequest(event -> {
-//            this.gameScene.close(Close.Code.CLOSE);
-//            System.exit(0);
-//        });
-//        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
-        
+        this.stage.setOnCloseRequest(event -> {
+            this.controller.close(Close.Code.CLOSE);
+            System.exit(0);
+        });
         
         //primaryStage.setScene(this.stageController.getCurrentScene());
 //        this.stage = new Stage();
