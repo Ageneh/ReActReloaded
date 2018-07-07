@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class startScene extends Application {
+public class StartScene extends Application {
 
     @FXML
     private Stage stage;
@@ -25,7 +25,7 @@ public class startScene extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("startScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ReAct.fxml"));
 
         Scene scene = new Scene(root, 1275, 850);
 

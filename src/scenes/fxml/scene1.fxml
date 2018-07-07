@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8"
-      fx:controller="scenes.fxml.startScene">
+      fx:controller="scenes.fxml.StartScene">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
