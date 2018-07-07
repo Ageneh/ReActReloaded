@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+import model.GameMode;
 import model.PlayerResult;
 import model.Song;
 import model.gamemodes.NormalGame;
@@ -35,24 +36,14 @@ import java.util.Observer;
 public class NormalGameScene extends GameScene {
     
     private NormalGame game;
-    private AnswerButton answer1, answer2, answer3;
-    private Label currentTitle;
-    private ObservableList<AnswerButton> buttonsList;
-    private HBox buttons;
-    private ReButton start;
-    private SimpleBooleanProperty started;
-    private SimpleBooleanProperty answered;
-    private PauseTransition pauseTransition;
-    private FadeTransition fadeTransition;
-    
     
     public NormalGameScene(Observer... observers) {
         this(null, observers);
     }
     
     public NormalGameScene(String name, Observer... observers) {
-        super("scenes/fxml/continuousgame_scene.fxml", observers);
-        this.game = new NormalGame(name, this);
+        super("scenes/fxml/continuousgame_scene.fxml", new NormalGame(name), observers);
+//        this.game = new NormalGame(name, this);
         this.started = new SimpleBooleanProperty(false);
         this.started.addListener(((observable, oldValue, newValue) -> {
             if (oldValue) this.started.set(oldValue);
@@ -69,11 +60,6 @@ public class NormalGameScene extends GameScene {
                 this.setStartBG();
             }
         });
-        this.init();
-    }
-    
-    public NormalGame getGame() {
-        return game;
     }
     
     public void ready() {
@@ -82,49 +68,6 @@ public class NormalGameScene extends GameScene {
     
     public void setUser(String username) {
         this.game.setUser(username);
-    }
-    
-    private void init() {
-        BorderPane root = new BorderPane();
-        
-        this.start = new ReButton("");
-        this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/play-button.png"));
-        root.setCenter(start);
-        start.setPrefSize(40, 40);
-        start.setCursor(Cursor.HAND);
-        this.setStartBG();
-        start.setOnAction(event -> {
-            if (! this.started.get() && ! answered.get()) {
-                this.start();
-                this.answered.set(false);
-                this.started.set(true);
-            } else {
-                if (answered.get()) {
-                    this.game.next();
-                } else {
-                    game.replay();
-                }
-            }
-        });
-        
-        this.buttonsList = FXCollections.observableList(new ArrayList<>());
-        for (int i = 0; i < game.MAX_ANSWERCOUNT; i++) {
-            this.buttonsList.add(new AnswerButton());
-        }
-        buttons = new HBox();
-        buttons.getChildren().setAll(this.buttonsList);
-        this.buttons.setOpacity(0);
-        this.buttonsList.addListener((ListChangeListener<AnswerButton>) c -> {
-            this.buttons.getChildren().setAll(this.buttonsList);
-        });
-        buttons.setAlignment(Pos.CENTER);
-        buttons.setSpacing(40);
-        buttons.setPrefHeight(80);
-        root.setBottom(buttons);
-        
-        super.getBackground().setLeft(new BackButton("Zurück"));
-        
-        super.addLayer(root);
     }
     
     private void setAnswers(Song[] songs) {
@@ -175,14 +118,6 @@ public class NormalGameScene extends GameScene {
         });
     }
     
-    private void setStartBG() {
-        if (! this.started.get() && ! this.answered.get()) {
-            start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/play-button-1.png"));
-        } else {
-            start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/restart.png"));
-        }
-    }
-    
     @Override
     public void close(Code code) {
         game.close(code);
@@ -210,6 +145,28 @@ public class NormalGameScene extends GameScene {
         }
     
         try {
+            if (arg instanceof GameMode.Mode) {
+                GameMode.Mode mode = (GameMode.Mode) arg;
+        
+                switch (mode){
+                    case NORMAL:
+                        break;
+                    case TIMED:
+                        break;
+                    case CONTINUOUS:
+                        break;
+                    case REACTION:
+                        break;
+                    case GAME_OVER:
+                        break;
+                    case GAME_DONE:
+                        Alert a = new Alert(Alert.AlertType.INFORMATION);
+                        a.setContentText("You have guessed all your songs correctly. Congrats.");
+                        a.showAndWait();
+                        break;
+                }
+                return;
+            }
             if (arg instanceof PlayerResult) {
                 System.out.println("Music changed something");
             }
@@ -225,15 +182,10 @@ public class NormalGameScene extends GameScene {
                     case NEW_MULTIPLIER:
                         break;
                     case ANSWER_CORRECT:
-                        currentTitle.setText("Correct Answer");
-                        setFadeOut(Duration.millis(300), currentTitle);
-                        pauseTransition.play();
-                        this.setAnswers(this.game.getAnswers());
                         this.answered.set(false);
                         break;
                     case ANSWER_INCORRECT:
                         // todo
-                        currentTitle.setText("Correct");
                         this.answered.set(true);
                         break;
                     case ANSWER:

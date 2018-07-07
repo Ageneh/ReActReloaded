@@ -1,6 +1,7 @@
 package model.gamemodes;
 
 import model.GameMode;
+import model.Playlist;
 import model.Song;
 
 import java.util.Observable;
@@ -24,14 +25,15 @@ public class NormalGame extends GameMode {
     private int multiplier;
     /** A counter for a streak of either correct or wrong answers. Depends on {@link #answerType}. */
     private int streak;
+    private int maxGameRound;
     
     public NormalGame(Observer o, Observer... observers) {
         super(Mode.NORMAL, o, observers);
         this.init();
     }
     
-    public NormalGame(String name, Observer o, Observer... observers) {
-        super(Mode.NORMAL, name, o, observers);
+    public NormalGame(String name) {
+        super(Mode.NORMAL, name, null);
         this.init();
     }
     
@@ -40,6 +42,8 @@ public class NormalGame extends GameMode {
         this.answerType = false;
         this.streak = 0;
         this.multiplier = 1;
+        this.maxGameRound = super.gamePlaylist.getTotalSongCount();
+        super.gamePlaylist = new Playlist(super.songLibrary, true, false);
     }
     
     @Override
@@ -66,6 +70,11 @@ public class NormalGame extends GameMode {
             notifyObservers(Action.ANSWER_INCORRECT);
         }
         this.answerType = res;
+        
+        if(super.gameRound >= this.maxGameRound){
+            super.endGame();
+        }
+        
         return res;
     }
     

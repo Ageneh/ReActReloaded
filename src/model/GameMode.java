@@ -47,9 +47,9 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
      */
     private boolean isAnswered;
     /** A multiplier used to multiply the given points depending on the {@link #streak}. */
-    private int multiplier;
+    protected int multiplier;
     /** The {@link MusicPlayer} used to play each {@link Song random song}. */
-    private MusicPlayer musicPlayer;
+    protected MusicPlayer musicPlayer;
     /** The amount of answers which are defined by the actual game round */
     private int answerCount;
     /** The answers the {@link User} can choose from - including the correct answer. */
@@ -57,11 +57,11 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     /** A counter which will count the amount of times a song has been replayed. */
     private int replayCount;
     /** The playlist for each game round. Will be recreated with every game. */
-    private Playlist gamePlaylist;
+    protected Playlist gamePlaylist;
     /** A flag which will be set when {@link #start()} has been called. */
     private boolean hasStarted;
     /** The song library used for each game. */
-    private SongLibrary songLibrary;
+    protected SongLibrary songLibrary;
     /** Logs the time when a game has started, as a reference for the duration of a game. */
     private long startTime;
     /**
@@ -74,7 +74,8 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     private int step;
     private int streak;
     /** A user object in which all the specific game data will be saved in for each {@link User player}. */
-    private User user;
+    protected User user;
+    protected int gameRound;
     
     protected GameMode(Mode mode, String username, Observer o, Observer... observers) {
         this(mode, 3, username, o, observers);
@@ -93,11 +94,12 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         this.startTime = 0;
         this.replayCount = 0;
         this.songLibrary = new SongLibrary();
-        this.gamePlaylist = new Playlist(this.songLibrary.getSongs());
+        this.gamePlaylist = new Playlist(this.songLibrary);
         this.hasStarted = this.nextCalled = this.correctAnswer = this.isAnswered = false;
         this.songLibrary.close(Code.CLOSE);
         this.step = MINSTEP;
         this.multiplier = this.MIN_MULT;
+        this.gameRound = 0;
         
         this.gameStatus = new GameStatus();
     }
@@ -115,11 +117,13 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
             this.isAnswered = false;
             this.replayCount = 0;
             this.startTime = System.currentTimeMillis();
-    
+            this.gameRound++;
+            System.out.println("Game round::" + this.gameRound);
+            
             this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
             
-            this.createAnswers(this.answerCount); //// TESTING TESTING
-    
+            this.answers = this.createAnswers(this.answerCount); //// TESTING TESTING
+            
             setChanged();
             notifyObservers(Action.ANSWERS.setVal(this.answers));
         } else {
@@ -189,6 +193,12 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         long min = (end / (MILLIS_PER_SEC * SEC_PER_MIN)) % SEC_PER_MIN;
         System.out.println(String.format("%02d:%02d:%02d", min, millis, sec));
         this.musicPlayer.close(Code.CLOSE);
+    }
+    
+    public void endGame() {
+        musicPlayer.stop();
+        setChanged();
+        notifyObservers(Mode.GAME_DONE);
     }
     
     @Deprecated
@@ -356,23 +366,29 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         answersList.add(answers[0]);
         
         for (int i = 1; i < answerCount; i++) {
-            answers[i] = this.gamePlaylist.getRandomSong();
+            try {
+                answers[i] = this.gamePlaylist.getRandomSong(answersList);
+            }
+            catch (Exception e){
+                System.out.println();
+            }
             answersList.add(answers[i]);
             Collections.shuffle(answersList);
         }
         Collections.shuffle(answersList);
         Collections.shuffle(answersList, new Random((long) (Math.random() * System.currentTimeMillis() * 1000 / 17)));
         Collections.shuffle(answersList);
-        this.answers = answersList.toArray(answers);
         
         ANSI.CYAN.println("======================");
         for (int i = 0; i < answerCount; i++) {
-            ANSI.CYAN.println((i) + ":\t" + this.answers[i].getTitle() + " - " + this.answers[i].getTitle());
+            ANSI.CYAN.println((i) + ":\t" + answers[i].getTitle() + " - " + answers[i].getTitle());
         }
         ANSI.CYAN.println("======================");
+        
         setChanged();
-        notifyObservers(answers);
-        return this.answers;
+        notifyObservers(Action.ANSWERS.setVal(answers));
+        
+        return answersList.toArray(answers);
     }
     
     private void stepUp() {
@@ -435,26 +451,27 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         CONTINUOUS(1000, 0, 3),
         /** Song plays for up to {@link #lengthInMillis} seconds */
         REACTION(TimeUnit.SECONDS.toMillis(10), 0, 0),
-        GAME_OVER;
-    
+        GAME_OVER,
+        GAME_DONE;
+        
         /** The time added to playback when replaying {@link Song}. */
         private long additionalTime;
         /** The beginning length of playback. */
         private long lengthInMillis;
         /** The mac count of replays allowed. */
         private int maxReplay;
-    
+        
         //////////// CONSTRUCTORS
         Mode() {
             this(0, 0, 0);
         }
-    
+        
         Mode(long length, long additionalTimeVal, int maxReplay) {
             this.lengthInMillis = length;
             this.additionalTime = additionalTimeVal;
             this.maxReplay = maxReplay;
         }
-    
+        
         Mode(long length) {
             this(length, 0, 0);
         }
@@ -462,28 +479,28 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         public long getAdditionalTime() {
             return this.additionalTime;
         }
-    
+        
         public int getMaxReplay() {
             return maxReplay;
         }
-    
+        
         public long getMaxReplayTimeMillis() {
             return maxReplay * additionalTime;
         }
-    
+        
         public long hours() {
             return TimeUnit.MILLISECONDS.toHours(this.lengthInMillis);
         }
-    
+        
         //////////// METHODS
         public long millis() {
             return TimeUnit.MILLISECONDS.toMillis(this.lengthInMillis);
         }
-    
+        
         public long minutes() {
             return TimeUnit.MILLISECONDS.toMinutes(this.lengthInMillis);
         }
-    
+        
         public long seconds() {
             return TimeUnit.MILLISECONDS.toSeconds(this.lengthInMillis);
         }
@@ -494,18 +511,18 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
      * Provides multiple {@link GameMode game values}.
      */
     public class GameStatus {
-    
+        
         private Mode mode;
-    
+        
         //////////// CONSTRUCTORS
         private GameStatus() {
             this.mode = GameMode.this.mode;
         }
-    
+        
         public Song[] answers() {
             return answers;
         }
-    
+        
         public boolean correctAnswer() {
             return correctAnswer;
         }
@@ -514,7 +531,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         public boolean isAnswered() {
             return isAnswered;
         }
-    
+        
         public Mode mode() {
             return this.mode;
         }
@@ -539,14 +556,14 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         @Override
         public String toString() {
             String str = "";
-    
+            
             str += "User:\t\t\t" + user.getName();
             str += System.lineSeparator();
             str += "Points:\t\t\t" + points;
 //            if(isAnswered)
             str += System.lineSeparator();
             str += "Song:\t\t\t" + gamePlaylist.currentSong().getTitle() + ", " + gamePlaylist.currentSong().getArtist();
-    
+            
             ArrayList<Long> times = GameMode.this.user.getReactionTimes();
             if (times.size() >= 1) {
                 str += System.lineSeparator();

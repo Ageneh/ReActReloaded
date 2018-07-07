@@ -131,13 +131,13 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     //////////// CONSTRUCTORS
     //////////// METHODS
     
-    void pause() {
+    public void pause() {
         if (this.audioPlayer != null) {
             this.audioPlayer.pause();
         }
     }
     
-    void play(Song song, int timeMillis) {
+    public void play(Song song, int timeMillis) {
         this.stop();
         this.playtime = timeMillis;
         ANSI.YELLOW.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
@@ -147,7 +147,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.play();
     }
     
-    void setVolume(float val) {
+    public void setVolume(float val) {
         final float MIN_VOL = 20;
         
         if (val < MIN_VOL) this.volume = MIN_VOL;
@@ -158,7 +158,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         }
     }
     
-    void stop() {
+    public void stop() {
         if (this.audioPlayer != null) {
             this.stopByAnswer = true;
 //            this.control.resume();

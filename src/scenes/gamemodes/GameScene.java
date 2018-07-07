@@ -3,18 +3,31 @@ package scenes.gamemodes;
 import design.Colors;
 import design.Labels;
 import functions.ElementBackgroundCreator;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 import model.Close;
+import model.GameMode;
 import model.User;
 import model.isGame;
 import scenes.ObservableScene;
+import scenes.elements.AnswerButton;
+import scenes.elements.BackButton;
+import scenes.elements.ReButton;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -32,9 +45,18 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
     private User user;
     private HBox top;
     private String fxmlPath;
+    protected HBox buttons;
+    protected ObservableList<AnswerButton> buttonsList;
+    protected ReButton start;
+    protected SimpleBooleanProperty started;
+    protected SimpleBooleanProperty answered;
+    protected PauseTransition pauseTransition;
+    protected FadeTransition fadeTransition;
+    protected GameMode game;
     
-    GameScene(String fxmlPath, Observer... observers) {
+    GameScene(String fxmlPath, GameMode game, Observer... observers) {
         super();
+        this.game = game;
         this.fxmlPath = fxmlPath;
         this.background = new GameBackground();
         addAllObserver(observers);
@@ -44,6 +66,25 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
         this.username = label.getLabel("Player");
         this.multi = label.getLabel("1x");
         this.round = label.getLabel("1");
+    
+        this.started = new SimpleBooleanProperty(false);
+        this.started.addListener(((observable, oldValue, newValue) -> {
+            if (oldValue) this.started.set(oldValue);
+            else {
+                this.setStartBG();
+            }
+        }));
+    
+        this.answered = new SimpleBooleanProperty(false);
+        this.answered.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/next.png"));
+            } else {
+                this.setStartBG();
+            }
+        });
+        
+        this.init();
         
         this.top = new HBox();
         top.getChildren().addAll(username, points, multi, round);
@@ -53,7 +94,66 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
         getRoot().getChildren().add(this.background.root);
     }
     
-    public abstract void start();
+    protected void setStartBG() {
+        if (! this.started.get() && ! this.answered.get()) {
+            start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/play-button-1.png"));
+        } else {
+            start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/restart.png"));
+        }
+    }
+    
+    private void init(){
+        this.buttonsList = FXCollections.observableList(new ArrayList<>());
+        buttons = new HBox();
+        buttons.getChildren().setAll(this.buttonsList);
+        this.buttons.setOpacity(0);
+        this.buttonsList.addListener((ListChangeListener<AnswerButton>) c -> {
+            this.buttons.getChildren().setAll(this.buttonsList);
+        });
+        buttons.setAlignment(Pos.CENTER);
+        buttons.setSpacing(40);
+        buttons.setPrefHeight(80);
+        
+        BorderPane root = new BorderPane();
+    
+        this.start = new ReButton("");
+        this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/play-button.png"));
+        root.setCenter(start);
+        start.setPrefSize(40, 40);
+        start.setCursor(Cursor.HAND);
+        this.setStartBG();
+        start.setOnAction(event -> {
+            if (! this.started.get() && ! answered.get()) {
+                this.start();
+                this.answered.set(false);
+                this.started.set(true);
+            } else {
+                if (answered.get()) {
+                    this.game.next();
+                } else {
+                    game.replay();
+                }
+            }
+        });
+    
+    
+        for (int i = 0; i < game.MAX_ANSWERCOUNT; i++) {
+            buttonsList.add(new AnswerButton());
+        }
+        root.setBottom(buttons);
+    
+        this.background.root.setLeft(new BackButton("Zurück"));
+        addLayer(root);
+    }
+    
+    public void start(){
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300), this.buttons);
+        fadeTransition.setByValue(0.1);
+        fadeTransition.setFromValue(this.buttons.getOpacity());
+        fadeTransition.setToValue(1);
+        fadeTransition.setCycleCount(1);
+        fadeTransition.play();
+    }
     
     public BorderPane getBackground() {
         return background.root;
