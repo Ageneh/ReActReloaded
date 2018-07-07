@@ -3,6 +3,7 @@ package scenes.fxml;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import model.Close;
 import model.GameMode;
 import model.Ranking;
 import scenes.Controller;
@@ -17,7 +18,7 @@ import java.util.Observer;
 /**
  * @author Henock Arega
  */
-public class ReActController extends Controller {
+public class ReActController extends Controller implements Close {
     
     @FXML
     private Parent root;
@@ -52,5 +53,10 @@ public class ReActController extends Controller {
         this.root = FXMLLoader.load(getClass().getResource(this.gameScene.getFxmlPath()));
     }
     
+    @Override
+    public void close(Code code) {
+        this.gameScene.close(code);
+        this.ranking.close(code);
+    }
     
 }

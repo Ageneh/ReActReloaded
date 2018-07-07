@@ -32,9 +32,9 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     private static final int SEC_PER_MIN = 60;
     private static final int MILLIS_PER_SEC = 1000;
     private static final int MIN_PER_H = 60;
+    public final int MAX_ANSWERCOUNT = 4;
     /** The standard amount of answers at the beginning of a game. */
     private final int STD_ANSWERCOUNT;
-    public final int MAX_ANSWERCOUNT = 4;
     private final GameStatus gameStatus;
     private final int POINTS = 10;
     /** The game mode of each game. */
@@ -77,14 +77,14 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     private User user;
     
     protected GameMode(Mode mode, String username, Observer o, Observer... observers) {
-        this(mode, 2, username, o, observers);
+        this(mode, 3, username, o, observers);
     }
     
     protected GameMode(Mode mode, Observer o, Observer... observers) {
         this(mode, "ReActor", o, observers);
     }
     
-    protected GameMode(Mode mode, final int answerCount, String username, Observer o, Observer... observers) {
+    protected GameMode(Mode mode, int answerCount, String username, Observer o, Observer... observers) {
         this.STD_ANSWERCOUNT = answerCount;
         this.addAllObserver(o, observers);
         this.mode = mode;
@@ -101,6 +101,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         
         this.gameStatus = new GameStatus();
     }
+    
     //////////// METHODS
     
     /**
@@ -114,11 +115,11 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
             this.isAnswered = false;
             this.replayCount = 0;
             this.startTime = System.currentTimeMillis();
-        
+    
             this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
             
             this.createAnswers(this.answerCount); //// TESTING TESTING
-        
+    
             setChanged();
             notifyObservers(Action.ANSWERS.setVal(this.answers));
         } else {
@@ -355,7 +356,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         answersList.add(answers[0]);
         
         for (int i = 1; i < answerCount; i++) {
-            answers[i] = this.gamePlaylist.getRandomSong(answersList);
+            answers[i] = this.gamePlaylist.getRandomSong();
             answersList.add(answers[i]);
             Collections.shuffle(answersList);
         }

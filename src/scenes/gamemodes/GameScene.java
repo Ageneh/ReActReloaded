@@ -31,9 +31,11 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
     private Label round;
     private User user;
     private HBox top;
+    private String fxmlPath;
     
-    GameScene(Observer... observers) {
+    GameScene(String fxmlPath, Observer... observers) {
         super();
+        this.fxmlPath = fxmlPath;
         this.background = new GameBackground();
         addAllObserver(observers);
         
@@ -55,6 +57,10 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
     
     public BorderPane getBackground() {
         return background.root;
+    }
+    
+    public String getFxmlPath() {
+        return fxmlPath;
     }
     
     protected void addLayer(Node node) {

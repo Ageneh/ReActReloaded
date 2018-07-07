@@ -5,8 +5,12 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 
 /**
@@ -100,6 +104,24 @@ public class Song {
      */
     public String getTitle() {
         return this.meta[MetaPos.TITLE.val];
+    }
+    
+    /**
+     * @see <a href="http://www.mkyong.com/java/how-to-convert-byte-to-bufferedimage-in-java">Gist</a>
+     */
+    public BufferedImage getCoverImage() {
+        try {
+            // convert byte array back to BufferedImage
+            InputStream in = new ByteArrayInputStream(this.getCoverImg());
+            return ImageIO.read(in);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
+    public byte[] getCoverImg() {
+        return this.coverImg;
     }
     
     public long lengthMillis() {
@@ -197,7 +219,7 @@ public class Song {
             byte[] arr = null;
             try {
                 File img_temp = new File(Song.COVER_IMG);
-                arr = Files.readAllBytes(file.toPath());
+                arr = Files.readAllBytes(img_temp.toPath());
             } catch (IOException e) {
                 e.printStackTrace();
             }

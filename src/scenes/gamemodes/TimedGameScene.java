@@ -9,8 +9,8 @@ import java.util.Observer;
  */
 public class TimedGameScene extends GameScene {
     
-    TimedGameScene(Observer... observers) {
-        super(observers);
+    public TimedGameScene(Observer... observers) {
+        super("scenes/fxml/timedgame_scene.fxml", observers);
     }
     
     @Override

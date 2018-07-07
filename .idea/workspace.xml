@@ -4,11 +4,25 @@
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="Changes:&#10;&#10;+ ReactionGame class~&#10;&#10;NormalGame: &#10;&gt; changed answer(Song); &#10;&gt; moved multiplier calculation to parent (GameMode)&#10;&#10;GameMode:&#10;&gt; + added multiplier calculation;&#10;&gt;  answer(int idx), end() and gameEnd() are not needed &#10;  -&gt; will be deleted; added calcMultiplier()&#10;&#10;TimedGame:&#10;&gt; + added some functionality; &#10;&gt; + added Length enum for different game durations&#10;&#10;MusicPlayer:&#10;&gt; BUG for specific Songs: audioPlayer.loop(int) throws &#10;ArrayIndexOutOfBoundsException&#10;&#10;SongLibrary:&#10;&gt; + added getPlaylistShuffled()&#10;&gt; + added getSongs()&#10;&#10;User:&#10;&gt; + added getReactionTime()">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/mainstyle.css" afterPath="$PROJECT_DIR$/src/scenes/fxml/mainstyle.css" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/normalgame_scene.fxml" afterPath="$PROJECT_DIR$/src/scenes/fxml/normalgame_scene.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/startScene.fxml" afterPath="$PROJECT_DIR$/src/scenes/fxml/startScene.fxml" />
+    <list default="true" id="624459fa-3774-4853-ba42-ece8f5c97aed" name="Default" comment="game scenes fxml skeleton">
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ReActReloaded_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ReeActReloaded.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/model/GameMode.java" afterPath="$PROJECT_DIR$/src/model/GameMode.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/Playlist.java" afterPath="$PROJECT_DIR$/src/model/Playlist.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/Song.java" afterPath="$PROJECT_DIR$/src/model/Song.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/ReAct.java" afterPath="$PROJECT_DIR$/src/scenes/fxml/ReAct.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/fxml/ReActController.java" afterPath="$PROJECT_DIR$/src/scenes/fxml/ReActController.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/start/ReAct.java" afterPath="$PROJECT_DIR$/src/scenes/start/ReAct.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path=".idea/" />
@@ -24,78 +38,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ReAct.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/start/ReAct.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="86" column="43" lean-forward="false" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+              <folding>
+                <element signature="method#evalGameStatus#0;class#ReAct#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="StageController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scenes/start/StageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="128" column="37" lean-forward="false" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
+            <state relative-caret-position="405">
+              <caret line="39" column="17" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+              <folding>
+                <element signature="e#1032#1033#0" expanded="true" />
+                <element signature="e#1087#1088#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NormalGameScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="140" column="56" lean-forward="false" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+              <folding>
+                <element signature="e#1469#1470#0" expanded="true" />
+                <element signature="e#1506#1507#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TimedGameScene.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <marker date="1530952929658" expanded="true" signature="466:472" ph="{}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MusicPlayer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/MusicPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-94">
-              <caret line="2" column="54" lean-forward="false" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
-              <folding>
-                <element signature="docComment;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#LOOPCOUNT#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#playtime#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#posA#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#posB#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#stopByAnswer#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#currentSong#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;field#volume#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#MusicPlayer#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#MusicPlayer#1;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;method#replay#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#replay#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#setVolume#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;method#dBToLinear#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="docComment;method#linearToDB#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#setLoop#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#readINI#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#writeINI#0;class#MusicPlayer#0" expanded="false" />
-                <element signature="method#close#0;class#MusicPlayer#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="startScene.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/scenes/fxml/startScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
-                <element signature="e#519#520#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -116,7 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TEST</find>
       <find>TESTING</find>
       <find>create</find>
       <find>.CYAN.</find>
@@ -146,6 +131,7 @@
       <find>notify</find>
       <find>1.0</find>
       <find>2</find>
+      <find>ImageIO</find>
     </findStrings>
     <replaceStrings>
       <replace>Colors</replace>
@@ -176,9 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AlphaTest.java" />
-        <option value="$PROJECT_DIR$/src/model/gamemodes/ContinuousGameController.java" />
-        <option value="$PROJECT_DIR$/src/model/gamemodes/GameController.java" />
         <option value="$PROJECT_DIR$/src/design/Colors.java" />
         <option value="$PROJECT_DIR$/src/model/ObservableModel.java" />
         <option value="$PROJECT_DIR$/src/model/SongInvalidException.java" />
@@ -194,22 +177,16 @@
         <option value="$PROJECT_DIR$/src/model/Update.java" />
         <option value="$PROJECT_DIR$/src/model/UpdateCause.java" />
         <option value="$PROJECT_DIR$/src/model/SongLibrary.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/elements/ReButton.java" />
         <option value="$PROJECT_DIR$/src/model/User.java" />
         <option value="$PROJECT_DIR$/src/functions/ANSI.java" />
         <option value="$PROJECT_DIR$/src/model/isGame.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
-        <option value="$PROJECT_DIR$/src/model/Song.java" />
-        <option value="$PROJECT_DIR$/src/model/Playlist.java" />
         <option value="$PROJECT_DIR$/src/model/PlayerResult.java" />
         <option value="$PROJECT_DIR$/src/model/MusicPlayer.java" />
         <option value="$PROJECT_DIR$/src/scenes/elements/AnswerButton.java" />
         <option value="$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java" />
         <option value="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" />
-        <option value="$PROJECT_DIR$/src/model/GameMode.java" />
         <option value="$PROJECT_DIR$/src/design/Labels.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/Start.java" />
         <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/ReAct.java" />
@@ -219,14 +196,23 @@
         <option value="$PROJECT_DIR$/src/scenes/start/StartScene1.java" />
         <option value="$PROJECT_DIR$/src/scenes/StartScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/start/StageController.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/ObservableScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/fxml/start.fxml" />
         <option value="$PROJECT_DIR$/src/scenes/start/scene1.fxml" />
-        <option value="$PROJECT_DIR$/src/scenes/start/ReAct.java" />
         <option value="$PROJECT_DIR$/src/scenes/fxml/scene1.fxml" />
         <option value="$PROJECT_DIR$/src/scenes/fxml/secondScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/fxml/startScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/fxml/ReActController.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/fxml/ReAct.java" />
+        <option value="$PROJECT_DIR$/src/scenes/start/ReAct.java" />
+        <option value="$PROJECT_DIR$/src/model/GameMode.java" />
+        <option value="$PROJECT_DIR$/src/model/Playlist.java" />
+        <option value="$PROJECT_DIR$/src/model/Song.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -386,86 +372,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
-              <item name="model" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
-              <item name="model" type="1f31426a:PackageElementNode" />
-              <item name="gamemodes" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
-              <item name="scenes" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="_libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="design" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="functions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
-              <item name="start" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -540,7 +446,82 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
+              <item name="model" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
+              <item name="model" type="1f31426a:PackageElementNode" />
+              <item name="gamemodes" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ReActReloaded" type="616d4139:PackageViewModuleNode" />
+              <item name="scenes" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="scenes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="scenes" type="462c0819:PsiDirectoryNode" />
+              <item name="gamemodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="scenes" type="462c0819:PsiDirectoryNode" />
+              <item name="start" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -568,6 +549,120 @@
       <recent name="$PROJECT_DIR$/res/icons" />
     </key>
   </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/fxml/mainstyle.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/fxml/normalgame_scene.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/fxml/startScene.fxml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/fxml/nameScene.fxml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -580,7 +675,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.startScene">
+  <component name="RunManager" selected="Application.ReAct">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -704,33 +799,6 @@
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -786,6 +854,33 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -889,8 +984,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.startScene" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ReAct" />
+        <item index="0" class="java.lang.String" itemvalue="Application.ReAct" />
+        <item index="1" class="java.lang.String" itemvalue="Application.startScene" />
         <item index="2" class="java.lang.String" itemvalue="Application.TimedTest" />
         <item index="3" class="java.lang.String" itemvalue="Application.PlayerTest" />
         <item index="4" class="java.lang.String" itemvalue="Application.TimeTest" />
@@ -1099,56 +1194,62 @@
       <option name="project" value="LOCAL" />
       <updated>1522932986853</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="game scenes fxml skeleton">
+      <created>1530963312654</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1530963312654</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211577000" />
+    <option name="totallyTimeSpent" value="212946000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="103" y="72" width="1440" height="975" extended-state="0" />
+    <frame x="0" y="22" width="1920" height="1178" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19565217" sideWeight="0.4933665" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19698314" sideWeight="0.5066335" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34526855" sideWeight="0.49668324" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13753328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53977275" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24791859" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48890862" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2550586" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19565217" sideWeight="0.4933665" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19698314" sideWeight="0.5066335" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13753328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19852263" sideWeight="0.49668324" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13753328" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871652" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.111821085" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24791859" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3084026" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3084026" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1230,7 +1331,8 @@
     <MESSAGE value="Made some changes..!" />
     <MESSAGE value="Made many changes..!" />
     <MESSAGE value="Changes:&#10;&#10;+ ReactionGame class~&#10;&#10;NormalGame: &#10;&gt; changed answer(Song); &#10;&gt; moved multiplier calculation to parent (GameMode)&#10;&#10;GameMode:&#10;&gt; + added multiplier calculation;&#10;&gt;  answer(int idx), end() and gameEnd() are not needed &#10;  -&gt; will be deleted; added calcMultiplier()&#10;&#10;TimedGame:&#10;&gt; + added some functionality; &#10;&gt; + added Length enum for different game durations&#10;&#10;MusicPlayer:&#10;&gt; BUG for specific Songs: audioPlayer.loop(int) throws &#10;ArrayIndexOutOfBoundsException&#10;&#10;SongLibrary:&#10;&gt; + added getPlaylistShuffled()&#10;&gt; + added getSongs()&#10;&#10;User:&#10;&gt; + added getReactionTime()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes:&#10;&#10;+ ReactionGame class~&#10;&#10;NormalGame: &#10;&gt; changed answer(Song); &#10;&gt; moved multiplier calculation to parent (GameMode)&#10;&#10;GameMode:&#10;&gt; + added multiplier calculation;&#10;&gt;  answer(int idx), end() and gameEnd() are not needed &#10;  -&gt; will be deleted; added calcMultiplier()&#10;&#10;TimedGame:&#10;&gt; + added some functionality; &#10;&gt; + added Length enum for different game durations&#10;&#10;MusicPlayer:&#10;&gt; BUG for specific Songs: audioPlayer.loop(int) throws &#10;ArrayIndexOutOfBoundsException&#10;&#10;SongLibrary:&#10;&gt; + added getPlaylistShuffled()&#10;&gt; + added getSongs()&#10;&#10;User:&#10;&gt; + added getReactionTime()" />
+    <MESSAGE value="game scenes fxml skeleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="game scenes fxml skeleton" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1246,7 +1348,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/model/GameMode.java</url>
-          <line>408</line>
+          <line>409</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
@@ -1276,7 +1378,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/model/GameMode.java</url>
-          <line>253</line>
+          <line>254</line>
           <properties />
           <option name="timeStamp" value="153" />
         </line-breakpoint>
@@ -1294,7 +1396,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/model/GameMode.java</url>
-          <line>122</line>
+          <line>123</line>
           <properties />
           <option name="timeStamp" value="161" />
         </line-breakpoint>
@@ -1366,30 +1468,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/beans/property/BooleanPropertyBase.java" />
-    <entry file="file://$PROJECT_DIR$/src/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="30" column="86" lean-forward="false" selection-start-line="30" selection-start-column="86" selection-end-line="30" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/elements/ReButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TextInputDialog.java" />
-    <entry file="file://$PROJECT_DIR$/src/functions/ANSI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/animation/Animation.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/animation/FillTransition.java" />
     <entry file="file://$PROJECT_DIR$/src/design/Colors.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1419,13 +1497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="110" column="31" lean-forward="false" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/lang/Long.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/util/TimerTask.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/util/Timer.java" />
@@ -1450,13 +1521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="652">
           <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1491,89 +1555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/GameMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="232" column="3" lean-forward="true" selection-start-line="232" selection-start-column="3" selection-end-line="232" selection-end-column="3" />
-          <folding>
-            <element signature="docComment;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MAXSTEP#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MAX_MULT#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MINSTEP#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#MIN_MULT#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#STD_ANSWERCOUNT#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#isAnswered#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#multiplier#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#musicPlayer#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#answerCount#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#answers#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#replayCount#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#gamePlaylist#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#hasStarted#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#songLibrary#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#startTime#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#nextCalled#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#points#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#user#0;class#GameMode#0" expanded="false" />
-            <element signature="method#GameMode#0;class#GameMode#0" expanded="false" />
-            <element signature="method#GameMode#2;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#start#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#addPoints#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#addPoints#1;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#answer#1;class#GameMode#0" expanded="false" />
-            <element signature="e#7044#7055#0" expanded="false" />
-            <element signature="method#end#0;class#GameMode#0" expanded="false" />
-            <element signature="e#7480#7491#0" expanded="false" />
-            <element signature="method#gameEnd#0;class#GameMode#0" expanded="false" />
-            <element signature="method#getAnswers#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#next#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#replay#0;class#GameMode#0" expanded="false" />
-            <element signature="method#replay#0;class#GameMode#0" expanded="false" />
-            <element signature="e#9387#9398#0" expanded="false" />
-            <element signature="method#setAnswerCount#0;class#GameMode#0" expanded="false" />
-            <element signature="method#song#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#subtractPoints#0;class#GameMode#0" expanded="false" />
-            <element signature="e#10483#10484#0" expanded="true" />
-            <element signature="e#10518#10519#0" expanded="true" />
-            <element signature="docComment;method#calcMultiplier#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;method#createAnswers#0;class#GameMode#0" expanded="false" />
-            <element signature="method#stepUp#0;class#GameMode#0" expanded="false" />
-            <element signature="method#close#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#NORMAL#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#TIMED#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#CONTINUOUS#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#REACTION#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#additionalTime#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#lengthInMillis#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;field#maxReplay#0;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="method#Mode#1;class#Mode#0;class#GameMode#0" expanded="false" />
-            <element signature="docComment;class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="method#toString#0;class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="class#AlreadyStartedException#0;class#GameMode#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="49" column="34" lean-forward="false" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
-          <folding>
-            <element signature="docComment;class#NormalGame#0" expanded="false" />
-            <element signature="docComment;field#answerType#0;class#NormalGame#0" expanded="false" />
-            <element signature="docComment;field#multiplier#0;class#NormalGame#0" expanded="false" />
-            <element signature="docComment;field#streak#0;class#NormalGame#0" expanded="false" />
-            <element signature="method#NormalGame#0;class#NormalGame#0" expanded="false" />
-            <element signature="method#NormalGame#1;class#NormalGame#0" expanded="false" />
-            <element signature="method#init#0;class#NormalGame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/isGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
@@ -1585,14 +1566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1612,50 +1585,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/start/StageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="128" column="37" lean-forward="false" selection-start-line="128" selection-start-column="37" selection-end-line="128" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/start/scene1.fxml" />
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/start.fxml" />
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/scene1.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/start/ReAct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
-        </state>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/MusicPlayer.java">
@@ -1698,6 +1638,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1705,17 +1646,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/fxml/startScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="360">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1725,6 +1665,7 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -1734,6 +1675,249 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Range.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="48" />
+          <folding>
+            <element signature="e#244#245#0" expanded="false" />
+            <element signature="e#312#313#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="52" lean-forward="false" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+          <folding>
+            <element signature="e#332#333#0" expanded="false" />
+            <element signature="e#405#406#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Playlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="59" column="63" lean-forward="false" selection-start-line="59" selection-start-column="63" selection-end-line="59" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-192">
+          <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+          <folding>
+            <element signature="e#1716#1717#0" expanded="false" />
+            <element signature="e#1747#1748#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="119" column="36" lean-forward="false" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
+          <folding>
+            <element signature="docComment;class#Song#0" expanded="false" />
+            <element signature="docComment;field#EXTENSION#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#COVER_IMG#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#meta#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#coverImg#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getAlbum#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getArtist#0;class#Song#0" expanded="false" />
+            <element signature="docComment;method#getTitle#0;class#Song#0" expanded="false" />
+            <element signature="e#3143#3144#0" expanded="false" />
+            <element signature="e#3179#3180#0" expanded="false" />
+            <element signature="e#3685#3686#0" expanded="false" />
+            <element signature="e#3719#3720#0" expanded="false" />
+            <element signature="docComment;method#checkSong#0;class#Song#0" expanded="false" />
+            <element signature="method#checkSong#0;class#Song#0" expanded="false" />
+            <element signature="class#MetaPos#0;class#Song#0" expanded="false" />
+            <element signature="docComment;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="docComment;field#file#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#MetaExtractor#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractAlbum#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="e#5702#5815#0" expanded="false" />
+            <element signature="method#extractArtist#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="e#6140#6256#0" expanded="false" />
+            <element signature="method#extractLength#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="method#extractTitle#0;class#MetaExtractor#0;class#Song#0" expanded="false" />
+            <element signature="e#7457#7570#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/GameMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
+          <folding>
+            <element signature="docComment;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MAXSTEP#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MAX_MULT#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MINSTEP#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#MIN_MULT#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#STD_ANSWERCOUNT#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#isAnswered#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#multiplier#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#musicPlayer#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#answerCount#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#answers#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#replayCount#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#gamePlaylist#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#hasStarted#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#songLibrary#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#startTime#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#nextCalled#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#points#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#user#0;class#GameMode#0" expanded="false" />
+            <element signature="e#3152#3153#0" expanded="false" />
+            <element signature="e#3203#3204#0" expanded="false" />
+            <element signature="method#GameMode#2;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#start#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#addPoints#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#addPoints#1;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#answer#1;class#GameMode#0" expanded="false" />
+            <element signature="e#7051#7062#0" expanded="false" />
+            <element signature="method#end#0;class#GameMode#0" expanded="false" />
+            <element signature="e#7487#7498#0" expanded="false" />
+            <element signature="method#gameEnd#0;class#GameMode#0" expanded="false" />
+            <element signature="method#getAnswers#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#replay#0;class#GameMode#0" expanded="false" />
+            <element signature="method#replay#0;class#GameMode#0" expanded="false" />
+            <element signature="method#setAnswerCount#0;class#GameMode#0" expanded="false" />
+            <element signature="method#song#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#subtractPoints#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#calcMultiplier#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;method#createAnswers#0;class#GameMode#0" expanded="false" />
+            <element signature="method#stepUp#0;class#GameMode#0" expanded="false" />
+            <element signature="method#close#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#NORMAL#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#TIMED#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#CONTINUOUS#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#REACTION#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#additionalTime#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#lengthInMillis#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;field#maxReplay#0;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="method#Mode#1;class#Mode#0;class#GameMode#0" expanded="false" />
+            <element signature="docComment;class#GameStatus#0;class#GameMode#0" expanded="false" />
+            <element signature="class#GameStatus#0;class#GameMode#0" expanded="false" />
+            <element signature="method#toString#0;class#GameStatus#0;class#GameMode#0" expanded="false" />
+            <element signature="class#AlreadyStartedException#0;class#GameMode#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+          <folding>
+            <element signature="docComment;class#NormalGame#0" expanded="false" />
+            <element signature="docComment;field#answerType#0;class#NormalGame#0" expanded="false" />
+            <element signature="docComment;field#multiplier#0;class#NormalGame#0" expanded="false" />
+            <element signature="docComment;field#streak#0;class#NormalGame#0" expanded="false" />
+            <element signature="method#init#0;class#NormalGame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/fxml/ReActController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/fxml/ReAct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="84" column="61" lean-forward="false" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+          <folding>
+            <element signature="docComment;class#ReAct#0" expanded="false" />
+            <element signature="method#ReAct#0;class#ReAct#0" expanded="false" />
+            <element signature="method#evalGameStatus#0;class#ReAct#0" expanded="false" />
+            <element signature="method#testImg#0;class#ReAct#0" expanded="false" />
+            <element signature="method#start#0;class#ReAct#0" expanded="false" />
+            <element signature="e#2980#3081#0" expanded="false" />
+            <element signature="e#3101#3165#0" expanded="false" />
+            <element signature="docComment;method#update#0;class#ReAct#0" expanded="false" />
+            <element signature="method#update#0;class#ReAct#0" expanded="false" />
+            <element signature="e#4757#4809#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/start/ReAct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="86" column="43" lean-forward="false" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+          <folding>
+            <element signature="method#evalGameStatus#0;class#ReAct#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/start/StageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="39" column="17" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+          <folding>
+            <element signature="e#1032#1033#0" expanded="true" />
+            <element signature="e#1087#1088#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/ElementBackgroundCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding>
+            <element signature="method#createBackgroundImg#1;class#ElementBackgroundCreator#0" expanded="false" />
+            <element signature="method#createBackgroundImg#4;class#ElementBackgroundCreator#0" expanded="false" />
+            <element signature="method#getBackground#0;class#ElementBackgroundCreator#0" expanded="false" />
+            <element signature="method#getBackground#1;class#ElementBackgroundCreator#0" expanded="false" />
+            <element signature="method#getBackground#3;class#ElementBackgroundCreator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="140" column="56" lean-forward="false" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+          <folding>
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
       </provider>
