@@ -2,6 +2,7 @@ package scenes.gamemodes;
 
 import design.Colors;
 import design.Labels;
+import functions.ANSI;
 import functions.ElementBackgroundCreator;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -13,15 +14,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import model.Close;
-import model.GameMode;
-import model.User;
-import model.isGame;
+import model.*;
 import scenes.ObservableScene;
 import scenes.elements.AnswerButton;
 import scenes.elements.BackButton;
@@ -52,14 +51,16 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
     protected SimpleBooleanProperty answered;
     protected PauseTransition pauseTransition;
     protected FadeTransition fadeTransition;
-    protected GameMode game;
+    protected final GameMode game;
     
-    GameScene(String fxmlPath, GameMode game, Observer... observers) {
+    GameScene(String fxmlPath, GameMode game, Observer o) {
         super();
         this.game = game;
+        this.game.addObserver(o);
+        this.game.addObserver(this);
+        addObserver(o);
         this.fxmlPath = fxmlPath;
         this.background = new GameBackground();
-        addAllObserver(observers);
         
         Labels label = Labels.M_SMALL;
         this.points = label.getLabel(0);
@@ -147,6 +148,7 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
     }
     
     public void start(){
+        this.game.start();
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(300), this.buttons);
         fadeTransition.setByValue(0.1);
         fadeTransition.setFromValue(this.buttons.getOpacity());
@@ -186,8 +188,111 @@ public abstract class GameScene extends ObservableScene implements Observer, Clo
         this.round.setText("1");
     }
     
+    public void setUser(String username) {
+        this.game.setUser(username);
+    }
+    
+    public void ready() {
+        this.setAnswers(game.getAnswers());
+    }
+    
+    private void setAnswers(ArrayList<Song> songs) {
+        Song[] s = new Song[songs.size()];
+        for (int i = 0; i < songs.size(); i++) {
+            s[i] = songs.get(i);
+        }
+        setAnswers(s);
+    }
+    
+    private void setFadeOut(Duration duration, Node node) {
+        node.setOpacity(1);
+        pauseTransition = new PauseTransition(Duration.seconds(1));
+        pauseTransition.setOnFinished(event -> {
+            fadeTransition = new FadeTransition(duration, node);
+            fadeTransition.setCycleCount(1);
+            fadeTransition.setAutoReverse(true);
+            fadeTransition.setToValue(0);
+            fadeTransition.setByValue(0.1);
+            fadeTransition.setFromValue(node.getOpacity());
+            fadeTransition.play();
+        });
+    }
+    
+    protected void setAnswers(Song[] songs) {
+        ArrayList<AnswerButton> btns = new ArrayList<>();
+        System.out.println(songs.length);
+        int i = 0;
+        for (Song song : songs) {
+            AnswerButton a = buttonsList.get(i++);
+            a.setText(song.getTitle());
+            a.setSong(song);
+            a.setOnAction(event -> {
+                if (this.started.get()) {
+                    boolean correct = game.answer(song);
+                    a.setColor(correct);
+                    if (! correct) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Game Over");
+                        alert.setContentText("You reached " + game.getPoints() + " points.");
+                        alert.showAndWait();
+                    }
+                }
+            });
+            btns.add(a);
+        }
+        this.buttons.getChildren().setAll(btns);
+    }
+    
     @Override
     public void update(Observable o, Object arg) {
+        ANSI.RED.println("__UPDATE__");
+    
+        try {
+            if (arg instanceof GameMode.Mode) {
+                GameMode.Mode mode = (GameMode.Mode) arg;
+                switch (mode){
+                    case NORMAL:
+                        break;
+                    case TIMED:
+                        break;
+                    case CONTINUOUS:
+                        break;
+                    case REACTION:
+                        break;
+                    case GAME_OVER:
+                        break;
+                    case GAME_DONE:
+                        Alert a = new Alert(Alert.AlertType.INFORMATION);
+                        a.setContentText("You have guessed all your songs correctly. Congrats.");
+                        a.showAndWait();
+                        break;
+                }
+                return;
+            }
+            if (arg instanceof isGame.Action) {
+                isGame.Action action = (isGame.Action) arg;
+                switch (action) {
+                    case POINTS:
+                        super.update(o, arg);
+                        break;
+                    case ANSWERS:
+                        setAnswers((Song[]) action.getVal());
+                        break;
+                    case NEW_MULTIPLIER:
+                        break;
+                    case ANSWER_CORRECT:
+                        this.answered.set(false);
+                        break;
+                    case ANSWER_INCORRECT:
+                        // todo
+                        this.answered.set(true);
+                        break;
+                    case ANSWER:
+                        break;
+                }
+            }
+        } catch (NullPointerException e) {
+        }
     
         if (arg instanceof isGame.Action) {
             isGame.Action action = (isGame.Action) arg;

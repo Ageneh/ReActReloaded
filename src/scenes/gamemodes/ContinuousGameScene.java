@@ -21,23 +21,17 @@ import java.util.Observer;
  */
 public class ContinuousGameScene extends GameScene {
     
-    public ContinuousGameScene(Observer... observers) {
-        this(null, observers);
+    public ContinuousGameScene(Observer observer) {
+        this(null, observer);
     }
     
-    public ContinuousGameScene(String name, Observer... observers) {
-        super("scenes/fxml/continuousgame_scene.fxml", new ContinuousGame(name), observers);
+    public ContinuousGameScene(String name, Observer observer) {
+        super("scenes/fxml/continuousgame_scene.fxml", new ContinuousGame(name), observer);
     }
     
     @Override
     public void close(Code code) {
         game.close(code);
-    }
-    
-    @Override
-    public void start() {
-        super.start();
-        this.game.start();
     }
     
     @Override
