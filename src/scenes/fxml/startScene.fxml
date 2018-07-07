@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="850.0" prefWidth="1275.0" style="-fx-background-color: #BCC7D3;"
-            stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8" fx:controller="scenes.fxml.startScene">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1275.0"
+            styleClass="window-borderpane" stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8"
+            fx:controller="scenes.fxml.startScene">
     <top>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #15292F;"
                     BorderPane.alignment="CENTER">

@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
-            fx:controller="scenes.fxml.NormalgameScene"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="800.0" maxWidth="1275.0" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="800.0" prefWidth="1275.0" styleClass="window-borderpane"
+            stylesheets="@mainstyle.css" xmlns="http://javafx.com/javafx/8">
+    <top>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+    </top>
+    <bottom>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+    </bottom>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER"/>
+    </left>
+    <right>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER"/>
+    </right>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="293.5614929199219" minHeight="10.0" prefHeight="283.7864074707031"
+                                vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="193.01779174804688" minHeight="10.0" prefHeight="153.50323486328125"
+                                vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="191.59707641601562" minHeight="10.0" prefHeight="152.49676513671875"
+                                vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <GridPane prefHeight="282.0" prefWidth="538.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <HBox fx:id="actBtn1" prefHeight="100.0" prefWidth="200.0"
+                              style="-fx-background-color: #FFB312;" styleClass="act-btn">
+                            <children>
+                                <Label fx:id="actBtnValue1" text="Button 1"/>
+                            </children>
+                        </HBox>
+                        <HBox fx:id="actBtn2" prefHeight="100.0" prefWidth="200.0"
+                              style="-fx-background-color: #FFB312;" styleClass="act-btn" GridPane.rowIndex="1">
+                            <children>
+                                <Label fx:id="actBtnValue2" text="Button 2"/>
+                            </children>
+                        </HBox>
+                        <HBox fx:id="actBtn3" prefHeight="100.0" prefWidth="200.0"
+                              style="-fx-background-color: #FFB312;" styleClass="act-btn" GridPane.rowIndex="2">
+                            <children>
+                                <Label fx:id="actBtnValue3" text="Button 3"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </GridPane>
+                <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                    <children>
+                        <ImageView fx:id="albumImage" fitHeight="231.0" fitWidth="303.0" layoutX="139.0" layoutY="25.0"
+                                   pickOnBounds="true" preserveRatio="true"/>
+                    </children>
+                </Pane>
+                <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Label text="Score"/>
+                        <Label text="Multiplizierer" GridPane.rowIndex="2"/>
+                        <Label fx:id="scorevalue" text="scorevalue" GridPane.columnIndex="1"/>
+                        <Label fx:id="multvalue" text="multvalue" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <Label text="Folge" GridPane.rowIndex="1"/>
+                        <Label fx:id="streakvalue" text="streakvalue" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    </children>
+                </GridPane>
+                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Label text="Beenden"/>
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>
