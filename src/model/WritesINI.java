@@ -10,10 +10,10 @@ package model;
  */
 public interface WritesINI {
     
-    /** Provides a method for writing to an ini-file. */
-    void writeINI();
-    
     /** Provides a method for reading an ini-file. */
     void readINI();
+    
+    /** Provides a method for writing to an ini-file. */
+    void writeINI();
     
 }

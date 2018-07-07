@@ -24,6 +24,12 @@ import java.util.concurrent.TimeUnit;
  */
 public class MusicPlayer extends ObservableModel implements WritesINI {
     
+    private final String KEY_VOL = "VOL";
+    /** A constant for the amount of times the player will loop the snippet. */
+    private final int LOOPCOUNT = 0;
+    private final SimpleMinim MINIM;
+    private final String SECTION = "MUSIC_PLAYER";
+    private final float STD_VOL = 50.0f;
     private volatile SimpleAudioPlayer audioPlayer;
     /** The duration for the total length of the loop. */
     private volatile int playtime;
@@ -36,18 +42,15 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
      * loop} was reached.
      */
     private volatile boolean stopByAnswer;
-    private final String KEY_VOL = "VOL";
-    /** A constant for the amount of times the player will loop the snippet. */
-    private final int LOOPCOUNT = 0;
-    private final SimpleMinim MINIM;
-    private final String SECTION = "MUSIC_PLAYER";
-    private final float STD_VOL = 50.0f;
     /** The current, loaded {@link Song}. */
     private Song currentSong;
     /** The gain of the {@link #audioPlayer} in {@code [0, 100]}. */
     private float volume;
     
-    private boolean isTasked;
+    private volatile boolean isTasked;
+    private Timer timer;
+    private TimerTask timerTask;
+    
     private MusicPlayer() {
         this.MINIM = new SimpleMinim(true);
         this.readINI();
@@ -58,48 +61,12 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         super.addAllObserver(o, observers);
         this.audioPlayer = audioPlayer;
     }
-    private Timer timer;
     
-    public Song currentSong() {
-        return currentSong;
-    }
-    
-    public int getPlaytime() {
-        return playtime;
-    }
     synchronized void play(Song song, Number timeMillis) {
+        this.isTasked = false;
         this.play(song, timeMillis.intValue());
     }
-    void play(Song song, int timeMillis) {
-        this.stop();
-        this.playtime = timeMillis;
-        ANSI.YELLOW.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
-        this.currentSong = song;
-        this.setLoop();
-        this.stopByAnswer = false;
-        this.play();
-    }
-    private TimerTask timerTask;
     
-    void pause() {
-        if (this.audioPlayer != null) {
-            this.audioPlayer.pause();
-        }
-    }
-    
-    void setVolume(float val) {
-        final float MIN_VOL = 20;
-        
-        if (val < MIN_VOL) this.volume = MIN_VOL;
-        else this.volume = val;
-        try {
-            this.audioPlayer.setGain(this.linearToDB(this.volume));
-        } catch (NullPointerException ignored) {
-        }
-    }
-    
-    //////////// CONSTRUCTORS
-    //////////// METHODS
     /**
      * @param additionalTime The amount of time which is to be added to the normal playback time.
      * @author Henock Arega Replays the current song but a for a greater amount of time.
@@ -110,10 +77,11 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         this.audioPlayer.setLoopPoints(this.posA, this.posB);
         this.play();
     }
+    
     private synchronized void play() {
         this.setVolume(this.volume);
         
-        if(!isTasked) reschedule();
+        if (! isTasked) reschedule();
         else {
             synchronized (timerTask) {
                 timerTask.notify();
@@ -122,29 +90,22 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
 
 //        this.control.resume();
     }
+    
     private synchronized void reschedule() {
         this.timerTask = new TimerTask() {
             //////////// OVERRIDES
             @Override
             public void run() {
-                if (!isTasked) {
-                    if (currentSong.getTitle().contains("Stain")) {
-                        System.out.println();
-                    }
+                if (! isTasked) {
                     MusicPlayer.this.audioPlayer.loop(LOOPCOUNT);
                     isTasked = true;
                 }
-                if (!MusicPlayer.this.audioPlayer.isPlaying() ||
+                if (! MusicPlayer.this.audioPlayer.isPlaying() ||
                         MusicPlayer.this.audioPlayer.position() >= MusicPlayer.this.posB) {
-                    MusicPlayer.this.setChanged();
-                    MusicPlayer.this.notifyObservers(new PlayerResult(
-                            MusicPlayer.this.posB - MusicPlayer.this.posA,
-                            MusicPlayer.this.stopByAnswer
-                    ));
-                    
+        
                     synchronized (timerTask) {
                         try {
-                            wait();
+                            timerTask.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -158,24 +119,62 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         
         this.timer.scheduleAtFixedRate(timerTask, 0, 200);
     }
-    void stop() {
-        if (this.audioPlayer != null && this.audioPlayer.isPlaying()) {
-            this.stopByAnswer = true;
-//            this.control.resume();
-            this.pause();
-            this.MINIM.stop();
+    
+    public Song currentSong() {
+        return currentSong;
+    }
+    
+    public int getPlaytime() {
+        return playtime;
+    }
+    
+    //////////// CONSTRUCTORS
+    //////////// METHODS
+    
+    void pause() {
+        if (this.audioPlayer != null) {
+            this.audioPlayer.pause();
         }
     }
     
-    private void setLoop() {
-        final int INSET = 60;
-        long length = Math.toIntExact(this.currentSong.lengthMillis());
-        System.out.println(TimeUnit.MILLISECONDS.toSeconds(length) + " >> length");
-        long a = length - TimeUnit.SECONDS.toMillis(INSET);
-        this.posA = (int) (Math.random() * Math.abs(a)) + (int) TimeUnit.SECONDS.toMillis(INSET / 2);
-        this.posB = posA + this.playtime;
-        this.audioPlayer = this.MINIM.loadMP3File(this.currentSong.getPath());
-        this.audioPlayer.setLoopPoints(this.posA, this.posB);
+    void play(Song song, int timeMillis) {
+        this.stop();
+        this.playtime = timeMillis;
+        ANSI.YELLOW.println(song.getTitle() + ", " + TimeUnit.MILLISECONDS.toSeconds(timeMillis) + "s");
+        this.currentSong = song;
+        this.setLoop();
+        this.stopByAnswer = false;
+        this.play();
+    }
+    
+    void setVolume(float val) {
+        final float MIN_VOL = 20;
+        
+        if (val < MIN_VOL) this.volume = MIN_VOL;
+        else this.volume = val;
+        try {
+            this.audioPlayer.setGain(this.linearToDB(this.volume));
+        } catch (NullPointerException ignored) {
+        }
+    }
+    
+    void stop() {
+        if (this.audioPlayer != null) {
+            this.stopByAnswer = true;
+//            this.control.resume();
+            MusicPlayer.this.setChanged();
+            MusicPlayer.this.notifyObservers(new PlayerResult(
+                    MusicPlayer.this.posB - MusicPlayer.this.posA,
+                    MusicPlayer.this.stopByAnswer
+            ));
+            this.pause();
+            try {
+                this.timer.cancel();
+                this.timer.purge();
+            } catch (NullPointerException e) {
+            }
+            this.MINIM.stop();
+        }
     }
     
     /**
@@ -202,23 +201,15 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
         super.notifyObservers(result);
     }
     
-    //////////// OVERRIDES
-    @Override
-    public void writeINI() {
-        final String INI_PATH = Filepaths.INI_MUSICPLAYER.getFile().getAbsolutePath();
-        try {
-            File destFile = new File(INI_PATH);
-            Ini ini = INIReader.getIni(INI_PATH);
-            BufferedWriter br = new BufferedWriter(new FileWriter(INI_PATH));
-            
-            ini.load(destFile);
-            ini.clear();
-            
-            ini.put(SECTION, KEY_VOL, this.volume);
-            ini.store(br);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void setLoop() {
+        final int INSET = 60;
+        long length = Math.toIntExact(this.currentSong.lengthMillis());
+        System.out.println(TimeUnit.MILLISECONDS.toSeconds(length) + " >> length");
+        long a = length - TimeUnit.SECONDS.toMillis(INSET);
+        this.posA = (int) (Math.random() * Math.abs(a)) + (int) TimeUnit.SECONDS.toMillis(INSET / 2);
+        this.posB = posA + this.playtime;
+        this.audioPlayer = this.MINIM.loadMP3File(this.currentSong.getPath());
+        this.audioPlayer.setLoopPoints(this.posA, this.posB);
     }
     
     @Override
@@ -235,6 +226,25 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
             } catch (NullPointerException ignored) {
                 this.setVolume(this.STD_VOL);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //////////// OVERRIDES
+    @Override
+    public void writeINI() {
+        final String INI_PATH = Filepaths.INI_MUSICPLAYER.getFile().getAbsolutePath();
+        try {
+            File destFile = new File(INI_PATH);
+            Ini ini = INIReader.getIni(INI_PATH);
+            BufferedWriter br = new BufferedWriter(new FileWriter(INI_PATH));
+            
+            ini.load(destFile);
+            ini.clear();
+            
+            ini.put(SECTION, KEY_VOL, this.volume);
+            ini.store(br);
         } catch (IOException e) {
             e.printStackTrace();
         }

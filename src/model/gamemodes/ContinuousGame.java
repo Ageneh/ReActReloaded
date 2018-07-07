@@ -33,7 +33,6 @@ public class ContinuousGame extends GameMode {
         } else {
             super.subtractPoints();
         }
-        super.notifyOfGameStatus();
         super.next();
         return res;
     }

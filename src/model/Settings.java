@@ -21,7 +21,7 @@ public class Settings {
                 temp[i + 1] = paths[i];
             }
         } else {
-            paths = new String[]{path};
+            paths = new String[]{ path };
         }
         songLibrary.addToLib(paths);
     }

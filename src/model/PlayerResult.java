@@ -1,7 +1,7 @@
 package model;
 
 /**
- * An class which is used as an argument when the {@link model.MusicPlayer.PlayerControl} notifies its observers.
+ * An class which is used as an argument when the {@link model.MusicPlayer} notifies its observers.
  *
  * @author Henock Arega
  * @project ReActReloaded

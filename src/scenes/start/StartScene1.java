@@ -3,6 +3,7 @@ package scenes.start;
 
 import design.Colors;
 import design.Labels;
+import functions.ElementBackgroundCreator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -11,16 +12,18 @@ import scenes.ObservableScene;
 
 import java.util.Observable;
 
-public class StartScene extends ObservableScene<StackPane> {
-
+public class StartScene1 extends ObservableScene {
+    
     private HBox secondaryMenu;
     private VBox primaryMenu;
     private AnchorPane base;
-
-    public StartScene(){
-        super(new StackPane());
-        super.setBackground(Colors.BTN_GOOD);
-
+    private StackPane root;
+    
+    public StartScene1() {
+        super();
+        root = new StackPane();
+        root.setBackground(ElementBackgroundCreator.getBackground(Colors.BTN_GOOD));
+        
         base = new AnchorPane();
         secondaryMenu = new HBox();
         secondaryMenu.getChildren().add(Labels.M_SMALL.getLabel("Song Library"));
@@ -33,21 +36,13 @@ public class StartScene extends ObservableScene<StackPane> {
         base.setBackground(Colors.GAMEPLAY_INTERACTIVE.getBackground());
         this.getRoot().getChildren().add(base);
     }
-
-//        System.out.println(String.format("-fx-background-image: url(\"%s\");", IconPath.PLAY.getPath()));
-//        playBtn_mask.setStyle("-fx-background-color: aqua");
-//        playBtn_mask.setStyle(String.format("-fx-background-image: url(\"%s\");", IconPath.PLAY.getPath()));
-//        playBtn_mask.setStyle("-fx-background-size: cover;");
-//        playBtn_mask.setStyle("-fx-background-repeat: no-repeat;");
-//        playBtn_mask.setStyle("-fx-background-position: center center;");
-
-    @Override
+    
     public StackPane getRoot() {
-        return super.getRoot();
+        return root;
     }
-
+    
     @Override
     public void update(Observable o, Object arg) {
-
+    
     }
 }

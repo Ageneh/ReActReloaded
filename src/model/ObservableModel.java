@@ -32,6 +32,7 @@ public abstract class ObservableModel extends Observable implements Close {
         setChanged();
         super.notifyObservers(arg);
     }
+    
     @Override
     public synchronized void addAllObserver(Observer observer, Observer... observers) {
         super.addAllObserver(observer, observers);

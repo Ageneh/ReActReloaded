@@ -8,40 +8,43 @@ package functions;
  * @author Henock Arega
  */
 public enum ANSI {
-
-    BLUE("\033[34m"),
-    RED("\033[31m"),
-    GREEN("\033[32m"),
-    YELLOW("\033[33m"),
-    BLACK("\033[0m"),
-    MAGENTA("\033[35m"),
-    CYAN("\033[36m"),
-    WHITE("\033[37m");
-
+    
+    BLUE("[38;34m"),
+    RED("[38;31m"),
+    GREEN("[38;32m"),
+    YELLOW("[38;33m"),
+    BLACK("[38;0m"),
+    MAGENTA("[38;35m"),
+    CYAN("[38;36m"),
+    WHITE("[38;37m"),
+    REVERSE("[38;7m"),
+    GREEN_BG("[38;2;92;82;92;48;2;100;100;0m"),
+    RED_BG("[38;2;255;82;197;48;2;100;100;0m");
+    
     private String esc;
     private final String end = "\033[0m";
-
+    
     ANSI(String esc){
-        this.esc = esc;
+        this.esc = "\033" + esc;
     }
-
+    
     public String colorize(String str) {
         return esc + str + end;
     }
-
+    
     public void print(String str) {
         System.out.print(esc + str + end);
     }
     
-    //////////// METHODS
-    public void print(Object str) {
-        System.out.print(esc + str.toString() + end);
+    public void printf(String format, Object... args) {
+        String string = String.format(format, args);
+        this.print(string);
     }
-
+    
     public void println(String str) {
         this.print(str + System.lineSeparator());
     }
-
+    
     public void println(Object obj) {
         this.print(obj.toString() + System.lineSeparator());
     }

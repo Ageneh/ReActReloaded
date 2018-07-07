@@ -14,10 +14,10 @@ import java.nio.file.Files;
  * for the gameplay.
  * <br>Additionally the{@link MetaExtractor} is used to extract the necessary from a
  * mp3-file.
- * @see MetaExtractor
  *
  * @author Henock Arega
  * @project ReActReloaded
+ * @see MetaExtractor
  */
 public class Song {
     
@@ -27,6 +27,7 @@ public class Song {
     public static final String EXTENSION = "mp3";
     /**
      * The path of the standard cover image
+     *
      * @see Song#coverImg
      */
     public static final String COVER_IMG = "img/std_cover.jpg";
@@ -69,12 +70,8 @@ public class Song {
         }
     }
     
-    /**
-     * @return Returns the title of the {@link Song}.
-     * @author Henock Arega
-     */
-    public String getTitle() {
-        return this.meta[MetaPos.TITLE.val];
+    public String getAbsPath() {
+        return absPath;
     }
     
     /**
@@ -93,36 +90,45 @@ public class Song {
         return this.meta[MetaPos.ARTIST.val];
     }
     
-    public long lengthMillis() {
-        return this.length;
-    }
-    
     public String getPath() {
         return path;
     }
     
-    public String getAbsPath() {
-        return absPath;
+    /**
+     * @return Returns the title of the {@link Song}.
+     * @author Henock Arega
+     */
+    public String getTitle() {
+        return this.meta[MetaPos.TITLE.val];
     }
-
-//////////// METHODS
+    
+    public long lengthMillis() {
+        return this.length;
+    }
+    
     /**
      * @param path The path which is to be checked.
-     * Checks the given path and if the given path directs to anything but a valid mp3-song a
-     * {@link SongInvalidException} will be thrown.
+     *             Checks the given path and if the given path directs to anything but a valid mp3-song a
+     *             {@link SongInvalidException} will be thrown.
      * @return Returns a File if the argument links to a mp3 song but throws a {@link SongInvalidException} if the given
      * argument links to anything else.
-     *
      * @author Henock Arega
      */
     private File checkSong(String path) {
         final File temp = new File(path);
-        
-        if (!temp.exists() || temp.isDirectory() || !temp.getName().endsWith(EXTENSION)
+    
+        if (! temp.exists() || temp.isDirectory() || ! temp.getName().endsWith(EXTENSION)
                 || temp.length() <= 750) {
             throw new SongInvalidException(path);
         }
         return temp;
+    }
+
+//////////// METHODS
+    
+    @Override
+    public String toString() {
+        return this.getArtist() + " - " + this.getTitle() + ", " + this.getAlbum();
     }
     
     private enum MetaPos {
@@ -156,33 +162,7 @@ public class Song {
             this.file = file;
             this.id = new Mp3File(file.getAbsolutePath()).getId3v2Tag();
         }
-        
-        private String extractTitle() {
-            try {
-                return this.id.getTitle();
-            } catch (NullPointerException e) {
-                return this.file.getName().replace("." + Song.EXTENSION, "");
-            }
-
-//            if(this.id.getTitle().equals(null) || this.id.getTitle() == null || this.id.getTitle().equals("")){
-//                return file.getName().replace(Song.EXTENSION, "");
-//            }
-//            return this.id.getTitle();
-        }
-        
-        private String extractArtist() {
-            try {
-                return this.id.getArtist();
-            } catch (NullPointerException e) {
-                return "Artist Unknown";
-            }
-
-//            if(this.id.getArtist().equals(null) || this.id.getArtist() == null || this.id.getArtist().equals("")){
-//                return "Artist Unknown";
-//            }
-//            return this.id.getArtist();
-        }
-        
+    
         private String extractAlbum() {
             try {
                 return this.id.getAlbum();
@@ -196,14 +176,17 @@ public class Song {
 //            return this.id.getAlbum();
         }
         
-        private long extractLength() {
+        private String extractArtist() {
             try {
-                Mp3File mp3File = new Mp3File(this.file);
-                return mp3File.getLengthInMilliseconds();
-            } catch (IOException | InvalidDataException | UnsupportedTagException e) {
-                e.printStackTrace();
+                return this.id.getArtist();
+            } catch (NullPointerException e) {
+                return "Artist Unknown";
             }
-            return id.getLength();
+
+//            if(this.id.getArtist().equals(null) || this.id.getArtist() == null || this.id.getArtist().equals("")){
+//                return "Artist Unknown";
+//            }
+//            return this.id.getArtist();
         }
         
         private byte[] extractCoverImg() {
@@ -220,6 +203,29 @@ public class Song {
             }
             
             return arr;
+        }
+    
+        private long extractLength() {
+            try {
+                Mp3File mp3File = new Mp3File(this.file);
+                return mp3File.getLengthInMilliseconds();
+            } catch (IOException | InvalidDataException | UnsupportedTagException e) {
+                e.printStackTrace();
+            }
+            return id.getLength();
+        }
+    
+        private String extractTitle() {
+            try {
+                return this.id.getTitle();
+            } catch (NullPointerException e) {
+                return this.file.getName().replace("." + Song.EXTENSION, "");
+            }
+
+//            if(this.id.getTitle().equals(null) || this.id.getTitle() == null || this.id.getTitle().equals("")){
+//                return file.getName().replace(Song.EXTENSION, "");
+//            }
+//            return this.id.getTitle();
         }
         
     }

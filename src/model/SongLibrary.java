@@ -27,12 +27,12 @@ class SongLibrary implements Close, WritesINI {
     private static final String SECTION = "MUSIC";
     /** Has all paths containing mp3-files. */
     private static ArrayList<String> folderPaths;
+    private static ArrayList<String> songs;
     private boolean hasEnoughSongs;
     /**
      * A playlist of all given songs.
      */
     private Playlist playlist;
-    private static ArrayList<String> songs;
     
     SongLibrary() {
         this.folderPaths = new ArrayList<>();
@@ -42,15 +42,18 @@ class SongLibrary implements Close, WritesINI {
         String str = "";
         for (String s : songs) {
             if (s.contains("Stain")) {
-                str = s;
+                songs.remove(s);
                 break;
             }
         }
-        songs.remove(str);
-        songs.add(1, str);
     }
     
     //////////// METHODS
+    
+    public static ArrayList<String> getFolderPaths() {
+        return folderPaths;
+    }
+    
     /**
      * Adds all the parts of the argument to the list.
      *
@@ -77,18 +80,6 @@ class SongLibrary implements Close, WritesINI {
         Collections.sort(folderPaths);
         
         this.writeINI();
-    }
-    
-    /**
-     * Removes paths from {@link SongLibrary#folderPaths} if the given path are contained in the list.
-     *
-     * @param paths The paths which are to be removed from the list.
-     * @see SongLibrary#folderPaths
-     */
-    public void removeFromLib(String... paths) {
-        ArrayList<String> temp = new ArrayList<>();
-        temp.addAll(Arrays.asList(paths));
-        this.folderPaths.removeAll(temp);
     }
     
     public ArrayList<String> getLibrary() {
@@ -128,8 +119,16 @@ class SongLibrary implements Close, WritesINI {
         return songsShuffled;
     }
     
-    public static ArrayList<String> getFolderPaths() {
-        return folderPaths;
+    /**
+     * Removes paths from {@link SongLibrary#folderPaths} if the given path are contained in the list.
+     *
+     * @param paths The paths which are to be removed from the list.
+     * @see SongLibrary#folderPaths
+     */
+    public void removeFromLib(String... paths) {
+        ArrayList<String> temp = new ArrayList<>();
+        temp.addAll(Arrays.asList(paths));
+        this.folderPaths.removeAll(temp);
     }
     
     /**
@@ -176,6 +175,25 @@ class SongLibrary implements Close, WritesINI {
     }
     
     /**
+     * Create a {@link Playlist} object which contains all a certain amount of songpaths and in a randomized order.
+     */
+    private void createPlaylist() {
+        if (playlist == null) {
+            playlist = new Playlist(this.folderPaths);
+        } else if (this.playlist.getSongs().size() == this.folderPaths.size()) {
+            boolean areSame = true;
+            int i = 0;
+            while (areSame && i < this.folderPaths.size()) {
+                if (this.playlist.getSongs().contains(this.folderPaths.get(i++))) continue;
+                else areSame = false;
+            }
+            if (! areSame) {
+                this.playlist.replaceAllWith(this.folderPaths);
+            }
+        }
+    }
+    
+    /**
      * Checks whether the given file is a directory containing mp3 files.
      *
      * @param file If the file is a directory and contains mp3 files true will be returne otherwise the return
@@ -183,7 +201,7 @@ class SongLibrary implements Close, WritesINI {
      * @return Boolean telling if there is a mp3 file in the directory.
      */
     private boolean isDir(File file) {
-        if (file.exists() && !file.isHidden() && file.isDirectory() && file.list().length > 0) {
+        if (file.exists() && ! file.isHidden() && file.isDirectory() && file.list().length > 0) {
             return true;
         }
         return false;
@@ -198,31 +216,12 @@ class SongLibrary implements Close, WritesINI {
      */
     private boolean isMusicFile(File file) {
         if (this.isDir(file)) return false;
-        if (file.getName().endsWith(Song.EXTENSION) && !file.isHidden()) {
+        if (file.getName().endsWith(Song.EXTENSION) && ! file.isHidden()) {
             return true;
         }
         return false;
     }
     
-    /**
-     * Create a {@link Playlist} object which contains all a certain amount of songpaths and in a randomized order.
-     */
-    private void createPlaylist() {
-        if (playlist == null) {
-            playlist = new Playlist(this.folderPaths);
-        } else if (this.playlist.getSongs().size() == this.folderPaths.size()) {
-            boolean areSame = true;
-            int i = 0;
-            while (areSame && i < this.folderPaths.size()) {
-                if (this.playlist.getSongs().contains(this.folderPaths.get(i++))) continue;
-                else areSame = false;
-            }
-            if (!areSame) {
-                this.playlist.replaceAllWith(this.folderPaths);
-            }
-        }
-    }
-
     //////////// OVERRIDES
     @Override
     public void writeINI() {
@@ -268,16 +267,15 @@ class SongLibrary implements Close, WritesINI {
             Ini ini = INIReader.getIni(INI_PATH);
             Section section = ini.get(SECTION);
             File temp;
-            HashSet<String> tempSet = new HashSet<>();
             for (String s : section.keySet()) {
-                if (!s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
+                if (! s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
                 temp = new File(ini.get(SECTION, s));
                 if (temp.exists()) {
                     this.addToLib(ini.get(SECTION, s));
 //                    tempSet.add(ini.get(SECTION, s));
                 }
             }
-            this.folderPaths.addAll(tempSet);
+    
     
             if (this.songs.size() < MIN_SONG_COUNT) {
                 throw new NotEnoughSongsException(this.songs.size(), MIN_SONG_COUNT);

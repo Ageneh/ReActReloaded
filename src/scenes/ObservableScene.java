@@ -1,9 +1,8 @@
 package scenes;
 
-import design.Colors;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import model.Observable;
 
 import java.util.Observer;
@@ -12,54 +11,29 @@ import java.util.Observer;
  * All scenes have to extend this class so that they have all necessary methods and values
  * and can be treated/used correctly.
  */
-public abstract class ObservableScene<T extends Region> extends Observable implements Observer {
+public abstract class ObservableScene extends Observable implements Observer {
     
-    protected static SimpleIntegerProperty gen_width;
-    protected static SimpleIntegerProperty gen_height;
-    private T root;
+    public final static SimpleIntegerProperty gen_width = new SimpleIntegerProperty(Sizes.WIDTH.getInt());
+    public final static SimpleIntegerProperty gen_height = new SimpleIntegerProperty(Sizes.HEIGHT.getInt());
+    private StackPane root;
     private Scene scene;
     
-    protected ObservableScene(T root) {
-        gen_width = new SimpleIntegerProperty(Sizes.WIDTH.getInt());
-        gen_height = new SimpleIntegerProperty(Sizes.HEIGHT.getInt());
-        this.root = root;
+    protected ObservableScene() {
+        this.root = new StackPane();
+        this.root.setMinSize(gen_width.doubleValue(), gen_height.doubleValue());
+        this.root.setPrefSize(gen_width.doubleValue(), gen_height.doubleValue());
+        this.root.setMaxSize(gen_width.doubleValue(), gen_height.doubleValue());
         this.scene = new Scene(this.root);
-        this.root.minWidthProperty().bind(gen_width);
-        this.root.prefWidthProperty().bind(gen_width);
-        this.root.maxWidthProperty().bind(gen_width);
-        this.root.minHeightProperty().bind(gen_height);
-        this.root.prefHeightProperty().bind(gen_height);
-        this.root.maxHeightProperty().bind(gen_height);
+        
+        this.scene.setRoot(this.root);
     }
     
-    protected ObservableScene() {
-        gen_width = new SimpleIntegerProperty(Sizes.WIDTH.getInt());
-        gen_height = new SimpleIntegerProperty(Sizes.HEIGHT.getInt());
-        this.root = (T) (new Region());
-        this.root.minWidthProperty().bind(gen_width);
-        this.root.prefWidthProperty().bind(gen_width);
-        this.root.maxWidthProperty().bind(gen_width);
-        this.root.minHeightProperty().bind(gen_height);
-        this.root.prefHeightProperty().bind(gen_height);
-        this.root.maxHeightProperty().bind(gen_height);
-        this.scene = new Scene(this.root);
+    public StackPane getRoot() {
+        return root;
     }
     
     public Scene getScene() {
         return this.scene;
-    }
-    
-    public T getRoot() {
-        return this.root;
-    }
-    
-    /**
-     * Changes the background color of the {@link #root} pane.
-     *
-     * @param color A color which has to be defined in {@link Colors}
-     */
-    public void setBackground(Colors color) {
-        this.root.setBackground(color.getBackground());
     }
     
     @Override
@@ -78,10 +52,10 @@ public abstract class ObservableScene<T extends Region> extends Observable imple
         super.setChanged();
     }
     
-    private enum Sizes {
+    public enum Sizes {
         
-        WIDTH(750),
-        HEIGHT(500);
+        WIDTH(1275),
+        HEIGHT(850);
         
         private int val;
         
@@ -89,7 +63,7 @@ public abstract class ObservableScene<T extends Region> extends Observable imple
             this.val = val;
         }
         
-        int getInt() {
+        public int getInt() {
             return val;
         }
     }

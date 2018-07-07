@@ -47,6 +47,10 @@ public class PlayerTest implements Observer {
         }
     }
     
+    public static void main(String[] args) {
+        new PlayerTest();
+    }
+    
     private void test1() {
         SongLibrary lib = new SongLibrary();
         MusicPlayer musicPlayer = new MusicPlayer(this);
@@ -72,10 +76,6 @@ public class PlayerTest implements Observer {
         System.out.println("END");
         lib.close(Close.Code.CLOSE);
         musicPlayer.close(Close.Code.CLOSE);
-    }
-    
-    public static void main(String[] args) {
-        new PlayerTest();
     }
     
     //////////// OVERRIDES

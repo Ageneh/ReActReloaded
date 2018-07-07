@@ -48,14 +48,15 @@ public class TimedGame extends GameMode {
     
     //////////// METHODS
     private void init() {
-        if (!isInit)
+        if (! isInit)
             this.isInit = true;
         this.timerTask = new TimerTask() {
             long elapsedTime = 0; // in milliseconds
+    
             //////////// OVERRIDES
             @Override
             public void run() {
-                ANSI.GREEN.print(++elapsedTime + " ");
+                ANSI.GREEN.print(++ elapsedTime + " ");
                 if (elapsedTime % 10 == 0) System.out.println();
                 
                 if (elapsedTime >= TimedGame.this.length.seconds * (1000 / PERIOD)) {
@@ -77,6 +78,7 @@ public class TimedGame extends GameMode {
         this.timer.scheduleAtFixedRate(this.timerTask, this.DELAY, this.PERIOD);
         super.start();
     }
+    
     @Override
     public void update(Observable o, Object arg) {
     
@@ -124,6 +126,7 @@ class TimedTest implements Observer {
         TimedGame tg = new TimedGame(this);
         tg.start();
     }
+    
     //////////// METHODS
     public static void main(String[] args) {
         new TimedTest();

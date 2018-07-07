@@ -10,13 +10,13 @@ import java.io.File;
  * Makes it easier when trying to create an {@link Image}.
  */
 public abstract class ImageCreator {
-
-    public static Image getImage(String path){
+    
+    public static Image getImage(String path) {
         File f = new File(path);
-        if(!f.exists()) {
+        if (! f.exists()) {
             return null;
         }
         return new Image(f.toURI().toString());
     }
-
+    
 }

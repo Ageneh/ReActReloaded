@@ -9,6 +9,7 @@ import java.util.Observer;
 public abstract class Observable extends java.util.Observable {
 
 //////////// METHODS
+    
     /**
      * @param observers An array of multiple observers.
      * @author Henock Arega
@@ -17,6 +18,15 @@ public abstract class Observable extends java.util.Observable {
     public synchronized void addAllObserver(Observer observer, Observer... observers) {
         try {
             this.addObserver(observer);
+            for (Observer o : observers) {
+                this.addObserver(o);
+            }
+        } catch (NullPointerException ignored) {
+        }
+    }
+    
+    public synchronized void addAllObserver(Observer... observers) {
+        try {
             for (Observer o : observers) {
                 this.addObserver(o);
             }

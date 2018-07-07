@@ -42,15 +42,6 @@ public class NormalGame extends GameMode {
         this.multiplier = 1;
     }
     
-    //////////// OVERRIDES
-    @Override
-    public void replay() {
-        if (super.getReplayCount() < super.mode.getMaxReplay()) {
-            super.replay();
-            super.addPoints(-(1 / 2.0));
-        }
-    }
-    
     @Override
     public boolean answer(Song answer) {
         boolean res = super.answer(answer);
@@ -61,25 +52,30 @@ public class NormalGame extends GameMode {
                 if (this.multiplier >= 1 && this.multiplier <= MAX_MULT && streak > 0 && this.streak % MINSTEP == 0) {
                     this.multiplier++;
                 }
-                System.out.println("SRTEAK:\t" + streak);
-                System.out.println("MULTI:\t " + multiplier);
             }
             super.addPoints();
-            super.notifyOfGameStatus();
-            super.next();
-    
-    
-            //******TEST
             setChanged();
-            notifyObservers(super.getSong());
+            notifyObservers(Action.ANSWER_CORRECT);
+            setChanged();
+    
+            super.next();
         } else {
-            // TODO show screen overlay where name can be entered and one choses to go to home, play again etc.
             super.subtractPoints();
             super.close(Code.GAME_OVER);
-            super.notifyOfGameStatus();
+            setChanged();
+            notifyObservers(Action.ANSWER_INCORRECT);
         }
         this.answerType = res;
         return res;
+    }
+    
+    //////////// OVERRIDES
+    @Override
+    public void replay() {
+        if (super.getReplayCount() < super.mode.getMaxReplay()) {
+            super.replay();
+            super.addPoints(- (0.1));
+        }
     }
     
     @Override
