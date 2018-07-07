@@ -3,19 +3,25 @@
  */
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.layout.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
+import scenes.GameModeScene;
+import scenes.NameScene;
+import scenes.RanglistScene;
+import scenes.SettingScene;
 import scenes.elements.CustomMenuButton;
-import scenes.gamemodes.ContinuousGameScene;
 import scenes.gamemodes.GameScene;
 import scenes.gamemodes.NormalGameScene;
 
@@ -64,23 +70,6 @@ public class ReActTest extends Application implements Observer {
         titleLabel.setTextFill(Color.WHITE);
         hboxTop.getChildren().add(titleLabel);
         bp.setTop(hboxTop);
-
-
-        /*
-         * BorderPane left & right
-         *
-         */
-
-        VBox vbox = new VBox();
-        vbox.setMinWidth(100);
-        vbox.setMaxWidth(100);
-        VBox vbox2 = new VBox();
-        vbox.setMinWidth(100);
-        vbox.setMaxWidth(100);
-
-        bp.setLeft(vbox);
-        bp.setRight(vbox2);
-
         /*
          * BorderPane bottom
          *
@@ -104,14 +93,42 @@ public class ReActTest extends Application implements Observer {
         CustomMenuButton menu2 = new CustomMenuButton("Einstellungen");
         CustomMenuButton menu3 = new CustomMenuButton("Spielmodi");
         CustomMenuButton menu4 = new CustomMenuButton("Rangliste");
+
+
+
+
+        menu1.getBox().setOnMouseClicked(event -> {
+            primaryStage.setScene(new NameScene().getScene());
+            primaryStage.show();
+        });
+
+        menu2.getBox().setOnMouseClicked(event -> {
+            primaryStage.setScene(new SettingScene().getScene());
+            primaryStage.show();
+        });
+
+        menu3.getBox().setOnMouseClicked(event -> {
+            primaryStage.setScene(new GameModeScene().getScene());
+            primaryStage.show();
+        });
+
+        menu4.getBox().setOnMouseClicked(event -> {
+            primaryStage.setScene(new RanglistScene().getScene());
+            primaryStage.show();
+        });
+
+
+
         gp.setAlignment(Pos.CENTER);
-        gp.add(menu1.getBox(),0,3);
-        gp.add(menu2.getBox(),1,3);
-        gp.add(menu3.getBox(),0,4);
-        gp.add(menu4.getBox(),1,4);
+        gp.setVgap(50);
+        gp.setHgap(50);
+        gp.setPadding(new Insets(100, 100, 109, 100));
+        gp.add(menu1.getBox(),0,1);
+        gp.add(menu2.getBox(),1,1);
+        gp.add(menu3.getBox(),0,2);
+        gp.add(menu4.getBox(),1,2);
 
-
-        gp.setGridLinesVisible(true);
+        gp.setGridLinesVisible(false);
         bp.setCenter(gp);
 
 
@@ -119,40 +136,43 @@ public class ReActTest extends Application implements Observer {
 
 
 
-        VBox buttons = new VBox();
-        buttons.setAlignment(Pos.CENTER);
-        buttons.setFillWidth(false);
-        buttons.setSpacing(30);
-        Button a = new Button("Normal Game");
-    
-        Alert popup = new Alert(Alert.AlertType.INFORMATION);
-        popup.getDialogPane().setContent(new StackPane(buttons));
-        popup.setWidth(300);
-        Button s = new Button("Select");
-        s.setOnAction(event -> {
-            popup.showAndWait();
-        });
-        
-        a.setMinSize(100, 40);
-        a.setOnAction(event -> {
-            primaryStage.setScene(new NormalGameScene(this).getScene());
-            primaryStage.show();
-            primaryStage.centerOnScreen();
-            popup.close();
-        });
-        Button b = new Button("Continuous Game");
-        b.setMinSize(100, 40);
-        b.setOnAction(event -> {
-            primaryStage.setScene(new ContinuousGameScene(this).getScene());
-            primaryStage.show();
-            popup.close();
-            primaryStage.centerOnScreen();
-        });
-        buttons.getChildren().addAll(a, b);
-        
+//
+//
+//
+//        VBox buttons = new VBox();
+//        buttons.setAlignment(Pos.CENTER);
+//        buttons.setFillWidth(false);
+//        buttons.setSpacing(30);
+//        Button a = new Button("Normal Game");
+//
+//        Alert popup = new Alert(Alert.AlertType.INFORMATION);
+//        popup.getDialogPane().setContent(new StackPane(buttons));
+//        popup.setWidth(300);
+//        Button s = new Button("Select");
+//        s.setOnAction(event -> {
+//            popup.showAndWait();
+//        });
+//
+//        a.setMinSize(100, 40);
+//        a.setOnAction(event -> {
+//            primaryStage.setScene(new NormalGameScene(this).getScene());
+//            primaryStage.show();
+//            primaryStage.centerOnScreen();
+//            popup.close();
+//        });
+//        Button b = new Button("Continuous Game");
+//        b.setMinSize(100, 40);
+//        b.setOnAction(event -> {
+//            primaryStage.setScene(new ContinuousGameScene(this).getScene());
+//            primaryStage.show();
+//            popup.close();
+//            primaryStage.centerOnScreen();
+//        });
+//        buttons.getChildren().addAll(a, b);
+//
         primaryStage.setScene(new Scene(bp));
         primaryStage.show();
-        
+
     }
 
     public enum Sizes {

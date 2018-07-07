@@ -51,8 +51,11 @@ public enum Dimension {
     CHECKBOX_SIZE(35),
     
     MENU_MAX_WIDTH(300),
-    MENU_MAX_HEIGHT(450);
-    
+    MENU_MAX_HEIGHT(450),
+
+    CSTMENU_HEIGHT(50),
+    CSTMENU_WIDTH(250);
+
     
     private Number val;
     
