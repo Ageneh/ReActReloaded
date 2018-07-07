@@ -43,7 +43,7 @@ public class Ranking implements Serializable, Close {
     }
     
     public ArrayList<User> getRanking() {
-        this.ranking.sort(Comparator.comparing(User::getPoints));
+        this.ranking.sort(Comparator.comparing(User::getPoints).reversed());
         return new ArrayList<>(this.ranking);
     }
     
@@ -62,7 +62,7 @@ public class Ranking implements Serializable, Close {
         }
     }
     
-    private void write() {
+    public void write() {
         try {
             FileOutputStream fos = new FileOutputStream(this.file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -75,6 +75,17 @@ public class Ranking implements Serializable, Close {
     
     public void add(User user){
         this.ranking.add(user);
+    }
+    
+    public void add(Object arg){
+        if(arg instanceof User){
+            this.add((User) arg);
+        }
+    }
+    
+    public void reset(){
+        this.ranking = new ArrayList<>();
+        this.write();
     }
     
     @Override

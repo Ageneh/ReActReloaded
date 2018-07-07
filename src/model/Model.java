@@ -19,10 +19,10 @@ package model;
  */
 public class Model {
     
-    /** The current {@link GameMode} of an user. */
+    /** The current {@link GameMode} of an users. */
     private GameMode gameMode;
     
-    /** The user who plays this {@link model.Model#gameMode}. */
+    /** The users who plays this {@link model.Model#gameMode}. */
 
     public Model(GameMode.Mode mode, String username) {
         switch (mode) {

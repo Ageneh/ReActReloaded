@@ -10,8 +10,8 @@ import java.util.Observer;
  */
 public class ReactionGame extends GameMode {
     
-    protected ReactionGame(Mode mode, Observer o, Observer... observers) {
-        super(mode, o, observers);
+    protected ReactionGame(String username, Observer o, Observer... observers) {
+        super(Mode.REACTION, username, o, observers);
     }
     
     

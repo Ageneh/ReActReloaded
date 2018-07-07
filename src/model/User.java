@@ -19,7 +19,7 @@ public class User implements Serializable {
     
     /** A list which shows which {@link Song} has been answered correctly. */
     private ArrayList<Boolean> correctAnswered;
-    /** The {@link LocalDateTime day and time} the user played. */
+    /** The {@link LocalDateTime day and time} the users played. */
     private LocalDateTime datePlayed;
     /** The slowest reaction time beginning with the start of a {@link Song}. */
     private long maxReaction;
@@ -73,7 +73,7 @@ public class User implements Serializable {
         return points;
     }
     
-    void setPoints(int points) {
+    public void setPoints(int points) {
         this.points = points;
     }
     
@@ -81,7 +81,7 @@ public class User implements Serializable {
         return reactionTimes;
     }
     
-    void addReactionTime(long milliseconds) {
+    public void addReactionTime(long milliseconds) {
         this.reactionTimes.add(milliseconds);
         this.minReaction = Collections.min(this.reactionTimes);
         this.maxReaction = Collections.max(this.reactionTimes);

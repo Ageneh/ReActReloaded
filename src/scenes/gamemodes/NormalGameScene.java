@@ -40,7 +40,7 @@ public class NormalGameScene extends GameScene {
     }
     
     public NormalGameScene(String name, Observer observer) {
-        super("scenes/fxml/continuousgame_scene.fxml", new NormalGame(name), observer);
+        super(new NormalGame(name), observer);
 //        this.game = new NormalGame(name, this);
         this.started = new SimpleBooleanProperty(false);
         this.started.addListener(((observable, oldValue, newValue) -> {
@@ -61,14 +61,73 @@ public class NormalGameScene extends GameScene {
     }
     
     @Override
-    public void close(Code code) {
-        game.close(code);
+    protected void evalAction(isGame.Action action) {
+        switch (action) {
+            case POINTS:
+                super.setPoints(Integer.parseInt(action.getVal().toString()));
+                break;
+            case ANSWERS:
+                setAnswers((Song[]) action.getVal());
+                break;
+            case NEW_MULTIPLIER:
+                break;
+            case ANSWER_CORRECT:
+                this.answered.set(false);
+                break;
+            case ANSWER_INCORRECT:
+                this.answered.set(true);
+                game.endGame(false);
+                break;
+            case ANSWER:
+                break;
+        }
+    }
+    
+    @Override
+    protected void evalMode(GameMode.Mode mode) {
+        switch (mode) {
+            case GAME_OVER:
+                setChanged();
+                notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Game Over");
+                alert.setContentText("You reached " + game.getPoints() + " points.");
+                alert.showAndWait();
+                setChanged();
+                notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
+                setChanged();
+                notifyObservers(Code.GAME_OVER);
+                break;
+            case GAME_DONE:
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setTitle("Congrats!");
+                a.setContentText("You have guessed all your songs correctly. Congrats.");
+                a.showAndWait();
+                setChanged();
+                notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
+                setChanged();
+                notifyObservers(Code.GAME_OVER);
+                break;
+        }
     }
     
     //////////// OVERRIDES
     @Override
     public void update(Observable o, Object arg) {
         super.update(o, arg);
+        ANSI.RED.println("__UPDATE__");
+    
+        try {
+            if (arg instanceof GameMode.Mode) {
+                GameMode.Mode mode = (GameMode.Mode) arg;
+                this.evalMode(mode);
+            }
+            else if (arg instanceof isGame.Action) {
+                isGame.Action action = (isGame.Action) arg;
+                this.evalAction(action);
+            }
+        } catch (NullPointerException e) {
+        }
     }
     
 }

@@ -16,6 +16,7 @@ import java.util.Observer;
 public class ContinuousGame extends GameMode {
     
     private final int MAX_LIFECOUNT = 3;
+    private final int LIFECOUNT_THRESHOLD = 5;
     private int lifeCount;
     
     public ContinuousGame(Observer o, Observer... observers) {
@@ -49,13 +50,17 @@ public class ContinuousGame extends GameMode {
     //////////// OVERRIDES
     @Override
     public boolean answer(Song answer) {
-        boolean res = super.answer(answer);
-        super.pause();
+        boolean res = answer.equals(this.musicPlayer.currentSong()) ||
+                answer.getPath().equals(this.musicPlayer.currentSong().getPath());
+        pause();
+    
+        super.correctAnswer = res;
+        super.calcMultiplier();
+        
         if (res) {
-            if (this.lifeCount < MAX_LIFECOUNT && this.lifeCount > 0 && streak % 5 == 0) {
+            if (this.lifeCount < MAX_LIFECOUNT && this.lifeCount > 0 && streak > 0 && streak % LIFECOUNT_THRESHOLD == 0) {
                 this.incLifeCount(true);
             }
-            this.incLifeCount(true);
             super.addPoints();
         } else {
             super.subtractPoints();
@@ -63,10 +68,11 @@ public class ContinuousGame extends GameMode {
             if (lifeCount == 0) {
                 setChanged();
                 notifyObservers(Mode.GAME_OVER);
-                super.endGame();
+                super.endGame(false);
                 return false;
             }
         }
+        
         super.next();
         return res;
     }

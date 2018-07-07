@@ -4,6 +4,7 @@ import model.GameMode;
 import model.Playlist;
 import model.Song;
 
+import java.util.ArrayList;
 import java.util.Observer;
 
 /**
@@ -26,13 +27,13 @@ public class NormalGame extends GameMode {
     private int streak;
     private int maxGameRound;
     
-    public NormalGame(Observer o, Observer... observers) {
-        super(Mode.NORMAL, o, observers);
+    public NormalGame(String name) {
+        super(Mode.NORMAL, name, null);
         this.init();
     }
     
-    public NormalGame(String name) {
-        super(Mode.NORMAL, name, null);
+    public NormalGame(ArrayList<String> users, Observer o, Observer... observers) {
+        super(Mode.NORMAL, users, o, observers);
         this.init();
     }
     
@@ -58,20 +59,16 @@ public class NormalGame extends GameMode {
             }
             super.addPoints();
             setChanged();
-            notifyObservers(Action.ANSWER_CORRECT);
-            setChanged();
             
             super.next();
         } else {
             super.subtractPoints();
             super.close(Code.GAME_OVER);
-            setChanged();
-            notifyObservers(Action.ANSWER_INCORRECT);
         }
         this.answerType = res;
         
         if (super.gameRound >= this.maxGameRound) {
-            super.endGame();
+            super.endGame(true);
         }
         
         return res;

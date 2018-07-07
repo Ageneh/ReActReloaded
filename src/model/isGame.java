@@ -19,8 +19,10 @@ public interface isGame {
         ANSWER_INCORRECT,
         ANSWER,
         LIFECOUNT,
+        ACTIVE_USER,
+        RANK,
         
-        POINTS;
+        POINTS, REPLAY;
         
         private Object val;
         

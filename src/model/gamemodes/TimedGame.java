@@ -3,10 +3,7 @@ package model.gamemodes;
 import functions.ANSI;
 import model.GameMode;
 
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * @author Henock Arega
@@ -24,23 +21,23 @@ public class TimedGame extends GameMode {
     private Timer timer;
     private TimerTask timerTask;
     
-    public TimedGame(Observer o, Observer... observers) {
-        this(Length.SHORT, o, observers);
-    }
-    
-    public TimedGame(Length length, Observer o, Observer... observers) {
-        super(Mode.TIMED, o, observers);
-        this.length = length;
-        this.isInit = false;
-        this.init();
-    }
-    
     public TimedGame(String name, Observer o, Observer... observers) {
         this(name, Length.SHORT, o, observers);
     }
     
     public TimedGame(String name, Length length, Observer o, Observer... observers) {
         super(Mode.TIMED, name, o, observers);
+        this.init();
+        this.isInit = false;
+        this.length = length;
+    }
+    
+    public TimedGame(ArrayList<String> names, Observer o, Observer... observers) {
+        this(names, Length.SHORT, o, observers);
+    }
+    
+    public TimedGame(ArrayList<String> names, Length length, Observer o, Observer... observers) {
+        super(Mode.TIMED, names, o, observers);
         this.init();
         this.isInit = false;
         this.length = length;
@@ -123,7 +120,7 @@ public class TimedGame extends GameMode {
 class TimedTest implements Observer {
     
     TimedTest() {
-        TimedGame tg = new TimedGame(this);
+        TimedGame tg = new TimedGame("TimedUser", this);
         tg.start();
     }
     

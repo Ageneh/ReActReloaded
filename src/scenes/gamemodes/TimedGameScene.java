@@ -1,6 +1,8 @@
 package scenes.gamemodes;
 
+import model.GameMode;
 import model.gamemodes.TimedGame;
+import model.isGame;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -12,11 +14,21 @@ import java.util.Observer;
 public class TimedGameScene extends GameScene {
     
     public TimedGameScene(Observer observer) {
-        super("scenes/fxml/timedgame_scene.fxml", new TimedGame(null, null), observer);
+        super(new TimedGame("", null), observer);
     }
     
     @Override
     public void close(Code code) {
+    
+    }
+    
+    @Override
+    protected void evalAction(isGame.Action action) {
+    
+    }
+    
+    @Override
+    protected void evalMode(GameMode.Mode mode) {
     
     }
     
