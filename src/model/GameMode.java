@@ -1,6 +1,7 @@
 package model;
 
 import functions.ANSI;
+import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.*;
 import java.util.Observable;
@@ -41,6 +42,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     protected boolean correctAnswer;
     /** A multiplier used to multiply the given points depending on the {@link #streak}. */
     protected int multiplier;
+    protected SimpleIntegerProperty multiProp;
     /** The {@link MusicPlayer} used to play each {@link Song random song}. */
     protected MusicPlayer musicPlayer;
     /** The playlist for each game round. Will be recreated with every game. */
@@ -51,6 +53,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     /** A users object in which all the specific game data will be saved in for each {@link User player}. */
     protected ArrayList<User> users;
     protected int gameRound;
+    protected SimpleIntegerProperty gameRoundProperty;
     /**
      * A flag used for {@link #answer(Song)}.
      *
@@ -88,6 +91,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         this.startTime = 0;
         this.replayCount = 0;
         this.gameRound = 0;
+        this.gameRoundProperty = new SimpleIntegerProperty(0);
         
         this.songLibrary = new SongLibrary();
         this.gamePlaylist = new Playlist(this.songLibrary);
@@ -96,6 +100,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         
         this.step = MINSTEP;
         this.multiplier = this.MIN_MULT;
+        this.multiProp = new SimpleIntegerProperty(0);
         
         this.answerCount = mode.getAnswerCount();
         this.maxAnswercount = mode.getMaxAnswerCount();
@@ -135,6 +140,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
             this.replayCount = 0;
             this.startTime = System.currentTimeMillis();
             this.gameRound++;
+            this.gameRoundProperty.set(this.gameRound);
             System.out.println("Game round::" + this.gameRound);
             
             this.musicPlayer.play(this.gamePlaylist.getNext(), this.mode.lengthInMillis);
@@ -234,7 +240,19 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     public int getMultiplier() {
         return multiplier;
     }
-    
+
+    public int getGameRound(){
+        return gameRound;
+    }
+
+    public SimpleIntegerProperty getGameRoundProperty() {
+        return gameRoundProperty;
+    }
+
+    public SimpleIntegerProperty getMultiPropProperty() {
+        return multiProp;
+    }
+
     public int getPoints() {
         return this.users.get(activeUser).getPoints();
     }
@@ -392,6 +410,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
             this.streak++;
             if (this.multiplier >= MIN_MULT && this.multiplier < MAX_MULT - 1 && streak > 0 && this.streak % this.step == 0) {
                 this.multiplier++;
+                this.multiProp.set(this.multiplier);
                 streak = 0;
                 this.step++;
                 if (this.step >= this.MAXSTEP) this.step = this.MAXSTEP;
@@ -402,8 +421,10 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
             this.streak = 0;
             this.step = this.MINSTEP;
             this.multiplier = this.MIN_MULT;
+            this.multiProp.set(this.multiplier);
         }
         setChanged();
+        this.multiProp.set(this.multiplier);
         notifyObservers(Action.NEW_MULTIPLIER.setVal(this.multiplier));
     }
     

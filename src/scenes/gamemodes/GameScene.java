@@ -6,6 +6,9 @@ import functions.ElementBackgroundCreator;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -18,7 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.*;
 import scenes.ObservableScene;
@@ -43,6 +45,18 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
     protected ReButton start;
     protected SimpleBooleanProperty started;
     protected SimpleBooleanProperty answered;
+
+    protected SimpleStringProperty points;
+    protected SimpleIntegerProperty pointValue;
+    protected Label pointLabel;
+    protected Label nameLabel;
+
+    protected SimpleStringProperty multiProp;
+    protected SimpleIntegerProperty multiValue;
+
+    protected SimpleStringProperty roundProp;
+    protected SimpleIntegerProperty roundValue;
+
     protected PauseTransition pauseTransition;
     protected FadeTransition fadeTransition;
     protected HBox top;
@@ -90,41 +104,75 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         
         this.init();
 
+        this.gp = new GridPane();
+        this.gp.setVgap(20);
+        this.gp.setHgap(20);
+        this.gp.setAlignment(Pos.TOP_RIGHT);
+        this.gp.setPadding(new Insets(5,150,200,5));
 
-         this.gp = new GridPane();
+        this.points = new SimpleStringProperty("0");
+        this.multiProp = new SimpleStringProperty("0");
+        this.roundProp = new SimpleStringProperty("0");
 
-
-
-
-        
         this.top = new HBox();
         for(UserBox userBox : userBoxes){
+
             top.getChildren().add(userBox);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getName()),1,0);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()),1,1);
+            this.pointLabel = LABEL_STYLE.getLabel(this.points.getValue());
+            this.nameLabel = LABEL_STYLE.getLabel(userBox.getName());
+
+            this.pointValue = new SimpleIntegerProperty(userBox.getIntPoint());
+            this.points.bind(SimpleStringProperty.stringExpression(userBox.getPointsIntValue()));
+            this.points.addListener((observable, oldValue, newValue) -> {
+                pointLabel = LABEL_STYLE.getLabel(this.points.getValue());
+                updateScoreTable(multi, round, pointLabel, nameLabel);
+            });
+
+            this.multiValue = new SimpleIntegerProperty(game.getMultiplier());
+            this.multiProp.bind(SimpleStringProperty.stringExpression(game.getMultiPropProperty()));
+            this.multiProp.addListener((observable, oldValue, newValue) -> {
+                multi = LABEL_STYLE.getLabel(this.game.getMultiplier() + "x");
+                updateScoreTable(multi, round, pointLabel, nameLabel);
+            });
+
+            this.roundValue = new SimpleIntegerProperty(game.getGameRound());
+            this.roundProp.bind(SimpleStringProperty.stringExpression(game.getMultiPropProperty()));
+            this.roundProp.addListener((observable, oldValue, newValue) -> {
+                round = LABEL_STYLE.getLabel(this.game.getGameRound());
+                updateScoreTable(multi, round, pointLabel, nameLabel);
+            });
+
+
+            updateScoreTable(multi, round, pointLabel, nameLabel);
         }
 
-        this.gp.add(multi,1,2);
-        this.gp.add(round, 1,3);
+//      top.getChildren().addAll(multi, round);
+        top.setSpacing(20);
+        top.setAlignment(Pos.CENTER);
+        this.background.root.setBottom(gp);
+        getRoot().getChildren().add(this.background.root);
+    }
+
+    private void updateScoreTable( Label multi, Label round, Label pointLabel, Label nameLabel) {
+        this.gp.getChildren().clear();
+
         this.gp.add(LABEL_STYLE.getLabel("Player"),0,0 );
         this.gp.add(LABEL_STYLE.getLabel("Points"),0,1 );
         this.gp.add(LABEL_STYLE.getLabel("Multiplier"),0,2 );
         this.gp.add(LABEL_STYLE.getLabel("Round"),0,3);
 
 
-        this.gp.setVgap(20);
-        this.gp.setHgap(20);
-        this.gp.setAlignment(Pos.TOP_RIGHT);
-        this.gp.setPadding(new Insets(5,150,200,5));
+        this.gp.add(nameLabel,1,0);
+        this.gp.add(pointLabel,1,1);
+        this.gp.add(multi,1,2);
+        this.gp.add(round, 1,3);
 
-
-//        top.getChildren().addAll(multi, round);
-        top.setSpacing(20);
-        top.setAlignment(Pos.CENTER);
-        this.background.root.setBottom(gp);
-        getRoot().getChildren().add(this.background.root);
     }
-    
+
+    protected String changePointValue(UserBox user){
+        return user.getPoints();
+    }
+
     protected abstract void evalAction(isGame.Action action);
     
     protected abstract void evalMode(GameMode.Mode mode);
@@ -150,10 +198,15 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         for(UserBox userBox : userBoxes){
             if(userBox.getName().equals(user.getName())){
                 userBox.addPoints(points);
+                updateScore(userBox);
             }
         }
     }
-    
+
+    private void updateScore(UserBox userBox) {
+        userBox.getPoints();
+    }
+
     public void setPoints(int points) {
         User user = this.game.getUser();
         for(UserBox userBox : userBoxes){
