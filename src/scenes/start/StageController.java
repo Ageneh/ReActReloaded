@@ -3,6 +3,7 @@ package scenes.start;
 import javafx.scene.Scene;
 import scenes.Controller;
 import scenes.ObservableScene;
+import scenes.StartScene;
 import scenes.elements.BackButton;
 
 import java.util.Observable;
@@ -23,7 +24,7 @@ public class StageController extends Controller {
     }
     
     public StageController(Observer o) {
-        this(new StartScene1(), o);
+//        this(new StartScene(), o);
     }
     
     public StageController(ObservableScene startScene, Observer observer) {

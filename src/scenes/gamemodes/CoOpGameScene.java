@@ -2,6 +2,9 @@ package scenes.gamemodes;
 
 import functions.ANSI;
 import javafx.animation.FadeTransition;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
@@ -22,7 +25,12 @@ import java.util.Observer;
 public class CoOpGameScene extends GameScene<CoOpGame> {
     
     private HashMap<KeyCode, String> keyUserRelation;
-    private boolean userIsActive;
+    private SimpleBooleanProperty userIsActive;
+    private String getsPoints;
+    
+    public CoOpGameScene(Observer o) {
+        this(null, KeyCode.A, null, KeyCode.K, o);
+    }
     
     public CoOpGameScene(String user1, String user2, Observer o) {
         this(user1, KeyCode.A, user2, KeyCode.K, o);
@@ -33,6 +41,16 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
         this.keyUserRelation = new HashMap<>();
         this.keyUserRelation.put(kc1, user1);
         this.keyUserRelation.put(kc2, user2);
+        this.userIsActive = new SimpleBooleanProperty(false);
+        this.userIsActive.addListener((observable, oldValue, newValue) -> {
+            start.setDisable(newValue);
+            if(newValue){
+                fadeOutNode(start);
+            }
+            else{
+                fadeInNode(start);
+            }
+        });
         this.init();
     }
     
@@ -42,7 +60,7 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
             if(user == null) return;
             game.pause();
             game.setActiveUser(user);
-            userIsActive = true;
+            userIsActive.set(true);
             fadeInNode(super.buttons);
         });
     }
@@ -61,6 +79,20 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
                 break;
             case NEW_MULTIPLIER:
                 break;
+            case ANSWER_CORRECT:
+                getsPoints = ((User) action.getVal()).getName();
+                userIsActive.set(false);
+                break;
+            case ANSWER_INCORRECT:
+                String not = ((User) action.getVal()).getName();
+                for(String uname : keyUserRelation.values()){
+                    if(!uname.equals(not)){
+                        getsPoints = uname;
+                        break;
+                    }
+                }
+                userIsActive.set(false);
+                break;
             case ANSWER:
                 break;
             case LIFECOUNT:
@@ -70,14 +102,12 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
             case RANK:
                 break;
             case POINTS:
-                User user = (User) action.getVal();
                 for(UserBox ub : userBoxes){
-                    if(ub.getUser().getName().equals(user.getName())){
-                        ub.setPoints(user.getPoints());
+                    if(ub.getName().equals(getsPoints)){
+                        ub.addPoints((Integer) (action.getVal()));
                         break;
                     }
                 }
-    
                 fadeOutNode(buttons);
                 break;
             case REPLAY:
@@ -89,9 +119,9 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
     protected void evalMode(GameMode.Mode mode) {
         switch (mode){
             case GAME_OVER:
-                
-                break;
             case GAME_DONE:
+                setChanged();
+                notifyObservers(this);
                 break;
         }
     }

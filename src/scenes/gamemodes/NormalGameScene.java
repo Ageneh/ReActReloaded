@@ -2,30 +2,16 @@ package scenes.gamemodes;
 
 import functions.ANSI;
 import functions.ElementBackgroundCreator;
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.util.Duration;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import model.GameMode;
-import model.PlayerResult;
 import model.Song;
 import model.gamemodes.NormalGame;
 import model.isGame;
-import scenes.elements.AnswerButton;
-import scenes.elements.BackButton;
-import scenes.elements.ReButton;
+import scenes.StartScene;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -89,24 +75,24 @@ public class NormalGameScene extends GameScene {
             case GAME_OVER:
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Game Over");
-                alert.setContentText("You reached " + game.getPoints() + " points.");
-                alert.showAndWait();
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Game Over");
+//                alert.setContentText("You reached " + game.getPoints() + " points.");
+//                alert.showAndWait();
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
                 setChanged();
-                notifyObservers(Code.GAME_OVER);
+                notifyObservers(this);
                 break;
             case GAME_DONE:
-                Alert a = new Alert(Alert.AlertType.INFORMATION);
-                a.setTitle("Congrats!");
-                a.setContentText("You have guessed all your songs correctly. Congrats.");
-                a.showAndWait();
+//                Alert a = new Alert(Alert.AlertType.INFORMATION);
+//                a.setTitle("Congrats!");
+//                a.setContentText("You have guessed all your songs correctly. Congrats.");
+//                a.showAndWait();
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
                 setChanged();
-                notifyObservers(Code.GAME_OVER);
+                notifyObservers(this);
                 break;
         }
     }

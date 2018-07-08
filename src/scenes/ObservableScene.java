@@ -15,8 +15,30 @@ public abstract class ObservableScene extends Observable implements Observer {
     
     public final static SimpleIntegerProperty gen_width = new SimpleIntegerProperty(Sizes.WIDTH.getInt());
     public final static SimpleIntegerProperty gen_height = new SimpleIntegerProperty(Sizes.HEIGHT.getInt());
-    private StackPane root;
-    private Scene scene;
+    protected StackPane root;
+    protected Scene scene;
+    
+    private ObservableScene previousScene;
+    
+    protected ObservableScene(Observer o) {
+        this();
+        this.addObserver(o);
+//        this.previousScene = o;
+    }
+    
+    protected ObservableScene(ObservableScene observableScene, Observer o) {
+        this();
+        this.setPreviousScene(observableScene);
+        this.addObserver(o);
+//        this.previousScene = o;
+    }
+    
+    protected ObservableScene(ObservableScene observableScene) {
+        this();
+        this.setPreviousScene(observableScene);
+        this.addObserver(observableScene);
+//        this.previousScene = o;
+    }
     
     protected ObservableScene() {
         this.root = new StackPane();
@@ -24,8 +46,6 @@ public abstract class ObservableScene extends Observable implements Observer {
         this.root.setPrefSize(gen_width.doubleValue(), gen_height.doubleValue());
         this.root.setMaxSize(gen_width.doubleValue(), gen_height.doubleValue());
         this.scene = new Scene(this.root);
-        
-        this.scene.setRoot(this.root);
     }
     
     public StackPane getRoot() {
@@ -34,6 +54,14 @@ public abstract class ObservableScene extends Observable implements Observer {
     
     public Scene getScene() {
         return this.scene;
+    }
+    
+    public void setPreviousScene(ObservableScene previousScene) {
+        this.previousScene = previousScene;
+    }
+    
+    public ObservableScene getPreviousScene(){
+        return this.previousScene;
     }
     
     @Override

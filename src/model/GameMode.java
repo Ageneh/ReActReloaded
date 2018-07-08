@@ -34,7 +34,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     /** The standard amount of answers at the beginning of a game. */
     private final int STD_ANSWERCOUNT;
     private final GameStatus gameStatus;
-    private final int POINTS = 10;
+    protected final int POINTS = 10;
     public int maxAnswercount;
     /** The game mode of each game. */
     protected Mode mode;
@@ -169,7 +169,7 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
                         (((double) this.POINTS * this.multiplier)
                                 * multiplier)));
         setChanged();
-        notifyObservers(Action.POINTS.setVal(this.users.get(activeUser)));
+        notifyObservers(Action.POINTS.setVal(this.users.get(activeUser).getPoints()));
     }
     
     public void addUser(String username) {
@@ -256,6 +256,13 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     }
     
     public User getUser() {
+        if (this.users.size() > 1) {
+            return users.get(activeUser);
+        }
+        return this.users.get(0);
+    }
+    
+    public User getWinner() {
         if (this.users.size() > 1) {
             ArrayList<User> users = new ArrayList<>(this.users);
             users.sort(Comparator.comparing(User::getPoints).reversed());

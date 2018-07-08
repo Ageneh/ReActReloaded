@@ -61,7 +61,7 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         
         this.userBoxes = new ArrayList<>();
         for(User user : game.getUsers()){
-            this.userBoxes.add(new UserBox(user));
+            this.userBoxes.add(new UserBox(user.getName()));
         }
         
         this.multi = LABEL_STYLE.getLabel("1x");
@@ -117,10 +117,19 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.multi.setText(String.valueOf(multi));
     }
     
+    public void addPoints(int points) {
+        User user = this.game.getUser();
+        for(UserBox userBox : userBoxes){
+            if(userBox.getName().equals(user.getName())){
+                userBox.addPoints(points);
+            }
+        }
+    }
+    
     public void setPoints(int points) {
         User user = this.game.getUser();
         for(UserBox userBox : userBoxes){
-            if(userBox.getUser().getName().equals(user.getName())){
+            if(userBox.getName().equals(user.getName())){
                 userBox.setPoints(points);
             }
         }
@@ -218,7 +227,7 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         }
         root.setBottom(buttons);
         
-        this.background.root.setLeft(new BackButton("Zurück"));
+        this.background.root.setLeft(new BackButton(this));
         addLayer(root);
     }
     

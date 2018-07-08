@@ -63,7 +63,12 @@ public class NormalGame extends GameMode {
             super.next();
         } else {
             super.subtractPoints();
-            super.close(Code.GAME_OVER);
+            if (this.multiplier > 0 && this.streak > 0) {
+                this.multiplier = 0;
+                this.streak = 0;
+            } else {
+                super.close(Code.GAME_OVER);
+            }
         }
         this.answerType = res;
         

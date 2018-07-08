@@ -1,23 +1,12 @@
 package scenes.gamemodes;
 
 import functions.ANSI;
-import functions.ElementBackgroundCreator;
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.util.Duration;
-import model.Close;
 import model.GameMode;
 import model.Song;
 import model.gamemodes.ContinuousGame;
 import model.isGame;
-import scenes.elements.AnswerButton;
-import scenes.elements.BackButton;
-import scenes.elements.ReButton;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -41,7 +30,7 @@ public class ContinuousGameScene extends GameScene<ContinuousGame> {
     protected void evalAction(isGame.Action action) {
         switch (action) {
             case POINTS:
-                super.setPoints(Integer.parseInt(action.getVal().toString()));
+                super.addPoints(Integer.parseInt(action.getVal().toString()));
                 break;
             case ANSWERS:
                 setAnswers((Song[]) action.getVal());

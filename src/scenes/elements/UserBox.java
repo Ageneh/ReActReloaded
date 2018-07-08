@@ -1,5 +1,8 @@
 package scenes.elements;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -11,28 +14,35 @@ import scenes.gamemodes.GameScene;
  */
 public class UserBox extends VBox {
     
-    protected Label points;
-    protected Label username;
-    protected User user;
+    private Label points;
+    private Label username;
+    private int pointsProp;
     
-    public UserBox(User user) {
-        this.user = user;
-        this.username = GameScene.LABEL_STYLE.getLabel(user.getName());
+    public UserBox(String username) {
+        this.pointsProp = 0;
+        
+        this.username = GameScene.LABEL_STYLE.getLabel(username);
         this.points = GameScene.LABEL_STYLE.getLabel(0);
         
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
         this.setPrefWidth(150);
         
-        this.getChildren().add(username);
+        this.getChildren().add(this.username);
         this.getChildren().add(points);
     }
     
-    public void setPoints(int points) {
-        this.points.setText(String.valueOf(points));
+    public void addPoints(int points) {
+        this.pointsProp += points;
+        this.points.setText(String.valueOf(pointsProp));
     }
     
-    public User getUser() {
-        return user;
+    public String getName() {
+        return username.getText();
+    }
+    
+    public void setPoints(int points) {
+        this.pointsProp = points;
+        this.points.setText(String.valueOf(pointsProp));
     }
 }

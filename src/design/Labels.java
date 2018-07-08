@@ -12,6 +12,7 @@ import javafx.scene.text.FontWeight;
 public enum Labels {
     
     H1(44, 700),
+    MASSIVE(72, 700),
     M_SMALL(22, 200),
     SMALL(10, 200),;
     

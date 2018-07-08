@@ -31,12 +31,16 @@ public class CoOpGame extends GameMode {
         if (res) {
             this.correctAnswer = true;
             ANSI.GREEN.println("======================\n====  CORRECT ANSWER\n======================");
-            addPoints();
-            notifyObservers(Action.ANSWER_CORRECT);
+            addPoints(2);
+            notifyObservers(Action.ANSWER_CORRECT.setVal(getUsers().get(activeUser)));
+            setChanged();
+            notifyObservers(Action.POINTS.setVal(POINTS * 2));
         } else {
             this.correctAnswer = false;
             ANSI.RED.println("======================\n====  WRONG ANSWER\n======================");
-            notifyObservers(Action.ANSWER_INCORRECT);
+            notifyObservers(Action.ANSWER_INCORRECT.setVal(getUsers().get(activeUser)));
+            setChanged();
+            notifyObservers(Action.POINTS.setVal(POINTS));
         }
         super.correctAnswer = res;
         super.users.get(activeUser).addReactionTime(time - startTime);
@@ -50,6 +54,16 @@ public class CoOpGame extends GameMode {
         resetActiveUser();
         
         return res;
+    }
+    
+    
+    
+    @Override
+    public void addPoints(double multiplier) {
+        this.users.get(activeUser).setPoints(
+                (int) (this.users.get(activeUser).getPoints() +
+                        (((double) super.POINTS * this.multiplier)
+                                * multiplier)));
     }
     
     @Override

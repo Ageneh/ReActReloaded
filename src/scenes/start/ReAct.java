@@ -37,7 +37,7 @@ public class ReAct extends Application implements Observer {
     
     public ReAct() {
 //        gameScene = new NormalGameScene("", this);
-        this.startScene = new StartScene();
+        this.startScene = new StartScene(this);
         this.stageController = new StageController(startScene, this);
     }
     
