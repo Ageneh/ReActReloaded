@@ -25,9 +25,4 @@ public class SettingScene extends BaseReactScene {
         super("Einstellungen", observableScene);
     }
 
-
-    public SettingScene(ObservableScene observableScene, Observer o){
-        super("Einstellungen", observableScene);
-    }
-
 }

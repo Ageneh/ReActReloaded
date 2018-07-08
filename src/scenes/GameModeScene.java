@@ -20,7 +20,7 @@ public class GameModeScene extends BaseReactScene {
     }
     
     public GameModeScene(ObservableScene observableScene, Observer o) {
-        super("Spielmodi auswählen:", observableScene);
+        this(observableScene);
         this.init();
     }
     
@@ -44,7 +44,9 @@ public class GameModeScene extends BaseReactScene {
         
         normalGame.getBox().setOnMouseClicked(event -> {
             setChanged();
-            notifyObservers(new NormalGameScene(this));
+            NormalGameScene ngs = new NormalGameScene(this);
+            ngs.setPreviousScene(this);
+            notifyObservers(ngs);
         });
         
         continuousGame.getBox().setOnMouseClicked(event -> {

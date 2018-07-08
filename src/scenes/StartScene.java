@@ -20,7 +20,12 @@ public class StartScene extends BaseReactScene {
     private Button toSettings;
     
     public StartScene(Observer o) {
-        super(o);
+        super("", o);
+        this.init();
+    }
+    
+    public StartScene(ObservableScene observableScene, Observer o) {
+        super("", observableScene);
         this.init();
     }
     
@@ -53,14 +58,14 @@ public class StartScene extends BaseReactScene {
         grid.add(toGameMode,0,1);
         toGameMode.setOnMouseClicked(event -> {
             setChanged();
-            notifyObservers(new GameModeScene(this, this));
+            notifyObservers(new GameModeScene(this));
         });
         
         toSettings = new Button("Einstellungen");
         grid.add(toSettings,0,2);
         toSettings.setOnMouseClicked(event -> {
             setChanged();
-            notifyObservers(new SettingScene(this, this));
+            notifyObservers(new SettingScene(this));
         });
     }
 }

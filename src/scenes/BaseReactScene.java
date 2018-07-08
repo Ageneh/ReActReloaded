@@ -24,16 +24,29 @@ public class BaseReactScene extends ObservableScene {
     private Label titleLabel;
     private BackButton backButton;
     
-    public BaseReactScene(Observer o) {
+    public BaseReactScene(ObservableScene o) {
         super(o);
         titleLabel = new Label("ReaAct");
-        subTitle = new Label();
+        subTitle = new Label("");
+        this.backButton = new BackButton(o);
+        init();
+    }
+    
+    public BaseReactScene(String subtitle, ObservableScene o) {
+        this(o);
+        subTitle = new Label(subtitle);
         init();
     }
     
     public BaseReactScene(String subtitle, Observer o) {
         this(o);
         subTitle = new Label(subtitle);
+    }
+    
+    public BaseReactScene(Observer o) {
+        super(o);
+        titleLabel = new Label("ReaAct");
+        subTitle = new Label("");
         init();
     }
     

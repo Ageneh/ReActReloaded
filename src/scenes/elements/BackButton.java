@@ -22,7 +22,7 @@ public class BackButton extends Button {
         this.setOnMouseClicked(event -> {
             Window window = observableScene.getScene().getWindow();
             Stage stage = (Stage) window;
-            stage.setScene(new Scene(observableScene.getPreviousScene().getRoot()));
+            stage.setScene(observableScene.getPreviousScene().getScene());
         });
     }
     
