@@ -8,8 +8,10 @@ import functions.ElementBackgroundCreator;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import scenes.elements.CustomActionBtn;
+import scenes.elements.CustomMenuButton;
 import scenes.gamemodes.NormalGameScene;
 
 import java.util.Observer;
@@ -53,19 +55,38 @@ public class StartScene extends BaseReactScene {
     
     private void init() {
         GridPane grid = getGrid();
-        
-        toGameMode = new Button("Spielmodi");
-        grid.add(toGameMode,0,1);
-        toGameMode.setOnMouseClicked(event -> {
+
+        CustomMenuButton menu1 = new CustomMenuButton("SchnellesSpiel");
+        CustomMenuButton menu2 = new CustomMenuButton("Einstellungen");
+        CustomMenuButton menu3 = new CustomMenuButton("Spielmodi");
+        CustomMenuButton menu4 = new CustomMenuButton("Rangliste");
+        grid.setAlignment(Pos.CENTER);
+        grid.add(menu1.getBox(),0,3);
+        grid.add(menu2.getBox(),1,3);
+        grid.add(menu3.getBox(),0,4);
+        grid.add(menu4.getBox(),1,4);
+
+        menu1.getBox().setOnMouseClicked(event -> {
             setChanged();
-            notifyObservers(new GameModeScene(this));
+            NormalGameScene ngs = new NormalGameScene(this);
+            ngs.setPreviousScene(this);
+            notifyObservers(ngs);
         });
-        
-        toSettings = new Button("Einstellungen");
-        grid.add(toSettings,0,2);
-        toSettings.setOnMouseClicked(event -> {
+
+        menu2.getBox().setOnMouseClicked(event -> {
             setChanged();
             notifyObservers(new SettingScene(this));
         });
+
+        menu3.getBox().setOnMouseClicked(event -> {
+            setChanged();
+            notifyObservers(new GameModeScene(this));
+        });
+
+        menu4.getBox().setOnMouseClicked(event -> {
+            setChanged();
+            notifyObservers(new RanglistScene(this));
+        });
     }
 }
+

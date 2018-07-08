@@ -24,7 +24,7 @@ public class UserBox extends VBox {
         this.username = GameScene.LABEL_STYLE.getLabel(username);
         this.points = GameScene.LABEL_STYLE.getLabel(0);
         
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(20);
         this.setPrefWidth(150);
         
@@ -36,11 +36,15 @@ public class UserBox extends VBox {
         this.pointsProp += points;
         this.points.setText(String.valueOf(pointsProp));
     }
-    
+
     public String getName() {
         return username.getText();
     }
-    
+
+    public String getPoints() {
+        return points.getText();
+    }
+
     public void setPoints(int points) {
         this.pointsProp = points;
         this.points.setText(String.valueOf(pointsProp));

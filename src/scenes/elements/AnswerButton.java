@@ -51,7 +51,7 @@ public class AnswerButton extends ReButton {
     }
     
     private void init() {
-        this.color = Colors.WHITE;
+        this.color = Colors.ANSWER_BTN;
         this.setBackground(ElementBackgroundCreator.getBackground(this.color));
     }
     

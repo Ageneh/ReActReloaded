@@ -17,6 +17,7 @@ public enum Colors {
      * The standard background color of basically every or at least most frames.
      */
     BASE_BG(69, 84, 102, ColorMode.RGB),
+    BG(188, 199, 211, ColorMode.RGB),
     BLACK(Color.BLACK),
     WHITE(Color.WHITE),
     BLACK_TRNS(0, 0, 0, 0.6, ColorMode.RGB),
@@ -27,6 +28,7 @@ public enum Colors {
     LABEL_MENU(255, ColorMode.RGB),
     TRANSPARENT(0, 0, 0, 0.0, ColorMode.RGB),
     GAMEPLAY_INTERACTIVE(34, 45, 59, 1.0, ColorMode.RGB),
+    ANSWER_BTN(255,179,18, ColorMode.RGB),
     BTN_GOOD(126, 211, 33, ColorMode.RGB),
     BTN_GOOD_STROKE(91, 135, 64, ColorMode.RGB),
     BTN_GOOD_STROKE_TRNS(125, 213, 7, 0.4, ColorMode.RGB),

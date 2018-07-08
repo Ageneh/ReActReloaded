@@ -51,7 +51,8 @@ public class BaseReactScene extends ObservableScene {
     }
     
     private void init() {
-        this.backButton = new BackButton(this);
+            this.backButton = new BackButton(this);
+
         bp = new BorderPane();
         
         /*
@@ -81,7 +82,9 @@ public class BaseReactScene extends ObservableScene {
          */
         
         HBox hboxBottom = new HBox();
-        hboxBottom.getChildren().add(backButton);
+        if(getPreviousScene() != null){
+            hboxBottom.getChildren().add(backButton);
+        }
         hboxBottom.setMinHeight(100);
         hboxBottom.setMaxHeight(100);
         
