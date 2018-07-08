@@ -36,7 +36,7 @@ public class SettingScene extends BaseReactScene {
     private StackPane bg;
     private File tempFile;
     private ReButton commit;
-    private ReButton canel;
+    private ReButton cancel;
     private BackButton backButton;
     private SimpleBooleanProperty hasChanges;
     private Label info;
@@ -94,12 +94,13 @@ public class SettingScene extends BaseReactScene {
             this.musicSrcs.setAll(this.songLibrary.getLibrary());
             this.hasChanges.set(false);
         });
-        this.canel = new ReButton("Verwerfen");
-        this.canel.setOnAction(event -> {
+        this.cancel = new ReButton("Verwerfen");
+        this.cancel.setOnAction(event -> {
             this.musicSrcs.setAll(this.songLibrary.getLibrary());
             this.hasChanges.set(false);
         });
-        HBox commitBtns = new HBox(canel, commit);
+
+        HBox commitBtns = new HBox(cancel, commit);
         // ranking
         this.resetRanking = new ReButton("Ranking resetten");
         resetRanking.setOnAction(event -> {

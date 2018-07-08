@@ -20,12 +20,14 @@ public class UserBox extends VBox {
     private Label username;
     private int pointsProp;
     private SimpleIntegerProperty pointsIntValue;
+    private SimpleStringProperty nameValue;
 
     public UserBox(String username) {
         this.pointsProp = 0;
         this.pointsIntValue = new SimpleIntegerProperty(this.pointsProp);
         this.username = GameScene.LABEL_STYLE.getLabel(username);
         this.points = GameScene.LABEL_STYLE.getLabel(0);
+        this.nameValue = new SimpleStringProperty(username);
 
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(20);
@@ -39,7 +41,6 @@ public class UserBox extends VBox {
     
     public void addPoints(int points) {
         this.pointsProp += points;
-
         this.pointsIntValue.set(pointsProp);
         this.points.setText(String.valueOf(pointsProp));
     }
@@ -50,6 +51,11 @@ public class UserBox extends VBox {
 
     public String getPoints() {
         return this.points.getText();
+    }
+
+    public void setUsername(String username){
+        this.username.setText(username);
+        this.nameValue.set(username);
     }
 
     public void setPoints(int points) {
@@ -64,5 +70,9 @@ public class UserBox extends VBox {
 
     public SimpleIntegerProperty getPointsIntValue(){
         return this.pointsIntValue;
+    }
+
+    public SimpleStringProperty getNameValue(){
+        return this.nameValue;
     }
 }

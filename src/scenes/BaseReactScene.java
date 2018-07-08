@@ -88,7 +88,7 @@ public class BaseReactScene extends ObservableScene {
     
     private void init() {
         this.backButton = new BackButton(this);
-        
+
         bp = new BorderPane();
         
         /*
@@ -118,6 +118,7 @@ public class BaseReactScene extends ObservableScene {
          */
         
         hboxBottom = new HBox();
+        hboxBottom.setAlignment(Pos.CENTER);
         if (getPreviousScene() != null) {
             hboxBottom.getChildren().add(backButton);
         }
