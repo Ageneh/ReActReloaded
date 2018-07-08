@@ -14,15 +14,20 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import model.*;
 import scenes.ObservableScene;
-import scenes.elements.*;
+import scenes.elements.AnswerButton;
+import scenes.elements.ReButton;
+import scenes.elements.UserBox;
 
 import java.util.ArrayList;
 import java.util.Observer;
@@ -46,23 +51,21 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
     protected PauseTransition pauseTransition;
     protected FadeTransition fadeTransition;
     protected HBox top;
+    protected GridPane gp;
     private GameBackground background;
     private String fxmlPath;
-    protected GridPane gp;
     
     GameScene(T game, Observer o) {
-        super();
+        super(o);
         this.game = game;
         this.game.addObserver(o);
         this.game.addObserver(this);
         addObserver(o);
         this.fxmlPath = fxmlPath;
         this.background = new GameBackground();
-
-
         
         this.userBoxes = new ArrayList<>();
-        for(User user : game.getUsers()){
+        for (User user : game.getUsers()) {
             this.userBoxes.add(new UserBox(user.getName()));
         }
         
@@ -85,37 +88,30 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
                 this.setStartBG();
             }
         });
-
-
         
         this.init();
-
-
-         this.gp = new GridPane();
-
-
-
-
+        
+        this.gp = new GridPane();
         
         this.top = new HBox();
-        for(UserBox userBox : userBoxes){
+        for (UserBox userBox : userBoxes) {
             top.getChildren().add(userBox);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getName()),1,0);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()),1,1);
+            this.gp.add(LABEL_STYLE.getLabel(userBox.getName()), 1, 0);
+            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()), 1, 1);
         }
-
-        this.gp.add(multi,1,2);
-        this.gp.add(round, 1,3);
-        this.gp.add(LABEL_STYLE.getLabel("Player"),0,0 );
-        this.gp.add(LABEL_STYLE.getLabel("Points"),0,1 );
-        this.gp.add(LABEL_STYLE.getLabel("Multiplier"),0,2 );
-        this.gp.add(LABEL_STYLE.getLabel("Round"),0,3);
-
-
+        
+        this.gp.add(multi, 1, 2);
+        this.gp.add(round, 1, 3);
+        this.gp.add(LABEL_STYLE.getLabel("Player"), 0, 0);
+        this.gp.add(LABEL_STYLE.getLabel("Points"), 0, 1);
+        this.gp.add(LABEL_STYLE.getLabel("Multiplier"), 0, 2);
+        this.gp.add(LABEL_STYLE.getLabel("Round"), 0, 3);
+        
+        
         this.gp.setVgap(20);
         this.gp.setHgap(20);
         this.gp.setAlignment(Pos.TOP_RIGHT);
-        this.gp.setPadding(new Insets(5,150,200,5));
+        this.gp.setPadding(new Insets(5, 150, 200, 5));
 
 
 //        top.getChildren().addAll(multi, round);
@@ -123,11 +119,90 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         top.setAlignment(Pos.CENTER);
         this.background.root.setBottom(gp);
         getRoot().getChildren().add(this.background.root);
+        
+        nameInput();
+    }
+    
+    GameScene(T game, ObservableScene o) {
+        super(o);
+        this.game = game;
+        this.game.addObserver(o);
+        this.game.addObserver(this);
+        addObserver(o);
+        this.fxmlPath = fxmlPath;
+        this.background = new GameBackground();
+        
+        this.userBoxes = new ArrayList<>();
+        for (User user : game.getUsers()) {
+            this.userBoxes.add(new UserBox(user.getName()));
+        }
+        
+        this.multi = LABEL_STYLE.getLabel("1x");
+        this.round = LABEL_STYLE.getLabel("1");
+        
+        this.started = new SimpleBooleanProperty(false);
+        this.started.addListener(((observable, oldValue, newValue) -> {
+            if (oldValue) this.started.set(oldValue);
+            else {
+                this.setStartBG();
+            }
+        }));
+        
+        this.answered = new SimpleBooleanProperty(false);
+        this.answered.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/next.png"));
+            } else {
+                this.setStartBG();
+            }
+        });
+        
+        this.init();
+        
+        this.gp = new GridPane();
+        
+        this.top = new HBox();
+        for (UserBox userBox : userBoxes) {
+            top.getChildren().add(userBox);
+            this.gp.add(LABEL_STYLE.getLabel(userBox.getName()), 1, 0);
+            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()), 1, 1);
+        }
+        
+        this.gp.add(multi, 1, 2);
+        this.gp.add(round, 1, 3);
+        this.gp.add(LABEL_STYLE.getLabel("Player"), 0, 0);
+        this.gp.add(LABEL_STYLE.getLabel("Points"), 0, 1);
+        this.gp.add(LABEL_STYLE.getLabel("Multiplier"), 0, 2);
+        this.gp.add(LABEL_STYLE.getLabel("Round"), 0, 3);
+        
+        
+        this.gp.setVgap(20);
+        this.gp.setHgap(20);
+        this.gp.setAlignment(Pos.TOP_RIGHT);
+        this.gp.setPadding(new Insets(5, 150, 200, 5));
+
+
+//        top.getChildren().addAll(multi, round);
+        top.setSpacing(20);
+        top.setAlignment(Pos.CENTER);
+        this.background.root.setBottom(gp);
+        getRoot().getChildren().add(this.background.root);
+        
+        nameInput();
     }
     
     protected abstract void evalAction(isGame.Action action);
     
     protected abstract void evalMode(GameMode.Mode mode);
+    
+    public void addPoints(int points) {
+        User user = this.game.getUser();
+        for (UserBox userBox : userBoxes) {
+            if (userBox.getName().equals(user.getName())) {
+                userBox.addPoints(points);
+            }
+        }
+    }
     
     public BorderPane getBackground() {
         return background.root;
@@ -135,6 +210,10 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
     
     public String getFxmlPath() {
         return fxmlPath;
+    }
+    
+    public ArrayList<User> getUsers() {
+        return game.getUsers();
     }
     
     public void ready() {
@@ -145,19 +224,10 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.multi.setText(String.valueOf(multi));
     }
     
-    public void addPoints(int points) {
-        User user = this.game.getUser();
-        for(UserBox userBox : userBoxes){
-            if(userBox.getName().equals(user.getName())){
-                userBox.addPoints(points);
-            }
-        }
-    }
-    
     public void setPoints(int points) {
         User user = this.game.getUser();
-        for(UserBox userBox : userBoxes){
-            if(userBox.getName().equals(user.getName())){
+        for (UserBox userBox : userBoxes) {
+            if (userBox.getName().equals(user.getName())) {
                 userBox.setPoints(points);
             }
         }
@@ -229,7 +299,7 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         buttons.setAlignment(Pos.TOP_LEFT);
         buttons.setSpacing(40);
         buttons.setPrefHeight(80);
-
+        
         
         BorderPane root = new BorderPane();
         
@@ -257,35 +327,58 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
             AnswerButton ansBtn = new AnswerButton();
             buttonsList.add(ansBtn);
         }
-
-
+        
+        
         VBox vspacer = new VBox();
         vspacer.setMinWidth(100);
         vspacer.setMaxWidth(100);
         root.setLeft(vspacer);
-
+        
         root.setCenter(buttons);
-
-
+        
+        
         addLayer(root);
     }
     
-    protected void fadeInNode(Node node){
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300), node);
-        fadeTransition.setByValue(0.1);
-        fadeTransition.setFromValue(node.getOpacity());
-        fadeTransition.setToValue(1);
-        fadeTransition.setCycleCount(1);
-        fadeTransition.play();
-    }
+    private void nameInput() {
+        Stage nameInput = new Stage();
+        ArrayList<TextField> names = new ArrayList<>();
+        
+        FlowPane flowPane = new FlowPane();
+        Scene scene = new Scene(flowPane);
+        
+        ReButton start = new ReButton("Start");
+        start.setOnAction(event -> {
+            nameInput.close();
+        });
+        
+        int i = 1;
+        String name;
+        VBox verticalInput = new VBox();
+        flowPane.getChildren().add(verticalInput);
+        for (User u : game.getUsers()) {
+            if (i > 1) name = User.STD_NAME + i;
+            else name = User.STD_NAME;
+            TextField textField = new TextField(name);
+            names.add(textField);
+        }
+        verticalInput.getChildren().addAll(names);
+        verticalInput.getChildren().add(start);
+        
+        Button close = new Button("Start");
+        nameInput.setScene(scene);
+        nameInput.setWidth(300);
+        nameInput.setHeight(300);
+        nameInput.centerOnScreen();
+        nameInput.setAlwaysOnTop(true);
+        nameInput.initStyle(StageStyle.UTILITY);
+        nameInput.setResizable(false);
+        nameInput.setTitle("Usernames");
+        nameInput.showAndWait();
     
-    protected void fadeOutNode(Node node){
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300), node);
-        fadeTransition.setByValue(0.1);
-        fadeTransition.setFromValue(node.getOpacity());
-        fadeTransition.setToValue(0);
-        fadeTransition.setCycleCount(1);
-        fadeTransition.play();
+        ArrayList<String> usernames = new ArrayList<>();
+        for (TextField field : names) usernames.add(field.getText());
+        game.setUsers(usernames.toArray(new String[usernames.size()]));
     }
     
     private void setAnswers(ArrayList<Song> songs) {

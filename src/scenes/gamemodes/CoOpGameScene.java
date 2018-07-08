@@ -39,8 +39,8 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
     public CoOpGameScene(String user1, KeyCode kc1, String user2, KeyCode kc2, Observer o) {
         super(new CoOpGame(user1, user2), o);
         this.keyUserRelation = new HashMap<>();
-        this.keyUserRelation.put(kc1, user1);
-        this.keyUserRelation.put(kc2, user2);
+        this.keyUserRelation.put(kc1, game.getUsers().get(0).getName());
+        this.keyUserRelation.put(kc2, game.getUsers().get(0).getName());
         this.userIsActive = new SimpleBooleanProperty(false);
         this.userIsActive.addListener((observable, oldValue, newValue) -> {
             start.setDisable(newValue);
@@ -72,6 +72,11 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
     @Override
     protected void evalAction(isGame.Action action) {
         switch (action){
+            case SHOW_HOME:
+            case SHOW_RANKING:
+                setChanged();
+                notifyObservers(action);
+                break;
             case CURRENT_SONG:
                 break;
             case ANSWERS:

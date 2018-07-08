@@ -17,41 +17,42 @@ import java.util.*;
  * @author Henock Arega
  * @project ReActReloaded
  */
-class SongLibrary implements Close, WritesINI {
-
-//////////// VARIABLES
+public class SongLibrary implements Close, WritesINI {
+    
     /** The minimum amount of {@link Song songs} needed to start a game. */
     public final static int MIN_SONG_COUNT = 9;
     /** The prefix of key which points to a directory which contains mp3-files. */
     private static final String KEY_PRE = "MDIR";
     private static final String SECTION = "MUSIC";
     /** Has all paths containing mp3-files. */
-    private static ArrayList<String> folderPaths;
-    private static ArrayList<String> songs;
+    private ArrayList<String> folderPaths;
+    private ArrayList<String> songs;
     private boolean hasEnoughSongs;
     /**
      * A playlist of all given songs.
      */
     private Playlist playlist;
     
-    SongLibrary() {
+    public SongLibrary() {
         this.folderPaths = new ArrayList<>();
         this.songs = new ArrayList<>();
         this.hasEnoughSongs = false;
         this.readINI();
-        String str = "";
-        for (String s : songs) {
-            if (s.contains("Stain")) {
-                songs.remove(s);
-                break;
-            }
-        }
+    
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            this.close(Close.Code.CLOSE);
+        }));
     }
     
-    //////////// METHODS
-    
-    public static ArrayList<String> getFolderPaths() {
-        return folderPaths;
+    public SongLibrary(String[] paths) {
+        this.folderPaths = new ArrayList<>();
+        this.songs = new ArrayList<>();
+        this.setLib(paths);
+        this.hasEnoughSongs = true;
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            this.close(Close.Code.CLOSE);
+        }));
     }
     
     /**
@@ -65,25 +66,55 @@ class SongLibrary implements Close, WritesINI {
         File file;
         for (String s : paths) {
             file = new File(s);
-            if (isDir(file) || isMusicFile(file)) {
-                if (isDir(file)) {
-                    this.songs.addAll(checkPaths(file.getAbsolutePath()));
-                }
+            if (isDir(file)) {
+                this.songs.addAll(checkPaths(file.getAbsolutePath()));
+            } else if (isMusicFile(file)) {
+                this.songs.add(file.getAbsolutePath());
                 tempSet.add(file.getAbsolutePath());
             }
         }
-        this.folderPaths.addAll(tempSet);
-        tempSet.clear();
         tempSet.addAll(this.folderPaths);
         this.folderPaths.clear();
         this.folderPaths.addAll(tempSet);
         Collections.sort(folderPaths);
-        
-        this.writeINI();
+    }
+    
+    /**
+     * Adds all the parts of the argument to the list.
+     *
+     * @see SongLibrary#folderPaths
+     */
+    public void addToLib(ArrayList<File> files) {
+        for (File file : files) {
+            if (file == null) continue;
+            addToLib(file.getAbsolutePath());
+            writeINI();
+        }
+    }
+    
+    public ArrayList<String> getFolderPaths() {
+        return folderPaths;
     }
     
     public ArrayList<String> getLibrary() {
-        return this.folderPaths;
+        return folderPaths;
+    }
+    
+    public HashMap<String, Integer> getPaths() {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String folder : folderPaths) {
+            final File dir = new File(folder);
+            ArrayList<String> songs = new ArrayList<>();
+            for (String song : this.songs) {
+                File file = new File(song);
+                if (file.getAbsolutePath().contains(dir.getAbsolutePath())) {
+                    songs.add(file.getAbsolutePath());
+                }
+            }
+            map.put(dir.getAbsolutePath(), songs.size());
+        }
+        
+        return map;
     }
     
     public Playlist getPlaylist() {
@@ -131,6 +162,15 @@ class SongLibrary implements Close, WritesINI {
         this.folderPaths.removeAll(temp);
     }
     
+    public void setLib(String[] lib) {
+        folderPaths.clear();
+        for (String s : lib) {
+            if (s == null || s.isEmpty()) continue;
+            folderPaths.add(s);
+        }
+        writeINI();
+    }
+    
     /**
      * Checks the given paths and their contents.
      *
@@ -152,6 +192,7 @@ class SongLibrary implements Close, WritesINI {
                             listFiles_paths.add(file.getAbsolutePath());
                         }
                     }
+                    if (listFiles_paths.isEmpty()) continue;
                     temp_list.addAll(checkPaths(listFiles_paths));
                 } else if (temp_file.getName().endsWith(Song.EXTENSION)) {
                     temp_list.add(temp_file.getAbsolutePath());
@@ -222,7 +263,34 @@ class SongLibrary implements Close, WritesINI {
         return false;
     }
     
-    //////////// OVERRIDES
+    @Override
+    public void readINI() {
+        final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
+        try {
+            Ini ini = INIReader.getIni(INI_PATH);
+            Section section = ini.get(SECTION);
+            File temp;
+            ArrayList<String> files = new ArrayList<>();
+            for (String s : section.keySet()) {
+                if (! s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
+                temp = new File(ini.get(SECTION, s));
+                if (temp.exists()) {
+                    files.add(temp.getPath());
+                }
+            }
+            this.addToLib(files.toArray(new String[files.size()]));
+            
+            if (this.songs.size() < MIN_SONG_COUNT) {
+                throw new NotEnoughSongsException(this.songs.size(), MIN_SONG_COUNT);
+            }
+            
+            this.hasEnoughSongs = true;
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     @Override
     public void writeINI() {
         final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
@@ -255,32 +323,6 @@ class SongLibrary implements Close, WritesINI {
             e.printStackTrace();
         } catch (InvalidFileFormatException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    @Override
-    public void readINI() {
-        final String INI_PATH = Filepaths.INI_MUSIC.getFile().getAbsolutePath();
-        try {
-            Ini ini = INIReader.getIni(INI_PATH);
-            Section section = ini.get(SECTION);
-            File temp;
-            for (String s : section.keySet()) {
-                if (! s.startsWith(KEY_PRE)) continue; // ignore key if it doesn't start with the correct prefix
-                temp = new File(ini.get(SECTION, s));
-                if (temp.exists()) {
-                    this.addToLib(ini.get(SECTION, s));
-//                    tempSet.add(ini.get(SECTION, s));
-                }
-            }
-    
-    
-            if (this.songs.size() < MIN_SONG_COUNT) {
-                throw new NotEnoughSongsException(this.songs.size(), MIN_SONG_COUNT);
-            }
-            
         } catch (IOException e) {
             e.printStackTrace();
         }

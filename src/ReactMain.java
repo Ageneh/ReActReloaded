@@ -29,7 +29,7 @@ public class ReactMain extends Application implements Observer {
         this.stage.centerOnScreen();
         this.controller.init();
         this.stage.initStyle(StageStyle.UNDECORATED);
-        this.stage.setAlwaysOnTop(true);
+        this.stage.setAlwaysOnTop(false);
         this.stage.show();
     }
     

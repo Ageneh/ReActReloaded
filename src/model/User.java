@@ -1,9 +1,6 @@
 package model;
 
-import javax.swing.text.DateFormatter;
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,12 +12,13 @@ import java.util.Collections;
  */
 public class User implements Serializable {
     
+    public static final String STD_NAME = "ReActPlayer";
     private final String FORMAT = "dd-MM-yyyy";
-    
     /** A list which shows which {@link Song} has been answered correctly. */
     private ArrayList<Boolean> correctAnswered;
     /** The {@link LocalDateTime day and time} the users played. */
     private LocalDateTime datePlayed;
+    private String datePlayedFormatted;
     /** The slowest reaction time beginning with the start of a {@link Song}. */
     private long maxReaction;
     /** The fastest reaction time beginning with the start of a {@link Song}. */
@@ -35,17 +33,28 @@ public class User implements Serializable {
     private ArrayList<Long> reactionTimes;
     
     public User(String name) {
-        if (name == null || (name != null && name.isEmpty())) this.name = "ReActPlayer";
+        if (name == null || (name != null && name.isEmpty())) this.name = STD_NAME;
         else this.name = name;
         this.reactionTimes = new ArrayList<>();
         this.points = 0;
         this.datePlayed = LocalDateTime.now();
+        datePlayedFormatted = this.datePlayed.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         this.correctAnswered = new ArrayList<>();
         this.minReaction = this.maxReaction = this.points;
     }
     
+    public void addReactionTime(long milliseconds) {
+        this.reactionTimes.add(milliseconds);
+        this.minReaction = Collections.min(this.reactionTimes);
+        this.maxReaction = Collections.max(this.reactionTimes);
+    }
+    
     public LocalDateTime getDatePlayed() {
         return datePlayed;
+    }
+    
+    public String getDatePlayedFormatted() {
+        return datePlayedFormatted;
     }
     
     public long getMaxReaction() {
@@ -54,6 +63,10 @@ public class User implements Serializable {
     
     public long getMinReaction() {
         return minReaction;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     
     public String getName() {
@@ -79,12 +92,6 @@ public class User implements Serializable {
     
     public ArrayList<Long> getReactionTimes() {
         return reactionTimes;
-    }
-    
-    public void addReactionTime(long milliseconds) {
-        this.reactionTimes.add(milliseconds);
-        this.minReaction = Collections.min(this.reactionTimes);
-        this.maxReaction = Collections.max(this.reactionTimes);
     }
     
     @Override

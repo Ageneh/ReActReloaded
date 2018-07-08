@@ -10,6 +10,8 @@ import model.GameMode;
 import model.Song;
 import model.gamemodes.NormalGame;
 import model.isGame;
+import scenes.GameOverScene;
+import scenes.RanglistScene;
 import scenes.StartScene;
 
 import java.util.Observable;
@@ -49,6 +51,11 @@ public class NormalGameScene extends GameScene {
     @Override
     protected void evalAction(isGame.Action action) {
         switch (action) {
+            case SHOW_HOME:
+            case SHOW_RANKING:
+                setChanged();
+                notifyObservers(action);
+                break;
             case POINTS:
                 super.setPoints(Integer.parseInt(action.getVal().toString()));
                 break;
@@ -82,7 +89,7 @@ public class NormalGameScene extends GameScene {
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
                 setChanged();
-                notifyObservers(this);
+                notifyObservers(new GameOverScene(this));
                 break;
             case GAME_DONE:
 //                Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -92,7 +99,7 @@ public class NormalGameScene extends GameScene {
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
                 setChanged();
-                notifyObservers(this);
+                notifyObservers(isGame.Action.SHOW_RANKING);
                 break;
         }
     }
