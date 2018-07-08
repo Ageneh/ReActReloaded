@@ -50,6 +50,7 @@ public class NormalGame extends GameMode {
     public boolean answer(Song answer) {
         boolean res = super.answer(answer);
         super.pause();
+        setChanged();
         if (res) {
             if (this.answerType && this.streak >= 0) {
                 this.streak++;
@@ -58,7 +59,6 @@ public class NormalGame extends GameMode {
                 }
             }
             super.addPoints();
-            setChanged();
             
             super.next();
         } else {
@@ -66,8 +66,10 @@ public class NormalGame extends GameMode {
             if (this.multiplier > 0 && this.streak > 0) {
                 this.multiplier = 0;
                 this.streak = 0;
+    
+                super.next();
             } else {
-                super.close(Code.GAME_OVER);
+                super.endGame(false);
             }
         }
         this.answerType = res;

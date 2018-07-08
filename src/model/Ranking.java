@@ -29,6 +29,10 @@ public class Ranking implements Serializable, Close {
         }
         this.read();
         if (this.ranking == null) this.ranking = new ArrayList<>();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            this.close(Code.CLOSE);
+        }));
     }
     
     public static void main(String[] args) {
@@ -45,6 +49,10 @@ public class Ranking implements Serializable, Close {
     public ArrayList<User> getRanking() {
         this.ranking.sort(Comparator.comparing(User::getPoints).reversed());
         return new ArrayList<>(this.ranking);
+    }
+    
+    public void update() {
+        this.read();
     }
     
     private void read() {
@@ -74,7 +82,9 @@ public class Ranking implements Serializable, Close {
     }
     
     public void add(User user){
+        if(this.ranking.contains(user)) return;
         this.ranking.add(user);
+        this.write();
     }
     
     public void add(Object arg){

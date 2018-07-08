@@ -4,37 +4,54 @@ import design.Labels;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import model.User;
+import model.isGame;
 import scenes.elements.ReButton;
+import scenes.gamemodes.GameScene;
 
+import java.util.ArrayList;
 import java.util.Observer;
 
 /**
  * @author Henock Arega
  */
-public class GameOverScene extends ObservableScene {
+public class GameOverScene extends BaseReactScene {
     
     private Label title;
     private HBox buttons;
     private ReButton home;
-    private ReButton replay;
+    private ReButton ranking;
     
-    public GameOverScene(Observer o) {
-        super(o);
+    public GameOverScene(GameScene o) {
+        super("Game Over", o);
+        final String s = "%s hat %d Punkte erreicht.\n";
+        String fin = "";
+        for(User u : (ArrayList<User>) o.getUsers()){
+            fin += String.format(s, u.getName(), u.getPoints());
+        }
         this.init();
-    }
-    
-    public GameOverScene() {
-        this.init();
+        setSubTitle(fin);
     }
     
     private void init(){
-        this.title = Labels.MASSIVE.getLabel("Game Over");
+        removeBackButton();
+        GridPane gridPane = getGrid();
        
         this.home = new ReButton("Home");
-        this.replay = new ReButton("Play again");
+        home.setOnAction(event -> {
+            setChanged();
+            notifyObservers(isGame.Action.SHOW_HOME);
+        });
+        this.ranking = new ReButton("Rangliste");
+        ranking.setOnAction(event -> {
+            setChanged();
+            notifyObservers(isGame.Action.SHOW_RANKING);
+        });
         
-        this.buttons = new HBox(home, replay);
-        root.getChildren().addAll(new AnchorPane(this.buttons));
+        this.buttons = new HBox(home, ranking);
+        
+        gridPane.add(buttons, 0, 0);
     }
 }

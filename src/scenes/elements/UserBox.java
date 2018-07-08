@@ -8,6 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import model.User;
 import scenes.gamemodes.GameScene;
 
 /**
@@ -29,6 +30,8 @@ public class UserBox extends VBox {
         this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(20);
         this.setPrefWidth(150);
+
+        this.setMinHeight(75);
 
         this.getChildren().add(this.username);
         this.getChildren().add(points);

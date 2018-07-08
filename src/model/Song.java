@@ -34,7 +34,7 @@ public class Song {
      *
      * @see Song#coverImg
      */
-    public static final String COVER_IMG = "img/std_cover.jpg";
+    public static final String COVER_IMG = "res/img/std_cover.jpg";
     
     /**
      * An array containing the title, album and artist of the {@link Song}.

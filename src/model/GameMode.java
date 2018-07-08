@@ -294,8 +294,10 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     }
     
     public void setUsers(String... usernames) {
-        this.users = new ArrayList<>();
-        for (String username : usernames) this.users.add(new User(username));
+        if(usernames.length != this.users.size()) return;
+        for(int i = 0; i < usernames.length; i++){
+            this.users.get(i).setName(usernames[i]);
+        }
     }
     
     public boolean isAnswered() {

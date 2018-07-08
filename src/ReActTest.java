@@ -214,7 +214,7 @@ public class ReActTest extends Application implements Observer {
         
         c.setMinSize(100, 40);
         c.setOnAction(event -> {
-            primaryStage.setScene(new CoOpGameScene("User 1", "User 2", this).getScene());
+            primaryStage.setScene(new CoOpGameScene(this).getScene());
             primaryStage.show();
             popup.close();
             primaryStage.centerOnScreen();

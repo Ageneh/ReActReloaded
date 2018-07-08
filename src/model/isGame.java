@@ -22,7 +22,7 @@ public interface isGame {
         ACTIVE_USER,
         RANK,
         
-        POINTS, REPLAY;
+        POINTS, REPLAY, SHOW_HOME, SHOW_RANKING;
         
         private Object val;
         

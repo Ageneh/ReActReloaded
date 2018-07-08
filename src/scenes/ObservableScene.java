@@ -1,8 +1,13 @@
 package scenes;
 
+import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.util.Duration;
 import model.Observable;
 
 import java.util.Observer;
@@ -56,12 +61,34 @@ public abstract class ObservableScene extends Observable implements Observer {
         return this.scene;
     }
     
+    protected Stage getStage(){
+        Window window = this.getScene().getWindow();
+        return (Stage) window;
+    }
+    
     public void setPreviousScene(ObservableScene previousScene) {
         this.previousScene = previousScene;
     }
     
     public ObservableScene getPreviousScene(){
         return this.previousScene;
+    }
+    
+    protected void fadeInNode(Node node) {
+        this.fadeNode(node, node.getOpacity(), 1.0);
+    }
+    
+    protected void fadeOutNode(Node node) {
+        this.fadeNode(node, node.getOpacity(), 0.0);
+    }
+    
+    protected void fadeNode(Node node, double from, double to) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(300), node);
+        fadeTransition.setByValue(0.1);
+        fadeTransition.setFromValue(from);
+        fadeTransition.setToValue(to);
+        fadeTransition.setCycleCount(1);
+        fadeTransition.play();
     }
     
     @Override

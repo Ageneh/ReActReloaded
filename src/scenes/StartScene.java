@@ -10,10 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import model.isGame;
 import scenes.elements.CustomActionBtn;
 import scenes.elements.CustomMenuButton;
 import scenes.gamemodes.NormalGameScene;
 
+import java.util.Observable;
 import java.util.Observer;
 
 public class StartScene extends BaseReactScene {
@@ -69,7 +71,6 @@ public class StartScene extends BaseReactScene {
         menu1.getBox().setOnMouseClicked(event -> {
             setChanged();
             NormalGameScene ngs = new NormalGameScene(this);
-            ngs.setPreviousScene(this);
             notifyObservers(ngs);
         });
 
@@ -85,8 +86,13 @@ public class StartScene extends BaseReactScene {
 
         menu4.getBox().setOnMouseClicked(event -> {
             setChanged();
-            notifyObservers(new RanglistScene(this));
+            notifyObservers(isGame.Action.SHOW_RANKING);
         });
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        super.update(o, arg);
     }
 }
 

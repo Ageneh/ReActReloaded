@@ -13,6 +13,9 @@ import model.Song;
 import model.User;
 import model.gamemodes.CoOpGame;
 import model.isGame;
+import scenes.GameModeScene;
+import scenes.GameOverScene;
+import scenes.ObservableScene;
 import scenes.elements.UserBox;
 
 import java.util.HashMap;
@@ -32,15 +35,33 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
         this(null, KeyCode.A, null, KeyCode.K, o);
     }
     
-    public CoOpGameScene(String user1, String user2, Observer o) {
-        this(user1, KeyCode.A, user2, KeyCode.K, o);
+    public CoOpGameScene(ObservableScene o) {
+        this(null, KeyCode.A, null, KeyCode.K, o);
     }
     
     public CoOpGameScene(String user1, KeyCode kc1, String user2, KeyCode kc2, Observer o) {
         super(new CoOpGame(user1, user2), o);
         this.keyUserRelation = new HashMap<>();
-        this.keyUserRelation.put(kc1, user1);
-        this.keyUserRelation.put(kc2, user2);
+        this.keyUserRelation.put(kc1, game.getUsers().get(0).getName());
+        this.keyUserRelation.put(kc2, game.getUsers().get(0).getName());
+        this.userIsActive = new SimpleBooleanProperty(false);
+        this.userIsActive.addListener((observable, oldValue, newValue) -> {
+            start.setDisable(newValue);
+            if(newValue){
+                fadeOutNode(start);
+            }
+            else{
+                fadeInNode(start);
+            }
+        });
+        this.init();
+    }
+    
+    public CoOpGameScene(String user1, KeyCode kc1, String user2, KeyCode kc2, ObservableScene o) {
+        super(new CoOpGame(user1, user2), o);
+        this.keyUserRelation = new HashMap<>();
+        this.keyUserRelation.put(kc1, game.getUsers().get(0).getName());
+        this.keyUserRelation.put(kc2, game.getUsers().get(1).getName());
         this.userIsActive = new SimpleBooleanProperty(false);
         this.userIsActive.addListener((observable, oldValue, newValue) -> {
             start.setDisable(newValue);
@@ -72,6 +93,11 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
     @Override
     protected void evalAction(isGame.Action action) {
         switch (action){
+            case SHOW_HOME:
+            case SHOW_RANKING:
+                setChanged();
+                notifyObservers(action);
+                break;
             case CURRENT_SONG:
                 break;
             case ANSWERS:
@@ -82,6 +108,7 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
             case ANSWER_CORRECT:
                 getsPoints = ((User) action.getVal()).getName();
                 userIsActive.set(false);
+                fadeOutNode(buttons);
                 break;
             case ANSWER_INCORRECT:
                 String not = ((User) action.getVal()).getName();
@@ -92,6 +119,7 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
                     }
                 }
                 userIsActive.set(false);
+                fadeOutNode(buttons);
                 break;
             case ANSWER:
                 break;
@@ -108,7 +136,6 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
                         break;
                     }
                 }
-                fadeOutNode(buttons);
                 break;
             case REPLAY:
                 break;
@@ -121,7 +148,7 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
             case GAME_OVER:
             case GAME_DONE:
                 setChanged();
-                notifyObservers(this);
+                notifyObservers(new GameOverScene(this));
                 break;
         }
     }

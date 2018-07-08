@@ -22,7 +22,8 @@ public class BaseReactScene extends ObservableScene {
     private GridPane grid;
     private Label subTitle;
     private Label titleLabel;
-    private BackButton backButton;
+    protected BackButton backButton;
+    private HBox hboxBottom;
     
     public BaseReactScene(ObservableScene o) {
         super(o);
@@ -34,13 +35,18 @@ public class BaseReactScene extends ObservableScene {
     
     public BaseReactScene(String subtitle, ObservableScene o) {
         this(o);
-        subTitle = new Label(subtitle);
-        init();
+        subTitle.setText(subtitle);
+    }
+    
+    
+    public BaseReactScene(String title, String subtitle, ObservableScene o) {
+        this(subtitle, o);
+        this.titleLabel.setText(title);
     }
     
     public BaseReactScene(String subtitle, Observer o) {
         this(o);
-        subTitle = new Label(subtitle);
+        subTitle.setText(subtitle);
     }
     
     public BaseReactScene(Observer o) {
@@ -50,9 +56,39 @@ public class BaseReactScene extends ObservableScene {
         init();
     }
     
+    public BorderPane getBp() {
+        return bp;
+    }
+    
+    public GridPane getGrid() {
+        return grid;
+    }
+    
+    public void removeBackButton() {
+        this.hboxBottom.getChildren().remove(this.backButton);
+    }
+    
+    public void setSubTitle(String subTitle) {
+        this.subTitle.setText(subTitle);
+    }
+    
+    public void setTitleLabel(String titleLabel) {
+        this.titleLabel.setText(titleLabel);
+    }
+    
+    public void showBackButton(boolean show) {
+        if (show) {
+            fadeInNode(backButton);
+            backButton.setDisable(false);
+        } else {
+            fadeOutNode(backButton);
+            backButton.setDisable(true);
+        }
+    }
+    
     private void init() {
-            this.backButton = new BackButton(this);
-
+        this.backButton = new BackButton(this);
+        
         bp = new BorderPane();
         
         /*
@@ -81,8 +117,8 @@ public class BaseReactScene extends ObservableScene {
          *
          */
         
-        HBox hboxBottom = new HBox();
-        if(getPreviousScene() != null){
+        hboxBottom = new HBox();
+        if (getPreviousScene() != null) {
             hboxBottom.getChildren().add(backButton);
         }
         hboxBottom.setMinHeight(100);
@@ -108,11 +144,4 @@ public class BaseReactScene extends ObservableScene {
         getRoot().getChildren().addAll(this.bp);
     }
     
-    public GridPane getGrid() {
-        return grid;
-    }
-    
-    public BorderPane getBp() {
-        return bp;
-    }
 }

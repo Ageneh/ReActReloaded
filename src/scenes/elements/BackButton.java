@@ -8,7 +8,7 @@ import scenes.ObservableScene;
 import scenes.StartScene;
 import scenes.start.StageController;
 
-public class BackButton extends Button {
+public class BackButton extends ReButton {
     
     private ObservableScene observableScene;
     
