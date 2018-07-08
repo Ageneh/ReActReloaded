@@ -31,15 +31,13 @@ public class GameOverScene extends BaseReactScene {
         for(User u : (ArrayList<User>) o.getUsers()){
             fin += String.format(s, u.getName(), u.getPoints());
         }
-        setSubTitle(fin);
         this.init();
+        setSubTitle(fin);
     }
     
     private void init(){
         removeBackButton();
         GridPane gridPane = getGrid();
-        
-        this.title = Labels.MASSIVE.getLabel("Game Over");
        
         this.home = new ReButton("Home");
         home.setOnAction(event -> {

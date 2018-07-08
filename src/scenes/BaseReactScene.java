@@ -35,7 +35,7 @@ public class BaseReactScene extends ObservableScene {
     
     public BaseReactScene(String subtitle, ObservableScene o) {
         this(o);
-        subTitle = new Label(subtitle);
+        subTitle.setText(subtitle);
     }
     
     
@@ -46,7 +46,7 @@ public class BaseReactScene extends ObservableScene {
     
     public BaseReactScene(String subtitle, Observer o) {
         this(o);
-        subTitle = new Label(subtitle);
+        subTitle.setText(subtitle);
     }
     
     public BaseReactScene(Observer o) {

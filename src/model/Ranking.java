@@ -51,6 +51,10 @@ public class Ranking implements Serializable, Close {
         return new ArrayList<>(this.ranking);
     }
     
+    public void update() {
+        this.read();
+    }
+    
     private void read() {
         try {
             FileInputStream fis = new FileInputStream(this.file);
@@ -80,6 +84,7 @@ public class Ranking implements Serializable, Close {
     public void add(User user){
         if(this.ranking.contains(user)) return;
         this.ranking.add(user);
+        this.write();
     }
     
     public void add(Object arg){

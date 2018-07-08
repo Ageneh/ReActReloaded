@@ -94,10 +94,11 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.gp = new GridPane();
         
         this.top = new HBox();
+        int r = 0;
         for (UserBox userBox : userBoxes) {
             top.getChildren().add(userBox);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getName()), 1, 0);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()), 1, 1);
+            this.gp.add(userBox, 1, r++);
+//            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()), 1, 1);
         }
         
         this.gp.add(multi, 1, 2);
@@ -132,6 +133,8 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.fxmlPath = fxmlPath;
         this.background = new GameBackground();
         
+        nameInput();
+        
         this.userBoxes = new ArrayList<>();
         for (User user : game.getUsers()) {
             this.userBoxes.add(new UserBox(user.getName()));
@@ -162,10 +165,10 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.gp = new GridPane();
         
         this.top = new HBox();
+        int r = 0;
         for (UserBox userBox : userBoxes) {
             top.getChildren().add(userBox);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getName()), 1, 0);
-            this.gp.add(LABEL_STYLE.getLabel(userBox.getPoints()), 1, 1);
+            this.gp.add(userBox, 1, r++);
         }
         
         this.gp.add(multi, 1, 2);
@@ -187,8 +190,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         top.setAlignment(Pos.CENTER);
         this.background.root.setBottom(gp);
         getRoot().getChildren().add(this.background.root);
-        
-        nameInput();
     }
     
     protected abstract void evalAction(isGame.Action action);

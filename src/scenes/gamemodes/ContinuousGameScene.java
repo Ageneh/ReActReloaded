@@ -3,6 +3,7 @@ package scenes.gamemodes;
 import functions.ANSI;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import model.GameMode;
 import model.Song;
 import model.gamemodes.ContinuousGame;
@@ -24,6 +25,10 @@ public class ContinuousGameScene extends GameScene<ContinuousGame> {
         super( new ContinuousGame(name), observer);
         this.lifeCountLabel = LABEL_STYLE.getLabel(game.getLifeCount());
         top.getChildren().add(this.lifeCountLabel);
+    
+        getScene().setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.R) game.replay();
+        });
     }
     
     @Override

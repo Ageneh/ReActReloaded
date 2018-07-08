@@ -58,6 +58,7 @@ public class MainController extends Controller {
                         ranking.add(action.getVal());break;
                     case SHOW_RANKING:
                         setChanged();
+                        this.ranking.update();
                         notifyObservers(new RanglistScene(this.ranking, startScene));
                         break;
                     case POINTS:

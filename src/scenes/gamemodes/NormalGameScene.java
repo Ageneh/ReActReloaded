@@ -4,6 +4,7 @@ import functions.ANSI;
 import functions.ElementBackgroundCreator;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.GameMode;
@@ -21,7 +22,7 @@ import java.util.Observer;
  * @author Henock Arega
  * @project ReActReloaded
  */
-public class NormalGameScene extends GameScene {
+public class NormalGameScene extends GameScene<NormalGame> {
     
     public NormalGameScene(Observer observer) {
         this(null, observer);
@@ -46,6 +47,10 @@ public class NormalGameScene extends GameScene {
                 this.setStartBG();
             }
         });
+        
+        getScene().setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.R) game.replay();
+        });
     }
     
     @Override
@@ -68,8 +73,8 @@ public class NormalGameScene extends GameScene {
                 this.answered.set(false);
                 break;
             case ANSWER_INCORRECT:
-                this.answered.set(true);
-                game.endGame(false);
+                this.answered.set(false);
+//                game.endGame(false);
                 break;
             case ANSWER:
                 break;
@@ -82,24 +87,14 @@ public class NormalGameScene extends GameScene {
             case GAME_OVER:
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Game Over");
-//                alert.setContentText("You reached " + game.getPoints() + " points.");
-//                alert.showAndWait();
-                setChanged();
-                notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
                 setChanged();
                 notifyObservers(new GameOverScene(this));
                 break;
             case GAME_DONE:
-//                Alert a = new Alert(Alert.AlertType.INFORMATION);
-//                a.setTitle("Congrats!");
-//                a.setContentText("You have guessed all your songs correctly. Congrats.");
-//                a.showAndWait();
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
                 setChanged();
-                notifyObservers(isGame.Action.SHOW_RANKING);
+                notifyObservers(new GameOverScene(this));
                 break;
         }
     }
