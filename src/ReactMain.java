@@ -4,7 +4,9 @@
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import scenes.ObservableScene;
 import scenes.gamemodes.GameScene;
 
@@ -26,6 +28,8 @@ public class ReactMain extends Application implements Observer {
         this.stage.setResizable(false);
         this.stage.centerOnScreen();
         this.controller.init();
+        this.stage.initStyle(StageStyle.UNDECORATED);
+        this.stage.setAlwaysOnTop(true);
         this.stage.show();
     }
     
