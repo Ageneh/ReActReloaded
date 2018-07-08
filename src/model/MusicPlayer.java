@@ -54,6 +54,10 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     private MusicPlayer() {
         this.MINIM = new SimpleMinim(true);
         this.readINI();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            this.close(Code.CLOSE);
+        }));
     }
     
     MusicPlayer(Observer o, Observer... observers) {
@@ -102,7 +106,7 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
                 }
                 if (! MusicPlayer.this.audioPlayer.isPlaying() ||
                         MusicPlayer.this.audioPlayer.position() >= MusicPlayer.this.posB) {
-        
+                    
                     synchronized (timerTask) {
                         try {
                             timerTask.wait();

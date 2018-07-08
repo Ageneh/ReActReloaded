@@ -41,24 +41,15 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
     
     public CoOpGameScene(String user1, KeyCode kc1, String user2, KeyCode kc2, Observer o) {
         super(new CoOpGame(user1, user2), o);
-        this.keyUserRelation = new HashMap<>();
-        this.keyUserRelation.put(kc1, game.getUsers().get(0).getName());
-        this.keyUserRelation.put(kc2, game.getUsers().get(0).getName());
-        this.userIsActive = new SimpleBooleanProperty(false);
-        this.userIsActive.addListener((observable, oldValue, newValue) -> {
-            start.setDisable(newValue);
-            if(newValue){
-                fadeOutNode(start);
-            }
-            else{
-                fadeInNode(start);
-            }
-        });
-        this.init();
+        this.init(kc1, kc2);
     }
     
     public CoOpGameScene(String user1, KeyCode kc1, String user2, KeyCode kc2, ObservableScene o) {
         super(new CoOpGame(user1, user2), o);
+        this.init(kc1, kc2);
+    }
+    
+    private void init(KeyCode kc1, KeyCode kc2){
         this.keyUserRelation = new HashMap<>();
         this.keyUserRelation.put(kc1, game.getUsers().get(0).getName());
         this.keyUserRelation.put(kc2, game.getUsers().get(1).getName());
@@ -72,10 +63,7 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
                 fadeInNode(start);
             }
         });
-        this.init();
-    }
-    
-    private void init(){
+        
         getScene().setOnKeyPressed(event -> {
             String user = this.keyUserRelation.getOrDefault(event.getCode(), null);
             if(user == null) return;
@@ -88,6 +76,15 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
     
     public void start() {
         this.game.start();
+    }
+    
+    public KeyCode getKeyCodeOf(String username){
+        for(KeyCode k : this.keyUserRelation.keySet()){
+            if (this.keyUserRelation.get(k).equals(username)){
+                return k;
+            }
+        }
+        return null;
     }
     
     @Override

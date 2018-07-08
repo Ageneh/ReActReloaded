@@ -28,8 +28,13 @@ public class ReactMain extends Application implements Observer {
         this.stage.setResizable(false);
         this.stage.centerOnScreen();
         this.controller.init();
-        this.stage.initStyle(StageStyle.UNDECORATED);
         this.stage.setAlwaysOnTop(false);
+        
+        this.stage.setTitle("React Reloaded");
+        
+        this.stage.setOnCloseRequest(event -> {
+            System.exit(0);
+        });
         this.stage.show();
     }
     
