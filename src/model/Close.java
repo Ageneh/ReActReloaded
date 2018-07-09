@@ -2,6 +2,7 @@ package model;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public interface Close {

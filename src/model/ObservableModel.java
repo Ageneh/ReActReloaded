@@ -6,6 +6,7 @@ import java.util.Observer;
  * An abstract class as a template for observable classes which are part of the {@link model} package.
  *
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public abstract class ObservableModel extends Observable implements Close {

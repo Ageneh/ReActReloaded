@@ -1,5 +1,6 @@
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 
 import javafx.application.Application;

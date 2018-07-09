@@ -4,6 +4,7 @@ package model;
  * Marks any class which is part of a game.
  *
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public interface isGame {

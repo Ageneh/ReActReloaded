@@ -20,6 +20,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public class NormalGameScene extends GameScene<NormalGame> {

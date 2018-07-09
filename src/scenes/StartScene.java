@@ -1,17 +1,13 @@
-package scenes;/**
+package scenes;
+/**
  * @author Henock Arega
+ * @author Michael Heide
  */
 
-import design.Colors;
-import design.Labels;
-import functions.ElementBackgroundCreator;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import model.isGame;
-import scenes.elements.CustomActionBtn;
 import scenes.elements.CustomMenuButton;
 import scenes.gamemodes.NormalGameScene;
 

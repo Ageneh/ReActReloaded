@@ -13,6 +13,7 @@ import scenes.gamemodes.GameScene;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public class UserBox extends VBox {
     

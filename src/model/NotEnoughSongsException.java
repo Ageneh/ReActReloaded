@@ -2,6 +2,8 @@ package model;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
+ *
  * @project ReActReloaded
  */
 public class NotEnoughSongsException extends RuntimeException {

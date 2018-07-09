@@ -7,6 +7,7 @@ import java.nio.file.InvalidPathException;
  * which is invalid.
  *
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 class SongInvalidException extends InvalidPathException {

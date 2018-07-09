@@ -4,6 +4,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public abstract class Observable extends java.util.Observable {

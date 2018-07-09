@@ -4,6 +4,7 @@ import java.io.File;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public enum Filepaths {

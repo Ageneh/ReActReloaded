@@ -16,6 +16,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public class GameOverScene extends BaseReactScene {
     
