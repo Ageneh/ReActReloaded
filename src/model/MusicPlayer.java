@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  * <p>
  * The player, used for the gameplay.
@@ -54,6 +55,10 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
     private MusicPlayer() {
         this.MINIM = new SimpleMinim(true);
         this.readINI();
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            this.close(Code.CLOSE);
+        }));
     }
     
     MusicPlayer(Observer o, Observer... observers) {
@@ -102,15 +107,15 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
                 }
                 if (! MusicPlayer.this.audioPlayer.isPlaying() ||
                         MusicPlayer.this.audioPlayer.position() >= MusicPlayer.this.posB) {
-        
+                    
                     synchronized (timerTask) {
                         try {
                             timerTask.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        isTasked = false;
                     }
-                    isTasked = false;
                 }
             }
         };

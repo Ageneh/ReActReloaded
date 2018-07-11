@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -36,6 +37,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public abstract class GameScene<T extends GameMode> extends ObservableScene implements Observer, Close {
@@ -156,7 +158,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         top.setAlignment(Pos.CENTER);
 
 
-
         getRoot().getChildren().add(this.background.root);
 
         nameInput();
@@ -170,6 +171,8 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         addObserver(o);
         this.fxmlPath = fxmlPath;
         this.background = new GameBackground();
+
+        nameInput();
 
         this.userBoxes = new ArrayList<>();
         for (User user : game.getUsers()) {
@@ -213,8 +216,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.multiProp = new SimpleStringProperty("1x");
 
 
-
-
         this.top = new HBox();
         int r = 0;
         for (UserBox userBox : userBoxes) {
@@ -228,7 +229,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
 
         top.setSpacing(20);
         top.setAlignment(Pos.CENTER);
-
 
 
         getRoot().getChildren().add(this.background.root);
@@ -419,33 +419,45 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         int i = 1;
         String name;
         VBox verticalInput = new VBox();
+        verticalInput.setFillWidth(true);
+        verticalInput.setPadding(new Insets(25));
+        verticalInput.setSpacing(30);
+        verticalInput.setAlignment(Pos.CENTER);
         flowPane.getChildren().add(verticalInput);
         for (User u : game.getUsers()) {
-            if (i > 1) name = User.STD_NAME + i;
-            else name = User.STD_NAME;
+            name = User.STD_NAME + (i);
             TextField textField = new TextField(name);
+            textField.setAlignment(Pos.CENTER);
+            Label label = new Label("Player " + i);
+            VBox box = new VBox(label, textField);
             names.add(textField);
+            verticalInput.getChildren().addAll(box);
+            i++;
         }
-        verticalInput.getChildren().addAll(names);
         verticalInput.getChildren().add(start);
 
         Button close = new Button("Start");
         nameInput.setScene(scene);
+        nameInput.sizeToScene();
         nameInput.setWidth(300);
         nameInput.setHeight(300);
         nameInput.centerOnScreen();
         nameInput.setAlwaysOnTop(true);
-        nameInput.initStyle(StageStyle.UTILITY);
+        nameInput.initStyle(StageStyle.UNDECORATED);
+        nameInput.initModality(Modality.APPLICATION_MODAL);
         nameInput.setResizable(false);
         nameInput.setTitle("Usernames");
         nameInput.showAndWait();
 
         ArrayList<String> usernames = new ArrayList<>();
         int f = 0;
-        for (TextField field : names){
+        for (TextField field : names) {
+            if(field.getText().isEmpty() || field.getText().length() < 2){
+                field.setText(User.STD_NAME + f);
+            }
             usernames.add(field.getText());
-            if(names.size() == 1){
-                userBoxes.get(f).setUsername(field.getText());
+            if (names.size() == 1) {
+                userBoxes.get(f++).setUsername(field.getText());
             }
         }
         game.setUsers(usernames.toArray(new String[usernames.size()]));

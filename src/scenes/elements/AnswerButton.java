@@ -9,11 +9,12 @@ import model.Song;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public class AnswerButton extends ReButton {
     
-    private Song song;
-    private Colors color;
+    protected Song song;
+    protected Colors color;
     
     public AnswerButton() {
         super("empty answer");

@@ -16,6 +16,7 @@ import sun.java2d.pipe.SpanShapeRenderer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public class UserBox extends VBox {
     

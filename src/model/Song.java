@@ -20,6 +20,7 @@ import java.nio.file.Files;
  * mp3-file.
  *
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  * @see MetaExtractor
  */
