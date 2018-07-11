@@ -6,10 +6,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
@@ -110,10 +107,15 @@ public class SettingScene extends BaseReactScene {
         VBox buttons = new VBox(commitBtns, this.resetRanking);
         
         this.musicSrcsView = new ListView<>();
+        this.musicSrcsView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         this.musicSrcsView.setEditable(true);
         this.musicSrcsView.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.BACK_SPACE) {
-                this.musicSrcs.remove(this.musicSrcsView.getSelectionModel().getSelectedItem());
+                ObservableList<Integer> rev = this.musicSrcsView.getSelectionModel().getSelectedIndices();
+                
+                for(int idx = rev.size() - 1; idx >= 0; idx--){
+                    this.musicSrcs.remove(this.musicSrcsView.getItems().get(rev.get(idx)));
+                }
             }
         });
         

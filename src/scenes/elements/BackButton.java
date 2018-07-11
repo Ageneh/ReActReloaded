@@ -1,14 +1,10 @@
 package scenes.elements;
 
 import design.Dimension;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import scenes.ObservableScene;
-import scenes.StartScene;
-import scenes.start.StageController;
 
 public class BackButton extends Button {
     
