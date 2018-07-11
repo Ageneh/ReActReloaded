@@ -118,7 +118,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.multiProp = new SimpleStringProperty("1x");
 
 
-
         Label name = LABEL_STYLE.getLabel("Unknown");
         this.top = new HBox();
         int r = 0;
@@ -198,23 +197,15 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
                 this.setStartBG();
             }
         });
+
+
         this.gp = new GridPane();
         this.gp.setVgap(20);
         this.gp.setHgap(20);
         this.gp.setAlignment(Pos.TOP_RIGHT);
         this.gp.setPadding(new Insets(5, 100, 0, 0));
 
-        nameLabel = LABEL_STYLE.getLabel("");
-        pointLabel = LABEL_STYLE.getLabel("");
-
         this.init();
-
-
-        this.pointProp = new SimpleStringProperty("0");
-        this.nameProp = new SimpleStringProperty("");
-        this.roundProp = new SimpleStringProperty("1");
-        this.multiProp = new SimpleStringProperty("1x");
-
 
         this.top = new HBox();
         int r = 0;
@@ -224,6 +215,7 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
 
         this.gp.add(LABEL_STYLE.getLabel("Player:\n\nPoints:"),0,0);
         this.gp.add(LABEL_STYLE.getLabel("Player:\n\nPoints:"),0,1);
+
 
 
 

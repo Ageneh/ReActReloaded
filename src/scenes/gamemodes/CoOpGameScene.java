@@ -5,8 +5,11 @@ import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import model.GameMode;
 import model.Song;
@@ -73,6 +76,10 @@ public class CoOpGameScene extends GameScene<CoOpGame> {
             userIsActive.set(true);
             fadeInNode(super.buttons);
         });
+
+        HBox hspacer2 = new HBox();
+        hspacer2.setMinHeight(100);
+        hspacer2.setMaxHeight(100);
     }
     
     public void start() {
