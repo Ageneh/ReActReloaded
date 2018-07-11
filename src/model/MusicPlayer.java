@@ -114,8 +114,8 @@ public class MusicPlayer extends ObservableModel implements WritesINI {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        isTasked = false;
                     }
-                    isTasked = false;
                 }
             }
         };

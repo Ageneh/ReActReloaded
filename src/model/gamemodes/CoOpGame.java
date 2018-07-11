@@ -58,8 +58,6 @@ public class CoOpGame extends GameMode {
         return res;
     }
     
-    
-    
     @Override
     public void addPoints(double multiplier) {
         if(multiplier < 0){

@@ -19,9 +19,6 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     
     //////////// VARIABLES
     
-    /*
-        TODO: make implement multiplier change in gamemode
-    */
     /** Max threshold to step get a higher multiplier score. */
     public static final int MAXSTEP = 7;
     /** The max val for the multiplier. */
@@ -33,10 +30,10 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     private static final int SEC_PER_MIN = 60;
     private static final int MILLIS_PER_SEC = 1000;
     private static final int MIN_PER_H = 60;
-    /** The standard amount of answers at the beginning of a game. */
-    private final int STD_ANSWERCOUNT;
-    private final GameStatus gameStatus;
     protected final int POINTS = 10;
+    /** The standard amount of answers at the beginning of a game. */
+    protected final int STD_ANSWERCOUNT;
+    private final GameStatus gameStatus;
     public int maxAnswercount;
     /** The game mode of each game. */
     protected Mode mode;
@@ -55,6 +52,9 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     protected ArrayList<User> users;
     protected int gameRound;
     protected SimpleIntegerProperty gameRoundProperty;
+    /** Logs the time when a game has started, as a reference for the duration of a game. */
+    protected long startTime;
+    protected int activeUser;
     /**
      * A flag used for {@link #answer(Song)}.
      *
@@ -69,15 +69,12 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
     private int replayCount;
     /** A flag which will be set when {@link #start()} has been called. */
     private boolean hasStarted;
-    /** Logs the time when a game has started, as a reference for the duration of a game. */
-    protected long startTime;
     /**
      * A flag which will be set when {@link #next()} has been called.
      * Will make it possible to call {@link #start()} through {@link #next()}.
      */
     private boolean nextCalled;
     private int step;
-    protected int activeUser;
     
     private GameMode(Mode mode, Observer o, Observer... observers) {
         this.STD_ANSWERCOUNT = answerCount;
@@ -234,26 +231,26 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         return this.musicPlayer.getPlaytime();
     }
     
+    public int getGameRound() {
+        return gameRound;
+    }
+    
+    public SimpleIntegerProperty getGameRoundProperty() {
+        return gameRoundProperty;
+    }
+    
     public GameStatus getGameStatus() {
         return gameStatus;
+    }
+    
+    public SimpleIntegerProperty getMultiPropProperty() {
+        return multiProp;
     }
     
     public int getMultiplier() {
         return multiplier;
     }
-
-    public int getGameRound(){
-        return gameRound;
-    }
-
-    public SimpleIntegerProperty getGameRoundProperty() {
-        return gameRoundProperty;
-    }
-
-    public SimpleIntegerProperty getMultiPropProperty() {
-        return multiProp;
-    }
-
+    
     public int getPoints() {
         return this.users.get(activeUser).getPoints();
     }
@@ -281,6 +278,17 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         return this.users.get(0);
     }
     
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+    
+    public void setUsers(String... usernames) {
+        if (usernames.length != this.users.size()) return;
+        for (int i = 0; i < usernames.length; i++) {
+            this.users.get(i).setName(usernames[i]);
+        }
+    }
+    
     public User getWinner() {
         if (this.users.size() > 1) {
             ArrayList<User> users = new ArrayList<>(this.users);
@@ -288,17 +296,6 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
             return users.get(0);
         }
         return this.users.get(0);
-    }
-    
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-    
-    public void setUsers(String... usernames) {
-        if(usernames.length != this.users.size()) return;
-        for(int i = 0; i < usernames.length; i++){
-            this.users.get(i).setName(usernames[i]);
-        }
     }
     
     public boolean isAnswered() {
@@ -431,21 +428,13 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         notifyObservers(Action.NEW_MULTIPLIER.setVal(this.multiplier));
     }
     
-    protected Playlist getGamePlaylist() {
-        return gamePlaylist;
-    }
-    
-    protected Mode getMode() {
-        return this.mode;
-    }
-    
     /**
      * Creates a selection for answers. The actual answer will be positioned at a random index.
      *
      * @param answerCount The amount of answers which are requested.
      * @return Returns a list of {@link Song} objects with one correct answer.
      */
-    private Song[] createAnswers(int answerCount) {
+    protected Song[] createAnswers(int answerCount) {
         if (answerCount < this.STD_ANSWERCOUNT) answerCount = this.STD_ANSWERCOUNT;
         
         Song[] answers = new Song[answerCount];
@@ -482,6 +471,14 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         return answersList.toArray(answers);
     }
     
+    protected Playlist getGamePlaylist() {
+        return gamePlaylist;
+    }
+    
+    protected Mode getMode() {
+        return this.mode;
+    }
+    
     private void initAnswerCount(int answerCount, int maxAnswercount) {
         if (answerCount < 2) answerCount = 2;
         if (maxAnswercount < 2) answerCount = 2;
@@ -493,10 +490,6 @@ public abstract class GameMode extends ObservableModel implements Observer, isGa
         }
         this.answerCount = answerCount;
         this.maxAnswercount = maxAnswercount;
-    }
-    
-    private void stepUp() {
-    
     }
     
     //////////// OVERRIDES

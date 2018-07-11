@@ -42,9 +42,7 @@ public class NormalGameScene extends GameScene<NormalGame> {
         
         this.answered = new SimpleBooleanProperty(false);
         this.answered.addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                this.start.setBackground(ElementBackgroundCreator.createBackgroundImg("/Users/HxA/Pictures/Icons/149629-essential-compilation/png/next.png"));
-            } else {
+            if (!newValue) {
                 this.setStartBG();
             }
         });

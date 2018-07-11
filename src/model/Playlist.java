@@ -71,7 +71,7 @@ public class Playlist {
     /**
      * @return Returns a random {@link Song} from {@link #songs}
      */
-    Song getRandomSong(ArrayList<Song> exclude) {
+    public Song getRandomSong(ArrayList<Song> exclude) {
         ArrayList<String> temp = new ArrayList<>(songs.size());
         if(this.songs.size() < this.allSongs.size() / 2 && this.endless){
             this.songs.clear();

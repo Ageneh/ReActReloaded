@@ -8,6 +8,7 @@ import model.GameMode;
 import model.Song;
 import model.gamemodes.ContinuousGame;
 import model.isGame;
+import scenes.GameOverScene;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -34,6 +35,11 @@ public class ContinuousGameScene extends GameScene<ContinuousGame> {
     @Override
     protected void evalAction(isGame.Action action) {
         switch (action) {
+            case SHOW_HOME:
+            case SHOW_RANKING:
+                setChanged();
+                notifyObservers(action);
+                break;
             case POINTS:
                 super.addPoints(Integer.parseInt(action.getVal().toString()));
                 break;
@@ -60,24 +66,12 @@ public class ContinuousGameScene extends GameScene<ContinuousGame> {
     @Override
     protected void evalMode(GameMode.Mode mode) {
         switch (mode){
-            case NORMAL:
-                break;
-            case TIMED:
-                break;
-            case CONTINUOUS:
-                break;
-            case REACTION:
-                break;
             case GAME_OVER:
             case GAME_DONE:
-                Alert a = new Alert(Alert.AlertType.INFORMATION);
-                a.setTitle("Congrats.");
-                a.setContentText("Congrats.");
-                a.showAndWait();
-                setChanged();
-                notifyObservers(Code.GAME_OVER);
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
+                setChanged();
+                notifyObservers(new GameOverScene(this));
                 break;
         }
     }
