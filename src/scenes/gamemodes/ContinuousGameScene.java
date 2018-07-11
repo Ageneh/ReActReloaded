@@ -24,7 +24,9 @@ public class ContinuousGameScene extends GameScene<ContinuousGame> {
     public ContinuousGameScene(String name, Observer observer) {
         super( new ContinuousGame(name), observer);
         this.lifeCountLabel = LABEL_STYLE.getLabel(game.getLifeCount());
-        top.getChildren().add(this.lifeCountLabel);
+        gp.add(LABEL_STYLE.getLabel("Lebel"),0,4);
+        gp.add(this.lifeCountLabel,1,4);
+//        top.getChildren().add(this.lifeCountLabel);
     
         getScene().setOnKeyPressed(event -> {
             if(event.getCode() == KeyCode.R) game.replay();
@@ -70,14 +72,10 @@ public class ContinuousGameScene extends GameScene<ContinuousGame> {
                 break;
             case GAME_OVER:
             case GAME_DONE:
-                Alert a = new Alert(Alert.AlertType.INFORMATION);
-                a.setTitle("Congrats.");
-                a.setContentText("Congrats.");
-                a.showAndWait();
-                setChanged();
-                notifyObservers(Code.GAME_OVER);
                 setChanged();
                 notifyObservers(isGame.Action.RANK.setVal(game.getUser()));
+                setChanged();
+                notifyObservers(Code.GAME_OVER);
                 break;
         }
     }

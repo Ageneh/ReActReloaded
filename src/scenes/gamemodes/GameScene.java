@@ -52,16 +52,12 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
     protected SimpleBooleanProperty answered;
 
     protected SimpleStringProperty pointProp;
-    protected SimpleIntegerProperty pointValue;
 
     protected SimpleStringProperty nameProp;
-    protected SimpleStringProperty nameValue;
 
     protected SimpleStringProperty multiProp;
-    protected SimpleIntegerProperty multiValue;
 
     protected SimpleStringProperty roundProp;
-    protected SimpleIntegerProperty roundValue;
 
 
     protected Label nameLabel;
@@ -88,9 +84,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
             this.userBoxes.add(new UserBox(user.getName()));
         }
 
-        this.multi = LABEL_STYLE.getLabel("1x");
-        this.round = LABEL_STYLE.getLabel("1");
-
         this.started = new SimpleBooleanProperty(false);
         this.started.addListener(((observable, oldValue, newValue) -> {
             if (oldValue) this.started.set(oldValue);
@@ -113,8 +106,6 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.gp.setAlignment(Pos.TOP_RIGHT);
         this.gp.setPadding(new Insets(5, 100, 0, 0));
 
-        nameLabel = LABEL_STYLE.getLabel("");
-        pointLabel = LABEL_STYLE.getLabel("");
 
         this.init();
 
@@ -126,45 +117,39 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
 
 
 
-
+        Label name = LABEL_STYLE.getLabel("Unknown");
         this.top = new HBox();
         int r = 0;
         for (UserBox userBox : userBoxes) {
-//            top.getChildren().add(userBox);
-            nameLabel = LABEL_STYLE.getLabel(game.getUsers().get(r).getName());
-
-            this.pointValue = new SimpleIntegerProperty(userBox.getIntPoint());
-            this.pointProp.bind(SimpleStringProperty.stringExpression(userBox.getPointsIntValue()));
-            this.pointProp.addListener((observable, oldValue, newValue) -> {
-                pointLabel = LABEL_STYLE.getLabel(newValue);
-                updateGrid(nameLabel,pointLabel,multi,round);
-            });
-
-            this.nameValue = new SimpleStringProperty(game.getUsers().get(r++).getName());
+            name = LABEL_STYLE.getLabel(userBox.getName());
             this.nameProp.bind(userBox.getNameValue());
-            this.nameProp.addListener((observable, oldValue, newValue) -> {
-                nameLabel = LABEL_STYLE.getLabel(newValue);
-                updateGrid(nameLabel,pointLabel,multi,round);
-            });
-
-            this.multiValue = new SimpleIntegerProperty(game.getMultiplier());
+            this.pointProp.bind(SimpleStringProperty.stringExpression(userBox.getPointsIntValue()));
             this.multiProp.bind(SimpleStringProperty.stringExpression(game.getMultiPropProperty()));
-            this.multiProp.addListener((observable, oldValue, newValue) -> {
-                multi = LABEL_STYLE.getLabel(newValue+"x");
-                updateGrid(nameLabel,pointLabel,multi,round);
-            });
-
-            this.roundValue = new SimpleIntegerProperty(game.getGameRound());
             this.roundProp.bind(SimpleStringProperty.stringExpression(game.getGameRoundProperty()));
-            this.roundProp.addListener((observable, oldValue, newValue) -> {
-                round = LABEL_STYLE.getLabel(newValue);
-                updateGrid(nameLabel,pointLabel,multi,round);
-            });
-
         }
 
-        updateGrid(nameLabel,pointLabel,multi,round);
 
+        name.textProperty().bind(nameProp);
+        this.gp.add(name, 1, 0);
+
+        Label points = LABEL_STYLE.getLabel("0");
+        points.textProperty().bind(pointProp);
+        this.gp.add(points, 1, 1);
+
+        Label multi = LABEL_STYLE.getLabel("1");
+        multi.textProperty().bind(multiProp);
+        this.gp.add(multi, 1, 2);
+
+        Label round = LABEL_STYLE.getLabel("1");
+        round.textProperty().bind(roundProp);
+        this.gp.add(round, 1, 3);
+
+
+
+        this.gp.add(LABEL_STYLE.getLabel("Player"), 0, 0);
+        this.gp.add(LABEL_STYLE.getLabel("Points"), 0, 1);
+        this.gp.add(LABEL_STYLE.getLabel("Multiplier"), 0, 2);
+        this.gp.add(LABEL_STYLE.getLabel("Round"), 0, 3);
 
 
         top.setSpacing(20);
@@ -233,30 +218,11 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
         this.top = new HBox();
         int r = 0;
         for (UserBox userBox : userBoxes) {
-//            top.getChildren().add(userBox);
-//            nameLabel = LABEL_STYLE.getLabel(game.getUsers().get(r).getName());
-
             gp.add(userBox,1,r++);
-            gp.add(LABEL_STYLE.getLabel("Player:\n\nPoints:"),0,0);
-            gp.add(LABEL_STYLE.getLabel("Player:\n\nPoints:"),0,1);
-
-//            this.multiValue = new SimpleIntegerProperty(game.getMultiplier());
-//            this.multiProp.bind(SimpleStringProperty.stringExpression(game.getMultiPropProperty()));
-//            this.multiProp.addListener((observable, oldValue, newValue) -> {
-//                multi = LABEL_STYLE.getLabel(newValue+"x");
-//                updateGrid(multi,round);
-//            });
-//
-//            this.roundValue = new SimpleIntegerProperty(game.getGameRound());
-//            this.roundProp.bind(SimpleStringProperty.stringExpression(game.getGameRoundProperty()));
-//            this.roundProp.addListener((observable, oldValue, newValue) -> {
-//                round = LABEL_STYLE.getLabel(newValue);
-//                updateGrid(multi,round);
-//            });
-
         }
 
-//        updateGrid(nameLabel,pointLabel,multi,round);
+        this.gp.add(LABEL_STYLE.getLabel("Player:\n\nPoints:"),0,0);
+        this.gp.add(LABEL_STYLE.getLabel("Player:\n\nPoints:"),0,1);
 
 
 
@@ -269,31 +235,7 @@ public abstract class GameScene<T extends GameMode> extends ObservableScene impl
 
     }
 
-    private void updateGrid(Label name, Label points, Label multi, Label round){
-        this.gp.getChildren().clear();
-        this.gp.add(name, 1, 0);
-        this.gp.add(points, 1, 1);
-        this.gp.add(multi, 1, 2);
-        this.gp.add(round, 1, 3);
-        this.gp.add(LABEL_STYLE.getLabel("Player"), 0, 0);
-        this.gp.add(LABEL_STYLE.getLabel("Points"), 0, 1);
-        this.gp.add(LABEL_STYLE.getLabel("Multiplier"), 0, 2);
-        this.gp.add(LABEL_STYLE.getLabel("Round"), 0, 3);
-    }
-
-    private void updateGrid(Label multi, Label round){
-        this.gp.getChildren().clear();
-        this.gp.add(multi, 1, 2);
-        this.gp.add(round, 1, 3);
-        this.gp.add(LABEL_STYLE.getLabel("Player\n\nPoints"), 0, 0);
-        this.gp.add(LABEL_STYLE.getLabel("Player\n\nPoints"), 0, 1);
-        this.gp.add(LABEL_STYLE.getLabel("Multiplier"), 0, 2);
-        this.gp.add(LABEL_STYLE.getLabel("Round"), 0, 3);
-    }
-
-
-
-        protected abstract void evalAction(isGame.Action action);
+    protected abstract void evalAction(isGame.Action action);
 
     protected abstract void evalMode(GameMode.Mode mode);
 

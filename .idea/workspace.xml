@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="da8d00e5-e263-477b-9d60-9eb81f814a59" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/res/init/music.ini" afterPath="$PROJECT_DIR$/res/init/music.ini" />
       <change beforePath="$PROJECT_DIR$/res/serialized/ranking.react" afterPath="$PROJECT_DIR$/res/serialized/ranking.react" />
-      <change beforePath="$PROJECT_DIR$/src/MainController.java" afterPath="$PROJECT_DIR$/src/MainController.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Ranking.java" afterPath="$PROJECT_DIR$/src/model/Ranking.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" afterPath="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/BaseReactScene.java" afterPath="$PROJECT_DIR$/src/scenes/BaseReactScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/GameOverScene.java" afterPath="$PROJECT_DIR$/src/scenes/GameOverScene.java" />
       <change beforePath="$PROJECT_DIR$/src/scenes/elements/UserBox.java" afterPath="$PROJECT_DIR$/src/scenes/elements/UserBox.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java" />
       <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
       <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" afterPath="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/del/" />
@@ -26,34 +20,84 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/ReActReloaded$ReActTest.coverage" NAME="ReActTest Coverage Results" MODIFIED="1530971502622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ReActReloaded$ReactLauncher.coverage" NAME="ReactLauncher Coverage Results" MODIFIED="1531036064557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MainController.java">
+      <file leaf-file-name="GameScene.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="60" column="39" lean-forward="true" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="550">
+              <caret line="228" column="27" lean-forward="true" selection-start-line="228" selection-start-column="27" selection-end-line="228" selection-end-column="27" />
+              <folding>
+                <element signature="e#7671#7672#0" expanded="true" />
+                <element signature="e#7709#7710#0" expanded="true" />
+                <element signature="e#7744#7745#0" expanded="true" />
+                <element signature="e#7775#7776#0" expanded="true" />
+                <element signature="e#7816#7817#0" expanded="true" />
+                <element signature="e#7854#7855#0" expanded="true" />
+                <element signature="e#7881#7882#0" expanded="true" />
+                <element signature="e#7931#7932#0" expanded="true" />
+                <element signature="e#7970#7971#0" expanded="true" />
+                <element signature="e#8027#8028#0" expanded="true" />
+                <element signature="method#setPoints#0;class#GameScene#0" expanded="false" />
+                <element signature="e#8330#8331#0" expanded="true" />
+                <element signature="e#8374#8375#0" expanded="true" />
+                <element signature="e#8786#8787#0" expanded="true" />
+                <element signature="e#8822#8823#0" expanded="true" />
+                <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
+                <element signature="method#nameInput#0;class#GameScene#0" expanded="false" />
+                <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
+                <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
+                <element signature="e#14620#14621#0" expanded="true" />
+                <element signature="e#14657#14658#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ranking.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Ranking.java">
+      <file leaf-file-name="ContinuousGameScene.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+            <state relative-caret-position="249">
+              <caret line="28" column="53" lean-forward="false" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
               <folding>
-                <element signature="docComment;class#Ranking#0" expanded="false" />
-                <element signature="method#main#0;class#Ranking#0" expanded="false" />
-                <element signature="method#getRanking#0;class#Ranking#0" expanded="false" />
-                <element signature="e#1426#1427#0" expanded="true" />
-                <element signature="e#1453#1454#0" expanded="true" />
-                <element signature="method#read#0;class#Ranking#0" expanded="false" />
-                <element signature="method#write#0;class#Ranking#0" expanded="false" />
-                <element signature="method#add#1;class#Ranking#0" expanded="false" />
-                <element signature="method#reset#0;class#Ranking#0" expanded="false" />
+                <element signature="e#479#480#0" expanded="true" />
+                <element signature="e#515#516#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContinuousGame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+              <folding>
+                <element signature="docComment;class#ContinuousGame#0" expanded="false" />
+                <element signature="method#ContinuousGame#0;class#ContinuousGame#0" expanded="false" />
+                <element signature="e#702#703#0" expanded="true" />
+                <element signature="e#734#735#0" expanded="true" />
+                <element signature="e#1029#1030#0" expanded="true" />
+                <element signature="e#1061#1062#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserBox.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scenes/elements/UserBox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+              <folding>
+                <element signature="e#2013#2014#0" expanded="true" />
+                <element signature="e#2051#2052#0" expanded="true" />
+                <element signature="e#2106#2107#0" expanded="true" />
+                <element signature="e#2148#2149#0" expanded="true" />
+                <element signature="e#2197#2198#0" expanded="true" />
+                <element signature="e#2234#2235#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,13 +128,26 @@
       <find>Alert</find>
       <find>new BackB</find>
       <find>BackButt</find>
-      <find>BackB</find>
-      <find>r++</find>
+      <find>backb</find>
+      <find>strea</find>
+      <find>multi</find>
+      <find>getmulti</find>
+      <find>this.mult</find>
+      <find>round</find>
+      <find>gameround</find>
+      <find>bac</find>
+      <find>buttons</find>
+      <find>this.gp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Experimenting" />
+      </map>
+    </option>
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GradleLocalSettings">
@@ -104,39 +161,39 @@
         <option value="$PROJECT_DIR$/src/model/gamemodes/TimedGame.java" />
         <option value="$PROJECT_DIR$/src/model/gamemodes/ReactionGame.java" />
         <option value="$PROJECT_DIR$/src/model/isGame.java" />
+        <option value="$PROJECT_DIR$/src/model/Ranking.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" />
+        <option value="$PROJECT_DIR$/src/model/User.java" />
         <option value="$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java" />
         <option value="$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java" />
         <option value="$PROJECT_DIR$/src/scenes/start/ReAct.java" />
         <option value="$PROJECT_DIR$/src/design/Labels.java" />
         <option value="$PROJECT_DIR$/ReActTest.java" />
+        <option value="$PROJECT_DIR$/src/scenes/GameOverScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/NameScene.java" />
         <option value="$PROJECT_DIR$/src/ReactLauncher.java" />
         <option value="$PROJECT_DIR$/src/scenes/start/StageController.java" />
-        <option value="$PROJECT_DIR$/src/scenes/GameModeScene.java" />
-        <option value="$PROJECT_DIR$/src/scenes/elements/BackButton.java" />
-        <option value="$PROJECT_DIR$/src/model/Song.java" />
-        <option value="$PROJECT_DIR$/src/scenes/ObservableScene.java" />
-        <option value="$PROJECT_DIR$/src/ReactMain.java" />
-        <option value="$PROJECT_DIR$/src/scenes/StartScene.java" />
-        <option value="$PROJECT_DIR$/src/model/SongLibrary.java" />
-        <option value="$PROJECT_DIR$/res/init/music.ini" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/UsernameSelectionScene.java" />
-        <option value="$PROJECT_DIR$/src/model/User.java" />
-        <option value="$PROJECT_DIR$/src/model/GameMode.java" />
-        <option value="$PROJECT_DIR$/src/ReActTest.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java" />
-        <option value="$PROJECT_DIR$/src/scenes/SettingScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/RanglistScene.java" />
         <option value="$PROJECT_DIR$/src/model/gamemodes/NormalGame.java" />
-        <option value="$PROJECT_DIR$/src/scenes/GameOverScene.java" />
-        <option value="$PROJECT_DIR$/src/scenes/BaseReactScene.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
         <option value="$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java" />
-        <option value="$PROJECT_DIR$/src/scenes/elements/UserBox.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java" />
-        <option value="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
         <option value="$PROJECT_DIR$/src/MainController.java" />
-        <option value="$PROJECT_DIR$/src/model/Ranking.java" />
+        <option value="$PROJECT_DIR$/src/scenes/GameModeScene.java" />
+        <option value="$PROJECT_DIR$/src/ReactMain.java" />
+        <option value="$PROJECT_DIR$/res/init/music.ini" />
+        <option value="$PROJECT_DIR$/src/scenes/StartScene.java" />
+        <option value="$PROJECT_DIR$/src/design/Colors.java" />
+        <option value="$PROJECT_DIR$/src/scenes/elements/AnswerButton.java" />
+        <option value="$PROJECT_DIR$/src/scenes/elements/ReButton.java" />
+        <option value="$PROJECT_DIR$/src/model/GameMode.java" />
+        <option value="$PROJECT_DIR$/src/model/Observable.java" />
+        <option value="$PROJECT_DIR$/src/scenes/ObservableScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/BaseReactScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/elements/BackButton.java" />
+        <option value="$PROJECT_DIR$/src/scenes/SettingScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/elements/UserBox.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java" />
+        <option value="$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java" />
       </list>
     </option>
   </component>
@@ -146,11 +203,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="960" />
-    <option name="y" value="22" />
-    <option name="width" value="960" />
-    <option name="height" value="1178" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-307" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -167,8 +224,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,30 +234,19 @@
             <path>
               <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="init" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="serialized" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
               <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="design" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
@@ -228,154 +272,27 @@
               <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="scenes" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
               <item name="gamemodes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ReActReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ReActReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="scenes" type="462c0819:PsiDirectoryNode" />
-              <item name="start" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/design/Colors.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/BaseReactScene.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/StartScene.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/elements/AnswerButton.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/elements/ReButton.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/elements/UserBox.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -466,17 +383,38 @@
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
     </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
     </configuration>
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.ReActTest" />
@@ -491,6 +429,9 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="icons">
@@ -521,8 +462,10 @@
       <option name="presentableId" value="Default" />
       <updated>1530982378065</updated>
       <workItem from="1530982379854" duration="78000" />
-      <workItem from="1530985006102" duration="27122000" />
-      <workItem from="1531032461381" duration="18261000" />
+      <workItem from="1530985006102" duration="26817000" />
+      <workItem from="1531063037280" duration="9987000" />
+      <workItem from="1531319944359" duration="1521000" />
+      <workItem from="1531328144456" duration="7206000" />
     </task>
     <task id="LOCAL-00004" summary="created Continuous gameplay with Scene">
       <created>1530985020636</created>
@@ -552,53 +495,61 @@
       <option name="project" value="LOCAL" />
       <updated>1531012464028</updated>
     </task>
-    <task id="LOCAL-00008" summary="navigieren scheint zu klappen (starte dazu ReactLauncher)">
-      <created>1531013529406</created>
+    <task id="LOCAL-00008" summary="Backbutton nur sichbar wenn node vorhaden. &#10;&#10;StartScreen fixed funktioniert&#10;&#10;GameScene nimmt gestallt an">
+      <created>1531038758609</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1531013529406</updated>
+      <updated>1531038758609</updated>
     </task>
-    <task id="LOCAL-00009" summary="navigieren ist besser jetzt nur noch das updaten fixen">
-      <created>1531049285908</created>
+    <task id="LOCAL-00009" summary="Score, Multiplier und Round werden nun geupdated">
+      <created>1531063128621</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1531049285908</updated>
+      <updated>1531063128621</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Paar kleinigkeiten gefixt">
+      <created>1531073977578</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1531073977578</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49063000" />
+    <option name="totallyTimeSpent" value="62793000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="698" y="0" width="1222" height="1200" extended-state="6" />
-    <editor active="true" />
+    <frame x="-307" y="-1057" width="1920" height="1057" extended-state="0" />
     <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744282" sideWeight="0.4802982" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20498616" sideWeight="0.5042598" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17983368" sideWeight="0.5404686" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18012422" sideWeight="0.49574015" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17983368" sideWeight="0.45953143" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952183" sideWeight="0.48935038" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952183" sideWeight="0.4914803" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16779661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22470714" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24012475" sideWeight="0.48935038" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.296362" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -628,6 +579,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -665,84 +626,88 @@
     <MESSAGE value="multiplayer and rearrangement" />
     <MESSAGE value="some more edxpermineting" />
     <MESSAGE value="navigieren scheint zu klappen (starte dazu ReactLauncher)" />
-    <MESSAGE value="navigieren ist besser jetzt nur noch das updaten fixen" />
-    <option name="LAST_COMMIT_MESSAGE" value="navigieren ist besser jetzt nur noch das updaten fixen" />
+    <MESSAGE value="Backbutton nur sichbar wenn node vorhaden. &#10;&#10;StartScreen fixed funktioniert&#10;&#10;GameScene nimmt gestallt an" />
+    <MESSAGE value="Score, Multiplier und Round werden nun geupdated" />
+    <MESSAGE value="Paar kleinigkeiten gefixt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Paar kleinigkeiten gefixt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/GameOverScene.java</url>
-          <line>28</line>
+          <url>file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java</url>
+          <line>57</line>
           <properties />
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/GameOverScene.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="91" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java</url>
-          <line>113</line>
+          <line>133</line>
           <properties />
-          <option name="timeStamp" value="92" />
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java</url>
-          <line>108</line>
+          <url>file://$PROJECT_DIR$/src/model/GameMode.java</url>
+          <line>177</line>
           <properties />
-          <option name="timeStamp" value="93" />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java</url>
-          <line>132</line>
+          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java</url>
+          <line>64</line>
           <properties />
-          <option name="timeStamp" value="95" />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java</url>
-          <line>82</line>
+          <url>file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java</url>
+          <line>65</line>
           <properties />
-          <option name="timeStamp" value="96" />
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java</url>
-          <line>61</line>
+          <url>file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java</url>
+          <line>64</line>
           <properties />
-          <option name="timeStamp" value="97" />
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java</url>
-          <line>43</line>
+          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java</url>
+          <line>93</line>
           <properties />
-          <option name="timeStamp" value="98" />
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java</url>
-          <line>137</line>
+          <url>file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java</url>
+          <line>90</line>
           <properties />
-          <option name="timeStamp" value="99" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/scenes/SettingScene.java</url>
-          <line>105</line>
+          <line>50</line>
           <properties />
-          <option name="timeStamp" value="100" />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/scenes/elements/UserBox.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-      <option name="time" value="101" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -750,342 +715,49 @@
         <watch expression="Integer.parseInt(action.getVal().toString())" />
         <watch expression="observableScene.getPreviousScene().getScene()" />
         <watch expression="((ObservableScene) arg).getRoot()" />
-        <watch expression="getsPoints" />
-        <watch expression="ub.getName()" />
-        <watch expression="userBoxes" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Alert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="241" column="11" lean-forward="false" selection-start-line="241" selection-start-column="11" selection-end-line="241" selection-end-column="11" />
-          <folding>
-            <element signature="docComment;class#Alert#0" expanded="false" />
-            <element signature="docComment;class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#NONE#0;class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#INFORMATION#0;class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#WARNING#0;class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#CONFIRMATION#0;class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#ERROR#0;class#AlertType#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#dialogPaneRef#0;class#Alert#0" expanded="false" />
-            <element signature="e#6968#7041#0" expanded="false" />
-            <element signature="e#7099#7167#0" expanded="false" />
-            <element signature="e#7237#7312#0" expanded="false" />
-            <element signature="docComment;method#Alert#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;method#Alert#1;class#Alert#0" expanded="false" />
-            <element signature="method#Alert#1;class#Alert#0" expanded="false" />
-            <element signature="docComment;field#alertType#0;class#Alert#0" expanded="false" />
-            <element signature="class#11187:13904" expanded="false" />
-            <element signature="method#invalidated#0;class#11187:13904" expanded="false" />
-            <element signature="e#13261#13326#0" expanded="false" />
-            <element signature="docComment;method#getButtonTypes#0;class#Alert#0" expanded="false" />
-            <element signature="docComment;method#updateListeners#0;class#Alert#0" expanded="false" />
-            <element signature="method#updateListeners#0;class#Alert#0" expanded="false" />
-            <element signature="e#15608#15683#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ReactionGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#ContinuousGame#0" expanded="false" />
-            <element signature="method#ContinuousGame#0;class#ContinuousGame#0" expanded="false" />
-            <element signature="e#702#703#0" expanded="false" />
-            <element signature="e#734#735#0" expanded="false" />
-            <element signature="method#incLifeCount#0;class#ContinuousGame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/beans/property/BooleanPropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="83" column="16" lean-forward="false" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/design/Labels.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/NameScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="31" column="29" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/start/StageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReactLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="e#177#178#0" expanded="false" />
-            <element signature="e#234#235#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/start/ReAct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TableView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="1063" column="33" lean-forward="false" selection-start-line="1063" selection-start-column="33" selection-end-line="1063" selection-end-column="33" />
-          <folding>
-            <element signature="e#48774#48775#0" expanded="false" />
-            <element signature="e#48819#48820#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TableColumn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="427" column="22" lean-forward="false" selection-start-line="427" selection-start-column="22" selection-end-line="427" selection-end-column="22" />
-          <folding>
-            <element signature="e#18479#18480#0" expanded="false" />
-            <element signature="e#18517#18518#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/input/Clipboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="394" column="28" lean-forward="false" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="28" />
-          <folding>
-            <element signature="e#15430#15431#0" expanded="false" />
-            <element signature="e#15494#15495#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/elements/BackButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/input/KeyCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="444" column="4" lean-forward="false" selection-start-line="444" selection-start-column="4" selection-end-line="444" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4.jar!/org/ini4j/BasicProfile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4.jar!/org/ini4j/BasicMultiMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="110" column="19" lean-forward="false" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../_libraries_/ini4j-0.5.4/ini4j-0.5.4.jar!/org/ini4j/Ini.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="40" column="7" lean-forward="true" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functions/INIReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Filepaths.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#614#615#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/isGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#658#659#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/serialized/ranking.react">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="125" lean-forward="false" selection-start-line="7" selection-start-column="125" selection-end-line="7" selection-end-column="125" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/SongLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="331" column="16" lean-forward="false" selection-start-line="331" selection-start-column="16" selection-end-line="331" selection-end-column="16" />
-          <folding>
-            <element signature="docComment;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#MIN_SONG_COUNT#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#KEY_PRE#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#folderPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;field#playlist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#addToLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#addToLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#addToLib#1;class#SongLibrary#0" expanded="false" />
-            <element signature="method#addToLib#1;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getPlaylist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getPlaylistShuffled#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#getSongs#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#getSongs#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#removeFromLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#setLib#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#checkPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#checkPaths#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#checkPaths#1;class#SongLibrary#0" expanded="false" />
-            <element signature="method#checkPaths#1;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#createPlaylist#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#isDir#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#isDir#0;class#SongLibrary#0" expanded="false" />
-            <element signature="docComment;method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#isMusicFile#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#readINI#0;class#SongLibrary#0" expanded="false" />
-            <element signature="method#writeINI#0;class#SongLibrary#0" expanded="false" />
-            <element signature="e#11274#11275#0" expanded="false" />
-            <element signature="e#11305#11306#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReactMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/init/music.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="30">
+          <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/UsernameSelectionScene.java">
+    <entry file="file://$PROJECT_DIR$/src/ReactLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="75">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/event/Event.java">
+    <entry file="file://$PROJECT_DIR$/src/ReactMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="2501" column="0" lean-forward="false" selection-start-line="2501" selection-start-column="0" selection-end-line="2501" selection-end-column="0" />
-          <folding>
-            <element signature="e#92668#92669#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ReActTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="216" column="48" lean-forward="false" selection-start-line="216" selection-start-column="48" selection-end-line="216" selection-end-column="48" />
+        <state relative-caret-position="704">
+          <caret line="75" column="42" lean-forward="false" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
           <folding>
             <element signature="e#2549#2588#0" expanded="false" />
+            <element signature="method#start#0;class#ReActTest#0" expanded="false" />
             <element signature="e#5833#6241#0" expanded="false" />
             <element signature="e#6306#6502#0" expanded="false" />
             <element signature="e#6563#6806#0" expanded="false" />
+            <element signature="e#6871#7065#0" expanded="false" />
             <element signature="e#7138#7191#0" expanded="false" />
             <element signature="e#7277#7279#0" expanded="false" />
             <element signature="class#Sizes#0;class#ReActTest#0" expanded="false" />
@@ -1093,69 +765,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/TimedGameScene.java">
+    <entry file="file://$PROJECT_DIR$/src/scenes/start/ReAct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="34" />
-          <folding>
-            <element signature="e#319#320#0" expanded="false" />
-            <element signature="e#375#376#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/StartScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="method#StartScene#1;class#StartScene#0" expanded="false" />
-            <element signature="method#init1#0;class#StartScene#0" expanded="false" />
-            <element signature="e#886#940#0" expanded="false" />
-            <element signature="e#2368#2467#0" expanded="false" />
-            <element signature="e#2512#2612#0" expanded="false" />
-            <element signature="e#2837#2838#0" expanded="false" />
-            <element signature="e#2873#2874#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/RanglistScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        <state relative-caret-position="-681">
+          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/ObservableScene.java">
+    <entry file="file://$PROJECT_DIR$/src/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#ObservableScene#0" expanded="false" />
-            <element signature="method#ObservableScene#1;class#ObservableScene#0" expanded="false" />
-            <element signature="method#ObservableScene#2;class#ObservableScene#0" expanded="false" />
-            <element signature="class#Sizes#0;class#ObservableScene#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/fxml/ReActController.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/layout/VBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="63" column="53" lean-forward="false" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
-          <folding>
-            <element signature="method#start#0;class#ReActController#0" expanded="false" />
-            <element signature="method#close#0;class#ReActController#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="244">
+          <caret line="137" column="13" lean-forward="false" selection-start-line="137" selection-start-column="13" selection-end-line="137" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/gamemodes/NormalGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="65" column="27" lean-forward="false" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+        <state relative-caret-position="75">
+          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
           <folding>
             <element signature="docComment;class#NormalGame#0" expanded="false" />
             <element signature="docComment;field#answerType#0;class#NormalGame#0" expanded="false" />
@@ -1164,137 +800,39 @@
             <element signature="method#NormalGame#0;class#NormalGame#0" expanded="false" />
             <element signature="method#NormalGame#1;class#NormalGame#0" expanded="false" />
             <element signature="method#init#0;class#NormalGame#0" expanded="false" />
-            <element signature="method#replay#0;class#NormalGame#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/BaseReactScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="55" column="15" lean-forward="true" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
-          <folding>
-            <element signature="docComment;class#BaseReactScene#0" expanded="false" />
-            <element signature="method#BaseReactScene#2;class#BaseReactScene#0" expanded="false" />
-            <element signature="e#1733#1734#0" expanded="true" />
-            <element signature="e#1780#1781#0" expanded="true" />
-            <element signature="method#showBackButton#0;class#BaseReactScene#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/GameOverScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/NormalGameScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="49" column="8" lean-forward="false" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+        <state relative-caret-position="508">
+          <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#NormalGameScene#0" expanded="false" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#716#717#0" expanded="true" />
-            <element signature="e#972#1141#0" expanded="false" />
-            <element signature="e#1246#1550#0" expanded="false" />
+            <marker date="1531063139847" expanded="true" signature="3082:3123" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
+    <entry file="file://$PROJECT_DIR$/src/scenes/ObservableScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="183" column="37" lean-forward="false" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
-          <folding>
-            <element signature="docComment;class#GameScene#0" expanded="false" />
-            <element signature="method#GameScene#0;class#GameScene#0" expanded="false" />
-            <element signature="e#2421#2590#0" expanded="false" />
-            <element signature="e#2695#2999#0" expanded="false" />
-            <element signature="e#4773#4942#0" expanded="false" />
-            <element signature="e#5047#5351#0" expanded="false" />
-            <element signature="method#addPoints#0;class#GameScene#0" expanded="false" />
-            <element signature="method#setPoints#0;class#GameScene#0" expanded="false" />
-            <element signature="method#start#0;class#GameScene#0" expanded="false" />
-            <element signature="method#addLayers#0;class#GameScene#0" expanded="false" />
-            <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
-            <element signature="e#8618#8800#0" expanded="false" />
-            <element signature="method#setStartBG#0;class#GameScene#0" expanded="false" />
-            <element signature="method#init#0;class#GameScene#0" expanded="false" />
-            <element signature="e#9541#9622#0" expanded="false" />
-            <element signature="e#10109#10490#0" expanded="false" />
-            <element signature="method#nameInput#0;class#GameScene#0" expanded="false" />
-            <element signature="e#11211#11262#0" expanded="false" />
-            <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
-            <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
-            <element signature="e#12757#13117#0" expanded="false" />
-            <element signature="class#GameBackground#0;class#GameScene#0" expanded="false" />
-            <element signature="method#GameBackground#0;class#GameBackground#0;class#GameScene#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="307">
+          <caret line="107" column="5" lean-forward="false" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java">
+    <entry file="file://$PROJECT_DIR$/src/scenes/GameOverScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="63" column="59" lean-forward="false" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
-          <folding>
-            <element signature="docComment;class#CoOpGameScene#0" expanded="false" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#1014#1015#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1511#1741#0" expanded="false" />
-            <element signature="method#update#0;class#CoOpGameScene#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#User#0" expanded="false" />
-            <element signature="docComment;field#correctAnswered#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#datePlayed#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#maxReaction#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#minReaction#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#name#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#playedPlaylist#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#points#0;class#User#0" expanded="false" />
-            <element signature="docComment;field#reactionTimes#0;class#User#0" expanded="false" />
-            <element signature="method#User#0;class#User#0" expanded="false" />
-            <element signature="method#addReactionTime#0;class#User#0" expanded="false" />
-            <element signature="e#2495#2496#0" expanded="true" />
-            <element signature="method#toString#0;class#User#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/elements/UserBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/GameModeScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="58" column="36" lean-forward="true" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+        <state relative-caret-position="270">
+          <caret line="30" column="43" lean-forward="false" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/GameMode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="332" column="0" lean-forward="false" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
+        <state relative-caret-position="181">
+          <caret line="292" column="0" lean-forward="false" selection-start-line="292" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#GameMode#0" expanded="false" />
             <element signature="docComment;field#MAXSTEP#0;class#GameMode#0" expanded="false" />
@@ -1315,34 +853,29 @@
             <element signature="docComment;field#hasStarted#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;field#startTime#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;field#nextCalled#0;class#GameMode#0" expanded="false" />
-            <element signature="method#GameMode#0;class#GameMode#0" expanded="false" />
-            <element signature="method#GameMode#1;class#GameMode#0" expanded="false" />
             <element signature="method#GameMode#2;class#GameMode#0" expanded="false" />
             <element signature="method#GameMode#3;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#start#0;class#GameMode#0" expanded="false" />
-            <element signature="method#start#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#addPoints#0;class#GameMode#0" expanded="false" />
-            <element signature="e#5765#5766#0" expanded="true" />
-            <element signature="e#5798#5799#0" expanded="true" />
             <element signature="docComment;method#addPoints#1;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#answer#0;class#GameMode#0" expanded="false" />
+            <element signature="method#answer#0;class#GameMode#0" expanded="false" />
             <element signature="method#endGame#0;class#GameMode#0" expanded="false" />
             <element signature="method#getAnswers#0;class#GameMode#0" expanded="false" />
-            <element signature="method#getUser#0;class#GameMode#0" expanded="false" />
-            <element signature="method#getWinner#0;class#GameMode#0" expanded="false" />
+            <element signature="e#10199#10200#0" expanded="false" />
             <element signature="method#setUsers#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#next#0;class#GameMode#0" expanded="false" />
             <element signature="method#next#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#replay#0;class#GameMode#0" expanded="false" />
             <element signature="method#replay#0;class#GameMode#0" expanded="false" />
             <element signature="method#resetActiveUser#0;class#GameMode#0" expanded="false" />
+            <element signature="method#setActiveUser#0;class#GameMode#0" expanded="false" />
             <element signature="method#setActiveUser#1;class#GameMode#0" expanded="false" />
             <element signature="method#setActiveUser#2;class#GameMode#0" expanded="false" />
             <element signature="method#setAnswerCount#0;class#GameMode#0" expanded="false" />
             <element signature="method#song#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#subtractPoints#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#calcMultiplier#0;class#GameMode#0" expanded="false" />
-            <element signature="method#calcMultiplier#0;class#GameMode#0" expanded="false" />
             <element signature="docComment;method#createAnswers#0;class#GameMode#0" expanded="false" />
             <element signature="method#createAnswers#0;class#GameMode#0" expanded="false" />
             <element signature="method#initAnswerCount#0;class#GameMode#0" expanded="false" />
@@ -1363,77 +896,365 @@
             <element signature="docComment;class#GameStatus#0;class#GameMode#0" expanded="false" />
             <element signature="class#GameStatus#0;class#GameMode#0" expanded="false" />
             <element signature="method#toString#0;class#GameStatus#0;class#GameMode#0" expanded="false" />
-            <element signature="e#21266#21312#0" expanded="false" />
-            <element signature="e#21508#21585#0" expanded="false" />
+            <element signature="e#21991#22037#0" expanded="false" />
+            <element signature="e#22233#22310#0" expanded="false" />
             <element signature="class#AlreadyStartedException#0;class#GameMode#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
+    <entry file="file://$PROJECT_DIR$/src/design/Colors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="30" selection-end-column="11" />
+        <state relative-caret-position="235">
+          <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
           <folding>
-            <element signature="method#evalAction#0;class#ContinuousGameScene#0" expanded="false" />
-            <element signature="method#evalMode#0;class#ContinuousGameScene#0" expanded="false" />
-            <element signature="method#update#0;class#ContinuousGameScene#0" expanded="false" />
+            <element signature="e#7087#7088#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/CoOpGame.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Label.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        <state relative-caret-position="228">
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Control.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="412" column="0" lean-forward="false" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/layout/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="456" column="0" lean-forward="false" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Parent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="1294" column="0" lean-forward="false" selection-start-line="1294" selection-start-column="0" selection-end-line="1294" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="789" column="0" lean-forward="false" selection-start-line="789" selection-start-column="0" selection-end-line="789" selection-end-column="0" />
           <folding>
-            <element signature="e#283#284#0" expanded="false" />
-            <element signature="e#327#328#0" expanded="false" />
+            <element signature="e#35131#35138#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Labeled.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding>
+            <element signature="e#3369#3370#0" expanded="false" />
+            <element signature="e#3398#3399#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/design/Labels.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#874#875#0" expanded="false" />
+            <element signature="e#1350#1351#0" expanded="false" />
+            <element signature="e#1417#1418#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/StartScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="83" column="41" lean-forward="false" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/elements/CustomMenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/elements/AnswerButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/elements/BackButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="67" lean-forward="true" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/elements/CustomActionBtn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="65" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/elements/ReButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scenes/SettingScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="17" />
+        <state relative-caret-position="795">
+          <caret line="82" column="23" lean-forward="true" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
           <folding>
-            <element signature="method#SettingScene#0;class#SettingScene#0" expanded="false" />
-            <element signature="e#1984#2274#0" expanded="false" />
-            <element signature="e#2358#3276#0" expanded="false" />
-            <element signature="e#3358#3484#0" expanded="false" />
-            <element signature="e#3930#4118#0" expanded="false" />
-            <element signature="e#4194#4383#0" expanded="false" />
-            <element signature="e#4811#4940#0" expanded="false" />
-            <element signature="e#4995#5088#0" expanded="false" />
-            <element signature="e#5141#5319#0" expanded="false" />
-            <element signature="e#5375#5912#0" expanded="false" />
+            <element signature="method#SettingScene#1;class#SettingScene#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainController.java">
+    <entry file="file://$PROJECT_DIR$/res/icons/icon_repeat.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/icons/icon_play.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/GameModeScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="60" column="39" lean-forward="true" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
+        <state relative-caret-position="465">
+          <caret line="37" column="8" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/RanglistScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/BaseReactScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="124" column="37" lean-forward="false" selection-start-line="124" selection-start-column="37" selection-end-line="124" selection-end-column="37" />
+          <folding>
+            <element signature="docComment;class#BaseReactScene#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/CoOpGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="56" column="20" lean-forward="false" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+          <folding>
+            <element signature="docComment;class#CoOpGameScene#0" expanded="false" />
+            <element signature="method#init#0;class#CoOpGameScene#0" expanded="false" />
+            <element signature="method#evalAction#0;class#CoOpGameScene#0" expanded="false" />
+            <element signature="method#evalMode#0;class#CoOpGameScene#0" expanded="false" />
+            <element signature="method#update#0;class#CoOpGameScene#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/ElementBackgroundCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functions/INIReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/SongLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/UpdateCause.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Ranking.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        <state relative-caret-position="105">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ObservableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Observable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/NotEnoughSongsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
           <folding>
-            <element signature="docComment;class#Ranking#0" expanded="false" />
-            <element signature="method#main#0;class#Ranking#0" expanded="false" />
-            <element signature="method#getRanking#0;class#Ranking#0" expanded="false" />
-            <element signature="e#1426#1427#0" expanded="true" />
-            <element signature="e#1453#1454#0" expanded="true" />
-            <element signature="method#read#0;class#Ranking#0" expanded="false" />
-            <element signature="method#write#0;class#Ranking#0" expanded="false" />
-            <element signature="method#add#1;class#Ranking#0" expanded="false" />
-            <element signature="method#reset#0;class#Ranking#0" expanded="false" />
+            <element signature="e#2468#2469#0" expanded="false" />
+            <element signature="e#2495#2496#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gamemodes/ContinuousGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+          <folding>
+            <element signature="docComment;class#ContinuousGame#0" expanded="false" />
+            <element signature="method#ContinuousGame#0;class#ContinuousGame#0" expanded="false" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/elements/UserBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+          <folding>
+            <element signature="e#2013#2014#0" expanded="true" />
+            <element signature="e#2051#2052#0" expanded="true" />
+            <element signature="e#2106#2107#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+            <element signature="e#2197#2198#0" expanded="true" />
+            <element signature="e#2234#2235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/ContinuousGameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="28" column="53" lean-forward="false" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+          <folding>
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scenes/gamemodes/GameScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="228" column="27" lean-forward="true" selection-start-line="228" selection-start-column="27" selection-end-line="228" selection-end-column="27" />
+          <folding>
+            <element signature="e#7671#7672#0" expanded="true" />
+            <element signature="e#7709#7710#0" expanded="true" />
+            <element signature="e#7744#7745#0" expanded="true" />
+            <element signature="e#7775#7776#0" expanded="true" />
+            <element signature="e#7816#7817#0" expanded="true" />
+            <element signature="e#7854#7855#0" expanded="true" />
+            <element signature="e#7881#7882#0" expanded="true" />
+            <element signature="e#7931#7932#0" expanded="true" />
+            <element signature="e#7970#7971#0" expanded="true" />
+            <element signature="e#8027#8028#0" expanded="true" />
+            <element signature="method#setPoints#0;class#GameScene#0" expanded="false" />
+            <element signature="e#8330#8331#0" expanded="true" />
+            <element signature="e#8374#8375#0" expanded="true" />
+            <element signature="e#8786#8787#0" expanded="true" />
+            <element signature="e#8822#8823#0" expanded="true" />
+            <element signature="method#setAnswers#0;class#GameScene#0" expanded="false" />
+            <element signature="method#nameInput#0;class#GameScene#0" expanded="false" />
+            <element signature="method#setAnswers#1;class#GameScene#0" expanded="false" />
+            <element signature="method#setFadeOut#0;class#GameScene#0" expanded="false" />
+            <element signature="e#14620#14621#0" expanded="true" />
+            <element signature="e#14657#14658#0" expanded="true" />
           </folding>
         </state>
       </provider>

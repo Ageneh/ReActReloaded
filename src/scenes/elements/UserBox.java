@@ -1,6 +1,8 @@
 package scenes.elements;
 
 import javafx.beans.InvalidationListener;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.Property;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -10,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import model.User;
 import scenes.gamemodes.GameScene;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 /**
  * @author Henock Arega
@@ -24,7 +27,7 @@ public class UserBox extends VBox {
 
     public UserBox(String username) {
         this.pointsProp = 0;
-        this.pointsIntValue = new SimpleIntegerProperty(this.pointsProp);
+        this.pointsIntValue = new SimpleIntegerProperty(pointsProp);
         this.username = GameScene.LABEL_STYLE.getLabel(username);
         this.points = GameScene.LABEL_STYLE.getLabel(0);
         this.nameValue = new SimpleStringProperty(username);
