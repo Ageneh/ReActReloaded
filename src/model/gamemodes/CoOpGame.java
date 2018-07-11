@@ -37,9 +37,11 @@ public class CoOpGame extends GameMode {
             notifyObservers(Action.POINTS.setVal(POINTS * 2));
         } else {
             this.correctAnswer = false;
+            addPoints(-1);
             ANSI.RED.println("======================\n====  WRONG ANSWER\n======================");
             notifyObservers(Action.ANSWER_INCORRECT.setVal(getUsers().get(activeUser)));
             setChanged();
+            addPoints();
             notifyObservers(Action.POINTS.setVal(POINTS));
         }
         super.correctAnswer = res;
@@ -60,10 +62,21 @@ public class CoOpGame extends GameMode {
     
     @Override
     public void addPoints(double multiplier) {
-        this.users.get(activeUser).setPoints(
-                (int) (this.users.get(activeUser).getPoints() +
-                        (((double) super.POINTS * this.multiplier)
-                                * multiplier)));
+        if(multiplier < 0){
+            // gave wrong answer; other player gets points
+            int n = Math.abs(1 - activeUser);
+            multiplier *= -1;
+            this.users.get(n).setPoints(
+                    (int) (this.users.get(n).getPoints() +
+                            (((double) super.POINTS * this.multiplier)
+                                    * multiplier)));
+        }
+        else {
+            this.users.get(activeUser).setPoints(
+                    (int) (this.users.get(activeUser).getPoints() +
+                            (((double) super.POINTS * this.multiplier)
+                                    * multiplier)));
+        }
     }
     
     @Override
