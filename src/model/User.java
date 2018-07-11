@@ -8,6 +8,7 @@ import java.util.Collections;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public class User implements Serializable {

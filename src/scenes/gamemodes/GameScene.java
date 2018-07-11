@@ -37,6 +37,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public abstract class GameScene<T extends GameMode> extends ObservableScene implements Observer, Close {

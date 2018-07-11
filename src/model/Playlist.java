@@ -7,6 +7,7 @@ import java.util.Stack;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public class Playlist {

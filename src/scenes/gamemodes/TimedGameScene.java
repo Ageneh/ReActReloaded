@@ -9,6 +9,7 @@ import java.util.Observer;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public class TimedGameScene extends GameScene {

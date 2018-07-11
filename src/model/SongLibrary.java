@@ -15,6 +15,7 @@ import java.util.*;
  * Every time a playlist is needed one will be created by randomising the order of songs which are to be played.
  *
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public class SongLibrary implements Close, WritesINI {

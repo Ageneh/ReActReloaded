@@ -6,6 +6,7 @@ package model;
  * and also {@link #writeINI() write} an/its ini-file.
  *
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public interface WritesINI {

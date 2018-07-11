@@ -2,6 +2,7 @@ package model;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public enum UpdateCause {
     

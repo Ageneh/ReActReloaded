@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  * <p>
  * <p>

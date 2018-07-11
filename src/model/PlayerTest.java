@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  */
 public class PlayerTest implements Observer {

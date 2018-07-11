@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  * @project ReActReloaded
  * <p>
  * The player, used for the gameplay.

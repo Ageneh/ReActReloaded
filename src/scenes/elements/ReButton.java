@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public class ReButton extends Button {
     

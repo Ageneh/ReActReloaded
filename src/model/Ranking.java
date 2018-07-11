@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 /**
  * @author Henock Arega
+ * @author Michael Heide
  */
 public class Ranking implements Serializable, Close {
     
